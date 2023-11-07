@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "quyettvph35419.fpoly.cafebuipho"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "quyettvph35419.fpoly.cafebuipho"
