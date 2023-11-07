@@ -20,9 +20,7 @@ public class NhanVienFragment extends Fragment {
     }
 
 
-    public static NhanVienFragment newInstance(String param1, String param2) {
 
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +31,7 @@ public class NhanVienFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_nhan_vien, container, false);
     }
 }
