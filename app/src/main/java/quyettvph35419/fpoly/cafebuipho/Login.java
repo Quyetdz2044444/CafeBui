@@ -11,11 +11,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import quyettvph35419.fpoly.cafebuipho.Dao.QuanLyDao;
 
 
 public class Login extends AppCompatActivity {
-    EditText edUserName, edPassword;
+    TextInputEditText edUserName, edPassword;
     Button btnLogin, btnCancel;
     CheckBox chkRememberPass;
     QuanLyDao quanLyDao;
