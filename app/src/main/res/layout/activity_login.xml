@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/custom_btn_yes"
+            android:backgroundTint="@color/black"
 
             android:text="Đăng nhập"
             android:textColor="@color/white"
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_weight="1"
-            android:background="@drawable/custom_btn_no"
+            android:backgroundTint="#B60101"
             android:text="Hủy"
             android:textColor="@color/white"
             android:textStyle="bold" />
