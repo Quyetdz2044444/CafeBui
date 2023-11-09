@@ -2,56 +2,65 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_HoaDon"
-            android:icon="@drawable/hoadon"
-            android:title="Quản lý hóa đơn"/>
-        <item android:id="@+id/nav_DoUong"
-            android:icon="@drawable/douong"
-            android:title="Quản lý đồ uống"/>
-        <item android:id="@+id/nav_LoaiDoUong"
-            android:icon="@drawable/loaidouong"
-            android:title="Quản lý loại đồ uống"/>
-        <item android:id="@+id/nav_Ban"
-            android:icon="@drawable/ban"
-            android:title="Quản lý bàn"/>
-        <item android:id="@+id/nav_NhanVien"
-            android:icon="@drawable/nhanvien"
-            android:title="Quản lý nhân viên"/>
+        <item android:title="Quản lí">
+            <menu>
+                <item
+                    android:id="@+id/nav_HoaDon"
+                    android:icon="@drawable/hoadon"
+                    android:title="Quản lý hóa đơn" />
+                <item
+                    android:id="@+id/nav_DoUong"
+                    android:icon="@drawable/douong"
+                    android:title="Quản lý đồ uống" />
+                <item
+                    android:id="@+id/nav_LoaiDoUong"
+                    android:icon="@drawable/loaidouong"
+                    android:title="Quản lý loại đồ uống" />
+                <item
+                    android:id="@+id/nav_Ban"
+                    android:icon="@drawable/ban"
+                    android:title="Quản lý bàn" />
+                <item
+                    android:id="@+id/nav_NhanVien"
+                    android:icon="@drawable/nhanvien"
+                    android:title="Quản lý nhân viên" />
+            </menu>
+        </item>
+
 
         <item android:title="Thống kê">
             <menu>
-                <item android:id="@+id/sub_Top"
+                <item
+                    android:id="@+id/sub_Top"
                     android:icon="@drawable/ic_top"
-                    android:title="5 đồ uống hot trend"
-                    />
-                <item android:id="@+id/sub_DoanhThu"
+                    android:title="5 đồ uống hot trend" />
+                <item
+                    android:id="@+id/sub_DoanhThu"
                     android:icon="@drawable/ic_money"
-                    android:title="Doanh thu"
-                    />
+                    android:title="Doanh thu" />
             </menu>
         </item>
 
 
-        <item android:title="Người dùng">
+        <item android:title="Tài khoản">
             <menu>
-                <item android:id="@+id/sub_AddUser"
+                <item
+                    android:id="@+id/sub_AddUser"
                     android:icon="@drawable/ic_adduser"
-                    android:visible="false"
                     android:title="Thêm tài khoản"
-                    />
+                    android:visible="false" />
 
-                <item android:id="@+id/sub_Pass"
+                <item
+                    android:id="@+id/sub_Pass"
                     android:icon="@drawable/ic_pass"
-                    android:title="Đổi mật khẩu"
-                    />
-                <item android:id="@+id/sub_Logout"
+                    android:title="Đổi mật khẩu" />
+                <item
+                    android:id="@+id/sub_Logout"
                     android:icon="@drawable/ic_logout"
-                    android:title="Đăng xuất"
-                    />
+                    android:title="Đăng xuất" />
             </menu>
         </item>
     </group>
-
 
 
 </menu>
