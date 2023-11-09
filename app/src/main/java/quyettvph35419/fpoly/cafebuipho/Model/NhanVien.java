@@ -5,16 +5,21 @@ public class NhanVien {
     private String tenNV;
     private String soDienThoai;
     private String diaChi;
+    private String ngaySinh;
+    private String cccd;
     private int gioiTinh;
 
     public NhanVien() {
     }
 
-    public NhanVien(int maNV, String tenNV, String soDienThoai, String diaChi, int gioiTinh) {
+    public NhanVien(int maNV, String tenNV, String soDienThoai,
+                    String diaChi, String ngaySinh, String cccd, int gioiTinh) {
         this.maNV = maNV;
         this.tenNV = tenNV;
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
+        this.ngaySinh = ngaySinh;
+        this.cccd = cccd;
         this.gioiTinh = gioiTinh;
     }
 
@@ -48,6 +53,22 @@ public class NhanVien {
 
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
+    }
+
+    public String getNgaySinh() {
+        return ngaySinh;
+    }
+
+    public void setNgaySinh(String ngaySinh) {
+        this.ngaySinh = ngaySinh;
+    }
+
+    public String getCccd() {
+        return cccd;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
     }
 
     public int getGioiTinh() {

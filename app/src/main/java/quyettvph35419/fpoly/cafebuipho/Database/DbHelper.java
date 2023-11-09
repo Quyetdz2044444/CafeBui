@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "CafeBui";
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 2;
 
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -30,6 +30,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String createTableDoUong = "create table DOUONG(MADOUONG INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "GIA INTEGER NOT NULL," +
                 "MABAN INTEGER NOT NULL," +
+                "TONKHO INTEGER NOT NULL," +
                 "MALOAI INTEGER REFERENCES LOAIDOUONG(MALOAI))";
         db.execSQL(createTableDoUong);
 //        bảng loại đồ uống
@@ -41,11 +42,14 @@ public class DbHelper extends SQLiteOpenHelper {
                 "TENNV TEXT NOT NULL," +
                 "SDT TEXT NOT NULL," +
                 "DIACHI TEXT NOT NULL," +
+                "NGAYSINH TEXT NOT NULL," +
+                "CCCD TEXT NOT NULL," +
                 "GIOITINH INTEGER NOT NULL )";
         db.execSQL(createTableNhanVien);
 //        bảng bàn
         String createTableBan = "create table BAN(MABAN INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "VITRIBAN )";
+                "VITRIBAN INTEGER NOT NULL," +
+                "TRANGTHAI INTEGER NOT NULL )";
         db.execSQL(createTableBan);
 //        bảng hóa đơn
         String createTableHoaDon = "create table HOADON(MAHOADON INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -63,22 +67,22 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO QUANLY VALUES('admin','Admin','admin')," +
                 "('trinhpk','Phạm Trưởng','123')");
 
-        db.execSQL("INSERT INTO DOUONG VALUES(1,2000,1,1)," +
-                "(2,3000,2,2)," +
-                "(3,4000,3,3)");
+        db.execSQL("INSERT INTO DOUONG VALUES(1,2000,1,5,1)," +
+                "(2,3000,2,6,2)," +
+                "(3,4000,3,7,3)");
 
         db.execSQL("INSERT INTO LOAIDOUONG VALUES(1,'Sinh tố')," +
                 "(2,'Trà sữa')," +
                 "(3,'Cafe')," +
                 "(4,'Sữa')");
 
-        db.execSQL("INSERT INTO NHANVIEN VALUES(1,'Hoài An','0983917555','Lâm Đồng',1)," +
-                "(2,'Mạnh Dũng','0973917587','Lào Cai',0)," +
-                "(3,'Hùng Dũng','0882917833','Bắc Ninh',0)");
+        db.execSQL("INSERT INTO NHANVIEN VALUES(1,'Hoài An','0983917555','Lâm Đồng','2004/06/05','038204026547',1)," +
+                "(2,'Mạnh Dũng','0973917587','Lào Cai','2003/02/01','038204023458',0)," +
+                "(3,'Hùng Dũng','0882917833','Bắc Ninh','2000/09/15','038204022894',0)");
 
-        db.execSQL("INSERT INTO BAN VALUES(1,1)," +
-                "(2,2)," +
-                "(3,3)");
+        db.execSQL("INSERT INTO BAN VALUES(1,1,0)," +
+                "(2,2,1)," +
+                "(3,3,1)");
 
         db.execSQL("INSERT INTO HOADON VALUES(1,'admin',1,1,1,2500,1,'2021/07/13',1)," +
                 "(2,'chubedan',2,2,2,3500,2,'2022/09/23',2)," +

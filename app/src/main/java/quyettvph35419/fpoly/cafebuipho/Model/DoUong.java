@@ -4,15 +4,17 @@ public class DoUong {
     private int maDoUong;
     private int gia;
     private int maBan;
+    private int tonKho;
     private int maLoai;
 
     public DoUong() {
     }
 
-    public DoUong(int maDoUong, int gia, int maBan, int maLoai) {
+    public DoUong(int maDoUong, int gia, int maBan, int tonKho, int maLoai) {
         this.maDoUong = maDoUong;
         this.gia = gia;
         this.maBan = maBan;
+        this.tonKho = tonKho;
         this.maLoai = maLoai;
     }
 
@@ -38,6 +40,14 @@ public class DoUong {
 
     public void setMaBan(int maBan) {
         this.maBan = maBan;
+    }
+
+    public int getTonKho() {
+        return tonKho;
+    }
+
+    public void setTonKho(int tonKho) {
+        this.tonKho = tonKho;
     }
 
     public int getMaLoai() {
