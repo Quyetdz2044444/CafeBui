@@ -11,16 +11,14 @@ import android.view.ViewGroup;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 
-public class DoUongFragment extends Fragment {
+public class DoUong_Fragment extends Fragment {
 
 
-    public DoUongFragment() {
-        // Required empty public constructor
+    public DoUong_Fragment() {
     }
 
-    public static DoUongFragment newInstance(String param1, String param2) {
-        DoUongFragment fragment = new DoUongFragment();
-        Bundle args = new Bundle();
+    public static DoUong_Fragment newInstance(String param1, String param2) {
+        DoUong_Fragment fragment = new DoUong_Fragment();
 
         return fragment;
     }
@@ -34,7 +32,6 @@ public class DoUongFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_do_uong, container, false);
     }
 }

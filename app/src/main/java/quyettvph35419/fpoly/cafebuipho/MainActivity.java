@@ -1,6 +1,6 @@
 package quyettvph35419.fpoly.cafebuipho;
 
-import androidx.appcompat.app.ActionBar;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,15 +8,29 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import quyettvph35419.fpoly.cafebuipho.Dao.QuanLyDao;
+import quyettvph35419.fpoly.cafebuipho.Fragment.AddUser_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.Ban_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.ChangePass_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.DoUong_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.DoanhThu_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.HoaDon_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.LoaiDoUong_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.NhanVien_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.Top5_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         // anh xa
         drawer = findViewById(R.id.drawer_layout);
-        toolbar = findViewById(R.id.toolbar1);
+        toolbar = findViewById(R.id.tlbar);
         nv = findViewById(R.id.nvView);
         // set toolbar thay actionbar
         setSupportActionBar(toolbar);
@@ -73,7 +87,84 @@ public class MainActivity extends AppCompatActivity {
             nv.getMenu().findItem(R.id.sub_DoanhThu).setVisible(false);
             nv.getMenu().findItem(R.id.nav_NhanVien).setVisible(false);
         }
+
+        TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
+        replaceFrg(trangChuFragment);
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int id = item.getItemId();
+                if (id == R.id.nav_NhanVien) {
+                    toolbar.setTitle("Quản lý nhân viên");
+                    NhanVien_Fragment nhanVienFragment = new NhanVien_Fragment();
+                    replaceFrg(nhanVienFragment);
+
+                } else if (id == R.id.nav_DoUong) {
+                    toolbar.setTitle("Quản lý đồ uống");
+                    DoUong_Fragment doUongFragment = new DoUong_Fragment();
+                    replaceFrg(doUongFragment);
+                } else if (id == R.id.nav_Ban) {
+                    toolbar.setTitle("Quản lý bàn");
+                    Ban_Fragment banFragment = new Ban_Fragment();
+                    replaceFrg(banFragment);
+                } else if (id == R.id.nav_HoaDon) {
+                    toolbar.setTitle("Quản lý hóa đơn");
+                    HoaDon_Fragment hoaDonFragment = new HoaDon_Fragment();
+                    replaceFrg(hoaDonFragment);
+                } else if (id == R.id.nav_LoaiDoUong) {
+                    toolbar.setTitle("Quản lý loại đồ uống");
+                    LoaiDoUong_Fragment loaiDoUongFragment = new LoaiDoUong_Fragment();
+                    replaceFrg(loaiDoUongFragment);
+                } else if (id == R.id.sub_AddUser) {
+                    toolbar.setTitle("Thêm tài khoản");
+                    AddUser_Fragment addUserFragment = new AddUser_Fragment();
+                    replaceFrg(addUserFragment);
+                } else if (id == R.id.sub_DoanhThu) {
+                    toolbar.setTitle("Doanh thu");
+                    DoanhThu_Fragment doanhThuFragment = new DoanhThu_Fragment();
+                    replaceFrg(doanhThuFragment);
+                } else if (id == R.id.sub_Top) {
+                    toolbar.setTitle("Top 5 đồ uống");
+                    Top5_Fragment top5Fragment = new Top5_Fragment();
+                    replaceFrg(top5Fragment);
+                } else if (id == R.id.sub_Pass) {
+                    toolbar.setTitle("Đổi mật khẩu");
+                    ChangePass_Fragment changePassFragment = new ChangePass_Fragment();
+                    replaceFrg(changePassFragment);
+                } else if (id == R.id.sub_Logout) {
+                    android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("Đăng xuất");
+                    builder.setMessage("Bạn chắc muốn đăng xuất chứ?");
+                    builder.setCancelable(true);
+
+                    builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(MainActivity.this, Login.class);
+                            Toast.makeText(MainActivity.this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                        }
+                    });
+                    builder.setNegativeButton("không", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+
+                }
+                drawer.closeDrawers();
+                return true;
+            }
+        });
+
+
+
     }
+
 
     public void replaceFrg(Fragment frg) {
         FragmentManager manager = getSupportFragmentManager();
