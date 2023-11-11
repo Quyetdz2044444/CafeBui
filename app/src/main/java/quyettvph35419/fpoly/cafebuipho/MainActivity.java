@@ -22,13 +22,11 @@ import com.google.android.material.navigation.NavigationView;
 
 import quyettvph35419.fpoly.cafebuipho.Dao.QuanLyDao;
 import quyettvph35419.fpoly.cafebuipho.Fragment.AddUser_Fragment;
-import quyettvph35419.fpoly.cafebuipho.Fragment.Ban_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ChangePass_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DoUong_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DoanhThu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.HoaDon_Fragment;
-import quyettvph35419.fpoly.cafebuipho.Fragment.LoaiDoUong_Fragment;
-import quyettvph35419.fpoly.cafebuipho.Fragment.NhanVien_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.KhachHangFragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.Top5_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
@@ -85,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
 //        ko phải admin thì k đc thống kê, ko được ql nhân viên, k đc thêm người dùng
         if (user.equalsIgnoreCase("trinhpk")) {
             nv.getMenu().findItem(R.id.sub_DoanhThu).setVisible(false);
-            nv.getMenu().findItem(R.id.nav_NhanVien).setVisible(false);
         }
 
         TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
@@ -95,27 +92,19 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 int id = item.getItemId();
-                if (id == R.id.nav_NhanVien) {
-                    toolbar.setTitle("Quản lý nhân viên");
-                    NhanVien_Fragment nhanVienFragment = new NhanVien_Fragment();
-                    replaceFrg(nhanVienFragment);
+                if (id == R.id.nav_KhachHang) {
+                    toolbar.setTitle("Quản lý khách hàng");
+                    KhachHangFragment khachHangFragment = new KhachHangFragment();
+                    replaceFrg(khachHangFragment);
 
                 } else if (id == R.id.nav_DoUong) {
                     toolbar.setTitle("Quản lý đồ uống");
                     DoUong_Fragment doUongFragment = new DoUong_Fragment();
                     replaceFrg(doUongFragment);
-                } else if (id == R.id.nav_Ban) {
-                    toolbar.setTitle("Quản lý bàn");
-                    Ban_Fragment banFragment = new Ban_Fragment();
-                    replaceFrg(banFragment);
                 } else if (id == R.id.nav_HoaDon) {
                     toolbar.setTitle("Quản lý hóa đơn");
                     HoaDon_Fragment hoaDonFragment = new HoaDon_Fragment();
                     replaceFrg(hoaDonFragment);
-                } else if (id == R.id.nav_LoaiDoUong) {
-                    toolbar.setTitle("Quản lý loại đồ uống");
-                    LoaiDoUong_Fragment loaiDoUongFragment = new LoaiDoUong_Fragment();
-                    replaceFrg(loaiDoUongFragment);
                 } else if (id == R.id.sub_AddUser) {
                     toolbar.setTitle("Thêm tài khoản");
                     AddUser_Fragment addUserFragment = new AddUser_Fragment();
@@ -160,7 +149,25 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.bottom_trangchu) {
+                    toolbar.setTitle("Trang chủ");
+                    replaceFrg(trangChuFragment);
+                } else if (id == R.id.bottom_douong) {
+                    toolbar.setTitle("Quản lý đồ uống");
+                    DoUong_Fragment doUongFragment = new DoUong_Fragment();
+                    replaceFrg(doUongFragment);
+                } else if (id == R.id.bottom_hoadon) {
+                    toolbar.setTitle("Quản lý hóa đơn");
+                    HoaDon_Fragment hoaDonFragment = new HoaDon_Fragment();
+                    replaceFrg(hoaDonFragment);
+                }
+                return false;
+            }
+        });
 
 
     }

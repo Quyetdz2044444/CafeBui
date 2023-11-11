@@ -9,4 +9,8 @@
         android:id="@+id/bottom_douong"
         android:icon="@drawable/douong"
         android:title="Đồ uống" />
+    <item
+        android:id="@+id/bottom_hoadon"
+        android:icon="@drawable/hoadon"
+        android:title="Hóa đơn" />
 </menu>

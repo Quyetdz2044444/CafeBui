@@ -12,18 +12,12 @@
                     android:id="@+id/nav_DoUong"
                     android:icon="@drawable/douong"
                     android:title="Quản lý đồ uống" />
+
+
                 <item
-                    android:id="@+id/nav_LoaiDoUong"
-                    android:icon="@drawable/loaidouong"
-                    android:title="Quản lý loại đồ uống" />
-                <item
-                    android:id="@+id/nav_Ban"
-                    android:icon="@drawable/ban"
-                    android:title="Quản lý bàn" />
-                <item
-                    android:id="@+id/nav_NhanVien"
+                    android:id="@+id/nav_KhachHang"
                     android:icon="@drawable/nhanvien"
-                    android:title="Quản lý nhân viên" />
+                    android:title="Quản lý khách hàng" />
             </menu>
         </item>
 

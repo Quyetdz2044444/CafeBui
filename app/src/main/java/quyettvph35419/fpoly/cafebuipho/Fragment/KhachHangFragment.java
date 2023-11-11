@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 
-public class Ban_Fragment extends Fragment {
+public class KhachHangFragment extends Fragment {
 
 
-    public Ban_Fragment() {
+    public KhachHangFragment() {
         // Required empty public constructor
     }
 
@@ -22,7 +22,7 @@ public class Ban_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_ban, container, false);
+        View v = inflater.inflate(R.layout.fragment_khach_hang, container, false);
         return v;
     }
 }
