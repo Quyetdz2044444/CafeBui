@@ -94,9 +94,7 @@ public class MainActivity extends AppCompatActivity {
             replaceFrg(doUongFragment);
             toolbar.setTitle("Quản lý đồ uống");
 
-        }
-//        ko phải admin thì k đc thống kê, ko được ql nhân viên, k đc thêm người dùng
-        if (user.equalsIgnoreCase("trinhpk")) {
+        }else {
             nv.getMenu().findItem(R.id.nav_GioHang).setVisible(true);
             nv.getMenu().findItem(R.id.nav_LichSuMua).setVisible(true);
             nv.getMenu().findItem(R.id.nav_DonHang).setVisible(true);
@@ -105,8 +103,9 @@ public class MainActivity extends AppCompatActivity {
             TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
             replaceFrg(trangChuFragment);
             toolbar.setTitle("Trang chủ");
-
         }
+//        ko phải admin thì k đc thống kê, ko được ql nhân viên, k đc thêm người dùng
+       
 
 
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

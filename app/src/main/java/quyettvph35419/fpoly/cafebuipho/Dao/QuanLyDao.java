@@ -13,11 +13,11 @@ import quyettvph35419.fpoly.cafebuipho.Database.DbHelper;
 import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
 
 public class QuanLyDao {
-
+    DbHelper dbHelper;
     private SQLiteDatabase db;
 
     public QuanLyDao(Context context) {
-        DbHelper dbHelper = new DbHelper(context);
+        dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
@@ -26,6 +26,8 @@ public class QuanLyDao {
         values.put("MAQUANLY", obj.getMaQL());
         values.put("HOTEN", obj.getHoTen());
         values.put("MATKHAU", obj.getMatKhau());
+        values.put("SDT", obj.getSdt());
+        values.put("EMAIL", obj.getEmail());
         return db.insert("QUANLY", null, values);
     }
 
@@ -61,6 +63,21 @@ public class QuanLyDao {
         return 1;
     }
 
+    public boolean register(QuanLy user) {
+
+        db = dbHelper.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("MAQUANLY", user.getMaQL());
+        values.put("HOTEN", user.getHoTen());
+        values.put("MATKHAU", user.getMatKhau());
+        values.put("SDT", user.getSdt());
+        values.put("EMAIL", user.getEmail());
+        long rowId = db.insert("QUANLY", null, values);
+
+        return (rowId != -1);
+    }
+
+
     @SuppressLint("Range")
     private List<QuanLy> getData(String sql, String... selectionArgs) {
         List<QuanLy> list = new ArrayList<>();
@@ -70,6 +87,8 @@ public class QuanLyDao {
             obj.setMaQL(cursor.getString(cursor.getColumnIndex("MAQUANLY")));
             obj.setHoTen(cursor.getString(cursor.getColumnIndex("HOTEN")));
             obj.setMatKhau(cursor.getString(cursor.getColumnIndex("MATKHAU")));
+            obj.setSdt(cursor.getString(cursor.getColumnIndex("SDT")));
+            obj.setEmail(cursor.getString(cursor.getColumnIndex("EMAIL")));
             list.add(obj);
         }
         return list;

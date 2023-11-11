@@ -15,51 +15,91 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/cafenen" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:boxStrokeColor="@color/white"
+        app:boxStrokeWidth="3dp">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_person"
+            android:hint="Tên đầy đủ"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         app:boxStrokeColor="@color/white"
         app:boxStrokeWidth="3dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edUserName"
+            android:id="@+id/edUserName_dk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_person"
-            android:hint="Tên đăng nhập"
-            android:inputType="textPersonName"
-            />
+            android:hint="Tên đăng kí"
+            android:inputType="textPersonName" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         app:boxStrokeColor="@color/white"
         app:boxStrokeWidth="3dp"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edPassword"
+            android:id="@+id/edPassword_dk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
-            android:maxLines="1"
-             />
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <CheckBox
-        android:id="@+id/chkRememberPass"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Lưu mật khẩu" />
+        android:layout_marginBottom="10dp"
+        app:boxStrokeColor="@color/white"
+        app:boxStrokeWidth="3dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edSdt_dk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/sdt"
+            android:hint="Số điện thoại"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:boxStrokeColor="@color/white"
+        app:boxStrokeWidth="3dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edEmail_dk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/email"
+            android:hint="Email"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,17 +108,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#232020"
-            android:text="Đăng nhập"
+            android:text="Đăng kí"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnCancel"
+            android:id="@+id/btnCancel_dk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -89,15 +129,16 @@
             android:textStyle="bold" />
 
     </LinearLayout>
+
     <TextView
-        android:id="@+id/txtsignu"
+        android:id="@+id/tvBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"
-        android:text="Don't have an account? Sign up"
-        android:textColor="@color/black" />
-
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/back"
+        android:gravity="center"
+        android:text="Trở lại"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

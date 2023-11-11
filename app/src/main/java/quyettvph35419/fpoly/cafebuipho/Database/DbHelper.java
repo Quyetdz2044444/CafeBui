@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "CafeBui";
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 3;
 
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -22,7 +22,9 @@ public class DbHelper extends SQLiteOpenHelper {
         String createTableQuanLy = "create table QUANLY(" +
                 "MAQUANLY TEXT PRIMARY KEY, " +
                 "HOTEN TEXT NOT NULL, " +
-                "MATKHAU TEXT NOT NULL)";
+                "MATKHAU TEXT NOT NULL," +
+                "SDT TEXT NOT NULL," +
+                "EMAIL TEXT NOT NULL)";
         db.execSQL(createTableQuanLy);
 //--------------------------------------------------------------------------
 
@@ -49,8 +51,8 @@ public class DbHelper extends SQLiteOpenHelper {
 //        ----------------------------------------------------------
 //        INSERT DỮ LIỆU
 
-        db.execSQL("INSERT INTO QUANLY VALUES('admin','Admin','admin')," +
-                "('trinhpk','Phạm Trưởng','123')");
+        db.execSQL("INSERT INTO QUANLY VALUES('admin','Admin','admin','0983917432','admin@gmail.com')," +
+                "('trinhpk','Phạm Trưởng','123','098458902','trinhpk3@gmail.com')");
 
         db.execSQL("INSERT INTO DOUONG VALUES(1,2000,1,5,1)," +
                 "(2,3000,2,6,2)," +

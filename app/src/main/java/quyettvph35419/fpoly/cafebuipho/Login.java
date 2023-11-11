@@ -6,11 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -31,6 +38,34 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        TextView textView = findViewById(R.id.txtsignu);
+        String text = "Don't have an account? Sign up";
+        SpannableString spannableString = new SpannableString(text);
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                // Xử lý sự kiện khi chữ "Sign up" được nhấp vào
+                Intent i = new Intent(Login.this, Register.class);
+                startActivity(i);
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                // Đặt các thuộc tính cho chữ in đậm
+                ds.setFakeBoldText(true);
+            }
+        };
+// Tìm vị trí của chữ "Sign up" trong đoạn text
+        int startIndex = text.indexOf("Sign up");
+        int endIndex = startIndex + "Sign up".length();
+// Đặt ClickableSpan cho đoạn chữ "Sign up"
+        spannableString.setSpan(clickableSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textView.setText(spannableString);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
+        textView.setHighlightColor(Color.TRANSPARENT);
+
+
         edUserName = findViewById(R.id.edUserName);
         edPassword = findViewById(R.id.edPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -39,16 +74,12 @@ public class Login extends AppCompatActivity {
         quanLyDao = new QuanLyDao(this);
 
         SharedPreferences pref = getSharedPreferences("USER_FILE", MODE_PRIVATE);
-
         String user = pref.getString("USERNAME", "");
         String pass = pref.getString("PASSWORD", "");
-
         Boolean rem = pref.getBoolean("REMEMBER", false);
-
         edUserName.setText(user);
         edPassword.setText(pass);
         chkRememberPass.setChecked(rem);
-
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,5 +130,6 @@ public class Login extends AppCompatActivity {
             }
         }
     }
+
 
 }
