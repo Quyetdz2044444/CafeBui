@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -30,6 +31,7 @@ import quyettvph35419.fpoly.cafebuipho.Fragment.GioHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.HoaDon_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.KhachHangFragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.LichSuMuaHang_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.ThongTinAcc_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.Top5_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
@@ -137,6 +139,10 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle("Quản lý giỏ hàng");
                     GioHang_Fragment gioHangFragment = new GioHang_Fragment();
                     replaceFrg(gioHangFragment);
+                } else if (id == R.id.sub_InfoAccount) {
+                    toolbar.setTitle("Thông tin tài khoản");
+                    ThongTinAcc_Fragment thongTinAccFragment = new ThongTinAcc_Fragment();
+                    replaceFrg(thongTinAccFragment);
                 } else if (id == R.id.sub_AddUser) {
                     toolbar.setTitle("Thêm tài khoản");
                     AddUser_Fragment addUserFragment = new AddUser_Fragment();
@@ -206,4 +212,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.flContent, frg).commit();
     }
+
+
 }

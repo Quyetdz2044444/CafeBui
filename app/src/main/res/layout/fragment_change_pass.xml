@@ -17,12 +17,13 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/keygif"/>
+        android:src="@drawable/keygif" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        app:boxStrokeWidth="3dp"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -38,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        app:boxStrokeWidth="3dp"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -53,6 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        app:boxStrokeWidth="3dp"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -77,8 +80,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:backgroundTint="#1E1B1B"
             android:text="Lưu"
-            android:backgroundTint="@color/black"
             android:textColor="@color/white"
             android:textSize="20dp" />
 
@@ -87,8 +90,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Hủy"
             android:backgroundTint="#D51306"
+            android:text="Hủy"
             android:textColor="@color/white"
             android:textSize="20dp" />
 
