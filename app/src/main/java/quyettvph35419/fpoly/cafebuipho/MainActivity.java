@@ -25,8 +25,11 @@ import quyettvph35419.fpoly.cafebuipho.Fragment.AddUser_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ChangePass_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DoUong_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DoanhThu_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.GioHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.HoaDon_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.KhachHangFragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.LichSuMuaHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.Top5_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
@@ -79,14 +82,31 @@ public class MainActivity extends AppCompatActivity {
         // admin co full quyền
         if (user.equalsIgnoreCase("admin")) {
             nv.getMenu().findItem(R.id.sub_AddUser).setVisible(true);
+            nv.getMenu().findItem(R.id.sub_DoanhThu).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_KhachHang).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_HoaDon).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_DoUong).setVisible(true);
+            bottomNav.setVisibility(View.GONE);
+//             set trang mở lên đầu tiên là trang quản lí đồ uống
+            DoUong_Fragment doUongFragment = new DoUong_Fragment();
+            replaceFrg(doUongFragment);
+            toolbar.setTitle("Quản lý đồ uống");
+
         }
 //        ko phải admin thì k đc thống kê, ko được ql nhân viên, k đc thêm người dùng
         if (user.equalsIgnoreCase("trinhpk")) {
-            nv.getMenu().findItem(R.id.sub_DoanhThu).setVisible(false);
+            nv.getMenu().findItem(R.id.nav_GioHang).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_LichSuMua).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_DonHang).setVisible(true);
+            nv.getMenu().findItem(R.id.sub_InfoAccount).setVisible(true);
+//            set trang hiện lên đầu tiên
+            TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
+            replaceFrg(trangChuFragment);
+            toolbar.setTitle("Trang chủ");
+
         }
 
-        TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
-        replaceFrg(trangChuFragment);
+
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -105,6 +125,18 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle("Quản lý hóa đơn");
                     HoaDon_Fragment hoaDonFragment = new HoaDon_Fragment();
                     replaceFrg(hoaDonFragment);
+                } else if (id == R.id.nav_DonHang) {
+                    toolbar.setTitle("Quản lý đơn hàng");
+                    DonHang_Fragment donHangFragment = new DonHang_Fragment();
+                    replaceFrg(donHangFragment);
+                } else if (id == R.id.nav_LichSuMua) {
+                    toolbar.setTitle("Lịch sử mua hàng");
+                    LichSuMuaHang_Fragment lichSuMuaHangFragment = new LichSuMuaHang_Fragment();
+                    replaceFrg(lichSuMuaHangFragment);
+                } else if (id == R.id.nav_GioHang) {
+                    toolbar.setTitle("Quản lý giỏ hàng");
+                    GioHang_Fragment gioHangFragment = new GioHang_Fragment();
+                    replaceFrg(gioHangFragment);
                 } else if (id == R.id.sub_AddUser) {
                     toolbar.setTitle("Thêm tài khoản");
                     AddUser_Fragment addUserFragment = new AddUser_Fragment();
@@ -155,13 +187,10 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 if (id == R.id.bottom_trangchu) {
                     toolbar.setTitle("Trang chủ");
+                    TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
                     replaceFrg(trangChuFragment);
-                } else if (id == R.id.bottom_douong) {
-                    toolbar.setTitle("Quản lý đồ uống");
-                    DoUong_Fragment doUongFragment = new DoUong_Fragment();
-                    replaceFrg(doUongFragment);
-                } else if (id == R.id.bottom_hoadon) {
-                    toolbar.setTitle("Quản lý hóa đơn");
+                } else if (id == R.id.bottom_giohang) {
+                    toolbar.setTitle("Quản lý giỏ hàng");
                     HoaDon_Fragment hoaDonFragment = new HoaDon_Fragment();
                     replaceFrg(hoaDonFragment);
                 }

@@ -7,17 +7,36 @@
                 <item
                     android:id="@+id/nav_HoaDon"
                     android:icon="@drawable/hoadon"
-                    android:title="Quản lý hóa đơn" />
+                    android:title="Quản lý hóa đơn"
+                    android:visible="false" />
                 <item
                     android:id="@+id/nav_DoUong"
                     android:icon="@drawable/douong"
-                    android:title="Quản lý đồ uống" />
+                    android:title="Quản lý đồ uống"
+                    android:visible="false"
+                    />
 
 
                 <item
                     android:id="@+id/nav_KhachHang"
-                    android:icon="@drawable/nhanvien"
-                    android:title="Quản lý khách hàng" />
+                    android:icon="@drawable/khachhang"
+                    android:title="Quản lý khách hàng"
+                    android:visible="false" />
+                <item
+                    android:id="@+id/nav_DonHang"
+                    android:icon="@drawable/khachhang"
+                    android:title="Quản lý đơn hàng"
+                    android:visible="false" />
+                <item
+                    android:id="@+id/nav_GioHang"
+                    android:icon="@drawable/giohang"
+                    android:title="Quản lý giỏ hàng"
+                    android:visible="false" />
+                <item
+                    android:id="@+id/nav_LichSuMua"
+                    android:icon="@drawable/lsmuahang"
+                    android:title="Lịch sử mua hàng"
+                    android:visible="false" />
             </menu>
         </item>
 
@@ -27,11 +46,13 @@
                 <item
                     android:id="@+id/sub_Top"
                     android:icon="@drawable/ic_top"
-                    android:title="5 đồ uống hot trend" />
+                    android:title="5 đồ uống hot trend"
+                  />
                 <item
                     android:id="@+id/sub_DoanhThu"
                     android:icon="@drawable/ic_money"
-                    android:title="Doanh thu" />
+                    android:title="Doanh thu"
+                    android:visible="false" />
             </menu>
         </item>
 
@@ -42,6 +63,11 @@
                     android:id="@+id/sub_AddUser"
                     android:icon="@drawable/ic_adduser"
                     android:title="Thêm tài khoản"
+                    android:visible="false" />
+                <item
+                    android:id="@+id/sub_InfoAccount"
+                    android:icon="@drawable/infotaikhoan"
+                    android:title="Thông tin tài khoản"
                     android:visible="false" />
 
                 <item

@@ -6,11 +6,7 @@
         android:title="Trang chủ" />
 
     <item
-        android:id="@+id/bottom_douong"
-        android:icon="@drawable/douong"
-        android:title="Đồ uống" />
-    <item
-        android:id="@+id/bottom_hoadon"
-        android:icon="@drawable/hoadon"
-        android:title="Hóa đơn" />
+        android:id="@+id/bottom_giohang"
+        android:icon="@drawable/giohang"
+        android:title="Giỏ hàng " />
 </menu>
