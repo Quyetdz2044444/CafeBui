@@ -24,11 +24,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edUserName"
             android:layout_width="match_parent"
+            android:inputType="textPersonName"
+
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:drawableEnd="@drawable/ic_person"
-            android:hint="Tên đăng nhập"
-            android:inputType="textPersonName" />
+            android:hint="Tên đăng nhập" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,7 +43,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mật khẩu"
-            android:textColor="@color/white"
             android:inputType="textPassword"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -66,6 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/custom_btn_yes"
             android:backgroundTint="@color/black"
             android:text="Đăng nhập"
             android:textColor="@color/white"
@@ -77,12 +77,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_weight="1"
-            android:backgroundTint="#D51306"
+            android:background="@drawable/custom_btn_no"
             android:text="Hủy"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
     </LinearLayout>
+
 
 
 </LinearLayout>
