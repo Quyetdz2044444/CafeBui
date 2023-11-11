@@ -33,24 +33,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "TONKHO INTEGER NOT NULL," +
                 "MALOAI INTEGER REFERENCES LOAIDOUONG(MALOAI))";
         db.execSQL(createTableDoUong);
-//        bảng loại đồ uống
-        String createTableLoaiDoUong = "create table LOAIDOUONG(MALOAI INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "TENLOAI TEXT NOT NULL)";
-        db.execSQL(createTableLoaiDoUong);
-//        bảng nhân viên
-        String createTableNhanVien = "create table NHANVIEN(MANV INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "TENNV TEXT NOT NULL," +
-                "SDT TEXT NOT NULL," +
-                "DIACHI TEXT NOT NULL," +
-                "NGAYSINH TEXT NOT NULL," +
-                "CCCD TEXT NOT NULL," +
-                "GIOITINH INTEGER NOT NULL )";
-        db.execSQL(createTableNhanVien);
-//        bảng bàn
-        String createTableBan = "create table BAN(MABAN INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "VITRIBAN INTEGER NOT NULL," +
-                "TRANGTHAI INTEGER NOT NULL )";
-        db.execSQL(createTableBan);
+
+
 //        bảng hóa đơn
         String createTableHoaDon = "create table HOADON(MAHOADON INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "MAQUANLY TEXT REFERENCES QUANLY(MAQUANLY)," +
@@ -64,6 +48,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(createTableHoaDon);
 //        ----------------------------------------------------------
 //        INSERT DỮ LIỆU
+
         db.execSQL("INSERT INTO QUANLY VALUES('admin','Admin','admin')," +
                 "('trinhpk','Phạm Trưởng','123')");
 
@@ -71,18 +56,6 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(2,3000,2,6,2)," +
                 "(3,4000,3,7,3)");
 
-        db.execSQL("INSERT INTO LOAIDOUONG VALUES(1,'Sinh tố')," +
-                "(2,'Trà sữa')," +
-                "(3,'Cafe')," +
-                "(4,'Sữa')");
-
-        db.execSQL("INSERT INTO NHANVIEN VALUES(1,'Hoài An','0983917555','Lâm Đồng','2004/06/05','038204026547',1)," +
-                "(2,'Mạnh Dũng','0973917587','Lào Cai','2003/02/01','038204023458',0)," +
-                "(3,'Hùng Dũng','0882917833','Bắc Ninh','2000/09/15','038204022894',0)");
-
-        db.execSQL("INSERT INTO BAN VALUES(1,1,0)," +
-                "(2,2,1)," +
-                "(3,3,1)");
 
         db.execSQL("INSERT INTO HOADON VALUES(1,'admin',1,1,1,2500,1,'2021/07/13',1)," +
                 "(2,'chubedan',2,2,2,3500,2,'2022/09/23',2)," +
@@ -96,10 +69,7 @@ public class DbHelper extends SQLiteOpenHelper {
         if (oldVersion != newVersion) {
 
             db.execSQL("drop table if exists DOUONG");
-            db.execSQL("drop table if exists LOAIDOUONG");
-            db.execSQL("drop table if exists NHANVIEN");
             db.execSQL("drop table if exists HOADON");
-            db.execSQL("drop table if exists BAN");
             db.execSQL("drop table if exists QUANLY");
 
             onCreate(db);
