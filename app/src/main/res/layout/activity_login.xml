@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CA7409"
+    android:background="#E6BF4D"
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".Login">
@@ -24,8 +24,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edUserName"
             android:layout_width="match_parent"
-            android:inputType="textPersonName"
-
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_person"
             android:hint="Tên đăng nhập" />
@@ -65,8 +63,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/custom_btn_yes"
             android:backgroundTint="@color/black"
+
             android:text="Đăng nhập"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -77,13 +75,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_weight="1"
-            android:background="@drawable/custom_btn_no"
+            android:backgroundTint="#B60101"
             android:text="Hủy"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
     </LinearLayout>
-
-
 
 </LinearLayout>
