@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "CafeBui";
-    public static final int DB_VERSION = 3;
+    public static final int DB_VERSION = 4;
 
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -24,44 +24,18 @@ public class DbHelper extends SQLiteOpenHelper {
                 "HOTEN TEXT NOT NULL, " +
                 "MATKHAU TEXT NOT NULL," +
                 "SDT TEXT NOT NULL," +
+                "DIACHI TEXT NOT NULL," +
                 "EMAIL TEXT NOT NULL)";
         db.execSQL(createTableQuanLy);
 //--------------------------------------------------------------------------
 
-//        bảng đồ uống
-        String createTableDoUong = "create table DOUONG(MADOUONG INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "GIA INTEGER NOT NULL," +
-                "MABAN INTEGER NOT NULL," +
-                "TONKHO INTEGER NOT NULL," +
-                "MALOAI INTEGER REFERENCES LOAIDOUONG(MALOAI))";
-        db.execSQL(createTableDoUong);
 
-
-//        bảng hóa đơn
-        String createTableHoaDon = "create table HOADON(MAHOADON INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "MAQUANLY TEXT REFERENCES QUANLY(MAQUANLY)," +
-                "MANV INTEGER REFERENCES NHANVIEN(MANV)," +
-                "MADOUONG INTEGER REFERENCES DOUONG(MADOUONG)," +
-                "MABAN INTEGER REFERENCES BAN(MABAN) ," +
-                "GIA INTEGER NOT NULL," +
-                "SOLUONG INTEGER NOT NULL," +
-                "NGAY DATE NOT NULL," +
-                "TRANGTHAI INTEGER NOT NULL)";
-        db.execSQL(createTableHoaDon);
 //        ----------------------------------------------------------
 //        INSERT DỮ LIỆU
 
-        db.execSQL("INSERT INTO QUANLY VALUES('admin','Admin','admin','0983917432','admin@gmail.com')," +
-                "('trinhpk','Phạm Trưởng','123','098458902','trinhpk3@gmail.com')");
+        db.execSQL("INSERT INTO QUANLY VALUES('admin','Admin','admin','0983917432','Hà Nam','admin@gmail.com')," +
+                "('trinhpk','Phạm Trưởng','123','098458902','Ninh Bình','trinhpk3@gmail.com')");
 
-        db.execSQL("INSERT INTO DOUONG VALUES(1,2000,1,5,1)," +
-                "(2,3000,2,6,2)," +
-                "(3,4000,3,7,3)");
-
-
-        db.execSQL("INSERT INTO HOADON VALUES(1,'admin',1,1,1,2500,1,'2021/07/13',1)," +
-                "(2,'chubedan',2,2,2,3500,2,'2022/09/23',2)," +
-                "(3,'cobengu',3,3,3,4500,3,'2023/02/06',3)");
 
 
     }
@@ -69,11 +43,7 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion != newVersion) {
-
-            db.execSQL("drop table if exists DOUONG");
-            db.execSQL("drop table if exists HOADON");
             db.execSQL("drop table if exists QUANLY");
-
             onCreate(db);
         }
     }

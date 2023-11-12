@@ -7,7 +7,7 @@
                 <item
                     android:id="@+id/nav_HoaDon"
                     android:icon="@drawable/hoadon"
-                    android:title="Quản lý hóa đơn"
+                    android:title="Quản lý đơn hàng"
                     android:visible="false" />
                 <item
                     android:id="@+id/nav_DoUong"
@@ -32,11 +32,7 @@
                     android:icon="@drawable/giohang"
                     android:title="Quản lý giỏ hàng"
                     android:visible="false" />
-                <item
-                    android:id="@+id/nav_LichSuMua"
-                    android:icon="@drawable/lsmuahang"
-                    android:title="Lịch sử mua hàng"
-                    android:visible="false" />
+
             </menu>
         </item>
 

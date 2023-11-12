@@ -11,7 +11,7 @@
             android:layout_width="180dp"
             android:layout_height="220dp"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/cappuccino" />
+            android:src="@drawable/coffeecup" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginTop="5dp"
-                        android:src="@drawable/like_24" />
+                        android:src="@drawable/coffeecup" />
 
                     <TextView
                         android:id="@+id/tvslyeuthich_doUong"

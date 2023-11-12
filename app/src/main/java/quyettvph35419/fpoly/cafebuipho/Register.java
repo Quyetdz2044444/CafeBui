@@ -15,7 +15,7 @@ import quyettvph35419.fpoly.cafebuipho.Dao.QuanLyDao;
 import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
 
 public class Register extends AppCompatActivity {
-    TextInputEditText edUserName, edPassword, edFullname, edSdt, edEmail;
+    TextInputEditText edUserName, edPassword, edFullname, edSdt, edDiaChi, edEmail;
     Button btnRegister, btnCancel;
     QuanLyDao quanLyDao;
 
@@ -28,6 +28,7 @@ public class Register extends AppCompatActivity {
         edPassword = findViewById(R.id.edPassword_dk);
         edFullname = findViewById(R.id.edFullName);
         edSdt = findViewById(R.id.edSdt_dk);
+        edDiaChi = findViewById(R.id.edDiaChi_dk);
         edEmail = findViewById(R.id.edEmail_dk);
         btnRegister = findViewById(R.id.btnRegister);
         btnCancel = findViewById(R.id.btnCancel_dk);
@@ -65,6 +66,7 @@ public class Register extends AppCompatActivity {
         String mkdki = edPassword.getText().toString();
         String fullname = edFullname.getText().toString();
         String sdt = edSdt.getText().toString();
+        String diachi = edDiaChi.getText().toString();
         String email = edEmail.getText().toString();
 
         if (tendki.isEmpty() && mkdki.isEmpty()) {
@@ -75,11 +77,13 @@ public class Register extends AppCompatActivity {
             Toast.makeText(Register.this, "Bạn chưa điền mật khẩu", Toast.LENGTH_SHORT).show();
         } else if (sdt.isEmpty()) {
             Toast.makeText(Register.this, "Bạn chưa điền số điện thoại", Toast.LENGTH_SHORT).show();
+        }else if (diachi.isEmpty()) {
+            Toast.makeText(Register.this, "Bạn chưa điền địa chỉ", Toast.LENGTH_SHORT).show();
         } else if (email.isEmpty()) {
             Toast.makeText(Register.this, "Bạn chưa điền email", Toast.LENGTH_SHORT).show();
         } else {
 //            QuanLy nd = new QuanLy(maql, mkdki, null);
-            QuanLy nd = new QuanLy(tendki, fullname, mkdki, sdt, email);
+            QuanLy nd = new QuanLy(tendki, fullname, mkdki, sdt, diachi, email);
             if (quanLyDao.register(nd)) {
                 Toast.makeText(Register.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(Register.this, Login.class);

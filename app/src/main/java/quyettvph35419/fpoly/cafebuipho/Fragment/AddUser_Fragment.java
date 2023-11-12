@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -34,6 +35,7 @@ public class AddUser_Fragment extends Fragment {
     ArrayList<QuanLy> list;
     FloatingActionButton fab;
     Dialog dialog;
+    TextView tvTitle;
     EditText edUser, edHoTen, edPass, edRePass;
     Button btnSaveTT, btnCancleTT;
     static QuanLyDao dao;
@@ -105,9 +107,10 @@ public class AddUser_Fragment extends Fragment {
         builder.show();
     }
 
-    protected void openDialog(final Context context, final int type){
+    protected void openDialog(final Context context, final int type) {
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_add_user);
+        tvTitle = dialog.findViewById(R.id.tvTitleTaiKhoan);
         edUser = dialog.findViewById(R.id.edUser);
         edHoTen = dialog.findViewById(R.id.edHoTen);
         edPass = dialog.findViewById(R.id.edPass);
@@ -115,11 +118,12 @@ public class AddUser_Fragment extends Fragment {
         btnCancleTT = dialog.findViewById(R.id.btnCancelTT);
         btnSaveTT = dialog.findViewById(R.id.btnSaveTT);
 
-        if (type != 0){
+        if (type != 0) {
             edUser.setText(item.getMaQL());
             edHoTen.setText(item.getHoTen());
             edPass.setText(item.getMatKhau());
             edRePass.setText(item.getMatKhau());
+            tvTitle.setText("Sửa tài khoản");
         }
 
         btnCancleTT.setOnClickListener(new View.OnClickListener() {
@@ -137,22 +141,22 @@ public class AddUser_Fragment extends Fragment {
                 item.setMaQL(edUser.getText().toString());
                 item.setHoTen(edHoTen.getText().toString());
                 item.setMatKhau(edPass.getText().toString());
-                if(validate() > 0){
-                    if (type == 0){
-                        if (dao.insert(item) > 0){
+                if (validate() > 0) {
+                    if (type == 0) {
+                        if (dao.insert(item) > 0) {
                             Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
                             edUser.setText("");
                             edHoTen.setText("");
                             edPass.setText("");
                             edRePass.setText("");
-                        }else {
+                        } else {
                             Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
                         }
-                    }else {
+                    } else {
                         item.setMaQL(edUser.getText().toString());
-                        if (dao.updatePass(item) > 0){
+                        if (dao.updatePass(item) > 0) {
                             Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
-                        }else {
+                        } else {
                             Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
                         }
                     }

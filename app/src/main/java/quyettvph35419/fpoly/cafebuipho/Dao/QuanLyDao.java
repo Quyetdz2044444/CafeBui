@@ -27,6 +27,7 @@ public class QuanLyDao {
         values.put("HOTEN", obj.getHoTen());
         values.put("MATKHAU", obj.getMatKhau());
         values.put("SDT", obj.getSdt());
+        values.put("DIACHI", obj.getDiaChi());
         values.put("EMAIL", obj.getEmail());
         return db.insert("QUANLY", null, values);
     }
@@ -71,11 +72,13 @@ public class QuanLyDao {
         values.put("HOTEN", user.getHoTen());
         values.put("MATKHAU", user.getMatKhau());
         values.put("SDT", user.getSdt());
+        values.put("DIACHI", user.getDiaChi());
         values.put("EMAIL", user.getEmail());
         long rowId = db.insert("QUANLY", null, values);
 
         return (rowId != -1);
     }
+
 
 
     @SuppressLint("Range")
@@ -88,6 +91,7 @@ public class QuanLyDao {
             obj.setHoTen(cursor.getString(cursor.getColumnIndex("HOTEN")));
             obj.setMatKhau(cursor.getString(cursor.getColumnIndex("MATKHAU")));
             obj.setSdt(cursor.getString(cursor.getColumnIndex("SDT")));
+            obj.setDiaChi(cursor.getString(cursor.getColumnIndex("DIACHI")));
             obj.setEmail(cursor.getString(cursor.getColumnIndex("EMAIL")));
             list.add(obj);
         }

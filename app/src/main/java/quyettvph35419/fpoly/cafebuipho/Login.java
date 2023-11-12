@@ -76,9 +76,11 @@ public class Login extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("USER_FILE", MODE_PRIVATE);
         String user = pref.getString("USERNAME", "");
         String pass = pref.getString("PASSWORD", "");
+
         Boolean rem = pref.getBoolean("REMEMBER", false);
         edUserName.setText(user);
         edPassword.setText(pass);
+
         chkRememberPass.setChecked(rem);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +123,9 @@ public class Login extends AppCompatActivity {
             if (quanLyDao.checkLogin(strUser, strPass) > 0) {
                 Toast.makeText(getApplicationContext(), "Login thành công", Toast.LENGTH_SHORT).show();
                 rememberUser(strUser, strPass, chkRememberPass.isChecked());
+                Bundle bundle = new Bundle();
+                bundle.putString("user", strUser);
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("user", strUser);
                 startActivity(intent);

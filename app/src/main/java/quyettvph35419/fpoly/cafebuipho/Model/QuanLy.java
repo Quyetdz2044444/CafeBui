@@ -5,17 +5,19 @@ public class QuanLy {
     private String hoTen;
     private String matKhau;
     private String sdt;
+    private String diaChi;
     private String email;
 
 
     public QuanLy() {
     }
 
-    public QuanLy(String maQL, String hoTen, String matKhau, String sdt, String email) {
+    public QuanLy(String maQL, String hoTen, String matKhau, String sdt, String diaChi, String email) {
         this.maQL = maQL;
         this.hoTen = hoTen;
         this.matKhau = matKhau;
         this.sdt = sdt;
+        this.diaChi = diaChi;
         this.email = email;
     }
 
@@ -49,6 +51,14 @@ public class QuanLy {
 
     public void setSdt(String sdt) {
         this.sdt = sdt;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
 
     public String getEmail() {

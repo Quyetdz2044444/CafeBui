@@ -30,7 +30,6 @@ import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.GioHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.HoaDon_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.KhachHangFragment;
-import quyettvph35419.fpoly.cafebuipho.Fragment.LichSuMuaHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ThongTinAcc_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.Top5_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
@@ -74,8 +73,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         tvUser = mHeaderView.findViewById(R.id.tvUser); // vị trí của tên ng dùng thuộc headerLayout
+
         Intent i = getIntent();// lấy dữ liệu đc gửui từ login sang đến activity hiện tại
         String user = i.getStringExtra("user"); // lấy thông tin cua user gán vào user
+
         quanLyDao = new QuanLyDao(this); // tạo ra 1 lớp thuthuDao mới
         QuanLy quanLy = quanLyDao.getID(user); // lấy id dựa vào hàm gethoten();
         String username = quanLy.getHoTen(); //lấy họ tên
@@ -96,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
         }else {
             nv.getMenu().findItem(R.id.nav_GioHang).setVisible(true);
-            nv.getMenu().findItem(R.id.nav_LichSuMua).setVisible(true);
             nv.getMenu().findItem(R.id.nav_DonHang).setVisible(true);
             nv.getMenu().findItem(R.id.sub_InfoAccount).setVisible(true);
 //            set trang hiện lên đầu tiên
@@ -130,17 +130,18 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle("Quản lý đơn hàng");
                     DonHang_Fragment donHangFragment = new DonHang_Fragment();
                     replaceFrg(donHangFragment);
-                } else if (id == R.id.nav_LichSuMua) {
-                    toolbar.setTitle("Lịch sử mua hàng");
-                    LichSuMuaHang_Fragment lichSuMuaHangFragment = new LichSuMuaHang_Fragment();
-                    replaceFrg(lichSuMuaHangFragment);
                 } else if (id == R.id.nav_GioHang) {
                     toolbar.setTitle("Quản lý giỏ hàng");
                     GioHang_Fragment gioHangFragment = new GioHang_Fragment();
                     replaceFrg(gioHangFragment);
                 } else if (id == R.id.sub_InfoAccount) {
                     toolbar.setTitle("Thông tin tài khoản");
+                    Bundle bundle = new Bundle();
+                    bundle.putString("user", user);
+
+                    // Khởi tạo fragment và đính kèm bundle
                     ThongTinAcc_Fragment thongTinAccFragment = new ThongTinAcc_Fragment();
+                    thongTinAccFragment.setArguments(bundle);
                     replaceFrg(thongTinAccFragment);
                 } else if (id == R.id.sub_AddUser) {
                     toolbar.setTitle("Thêm tài khoản");
