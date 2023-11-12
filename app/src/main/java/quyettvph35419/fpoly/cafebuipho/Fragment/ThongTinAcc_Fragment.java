@@ -9,15 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import quyettvph35419.fpoly.cafebuipho.Dao.QuanLyDao;
-import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
+import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
+import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 
 public class ThongTinAcc_Fragment extends Fragment {
     TextView tvtendaydu, tvtentk, tvsdt, tvdiachi, tvemail;
-    QuanLyDao quanLyDao;
-    QuanLy quanLy;
+    KhachHangDao khachHangDao;
+    KhachHang khachHang;
 
     public ThongTinAcc_Fragment() {
     }
@@ -34,22 +34,22 @@ public class ThongTinAcc_Fragment extends Fragment {
         tvsdt = v.findViewById(R.id.tvsdt);
         tvtentk = v.findViewById(R.id.tvTentk);
 
-        quanLyDao = new QuanLyDao(getContext());
-        quanLy = new QuanLy();
+        khachHangDao = new KhachHangDao(getContext());
+        khachHang = new KhachHang();
 
         Bundle bundle = getArguments();
         if (bundle != null) {
             String user = bundle.getString("user");
 
             // Lấy thông tin từ CSDL và gán vào quanLy
-            quanLy = quanLyDao.getID(user);
+            khachHang = khachHangDao.getID(user);
 
             // Gán giá trị từ quanLy vào TextView
-            tvtentk.setText("Tên đăng nhập: " + quanLy.getMaQL());
-            tvtendaydu.setText("Họ tên: " + quanLy.getHoTen());
-            tvsdt.setText("Số điện thoại: " + quanLy.getSdt());
-            tvdiachi.setText("Địa chỉ: " + quanLy.getDiaChi());
-            tvemail.setText("Email: " + quanLy.getEmail());
+            tvtentk.setText("Tên đăng nhập: " + khachHang.getmaKH());
+            tvtendaydu.setText("Họ tên: " + khachHang.getHoTen());
+            tvsdt.setText("Số điện thoại: " + khachHang.getSdt());
+            tvdiachi.setText("Địa chỉ: " + khachHang.getDiaChi());
+            tvemail.setText("Email: " + khachHang.getEmail());
         }
 
 

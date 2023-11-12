@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import quyettvph35419.fpoly.cafebuipho.Dao.QuanLyDao;
-import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
+import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
+import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 
@@ -24,14 +24,14 @@ public class ChangePass_Fragment extends Fragment {
 
     TextInputEditText edPassOld, edPassChange, edRePassChange;
     Button btnSaveUserChange, btnCancleUserChange;
-    QuanLyDao qldao;
+    KhachHangDao qldao;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_change_pass, container, false);
-        qldao = new QuanLyDao(getActivity());
+        qldao = new KhachHangDao(getActivity());
         edPassOld = v.findViewById(R.id.edPassOld);
         edPassChange = v.findViewById(R.id.edPassChange);
         edRePassChange = v.findViewById(R.id.edRePassChange);
@@ -52,10 +52,10 @@ public class ChangePass_Fragment extends Fragment {
                 SharedPreferences pref = getActivity().getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
                 String user = pref.getString("USERNAME","");
                 if (validate() > 0) {
-                    QuanLy quanLy = qldao.getID(user);
-                    quanLy.setMatKhau(edPassChange.getText().toString());
+                    KhachHang khachHang = qldao.getID(user);
+                    khachHang.setMatKhau(edPassChange.getText().toString());
 
-                    if (qldao.updatePass(quanLy) > 0) {
+                    if (qldao.updatePass(khachHang) > 0) {
                         Toast.makeText(getActivity(), "Thay đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
                         edPassOld.setText("");
                         edPassChange.setText("");

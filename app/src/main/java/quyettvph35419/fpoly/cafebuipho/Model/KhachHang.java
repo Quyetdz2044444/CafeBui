@@ -1,7 +1,7 @@
 package quyettvph35419.fpoly.cafebuipho.Model;
 
-public class QuanLy {
-    private String maQL;
+public class KhachHang {
+    private String maKH;
     private String hoTen;
     private String matKhau;
     private String sdt;
@@ -9,11 +9,11 @@ public class QuanLy {
     private String email;
 
 
-    public QuanLy() {
+    public KhachHang() {
     }
 
-    public QuanLy(String maQL, String hoTen, String matKhau, String sdt, String diaChi, String email) {
-        this.maQL = maQL;
+    public KhachHang(String maKH, String hoTen, String matKhau, String sdt, String diaChi, String email) {
+        this.maKH = maKH;
         this.hoTen = hoTen;
         this.matKhau = matKhau;
         this.sdt = sdt;
@@ -21,12 +21,12 @@ public class QuanLy {
         this.email = email;
     }
 
-    public String getMaQL() {
-        return maQL;
+    public String getmaKH() {
+        return maKH;
     }
 
-    public void setMaQL(String maQL) {
-        this.maQL = maQL;
+    public void setmaKH(String maKH) {
+        this.maKH = maKH;
     }
 
     public String getHoTen() {

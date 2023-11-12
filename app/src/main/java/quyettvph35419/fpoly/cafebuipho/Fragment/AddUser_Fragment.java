@@ -23,8 +23,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 import quyettvph35419.fpoly.cafebuipho.Adapter.QuanLyAdapter;
-import quyettvph35419.fpoly.cafebuipho.Dao.QuanLyDao;
-import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
+import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
+import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 
@@ -32,15 +32,15 @@ public class AddUser_Fragment extends Fragment {
 
 
     ListView lvQuanLy;
-    ArrayList<QuanLy> list;
+    ArrayList<KhachHang> list;
     FloatingActionButton fab;
     Dialog dialog;
     TextView tvTitle;
     EditText edUser, edHoTen, edPass, edRePass;
     Button btnSaveTT, btnCancleTT;
-    static QuanLyDao dao;
+    static KhachHangDao dao;
     QuanLyAdapter adapter;
-    QuanLy item;
+    KhachHang item;
 
     public AddUser_Fragment() {
         // Required empty public constructor
@@ -53,7 +53,7 @@ public class AddUser_Fragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_add_user_, container, false);
         lvQuanLy = v.findViewById(R.id.lvQuanLy);
         fab = v.findViewById(R.id.fab);
-        dao = new QuanLyDao(getActivity());
+        dao = new KhachHangDao(getActivity());
         capNhatLv();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class AddUser_Fragment extends Fragment {
     }
 
     void capNhatLv() {
-        list = (ArrayList<QuanLy>) dao.getAll();
+        list = (ArrayList<KhachHang>) dao.getAll();
         adapter = new QuanLyAdapter(getActivity(), this, list);
         lvQuanLy.setAdapter(adapter);
     }
@@ -119,7 +119,7 @@ public class AddUser_Fragment extends Fragment {
         btnSaveTT = dialog.findViewById(R.id.btnSaveTT);
 
         if (type != 0) {
-            edUser.setText(item.getMaQL());
+            edUser.setText(item.getmaKH());
             edHoTen.setText(item.getHoTen());
             edPass.setText(item.getMatKhau());
             edRePass.setText(item.getMatKhau());
@@ -136,9 +136,9 @@ public class AddUser_Fragment extends Fragment {
         btnSaveTT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                item = new QuanLy();
+                item = new KhachHang();
 
-                item.setMaQL(edUser.getText().toString());
+                item.setmaKH(edUser.getText().toString());
                 item.setHoTen(edHoTen.getText().toString());
                 item.setMatKhau(edPass.getText().toString());
                 if (validate() > 0) {
@@ -153,7 +153,7 @@ public class AddUser_Fragment extends Fragment {
                             Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        item.setMaQL(edUser.getText().toString());
+                        item.setmaKH(edUser.getText().toString());
                         if (dao.updatePass(item) > 0) {
                             Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                         } else {

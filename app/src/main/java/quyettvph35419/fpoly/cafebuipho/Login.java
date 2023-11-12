@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -16,21 +15,20 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 
-import quyettvph35419.fpoly.cafebuipho.Dao.QuanLyDao;
+import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 
 
 public class Login extends AppCompatActivity {
     TextInputEditText edUserName, edPassword;
     Button btnLogin, btnCancel;
     CheckBox chkRememberPass;
-    QuanLyDao quanLyDao;
+    KhachHangDao khachHangDao;
     String strUser, strPass;
 
     @Override
@@ -71,7 +69,7 @@ public class Login extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnCancel = findViewById(R.id.btnCancel);
         chkRememberPass = findViewById(R.id.chkRememberPass);
-        quanLyDao = new QuanLyDao(this);
+        khachHangDao = new KhachHangDao(this);
 
         SharedPreferences pref = getSharedPreferences("USER_FILE", MODE_PRIVATE);
         String user = pref.getString("USERNAME", "");
@@ -120,7 +118,7 @@ public class Login extends AppCompatActivity {
         if (strUser.trim().isEmpty() || strPass.trim().isEmpty()) {
             Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không được bỏ trống", Toast.LENGTH_SHORT).show();
         } else {
-            if (quanLyDao.checkLogin(strUser, strPass) > 0) {
+            if (khachHangDao.checkLogin(strUser, strPass) > 0) {
                 Toast.makeText(getApplicationContext(), "Login thành công", Toast.LENGTH_SHORT).show();
                 rememberUser(strUser, strPass, chkRememberPass.isChecked());
                 Bundle bundle = new Bundle();

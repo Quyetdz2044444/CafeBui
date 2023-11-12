@@ -14,21 +14,21 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-import quyettvph35419.fpoly.cafebuipho.Dao.QuanLyDao;
+import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Fragment.AddUser_Fragment;
-import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
+import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 import quyettvph35419.fpoly.cafebuipho.R;
 
-public class QuanLyAdapter extends ArrayAdapter<QuanLy> {
+public class QuanLyAdapter extends ArrayAdapter<KhachHang> {
 
     private Context context;
     AddUser_Fragment fragment;
-    private ArrayList<QuanLy> list;
+    private ArrayList<KhachHang> list;
     TextView tvMaQL,tvTenQL,tvMatKhau;
     ImageView imgDel;
-    QuanLyDao dao;
+    KhachHangDao dao;
 
-    public QuanLyAdapter(@NonNull Context context, AddUser_Fragment fragment, ArrayList<QuanLy> list) {
+    public QuanLyAdapter(@NonNull Context context, AddUser_Fragment fragment, ArrayList<KhachHang> list) {
         super(context, 0,list);
         this.context = context;
         this.list = list;
@@ -39,17 +39,17 @@ public class QuanLyAdapter extends ArrayAdapter<QuanLy> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View v = convertView;
-        dao = new QuanLyDao(getContext());
+        dao = new KhachHangDao(getContext());
         if (v == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.item_add_user,null);
 
         }
 
-        final QuanLy item = list.get(position);
+        final KhachHang item = list.get(position);
         if (item != null){
             tvMaQL = v.findViewById(R.id.tvMaQL);
-            tvMaQL.setText("Mã QL: "+item.getMaQL());
+            tvMaQL.setText("Mã QL: "+item.getmaKH());
             tvTenQL = v.findViewById(R.id.tvTenQL);
             tvTenQL.setText("Họ tên: "+item.getHoTen());
             tvMatKhau = v.findViewById(R.id.tvMatKhau);
@@ -63,7 +63,7 @@ public class QuanLyAdapter extends ArrayAdapter<QuanLy> {
             @Override
             public void onClick(View v) {
                 // pt xoa
-                fragment.xoa(item.getMaQL());
+                fragment.xoa(item.getmaKH());
             }
         });
         return v;

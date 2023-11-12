@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-import quyettvph35419.fpoly.cafebuipho.Dao.QuanLyDao;
+import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Fragment.AddUser_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ChangePass_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DoUong_Fragment;
@@ -33,7 +33,7 @@ import quyettvph35419.fpoly.cafebuipho.Fragment.KhachHangFragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ThongTinAcc_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.Top5_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
-import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
+import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView nv;
     TextView tvUser;
     BottomNavigationView bottomNav;
-    QuanLyDao quanLyDao;
+    KhachHangDao khachHangDao;
 
 
     @Override
@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = getIntent();// lấy dữ liệu đc gửui từ login sang đến activity hiện tại
         String user = i.getStringExtra("user"); // lấy thông tin cua user gán vào user
 
-        quanLyDao = new QuanLyDao(this); // tạo ra 1 lớp thuthuDao mới
-        QuanLy quanLy = quanLyDao.getID(user); // lấy id dựa vào hàm gethoten();
-        String username = quanLy.getHoTen(); //lấy họ tên
+        khachHangDao = new KhachHangDao(this); // tạo ra 1 lớp thuthuDao mới
+        KhachHang khachHang = khachHangDao.getID(user); // lấy id dựa vào hàm gethoten();
+        String username = khachHang.getHoTen(); //lấy họ tên
         tvUser.setText("Welcome " + username + "!"); // set tên ng dùng lên headerlayout
 
         // admin co full quyền

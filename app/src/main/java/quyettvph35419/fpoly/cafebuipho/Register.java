@@ -11,13 +11,13 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import quyettvph35419.fpoly.cafebuipho.Dao.QuanLyDao;
-import quyettvph35419.fpoly.cafebuipho.Model.QuanLy;
+import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
+import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 
 public class Register extends AppCompatActivity {
     TextInputEditText edUserName, edPassword, edFullname, edSdt, edDiaChi, edEmail;
     Button btnRegister, btnCancel;
-    QuanLyDao quanLyDao;
+    KhachHangDao khachHangDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class Register extends AppCompatActivity {
         edEmail = findViewById(R.id.edEmail_dk);
         btnRegister = findViewById(R.id.btnRegister);
         btnCancel = findViewById(R.id.btnCancel_dk);
-        quanLyDao = new QuanLyDao(this);
+        khachHangDao = new KhachHangDao(this);
         TextView tvback = findViewById(R.id.tvBack);
         tvback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,8 +83,8 @@ public class Register extends AppCompatActivity {
             Toast.makeText(Register.this, "Bạn chưa điền email", Toast.LENGTH_SHORT).show();
         } else {
 //            QuanLy nd = new QuanLy(maql, mkdki, null);
-            QuanLy nd = new QuanLy(tendki, fullname, mkdki, sdt, diachi, email);
-            if (quanLyDao.register(nd)) {
+            KhachHang nd = new KhachHang(tendki, fullname, mkdki, sdt, diachi, email);
+            if (khachHangDao.register(nd)) {
                 Toast.makeText(Register.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(Register.this, Login.class);
                 startActivity(i);
