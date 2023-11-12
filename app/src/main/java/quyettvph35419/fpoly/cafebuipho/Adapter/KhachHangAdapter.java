@@ -15,21 +15,21 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
-import quyettvph35419.fpoly.cafebuipho.Fragment.AddUser_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.KhachHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 import quyettvph35419.fpoly.cafebuipho.R;
 
-public class QuanLyAdapter extends ArrayAdapter<KhachHang> {
+public class KhachHangAdapter extends ArrayAdapter<KhachHang> {
 
     private Context context;
-    AddUser_Fragment fragment;
+    KhachHang_Fragment fragment;
     private ArrayList<KhachHang> list;
-    TextView tvMaQL,tvTenQL,tvMatKhau;
+    TextView tvMaQL, tvTenQL, tvMatKhau, tvsdt, tvdiachi, tvemail;
     ImageView imgDel;
     KhachHangDao dao;
 
-    public QuanLyAdapter(@NonNull Context context, AddUser_Fragment fragment, ArrayList<KhachHang> list) {
-        super(context, 0,list);
+    public KhachHangAdapter(@NonNull Context context, KhachHang_Fragment fragment, ArrayList<KhachHang> list) {
+        super(context, 0, list);
         this.context = context;
         this.list = list;
         this.fragment = fragment;
@@ -40,20 +40,32 @@ public class QuanLyAdapter extends ArrayAdapter<KhachHang> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View v = convertView;
         dao = new KhachHangDao(getContext());
-        if (v == null){
+        if (v == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.item_add_user,null);
+            v = inflater.inflate(R.layout.item_khachhang, null);
 
         }
 
         final KhachHang item = list.get(position);
-        if (item != null){
+        if (item != null) {
             tvMaQL = v.findViewById(R.id.tvMaQL);
-            tvMaQL.setText("Mã QL: "+item.getmaKH());
+            tvMaQL.setText("Mã tài khoản: " + item.getmaKH());
+
+
             tvTenQL = v.findViewById(R.id.tvTenQL);
-            tvTenQL.setText("Họ tên: "+item.getHoTen());
+            tvTenQL.setText("Họ tên: " + item.getHoTen());
+
+            tvsdt = v.findViewById(R.id.tvSdt);
+            tvsdt.setText("Số điện thoại: " + item.getSdt());
+
+            tvdiachi = v.findViewById(R.id.tvDiachi);
+            tvdiachi.setText("Địa chỉ: " + item.getDiaChi());
+
+            tvemail = v.findViewById(R.id.tvEmail);
+            tvemail.setText("Email: " + item.getEmail());
+
             tvMatKhau = v.findViewById(R.id.tvMatKhau);
-            tvMatKhau.setText("Mật khẩu: "+item.getMatKhau());
+            tvMatKhau.setText("Mật khẩu: " + item.getMatKhau());
 
 
             imgDel = v.findViewById(R.id.imgDeleteLS);

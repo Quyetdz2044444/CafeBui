@@ -22,14 +22,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
-import quyettvph35419.fpoly.cafebuipho.Fragment.AddUser_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.KhachHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ChangePass_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DoUong_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DoanhThu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.GioHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.HoaDon_Fragment;
-import quyettvph35419.fpoly.cafebuipho.Fragment.KhachHangFragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ThongTinAcc_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.Top5_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
@@ -84,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
         // admin co full quyền
         if (user.equalsIgnoreCase("admin")) {
-            nv.getMenu().findItem(R.id.sub_AddUser).setVisible(true);
             nv.getMenu().findItem(R.id.sub_DoanhThu).setVisible(true);
             nv.getMenu().findItem(R.id.nav_KhachHang).setVisible(true);
             nv.getMenu().findItem(R.id.nav_HoaDon).setVisible(true);
@@ -95,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             replaceFrg(doUongFragment);
             toolbar.setTitle("Quản lý đồ uống");
 
-        }else {
+        } else {
             nv.getMenu().findItem(R.id.nav_GioHang).setVisible(true);
             nv.getMenu().findItem(R.id.nav_DonHang).setVisible(true);
             nv.getMenu().findItem(R.id.sub_InfoAccount).setVisible(true);
@@ -105,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
             toolbar.setTitle("Trang chủ");
         }
 //        ko phải admin thì k đc thống kê, ko được ql nhân viên, k đc thêm người dùng
-       
 
 
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -115,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 if (id == R.id.nav_KhachHang) {
                     toolbar.setTitle("Quản lý khách hàng");
-                    KhachHangFragment khachHangFragment = new KhachHangFragment();
-                    replaceFrg(khachHangFragment);
+                    KhachHang_Fragment addUserFragment = new KhachHang_Fragment();
+                    replaceFrg(addUserFragment);
 
                 } else if (id == R.id.nav_DoUong) {
                     toolbar.setTitle("Quản lý đồ uống");
@@ -143,10 +140,6 @@ public class MainActivity extends AppCompatActivity {
                     ThongTinAcc_Fragment thongTinAccFragment = new ThongTinAcc_Fragment();
                     thongTinAccFragment.setArguments(bundle);
                     replaceFrg(thongTinAccFragment);
-                } else if (id == R.id.sub_AddUser) {
-                    toolbar.setTitle("Thêm tài khoản");
-                    AddUser_Fragment addUserFragment = new AddUser_Fragment();
-                    replaceFrg(addUserFragment);
                 } else if (id == R.id.sub_DoanhThu) {
                     toolbar.setTitle("Doanh thu");
                     DoanhThu_Fragment doanhThuFragment = new DoanhThu_Fragment();

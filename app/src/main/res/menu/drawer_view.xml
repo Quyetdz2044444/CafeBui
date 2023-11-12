@@ -55,11 +55,7 @@
 
         <item android:title="Tài khoản">
             <menu>
-                <item
-                    android:id="@+id/sub_AddUser"
-                    android:icon="@drawable/ic_adduser"
-                    android:title="Thêm tài khoản"
-                    android:visible="false" />
+
                 <item
                     android:id="@+id/sub_InfoAccount"
                     android:icon="@drawable/infotaikhoan"

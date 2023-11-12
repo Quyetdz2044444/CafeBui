@@ -56,6 +56,30 @@
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:text="MatKhau"/>
+                <TextView
+                    android:id="@+id/tvSdt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="sdt"/>
+                <TextView
+                    android:id="@+id/tvDiachi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="dc"/>
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="email"/>
             </LinearLayout>
             <ImageView
                 android:id="@+id/imgDeleteLS"

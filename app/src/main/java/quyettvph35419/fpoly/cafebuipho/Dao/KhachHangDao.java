@@ -36,6 +36,9 @@ public class KhachHangDao {
         ContentValues values = new ContentValues();
         values.put("HOTEN", obj.getHoTen());
         values.put("MATKHAU", obj.getMatKhau());
+        values.put("SDT", obj.getSdt());
+        values.put("DIACHI", obj.getDiaChi());
+        values.put("EMAIL", obj.getEmail());
         return db.update("KHACHHANG", values, "MAKH = ?", new String[]{String.valueOf(obj.getmaKH())});
     }
 
