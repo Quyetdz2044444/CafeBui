@@ -11,17 +11,17 @@ import android.view.ViewGroup;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 
-public class HoaDon_Fragment extends Fragment {
+public class DonHang_Admin_Fragment extends Fragment {
 
 
-    public HoaDon_Fragment() {
+    public DonHang_Admin_Fragment() {
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_hoa_don, container, false);
+        View v = inflater.inflate(R.layout.fragment_hoa_don_admin, container, false);
         return v;
     }
 }

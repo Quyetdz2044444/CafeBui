@@ -39,6 +39,7 @@ public class ThongTinAcc_Fragment extends Fragment {
 
         Bundle bundle = getArguments();
         if (bundle != null) {
+
             String user = bundle.getString("user");
 
             // Lấy thông tin từ CSDL và gán vào quanLy

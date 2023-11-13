@@ -28,7 +28,7 @@ import quyettvph35419.fpoly.cafebuipho.Fragment.DoUong_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DoanhThu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.GioHang_Fragment;
-import quyettvph35419.fpoly.cafebuipho.Fragment.HoaDon_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Admin_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ThongTinAcc_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.Top5_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
@@ -73,21 +73,21 @@ public class MainActivity extends AppCompatActivity {
 
         tvUser = mHeaderView.findViewById(R.id.tvUser); // vị trí của tên ng dùng thuộc headerLayout
 
-        Intent i = getIntent();// lấy dữ liệu đc gửui từ login sang đến activity hiện tại
+        Intent i = getIntent();
         String user = i.getStringExtra("user"); // lấy thông tin cua user gán vào user
 
-        khachHangDao = new KhachHangDao(this); // tạo ra 1 lớp thuthuDao mới
-        KhachHang khachHang = khachHangDao.getID(user); // lấy id dựa vào hàm gethoten();
-        String username = khachHang.getHoTen(); //lấy họ tên
-        tvUser.setText("Welcome " + username + "!"); // set tên ng dùng lên headerlayout
+        khachHangDao = new KhachHangDao(this);
+        KhachHang khachHang = khachHangDao.getID(user);
+        String username = khachHang.getHoTen();
+        tvUser.setText("Welcome " + username + "!");
 
-        // admin co full quyền
         if (user.equalsIgnoreCase("admin")) {
             nv.getMenu().findItem(R.id.sub_DoanhThu).setVisible(true);
             nv.getMenu().findItem(R.id.nav_KhachHang).setVisible(true);
             nv.getMenu().findItem(R.id.nav_HoaDon).setVisible(true);
             nv.getMenu().findItem(R.id.nav_DoUong).setVisible(true);
             bottomNav.setVisibility(View.GONE);
+
 //             set trang mở lên đầu tiên là trang quản lí đồ uống
             DoUong_Fragment doUongFragment = new DoUong_Fragment();
             replaceFrg(doUongFragment);
@@ -97,12 +97,11 @@ public class MainActivity extends AppCompatActivity {
             nv.getMenu().findItem(R.id.nav_GioHang).setVisible(true);
             nv.getMenu().findItem(R.id.nav_DonHang).setVisible(true);
             nv.getMenu().findItem(R.id.sub_InfoAccount).setVisible(true);
-//            set trang hiện lên đầu tiên
+
             TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
             replaceFrg(trangChuFragment);
             toolbar.setTitle("Trang chủ");
         }
-//        ko phải admin thì k đc thống kê, ko được ql nhân viên, k đc thêm người dùng
 
 
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -121,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFrg(doUongFragment);
                 } else if (id == R.id.nav_HoaDon) {
                     toolbar.setTitle("Quản lý hóa đơn");
-                    HoaDon_Fragment hoaDonFragment = new HoaDon_Fragment();
+                    DonHang_Admin_Fragment hoaDonFragment = new DonHang_Admin_Fragment();
                     replaceFrg(hoaDonFragment);
                 } else if (id == R.id.nav_DonHang) {
                     toolbar.setTitle("Quản lý đơn hàng");
@@ -133,12 +132,14 @@ public class MainActivity extends AppCompatActivity {
                     replaceFrg(gioHangFragment);
                 } else if (id == R.id.sub_InfoAccount) {
                     toolbar.setTitle("Thông tin tài khoản");
+
                     Bundle bundle = new Bundle();
                     bundle.putString("user", user);
 
                     // Khởi tạo fragment và đính kèm bundle
                     ThongTinAcc_Fragment thongTinAccFragment = new ThongTinAcc_Fragment();
                     thongTinAccFragment.setArguments(bundle);
+
                     replaceFrg(thongTinAccFragment);
                 } else if (id == R.id.sub_DoanhThu) {
                     toolbar.setTitle("Doanh thu");
@@ -190,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFrg(trangChuFragment);
                 } else if (id == R.id.bottom_giohang) {
                     toolbar.setTitle("Quản lý giỏ hàng");
-                    HoaDon_Fragment hoaDonFragment = new HoaDon_Fragment();
+                    DonHang_Admin_Fragment hoaDonFragment = new DonHang_Admin_Fragment();
                     replaceFrg(hoaDonFragment);
                 }
                 return false;

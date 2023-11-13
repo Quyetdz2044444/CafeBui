@@ -2,20 +2,28 @@ package quyettvph35419.fpoly.cafebuipho.Model;
 
 public class DoUong {
     private int maDoUong;
+    private String tenDoUong;
     private int gia;
-    private int maBan;
-    private int tonKho;
-    private int maLoai;
+    private int maSize;
+    private int imageId;
 
     public DoUong() {
     }
 
-    public DoUong(int maDoUong, int gia, int maBan, int tonKho, int maLoai) {
+    public DoUong(int maDoUong, String tenDoUong, int gia, int maSize, int imageId) {
         this.maDoUong = maDoUong;
+        this.tenDoUong = tenDoUong;
         this.gia = gia;
-        this.maBan = maBan;
-        this.tonKho = tonKho;
-        this.maLoai = maLoai;
+        this.maSize = maSize;
+        this.imageId = imageId;
+    }
+
+    public DoUong(String tenDoUong, int gia, int imageId) {
+        this.maDoUong = maDoUong;
+        this.tenDoUong = tenDoUong;
+        this.gia = gia;
+        this.maSize = maSize;
+        this.imageId = imageId;
     }
 
     public int getMaDoUong() {
@@ -26,6 +34,14 @@ public class DoUong {
         this.maDoUong = maDoUong;
     }
 
+    public String getTenDoUong() {
+        return tenDoUong;
+    }
+
+    public void setTenDoUong(String tenDoUong) {
+        this.tenDoUong = tenDoUong;
+    }
+
     public int getGia() {
         return gia;
     }
@@ -34,27 +50,19 @@ public class DoUong {
         this.gia = gia;
     }
 
-    public int getMaBan() {
-        return maBan;
+    public int getMaSize() {
+        return maSize;
     }
 
-    public void setMaBan(int maBan) {
-        this.maBan = maBan;
+    public void setMaSize(int maSize) {
+        this.maSize = maSize;
     }
 
-    public int getTonKho() {
-        return tonKho;
+    public int getImageId() {
+        return imageId;
     }
 
-    public void setTonKho(int tonKho) {
-        this.tonKho = tonKho;
-    }
-
-    public int getMaLoai() {
-        return maLoai;
-    }
-
-    public void setMaLoai(int maLoai) {
-        this.maLoai = maLoai;
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
     }
 }
