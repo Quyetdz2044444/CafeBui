@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:background="@drawable/seach" />
+        android:background="@drawable/seach"
+       />
 
     <TextView
         android:layout_width="wrap_content"
@@ -81,7 +82,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="45.000 vđn"
+                android:text="45.000 vnđ"
                 android:textColor="#5E0202"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -107,7 +108,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="35.000 vđn"
+                android:text="35.000 vnđ"
                 android:textColor="#5E0202"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -133,7 +134,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="45.000 vđn"
+                android:text="45.000 vnđ"
                 android:textColor="#5E0202"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -159,7 +160,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="45.000 vđn"
+                android:text="45.000 vnđ"
                 android:textColor="#5E0202"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -185,7 +186,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="50.000 vđn"
+                android:text="50.000 vnđ"
                 android:textColor="#5E0202"
                 android:textSize="20dp"
                 android:textStyle="bold" />
