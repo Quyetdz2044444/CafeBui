@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Fragment.TrangChu_Fragment">
+
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/seach"
         android:layout_margin="15dp"
-        />
+        android:background="@drawable/seach" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,161 +35,160 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_columnWeight="1"
-            android:padding="10dp"
-            >
+            android:orientation="vertical"
+            android:padding="10dp">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                android:src="@drawable/cafebacxiu"
-                />
+                android:src="@drawable/cafebacxiu" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cafe bạc xỉu"
-                android:textStyle="bold"
                 android:textSize="20dp"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:text="40.000 vnđ"
+                android:textColor="#5E0202"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="#5E0202" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_24"
-                    android:layout_marginLeft="130dp"/>
-            </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:src="@drawable/espresso" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Espresso"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="45.000 vđn"
+                android:textColor="#5E0202"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_columnWeight="1"
-            android:padding="10dp"
-            >
+            android:orientation="vertical"
+            android:padding="10dp">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                android:src="@drawable/cafebacxiu"
-                />
+                android:src="@drawable/truyenthong" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cafe bạc xỉu"
-                android:textStyle="bold"
+                android:text="Cafe truyền thống"
                 android:textSize="20dp"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="#5E0202" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_24"
-                    android:layout_marginLeft="130dp"/>
-            </LinearLayout>
-
+                android:text="35.000 vđn"
+                android:textColor="#5E0202"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_columnWeight="1"
-            android:padding="10dp"
-            >
+            android:orientation="vertical"
+            android:padding="10dp">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                android:src="@drawable/cafebacxiu"
-                />
+                android:src="@drawable/macchiato" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cafe bạc xỉu"
-                android:textStyle="bold"
+                android:text="Latte Macchiato"
                 android:textSize="20dp"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="#5E0202" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_24"
-                    android:layout_marginLeft="130dp"/>
-            </LinearLayout>
-
+                android:text="45.000 vđn"
+                android:textColor="#5E0202"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_columnWeight="1"
-            android:padding="10dp"
-            >
+            android:orientation="vertical"
+            android:padding="10dp">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                android:src="@drawable/cafebacxiu"
-                />
+                android:src="@drawable/americano" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cafe bạc xỉu"
-                android:textStyle="bold"
+                android:text="Americano"
                 android:textSize="20dp"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:text="45.000 vđn"
+                android:textColor="#5E0202"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="#5E0202" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:src="@drawable/capuchino" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_24"
-                    android:layout_marginLeft="130dp"/>
-            </LinearLayout>
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cappuccino Viennese"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50.000 vđn"
+                android:textColor="#5E0202"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </GridLayout>
