@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:orientation="vertical"
-    android:background="@drawable/item">
+    android:background="@drawable/item"
+    android:layout_margin="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/coffeecup"
+            android:layout_marginTop="20dp"
             />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -42,6 +44,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:text="0123456789 - 0112233559"
+                android:layout_gravity="center"
                 />
 
         </LinearLayout>
@@ -52,4 +55,49 @@
         android:background="#000000"
         android:layout_gravity="center"
         android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hóa đơn"
+        android:textStyle="bold"
+        android:textSize="35dp"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:id="@+id/tvsophieu_hoaDon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số phiếu: "
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/tvmakh_hoaDon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mã KH: "
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:id="@+id/tvthoigian_hoaDon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thời gian: "
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:id="@+id/tvtong_hoaDon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tổng tiền: "
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        />
+
+
 </LinearLayout>
