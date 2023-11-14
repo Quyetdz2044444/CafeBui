@@ -31,7 +31,6 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
         this.doUongList = doUongList;
         this.context = context;
         this.listOld = new ArrayList<>(doUongList);
-
     }
 
     @NonNull
@@ -46,7 +45,38 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
     public void onBindViewHolder(@NonNull DoUongViewHolder holder, int position) {
         holder.tendouong.setText("Tên: " + doUongList.get(position).getTenDoUong());
         holder.giaDoUong.setText("Giá: " + doUongList.get(position).getGia());
-        holder.imgDoUong.setImageResource(doUongList.get(position).getImageId());
+
+        int vitri = doUongList.get(position).getImageId();
+        int resourceId;
+
+        switch (vitri) {
+            case 1:
+                resourceId = R.drawable.americano;
+                break;
+            case 2:
+                resourceId = R.drawable.cafebacxiu;
+                break;
+            case 3:
+                resourceId = R.drawable.capuchino;
+                break;
+            case 4:
+                resourceId = R.drawable.cafetruyenthong;
+                break;
+            case 5:
+                resourceId = R.drawable.macchiato;
+                break;
+            case 6:
+                resourceId = R.drawable.irishcafe;
+                break;
+            case 7:
+                resourceId = R.drawable.mochacafe;
+                break;
+            default:
+                resourceId = R.drawable.cafemacdinh; // Set ảnh mặc định nếu không khớp với bất kỳ trường hợp nào
+                break;
+        }
+
+        holder.imgDoUong.setImageResource(resourceId);
 
     }
 
@@ -97,16 +127,15 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
             tendouong = itemView.findViewById(R.id.tvten_doUong);
             giaDoUong = itemView.findViewById(R.id.tvgia_doUong);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int vitri = getAdapterPosition();
-                    DoUong selectDoUong = doUongList.get(vitri); // xác định vị trí của đồ uống đang hiển thị trong ds
-                    Intent intent = new Intent(context, ChiTietDoUong.class);
-                    context.startActivity(intent);
-
-                }
-            });
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    int vitri = getAdapterPosition();
+//                    Intent intent = new Intent(context, ChiTietDoUong.class);
+//                    context.startActivity(intent);
+//
+//                }
+//            });
 
 
         }

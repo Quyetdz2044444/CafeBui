@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.Adapter.DoUongAdapter;
+import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
@@ -25,6 +26,7 @@ public class TrangChu_Fragment extends Fragment {
     private RecyclerView rclViewDoUong;
     private DoUongAdapter doUongAdapter;
     private SearchView searchView;
+    private DoUongDao doUongDao;
 
     public TrangChu_Fragment() {
         // Required empty public constructor
@@ -36,19 +38,23 @@ public class TrangChu_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_trang_chu, container, false);
         searchView = v.findViewById(R.id.SearchView);
+
         rclViewDoUong = v.findViewById(R.id.rclViewDoUong_kh);
         rclViewDoUong.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        doUongDao = new DoUongDao(getContext());
 
-        list = new ArrayList<>();
+        list = doUongDao.getAll();
+        // Tạo danh sách mới với các trường cần thiết
+        List<DoUong> list2 = new ArrayList<>();
+        for (DoUong doUong : list) {
+            list2.add(new DoUong(doUong.getTenDoUong(), doUong.getGia(), doUong.getImageId()));
+        }
 
-        list.add(new DoUong("Cafe bạc xỉu", 40000, R.drawable.cafebacxiu));
-        list.add(new DoUong("Macchiato", 50000, R.drawable.macchiato));
-        list.add(new DoUong("Americano", 30000, R.drawable.americano));
-        list.add(new DoUong("Capuchino", 20000, R.drawable.capuchino));
-        list.add(new DoUong("Espresso", 45000, R.drawable.espresso));
 
-        doUongAdapter = new DoUongAdapter(list, getContext());
+
+        doUongAdapter = new DoUongAdapter(list2, getContext());
         rclViewDoUong.setAdapter(doUongAdapter);
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
