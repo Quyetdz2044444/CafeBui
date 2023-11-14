@@ -2,16 +2,14 @@ package quyettvph35419.fpoly.cafebuipho.Model;
 
 public class Size {
     private int maSize;
-    private int size;
-    private int giaSize;
+    private String size;
 
     public Size() {
     }
 
-    public Size(int maSize, int size, int giaSize) {
+    public Size(int maSize, String size) {
         this.maSize = maSize;
         this.size = size;
-        this.giaSize = giaSize;
     }
 
     public int getMaSize() {
@@ -22,19 +20,13 @@ public class Size {
         this.maSize = maSize;
     }
 
-    public int getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
-    public int getGiaSize() {
-        return giaSize;
-    }
 
-    public void setGiaSize(int giaSize) {
-        this.giaSize = giaSize;
-    }
 }
