@@ -5,6 +5,11 @@
         <item android:title="Quản lí">
             <menu>
                 <item
+                    android:id="@+id/nav_trangchu"
+                    android:icon="@drawable/ic_home"
+                    android:title="Trang chủ"
+                    android:visible="false" />
+                <item
                     android:id="@+id/nav_HoaDon"
                     android:icon="@drawable/hoadon"
                     android:title="Quản lý đơn hàng"
@@ -13,8 +18,12 @@
                     android:id="@+id/nav_DoUong"
                     android:icon="@drawable/douong"
                     android:title="Quản lý đồ uống"
-                    android:visible="false"
-                    />
+                    android:visible="false" />
+                <item
+                    android:id="@+id/nav_LoaiDoUong"
+                    android:icon="@drawable/loaidouong"
+                    android:title="Quản lý loại đồ uống"
+                    android:visible="false" />
 
 
                 <item
@@ -42,8 +51,7 @@
                 <item
                     android:id="@+id/sub_Top"
                     android:icon="@drawable/ic_top"
-                    android:title="5 đồ uống hot trend"
-                  />
+                    android:title="5 đồ uống hot trend" />
                 <item
                     android:id="@+id/sub_DoanhThu"
                     android:icon="@drawable/ic_money"

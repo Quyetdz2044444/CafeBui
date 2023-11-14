@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
@@ -29,6 +30,7 @@ import quyettvph35419.fpoly.cafebuipho.Fragment.DoanhThu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.GioHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Admin_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.LoaiDoUongFragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ThongTinAcc_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.Top5_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
             nv.getMenu().findItem(R.id.sub_DoanhThu).setVisible(true);
             nv.getMenu().findItem(R.id.nav_KhachHang).setVisible(true);
             nv.getMenu().findItem(R.id.nav_HoaDon).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_LoaiDoUong).setVisible(true);
             nv.getMenu().findItem(R.id.nav_DoUong).setVisible(true);
             bottomNav.setVisibility(View.GONE);
 
@@ -95,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             nv.getMenu().findItem(R.id.nav_GioHang).setVisible(true);
+            nv.getMenu().findItem(R.id.nav_trangchu).setVisible(true);
             nv.getMenu().findItem(R.id.nav_DonHang).setVisible(true);
             nv.getMenu().findItem(R.id.sub_InfoAccount).setVisible(true);
 
@@ -113,6 +117,16 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle("Quản lý khách hàng");
                     KhachHang_Fragment addUserFragment = new KhachHang_Fragment();
                     replaceFrg(addUserFragment);
+
+                } else if (id == R.id.nav_trangchu) {
+                    toolbar.setTitle("Trang chủ");
+                    TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
+                    replaceFrg(trangChuFragment);
+
+                } else if (id == R.id.nav_LoaiDoUong) {
+                    toolbar.setTitle("Quản lý loại đồ uống");
+                    LoaiDoUongFragment loaiDoUongFragment = new LoaiDoUongFragment();
+                    replaceFrg(loaiDoUongFragment);
 
                 } else if (id == R.id.nav_DoUong) {
                     toolbar.setTitle("Quản lý đồ uống");
@@ -181,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
@@ -191,8 +205,8 @@ public class MainActivity extends AppCompatActivity {
                     replaceFrg(trangChuFragment);
                 } else if (id == R.id.bottom_giohang) {
                     toolbar.setTitle("Quản lý giỏ hàng");
-                    DonHang_Admin_Fragment hoaDonFragment = new DonHang_Admin_Fragment();
-                    replaceFrg(hoaDonFragment);
+                    GioHang_Fragment gioHangFragment = new GioHang_Fragment();
+                    replaceFrg(gioHangFragment);
                 }
                 return false;
             }
