@@ -18,11 +18,11 @@ public class DoUong {
         this.imageId = imageId;
     }
 
+
     public DoUong(String tenDoUong, int gia, int imageId) {
         this.maDoUong = maDoUong;
         this.tenDoUong = tenDoUong;
         this.gia = gia;
-        this.maSize = maSize;
         this.imageId = imageId;
     }
 

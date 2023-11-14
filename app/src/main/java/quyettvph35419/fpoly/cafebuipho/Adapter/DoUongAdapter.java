@@ -5,6 +5,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,19 +14,22 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
-public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongViewHolder> {
+public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongViewHolder> implements Filterable {
 
-    List<DoUong> doUongList;
+    List<DoUong> doUongList, listOld;
     Context context;
 
     public DoUongAdapter(List<DoUong> doUongList, Context context) {
         this.doUongList = doUongList;
         this.context = context;
+        this.listOld = new ArrayList<>(doUongList);
+
     }
 
     @NonNull
@@ -46,6 +51,36 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
     @Override
     public int getItemCount() {
         return doUongList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strSearch = charSequence.toString();
+                if (strSearch.isEmpty()){
+                    doUongList = new ArrayList<>(listOld);
+                }else{
+                    ArrayList<DoUong> listSearch = new ArrayList<>();
+                    for (DoUong uong: listOld){
+                        if (uong.getTenDoUong().toLowerCase().contains(strSearch.toLowerCase())){
+                            listSearch.add(uong);
+                        }
+                    }
+                    doUongList = listSearch;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = doUongList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                doUongList = (ArrayList<DoUong>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class DoUongViewHolder extends RecyclerView.ViewHolder {

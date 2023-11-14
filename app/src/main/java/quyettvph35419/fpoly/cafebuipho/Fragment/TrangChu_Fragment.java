@@ -2,6 +2,7 @@ package quyettvph35419.fpoly.cafebuipho.Fragment;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,7 @@ public class TrangChu_Fragment extends Fragment {
     List<DoUong> list;
     RecyclerView rclViewDoUong;
     DoUongAdapter doUongAdapter;
+    SearchView searchView;
 
     public TrangChu_Fragment() {
         // Required empty public constructor
@@ -33,19 +35,33 @@ public class TrangChu_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_trang_chu, container, false);
+        searchView = v.findViewById(R.id.SearchView);
         rclViewDoUong = v.findViewById(R.id.rclViewDoUong_kh);
         rclViewDoUong.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         list = new ArrayList<>();
 
-        list.add(new DoUong("Bạc xỉu", 40000, R.drawable.cafebacxiu));
-        list.add(new DoUong("Bạc xỉu", 40000, R.drawable.truyenthong));
-        list.add(new DoUong("Bạc xỉu", 40000, R.drawable.americano));
-        list.add(new DoUong("Bạc xỉu", 40000, R.drawable.capuchino));
-        list.add(new DoUong("Bạc xỉu", 40000, R.drawable.cafebacxiu));
+        list.add(new DoUong("Cafe bạc xỉu", 40000, R.drawable.cafebacxiu));
+        list.add(new DoUong("Macchiato", 40000, R.drawable.macchiato));
+        list.add(new DoUong("Americano", 40000, R.drawable.americano));
+        list.add(new DoUong("Capuchino", 40000, R.drawable.capuchino));
+        list.add(new DoUong("Espresso", 40000, R.drawable.espresso));
 
         doUongAdapter = new DoUongAdapter(list, getContext());
         rclViewDoUong.setAdapter(doUongAdapter);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                doUongAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
 
         return v;
