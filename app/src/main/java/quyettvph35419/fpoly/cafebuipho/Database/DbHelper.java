@@ -28,6 +28,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "EMAIL TEXT NOT NULL)";
         db.execSQL(createTableKhachHang);
 //--------------------------------------------------------------------------
+//        Bảng đồ uống
+
 
 
 //        ----------------------------------------------------------

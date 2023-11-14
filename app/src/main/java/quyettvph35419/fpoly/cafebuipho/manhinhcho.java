@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 
 public class manhinhcho extends AppCompatActivity {
-    TextView appname;
-    LottieAnimationView lottie;
+    private TextView appname;
+    private LottieAnimationView lottie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

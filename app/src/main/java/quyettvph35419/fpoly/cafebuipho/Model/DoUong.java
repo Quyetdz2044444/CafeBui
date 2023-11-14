@@ -6,11 +6,13 @@ public class DoUong {
     private int gia;
     private int maSize;
     private int imageId;
+    private int maLoai;
+
 
     public DoUong() {
     }
 
-    public DoUong(int maDoUong, String tenDoUong, int gia, int maSize, int imageId) {
+    public DoUong(int maDoUong, String tenDoUong, int gia, int maSize, int imageId, int maLoai) {
         this.maDoUong = maDoUong;
         this.tenDoUong = tenDoUong;
         this.gia = gia;
@@ -64,5 +66,13 @@ public class DoUong {
 
     public void setImageId(int imageId) {
         this.imageId = imageId;
+    }
+
+    public int getMaLoai() {
+        return maLoai;
+    }
+
+    public void setMaLoai(int maLoai) {
+        this.maLoai = maLoai;
     }
 }

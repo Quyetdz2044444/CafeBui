@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     View mHeaderView;
     NavigationView nv;
-    TextView tvUser;
+    private TextView tvUser;
     BottomNavigationView bottomNav;
-    KhachHangDao khachHangDao;
+    private KhachHangDao khachHangDao;
 
 
     @Override

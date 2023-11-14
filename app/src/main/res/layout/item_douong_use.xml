@@ -17,9 +17,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tên:"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginRight="12dp"/>
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -32,18 +31,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Giá:"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/tvvnd_doUong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="5dp"
             android:text="vnđ"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="30dp"
-            android:textColor="#6E0E0E"/>
+            android:textColor="#6E0E0E"
+            android:textSize="15dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

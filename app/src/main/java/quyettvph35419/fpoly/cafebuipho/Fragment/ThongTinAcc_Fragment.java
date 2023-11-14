@@ -15,9 +15,9 @@ import quyettvph35419.fpoly.cafebuipho.R;
 
 
 public class ThongTinAcc_Fragment extends Fragment {
-    TextView tvtendaydu, tvtentk, tvsdt, tvdiachi, tvemail;
-    KhachHangDao khachHangDao;
-    KhachHang khachHang;
+    private TextView tvtendaydu, tvtentk, tvsdt, tvdiachi, tvemail;
+    private KhachHangDao khachHangDao;
+    private KhachHang khachHang;
 
     public ThongTinAcc_Fragment() {
     }

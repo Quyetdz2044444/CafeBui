@@ -21,10 +21,10 @@ import quyettvph35419.fpoly.cafebuipho.R;
 
 public class TrangChu_Fragment extends Fragment {
 
-    List<DoUong> list;
-    RecyclerView rclViewDoUong;
-    DoUongAdapter doUongAdapter;
-    SearchView searchView;
+    private List<DoUong> list;
+    private RecyclerView rclViewDoUong;
+    private DoUongAdapter doUongAdapter;
+    private SearchView searchView;
 
     public TrangChu_Fragment() {
         // Required empty public constructor
@@ -42,10 +42,10 @@ public class TrangChu_Fragment extends Fragment {
         list = new ArrayList<>();
 
         list.add(new DoUong("Cafe bạc xỉu", 40000, R.drawable.cafebacxiu));
-        list.add(new DoUong("Macchiato", 40000, R.drawable.macchiato));
-        list.add(new DoUong("Americano", 40000, R.drawable.americano));
-        list.add(new DoUong("Capuchino", 40000, R.drawable.capuchino));
-        list.add(new DoUong("Espresso", 40000, R.drawable.espresso));
+        list.add(new DoUong("Macchiato", 50000, R.drawable.macchiato));
+        list.add(new DoUong("Americano", 30000, R.drawable.americano));
+        list.add(new DoUong("Capuchino", 20000, R.drawable.capuchino));
+        list.add(new DoUong("Espresso", 45000, R.drawable.espresso));
 
         doUongAdapter = new DoUongAdapter(list, getContext());
         rclViewDoUong.setAdapter(doUongAdapter);

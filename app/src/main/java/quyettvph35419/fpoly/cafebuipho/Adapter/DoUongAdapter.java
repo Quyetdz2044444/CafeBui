@@ -2,6 +2,7 @@ package quyettvph35419.fpoly.cafebuipho.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import quyettvph35419.fpoly.cafebuipho.ChiTietDoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongViewHolder> implements Filterable {
 
-    List<DoUong> doUongList, listOld;
+    private List<DoUong> doUongList, listOld;
     Context context;
 
     public DoUongAdapter(List<DoUong> doUongList, Context context) {
@@ -59,12 +61,12 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String strSearch = charSequence.toString();
-                if (strSearch.isEmpty()){
+                if (strSearch.isEmpty()) {
                     doUongList = new ArrayList<>(listOld);
-                }else{
+                } else {
                     ArrayList<DoUong> listSearch = new ArrayList<>();
-                    for (DoUong uong: listOld){
-                        if (uong.getTenDoUong().toLowerCase().contains(strSearch.toLowerCase())){
+                    for (DoUong uong : listOld) {
+                        if (uong.getTenDoUong().toLowerCase().contains(strSearch.toLowerCase())) {
                             listSearch.add(uong);
                         }
                     }
@@ -81,7 +83,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
                 notifyDataSetChanged();
             }
         };
-    }
+    } // hàm tìm kiếm đồ uống theo tên
 
     public class DoUongViewHolder extends RecyclerView.ViewHolder {
         private ImageView imgDoUong;
@@ -98,8 +100,11 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int vitri=getAdapterPosition();
-                    Toast.makeText(context, "Bạn đã chọn item " +vitri, Toast.LENGTH_SHORT).show();
+                    int vitri = getAdapterPosition();
+                    DoUong selectDoUong = doUongList.get(vitri); // xác định vị trí của đồ uống đang hiển thị trong ds
+                    Intent intent = new Intent(context, ChiTietDoUong.class);
+                    context.startActivity(intent);
+
                 }
             });
 

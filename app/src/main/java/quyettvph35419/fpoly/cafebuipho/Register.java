@@ -15,9 +15,9 @@ import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 
 public class Register extends AppCompatActivity {
-    TextInputEditText edUserName, edPassword, edFullname, edSdt, edDiaChi, edEmail;
-    Button btnRegister, btnCancel;
-    KhachHangDao khachHangDao;
+    private TextInputEditText edUserName, edPassword, edFullname, edSdt, edDiaChi, edEmail;
+    private Button btnRegister, btnCancel;
+    private KhachHangDao khachHangDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

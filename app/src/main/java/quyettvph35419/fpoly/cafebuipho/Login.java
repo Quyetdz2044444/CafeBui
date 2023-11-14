@@ -25,11 +25,11 @@ import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 
 
 public class Login extends AppCompatActivity {
-    TextInputEditText edUserName, edPassword;
-    Button btnLogin, btnCancel;
-    CheckBox chkRememberPass;
-    KhachHangDao khachHangDao;
-    String strUser, strPass;
+    private TextInputEditText edUserName, edPassword;
+    private Button btnLogin, btnCancel;
+    private CheckBox chkRememberPass;
+    private KhachHangDao khachHangDao;
+    private String strUser, strPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

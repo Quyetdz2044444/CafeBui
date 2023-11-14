@@ -22,9 +22,9 @@ import quyettvph35419.fpoly.cafebuipho.R;
 public class ChangePass_Fragment extends Fragment {
 
 
-    TextInputEditText edPassOld, edPassChange, edRePassChange;
-    Button btnSaveUserChange, btnCancleUserChange;
-    KhachHangDao qldao;
+    private TextInputEditText edPassOld, edPassChange, edRePassChange;
+    private Button btnSaveUserChange, btnCancleUserChange;
+    private KhachHangDao qldao;
 
 
     @Override
@@ -36,7 +36,7 @@ public class ChangePass_Fragment extends Fragment {
         edPassChange = v.findViewById(R.id.edPassChange);
         edRePassChange = v.findViewById(R.id.edRePassChange);
         btnSaveUserChange = v.findViewById(R.id.btnSaveUserChange);
-        btnCancleUserChange  = v.findViewById(R.id.btnCancelUserChange);
+        btnCancleUserChange = v.findViewById(R.id.btnCancelUserChange);
         btnCancleUserChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +50,7 @@ public class ChangePass_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 SharedPreferences pref = getActivity().getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
-                String user = pref.getString("USERNAME","");
+                String user = pref.getString("USERNAME", "");
                 if (validate() > 0) {
                     KhachHang khachHang = qldao.getID(user);
                     khachHang.setMatKhau(edPassChange.getText().toString());
@@ -69,21 +69,21 @@ public class ChangePass_Fragment extends Fragment {
         return v;
     }
 
-    public int validate(){
-        int check =1;
-        if (edPassOld.getText().length() == 0 || edPassChange.getText().length() == 0 || edRePassChange.getText().length() == 0){
+    public int validate() {
+        int check = 1;
+        if (edPassOld.getText().length() == 0 || edPassChange.getText().length() == 0 || edRePassChange.getText().length() == 0) {
             Toast.makeText(getContext(), "Bạn phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             check = -1;
-        }else {
+        } else {
             SharedPreferences pref = getActivity().getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
-            String passOld = pref.getString("PASSWORD","");
+            String passOld = pref.getString("PASSWORD", "");
             String pass = edPassChange.getText().toString();
             String rePass = edRePassChange.getText().toString();
-            if (!passOld.equals(edPassOld.getText().toString())){
+            if (!passOld.equals(edPassOld.getText().toString())) {
                 Toast.makeText(getContext(), "Mật khẩu cũ sai", Toast.LENGTH_SHORT).show();
                 check = -1;
             }
-            if (!pass.equals(rePass)){
+            if (!pass.equals(rePass)) {
                 Toast.makeText(getContext(), "Mật khẩu không trùng khớp", Toast.LENGTH_SHORT).show();
                 check = -1;
             }

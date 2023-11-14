@@ -22,11 +22,11 @@ import quyettvph35419.fpoly.cafebuipho.R;
 public class KhachHangAdapter extends ArrayAdapter<KhachHang> {
 
     private Context context;
-    KhachHang_Fragment fragment;
+    private KhachHang_Fragment fragment;
     private ArrayList<KhachHang> list;
-    TextView tvMaQL, tvTenQL, tvMatKhau, tvsdt, tvdiachi, tvemail;
-    ImageView imgDel;
-    KhachHangDao dao;
+    private TextView tvMaQL, tvTenQL, tvMatKhau, tvsdt, tvdiachi, tvemail;
+    private ImageView imgDel;
+    private KhachHangDao dao;
 
     public KhachHangAdapter(@NonNull Context context, KhachHang_Fragment fragment, ArrayList<KhachHang> list) {
         super(context, 0, list);
