@@ -26,25 +26,17 @@
             android:textSize="20dp"
             android:textStyle="bold"
             />
-        <TextView
-            android:id="@+id/tvsoluong_giohang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Số lượng:"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            />
+
         <TextView
             android:id="@+id/tvgia_giohang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$:"
+            android:text="Giá:"
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_marginTop="5dp"
-            android:textColor="#F80707"
             />
+
     </LinearLayout>
     <ImageButton
         android:id="@+id/btnxoa_gioHang"

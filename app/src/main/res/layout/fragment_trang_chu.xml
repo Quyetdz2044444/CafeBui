@@ -12,193 +12,20 @@
         android:layout_margin="15dp"
         android:background="@drawable/seach"
         android:id="@+id/SearchView"
-       />
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sản Phẩm"
         android:textSize="30dp"
+        android:layout_marginStart="10dp"
         android:textStyle="bold" />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
         android:id="@+id/rclViewDoUong_kh"
         />
-
-<!--    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_margin="16dp"-->
-<!--        android:alignmentMode="alignMargins"-->
-<!--        android:columnCount="2"-->
-<!--        android:columnOrderPreserved="false"-->
-<!--        android:rowCount="2"-->
-<!--        android:rowOrderPreserved="false"-->
-
-<!--        >-->
-
-<!--        &lt;!&ndash; Bạn có thể thêm các phần tử vào đây, mỗi phần tử chiếm một ô trong lưới &ndash;&gt;-->
-<!--        <LinearLayout-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:orientation="vertical"-->
-<!--            android:padding="10dp">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:src="@drawable/cafebacxiu" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Cafe bạc xỉu"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="40.000 vnđ"-->
-<!--                android:textColor="#5E0202"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:orientation="vertical"-->
-<!--            android:padding="10dp">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:src="@drawable/espresso" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Espresso"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="45.000 vnđ"-->
-<!--                android:textColor="#5E0202"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-<!--        </LinearLayout>-->
-<!--        <LinearLayout-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:orientation="vertical"-->
-<!--            android:padding="10dp">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:src="@drawable/truyenthong" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Cafe truyền thống"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="35.000 vnđ"-->
-<!--                android:textColor="#5E0202"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-<!--        </LinearLayout>-->
-<!--        <LinearLayout-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:orientation="vertical"-->
-<!--            android:padding="10dp">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:src="@drawable/macchiato" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Latte Macchiato"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="45.000 vnđ"-->
-<!--                android:textColor="#5E0202"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-<!--        </LinearLayout>-->
-<!--        <LinearLayout-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:orientation="vertical"-->
-<!--            android:padding="10dp">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:src="@drawable/americano" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Americano"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="45.000 vnđ"-->
-<!--                android:textColor="#5E0202"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-<!--        </LinearLayout>-->
-<!--        <LinearLayout-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:orientation="vertical"-->
-<!--            android:padding="10dp">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:src="@drawable/capuchino" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Cappuccino Viennese"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="50.000 vnđ"-->
-<!--                android:textColor="#5E0202"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold" />-->
-<!--        </LinearLayout>-->
-
-<!--    </GridLayout>-->
-
 
 </LinearLayout>
