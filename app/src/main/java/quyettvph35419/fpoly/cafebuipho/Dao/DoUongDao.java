@@ -25,7 +25,6 @@ public class DoUongDao {
         ContentValues values = new ContentValues();
         values.put("TenDO", obj.getTenDoUong());
         values.put("GiaDO", obj.getGia());
-        values.put("MaSize", obj.getMaSize());
         values.put("Anh", obj.getImageId());
         values.put("MaLoai", obj.getMaLoai());
         return db.insert("DOUONG", null, values);
@@ -36,7 +35,6 @@ public class DoUongDao {
         ContentValues values = new ContentValues();
         values.put("TenDO", obj.getTenDoUong());
         values.put("GiaDO", obj.getGia());
-        values.put("MaSize", obj.getMaSize());
         values.put("Anh", obj.getImageId());
         values.put("MaLoai", obj.getMaLoai());
         return db.update("DOUONG", values, "MaDO = ?", new String[]{String.valueOf(obj.getMaDoUong())});
@@ -69,7 +67,6 @@ public class DoUongDao {
             obj.setMaDoUong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaDO"))));
             obj.setTenDoUong(cursor.getString(cursor.getColumnIndex("TenDO")));
             obj.setGia(Integer.parseInt(cursor.getString(cursor.getColumnIndex("GiaDO"))));
-            obj.setMaSize(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaSize"))));
             obj.setImageId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("Anh"))));
             obj.setMaLoai(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaLoai"))));
             list.add(obj);

@@ -24,7 +24,6 @@ import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongViewHolder> implements Filterable {
-
     private List<DoUong> doUongList, listOld;
     Context context;
 
@@ -33,6 +32,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
         this.context = context;
         this.listOld = new ArrayList<>(doUongList);
     }
+
 
     @NonNull
     @Override
@@ -44,12 +44,12 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
 
     @Override
     public void onBindViewHolder(@NonNull DoUongViewHolder holder, int position) {
-        holder.tendouong.setText("Tên: " + doUongList.get(position).getTenDoUong());
-        holder.giaDoUong.setText("Giá: " + doUongList.get(position).getGia());
+        DoUong doUong = doUongList.get(position);
+        holder.tendouong.setText("Tên: " + doUong.getTenDoUong());
+        holder.giaDoUong.setText("Giá: " + doUong.getGia());
 
-        int vitri = doUongList.get(position).getImageId();
+        int vitri = doUong.getImageId();
         int resourceId;
-
         switch (vitri) {
             case 1:
                 resourceId = R.drawable.americano;
@@ -76,8 +76,22 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
                 resourceId = R.drawable.cafemacdinh; // Set ảnh mặc định nếu không khớp với bất kỳ trường hợp nào
                 break;
         }
-
         holder.imgDoUong.setImageResource(resourceId);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position=holder.getAdapterPosition();
+                if(position!=RecyclerView.NO_POSITION){
+
+                    Intent intent=new Intent(context, ChiTietDoUong.class);
+                    intent.putExtra("madouong",doUong.getMaDoUong());
+
+                    context.startActivity(intent);
+                }
+            }
+        });
+
 
     }
 
@@ -127,16 +141,6 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
             imgDoUong = itemView.findViewById(R.id.imgDoUong_use);
             tendouong = itemView.findViewById(R.id.tvten_doUong);
             giaDoUong = itemView.findViewById(R.id.tvgia_doUong);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int vitri = getAdapterPosition();
-                    Intent intent = new Intent(context, ChiTietDoUong.class);
-                    context.startActivity(intent);
-
-                }
-            });
 
 
         }

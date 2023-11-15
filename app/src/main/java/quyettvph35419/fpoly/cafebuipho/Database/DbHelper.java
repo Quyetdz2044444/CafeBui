@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "CafeBui";
-    public static final int DB_VERSION = 8;
+    public static final int DB_VERSION = 9;
 
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -43,10 +43,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 "MaDO integer primary key autoincrement," +
                 "TenDO text not null," +
                 "GiaDO integer not null," +
-                "MaSize integer references SIZE(MaSize)," +
                 "Anh integer not null,"
                 + "MaLoai integer references LOAIDOUONG(MaLoai))";
         db.execSQL(tb_DoUong);
+
 
         String tb_GioHang = "create table GIOHANG(" +
                 "MaGH integer primary key autoincrement," +
@@ -86,10 +86,10 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.execSQL("INSERT INTO SIZE VALUES (1, 'M',0 ),(2,'L',10000),(3,'XL',15000)");
 
-        db.execSQL("INSERT INTO DOUONG VALUES (1, 'Latte', 30000,1,1,1)," +
-                "(2, 'Machiato', 35000,2,2,1),(3, 'Cafe sữa đá', 25000,3,3,2),(4, 'Cafe sữa nóng', 25000,1,4,2)," +
-                "(5, 'Mocha', 45000,2,5,3),(6, 'Affogato', 50000,1,6,3),(7, 'Irish cofee', 45000,2,7,4)," +
-                "(8, 'Flat white', 65000,3,8,4)");
+        db.execSQL("INSERT INTO DOUONG VALUES (1, 'Latte', 30000,1,1)," +
+                "(2, 'Machiato', 35000,2,1),(3, 'Cafe sữa đá', 25000,3,2),(4, 'Cafe sữa nóng', 25000,4,2)," +
+                "(5, 'Mocha', 45000,5,3),(6, 'Affogato', 50000,6,3),(7, 'Irish cofee', 45000,7,4)," +
+                "(8, 'Flat white', 65000,8,4)");
 
         db.execSQL("INSERT INTO GIOHANG VALUES (1, 1, 1, 2, 20000),(2, 2, 2, 3, 30000)," +
                 "(3, 3, 3, 4, 40000)");

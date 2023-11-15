@@ -47,7 +47,8 @@ public class TrangChu_Fragment extends Fragment {
         // Tạo danh sách mới với các trường cần thiết
         List<DoUong> list2 = new ArrayList<>();
         for (DoUong doUong : list) {
-            list2.add(new DoUong(doUong.getTenDoUong(), doUong.getGia(), doUong.getImageId()));
+            list2.add(new DoUong(doUong.getMaDoUong(), doUong.getTenDoUong(),
+                    doUong.getGia(), doUong.getImageId(), doUong.getMaLoai()));
         }
 
         doUongAdapter = new DoUongAdapter(list2, getContext());

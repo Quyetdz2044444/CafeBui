@@ -4,7 +4,6 @@ public class DoUong {
     private int maDoUong;
     private String tenDoUong;
     private int gia;
-    private int maSize;
     private int imageId;
     private int maLoai;
 
@@ -12,21 +11,15 @@ public class DoUong {
     public DoUong() {
     }
 
-    public DoUong(int maDoUong, String tenDoUong, int gia, int maSize, int imageId, int maLoai) {
-        this.maDoUong = maDoUong;
-        this.tenDoUong = tenDoUong;
-        this.gia = gia;
-        this.maSize = maSize;
-        this.imageId = imageId;
-    }
-
-
-    public DoUong(String tenDoUong, int gia, int imageId) {
+    public DoUong(int maDoUong, String tenDoUong, int gia, int imageId, int maLoai) {
         this.maDoUong = maDoUong;
         this.tenDoUong = tenDoUong;
         this.gia = gia;
         this.imageId = imageId;
     }
+
+
+
 
     public int getMaDoUong() {
         return maDoUong;
@@ -50,14 +43,6 @@ public class DoUong {
 
     public void setGia(int gia) {
         this.gia = gia;
-    }
-
-    public int getMaSize() {
-        return maSize;
-    }
-
-    public void setMaSize(int maSize) {
-        this.maSize = maSize;
     }
 
     public int getImageId() {

@@ -5,6 +5,7 @@
     android:layout_margin="10dp"
     android:background="@drawable/item"
     android:gravity="center"
+    android:padding="5dp"
     android:orientation="vertical">
 
     <ImageView
