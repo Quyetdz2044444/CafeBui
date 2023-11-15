@@ -36,7 +36,7 @@ public class LoaiDoUongFragment extends Fragment {
     LoaiDoUong item;
     FloatingActionButton fab;
     Dialog dialog;
-    EditText edMaLoaiSach, edTenLoaiSach;
+    EditText edMaLoaiDoUong, edTenLoaiDoUong;
     Button btnSave, btnCancel;
 
     public LoaiDoUongFragment() {
@@ -101,15 +101,15 @@ public class LoaiDoUongFragment extends Fragment {
     protected void openDialog(final Context context, final int type) {
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_loaidouong_admin);
-        edMaLoaiSach = dialog.findViewById(R.id.edmaloai_loaiDouong);
-        edTenLoaiSach = dialog.findViewById(R.id.edtenloai_loaiDoUong);
+        edMaLoaiDoUong = dialog.findViewById(R.id.edmaloai_loaiDouong);
+        edTenLoaiDoUong = dialog.findViewById(R.id.edtenloai_loaiDoUong);
         btnCancel = dialog.findViewById(R.id.btnCancelLS);
         btnSave = dialog.findViewById(R.id.btnSaveLS);
 
-        edMaLoaiSach.setEnabled(false);
+        edMaLoaiDoUong.setEnabled(false);
         if (type != 0) {
-            edMaLoaiSach.setText(String.valueOf(item.getMaLoai()));
-            edTenLoaiSach.setText(item.getTenLoai());
+            edMaLoaiDoUong.setText(String.valueOf(item.getMaLoai()));
+            edTenLoaiDoUong.setText(item.getTenLoai());
         }
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +121,7 @@ public class LoaiDoUongFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 item = new LoaiDoUong();
-                item.setTenLoai(edTenLoaiSach.getText().toString());
+                item.setTenLoai(edTenLoaiDoUong.getText().toString());
                 if (validate() > 0) {
                     if (type == 0) {
                         if (dao.insert(item) > 0) {
@@ -130,7 +130,7 @@ public class LoaiDoUongFragment extends Fragment {
                             Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        item.setMaLoai(Integer.parseInt(edMaLoaiSach.getText().toString()));
+                        item.setMaLoai(Integer.parseInt(edMaLoaiDoUong.getText().toString()));
                         if (dao.updata(item) > 0) {
                             Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                         } else {
@@ -146,7 +146,7 @@ public class LoaiDoUongFragment extends Fragment {
     }
     public int validate() {
         int check = 1;
-        if (edTenLoaiSach.getText().length() == 0) {
+        if (edTenLoaiDoUong.getText().length() == 0) {
             Toast.makeText(getContext(), "Bạn phải nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             check = -1;
 
