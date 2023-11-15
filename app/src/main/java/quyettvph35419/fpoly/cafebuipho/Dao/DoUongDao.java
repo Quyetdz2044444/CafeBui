@@ -64,13 +64,7 @@ public class DoUongDao {
 
         while (cursor.moveToNext()) {
             DoUong obj = new DoUong();
-            String tb_DoUong = "create table DOUONG(" +
-                    "MaDO integer primary key autoincrement," +
-                    "TenDO text not null," +
-                    "GiaDO integer not null," +
-                    "MaSize integer references SIZE(MaSize)," +
-                    "Anh integer not null,"
-                    + "MaLoai integer references LOAIDOUONG(MaLoai))";
+
 
             obj.setMaDoUong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaDO"))));
             obj.setTenDoUong(cursor.getString(cursor.getColumnIndex("TenDO")));

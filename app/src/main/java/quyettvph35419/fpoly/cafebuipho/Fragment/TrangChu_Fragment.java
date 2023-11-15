@@ -50,11 +50,8 @@ public class TrangChu_Fragment extends Fragment {
             list2.add(new DoUong(doUong.getTenDoUong(), doUong.getGia(), doUong.getImageId()));
         }
 
-
-
         doUongAdapter = new DoUongAdapter(list2, getContext());
         rclViewDoUong.setAdapter(doUongAdapter);
-
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

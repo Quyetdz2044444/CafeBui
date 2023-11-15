@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "CafeBui";
-    public static final int DB_VERSION = 7;
+    public static final int DB_VERSION = 8;
 
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -35,7 +35,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String tb_size = "create table SIZE(" +
                 "MaSize integer primary key," +
-                "Size text not null)";
+                "Size text not null," +
+                "GiaSize integer not null)";
         db.execSQL(tb_size);
 
         String tb_DoUong = "create table DOUONG(" +
@@ -83,7 +84,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO LOAIDOUONG VALUES (1, 'Cafe truyền thống'),(2,'Cafe sữa'),(3,'Cafe pha máy')," +
                 "(4,'Cafe đặc biệt')");
 
-        db.execSQL("INSERT INTO SIZE VALUES (1, 'M' ),(2,'L'),(3,'XL')");
+        db.execSQL("INSERT INTO SIZE VALUES (1, 'M',0 ),(2,'L',10000),(3,'XL',15000)");
 
         db.execSQL("INSERT INTO DOUONG VALUES (1, 'Latte', 30000,1,1,1)," +
                 "(2, 'Machiato', 35000,2,2,1),(3, 'Cafe sữa đá', 25000,3,3,2),(4, 'Cafe sữa nóng', 25000,1,4,2)," +

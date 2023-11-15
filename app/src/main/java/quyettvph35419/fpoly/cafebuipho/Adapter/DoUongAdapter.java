@@ -3,6 +3,7 @@ package quyettvph35419.fpoly.cafebuipho.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -127,15 +128,15 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
             tendouong = itemView.findViewById(R.id.tvten_doUong);
             giaDoUong = itemView.findViewById(R.id.tvgia_doUong);
 
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    int vitri = getAdapterPosition();
-//                    Intent intent = new Intent(context, ChiTietDoUong.class);
-//                    context.startActivity(intent);
-//
-//                }
-//            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int vitri = getAdapterPosition();
+                    Intent intent = new Intent(context, ChiTietDoUong.class);
+                    context.startActivity(intent);
+
+                }
+            });
 
 
         }

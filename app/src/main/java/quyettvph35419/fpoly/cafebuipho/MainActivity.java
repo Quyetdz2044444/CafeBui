@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
             toolbar.setTitle("Trang chủ");
         }
 
-
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -117,17 +116,14 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle("Quản lý khách hàng");
                     KhachHang_Fragment addUserFragment = new KhachHang_Fragment();
                     replaceFrg(addUserFragment);
-
                 } else if (id == R.id.nav_trangchu) {
                     toolbar.setTitle("Trang chủ");
                     TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
                     replaceFrg(trangChuFragment);
-
                 } else if (id == R.id.nav_LoaiDoUong) {
                     toolbar.setTitle("Quản lý loại đồ uống");
                     LoaiDoUongFragment loaiDoUongFragment = new LoaiDoUongFragment();
                     replaceFrg(loaiDoUongFragment);
-
                 } else if (id == R.id.nav_DoUong) {
                     toolbar.setTitle("Quản lý đồ uống");
                     DoUong_Fragment doUongFragment = new DoUong_Fragment();
@@ -146,14 +142,11 @@ public class MainActivity extends AppCompatActivity {
                     replaceFrg(gioHangFragment);
                 } else if (id == R.id.sub_InfoAccount) {
                     toolbar.setTitle("Thông tin tài khoản");
-
                     Bundle bundle = new Bundle();
                     bundle.putString("user", user);
-
                     // Khởi tạo fragment và đính kèm bundle
                     ThongTinAcc_Fragment thongTinAccFragment = new ThongTinAcc_Fragment();
                     thongTinAccFragment.setArguments(bundle);
-
                     replaceFrg(thongTinAccFragment);
                 } else if (id == R.id.sub_DoanhThu) {
                     toolbar.setTitle("Doanh thu");
@@ -172,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
                     builder.setTitle("Đăng xuất");
                     builder.setMessage("Bạn chắc muốn đăng xuất chứ?");
                     builder.setCancelable(true);
-
                     builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -214,12 +206,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
     public void replaceFrg(Fragment frg) {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.flContent, frg).commit();
     }
-
 
 }
