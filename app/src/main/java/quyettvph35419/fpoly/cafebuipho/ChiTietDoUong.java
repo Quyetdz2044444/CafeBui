@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -24,7 +26,7 @@ import quyettvph35419.fpoly.cafebuipho.Model.Size;
 
 public class ChiTietDoUong extends AppCompatActivity {
 
-    private TextView tvten, tvgia, tvtenloai;
+    private TextView tvten, tvgia, tvtenloai, tvSelectedQuantity;
     private ImageView image; // ảnh sp
     private DoUongDao doUongDao;
     private DoUong doUong;
@@ -38,7 +40,6 @@ public class ChiTietDoUong extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_do_uong);
-
         anhXa();
 
         Intent intent = getIntent();
@@ -87,10 +88,26 @@ public class ChiTietDoUong extends AppCompatActivity {
 
     }
 
+    public void decreaseQuantity(View view) {
+        int currentQuantity = Integer.parseInt(tvSelectedQuantity.getText().toString());
+        if (currentQuantity > 1) {
+            currentQuantity--;
+            tvSelectedQuantity.setText(String.valueOf(currentQuantity));
+        }
+
+    }
+
+    public void increaseQuantity(View view) {
+        int currentQuantity = Integer.parseInt(tvSelectedQuantity.getText().toString());
+        currentQuantity++;
+        tvSelectedQuantity.setText(String.valueOf(currentQuantity));
+    }
+
     private void anhXa() {
         tvgia = findViewById(R.id.tvgia_doUongchitiet);
         tvten = findViewById(R.id.tvten_doUongchitiet);
         tvtenloai = findViewById(R.id.tvtenloai_doUongchitiet);
+        tvSelectedQuantity = findViewById(R.id.tvSelectedQuantity);
 
         image = findViewById(R.id.imgdouong_chitiet);
         rdoGrthanhtoan = findViewById(R.id.radioGrthanhtoan);
@@ -104,7 +121,6 @@ public class ChiTietDoUong extends AppCompatActivity {
 
         btnaddgio = findViewById(R.id.btn_addGioHang);
         btnmuahang = findViewById(R.id.btn_muahang);
-
 
     }
 

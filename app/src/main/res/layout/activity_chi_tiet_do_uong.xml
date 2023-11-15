@@ -4,44 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:orientation="vertical"
     android:padding="10dp"
-    android:layout_margin="10dp"
     tools:context=".ChiTietDoUong">
 
-    <ImageView
-        android:id="@+id/imgdouong_chitiet"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-
-    <TextView
-        android:id="@+id/tvten_doUongchitiet"
+    <LinearLayout
+        android:background="@drawable/item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Tên:"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_weight="1"
+            android:id="@+id/imgdouong_chitiet"
+            android:layout_width="150dp"
+            android:layout_height="220dp" />
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvten_doUongchitiet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Tên:"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
 
-    <TextView
-        android:id="@+id/tvgia_doUongchitiet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Giá:"
-        android:textColor="#F44336"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvgia_doUongchitiet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Giá:"
+                android:textColor="#F44336"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvtenloai_doUongchitiet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Loại:"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnDecrease"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:onClick="decreaseQuantity"
+                    android:src="@drawable/giam" />
+
+                <TextView
+                    android:id="@+id/tvSelectedQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="1"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/btnIncrease"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:onClick="increaseQuantity"
+                    android:src="@drawable/tang" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvtenloai_doUongchitiet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Loại:"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
