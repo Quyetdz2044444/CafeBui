@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
+    android:layout_margin="10dp"
     tools:context=".ChiTietDoUong">
 
     <ImageView
@@ -34,6 +35,15 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/tvtenloai_doUongchitiet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Loại:"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -43,9 +53,9 @@
 
     <RadioGroup
         android:id="@+id/radioGrSize"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/rdo_M"
@@ -64,6 +74,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="XL" />
+
+
     </RadioGroup>
 
     <TextView
@@ -99,6 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Thêm vào giỏ hàng" />
+
     <Button
         android:id="@+id/btn_muahang"
         android:layout_width="match_parent"
