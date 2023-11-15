@@ -71,6 +71,7 @@
             android:id="@+id/btnxoa_doUong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/xoa" />
+            android:src="@drawable/xoa"
+            android:layout_gravity="bottom"/>
 
 </LinearLayout>

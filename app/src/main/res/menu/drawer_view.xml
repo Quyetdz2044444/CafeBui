@@ -21,7 +21,7 @@
                     android:visible="false" />
                 <item
                     android:id="@+id/nav_LoaiDoUong"
-                    android:icon="@drawable/loaidouong"
+                    android:icon="@drawable/loaidouongadd"
                     android:title="Quản lý loại đồ uống"
                     android:visible="false" />
 
