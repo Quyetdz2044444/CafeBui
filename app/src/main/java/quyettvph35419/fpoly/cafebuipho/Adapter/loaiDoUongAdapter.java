@@ -10,24 +10,23 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 
 import java.util.ArrayList;
 
-import quyettvph35419.fpoly.cafebuipho.Fragment.LoaiDoUongFragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.QLLoaiDoUongFragment;
 import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 public class loaiDoUongAdapter extends ArrayAdapter<LoaiDoUong> {
     private Context context;
     private ArrayList<LoaiDoUong> list;
-    private LoaiDoUongFragment fragment;
+    private QLLoaiDoUongFragment fragment;
     TextView tvmaLoai, tvtenLoai;
     ImageView imgxoa;
 
 
 
-    public loaiDoUongAdapter(@NonNull Context context, LoaiDoUongFragment fragment, ArrayList<LoaiDoUong> list) {
+    public loaiDoUongAdapter(@NonNull Context context, QLLoaiDoUongFragment fragment, ArrayList<LoaiDoUong> list) {
         super(context, 0, list);
         this.context = context;
         this.list = list;

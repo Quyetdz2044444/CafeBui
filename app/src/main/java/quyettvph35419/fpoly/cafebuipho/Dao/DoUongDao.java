@@ -62,8 +62,6 @@ public class DoUongDao {
 
         while (cursor.moveToNext()) {
             DoUong obj = new DoUong();
-
-
             obj.setMaDoUong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaDO"))));
             obj.setTenDoUong(cursor.getString(cursor.getColumnIndex("TenDO")));
             obj.setGia(Integer.parseInt(cursor.getString(cursor.getColumnIndex("GiaDO"))));

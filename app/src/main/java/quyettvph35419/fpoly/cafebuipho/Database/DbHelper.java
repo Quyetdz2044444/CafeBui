@@ -85,14 +85,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.execSQL("INSERT INTO SIZE VALUES (1, 'M',0 ),(2,'L',10000),(3,'XL',15000)");
 
-
-//        String tb_DoUong = "create table DOUONG(" +
-//                "MaDO integer primary key autoincrement," +
-//                "TenDO text not null," +
-//                "GiaDO integer not null," +
-//                "Anh integer not null,"
-//                + "MaLoai integer references LOAIDOUONG(MaLoai))";
-//        db.execSQL(tb_DoUong);
         db.execSQL("INSERT INTO DOUONG VALUES (1, 'Latte', 30000,1,1)," +
                 "(2, 'Machiato', 35000,2,1),(3, 'Cafe sữa đá', 25000,3,2),(4, 'Cafe sữa nóng', 25000,4,2)," +
                 "(5, 'Mocha', 45000,5,3),(6, 'Affogato', 50000,6,3),(7, 'Irish cofee', 45000,7,4)," +

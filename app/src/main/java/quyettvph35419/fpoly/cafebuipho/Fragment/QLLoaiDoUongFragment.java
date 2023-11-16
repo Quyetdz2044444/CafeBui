@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +27,7 @@ import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 
-public class LoaiDoUongFragment extends Fragment {
+public class QLLoaiDoUongFragment extends Fragment {
     ListView listView;
     ArrayList<LoaiDoUong> list;
     static LoaiDoUongDAO dao;
@@ -39,7 +38,7 @@ public class LoaiDoUongFragment extends Fragment {
     EditText edMaLoaiDoUong, edTenLoaiDoUong;
     Button btnSave, btnCancel;
 
-    public LoaiDoUongFragment() {
+    public QLLoaiDoUongFragment() {
     }
 
 

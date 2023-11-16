@@ -25,12 +25,12 @@ import com.google.android.material.navigation.NavigationView;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Fragment.KhachHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ChangePass_Fragment;
-import quyettvph35419.fpoly.cafebuipho.Fragment.DoUong_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.QLDoUong_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DoanhThu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.GioHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Admin_Fragment;
-import quyettvph35419.fpoly.cafebuipho.Fragment.LoaiDoUongFragment;
+import quyettvph35419.fpoly.cafebuipho.Fragment.QLLoaiDoUongFragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ThongTinAcc_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.Top5_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             bottomNav.setVisibility(View.GONE);
 
 //             set trang mở lên đầu tiên là trang quản lí đồ uống
-            DoUong_Fragment doUongFragment = new DoUong_Fragment();
+            QLDoUong_Fragment doUongFragment = new QLDoUong_Fragment();
             replaceFrg(doUongFragment);
             toolbar.setTitle("Quản lý đồ uống");
 
@@ -123,11 +123,11 @@ public class MainActivity extends AppCompatActivity {
                     replaceFrg(trangChuFragment);
                 } else if (id == R.id.nav_LoaiDoUong) {
                     toolbar.setTitle("Quản lý loại đồ uống");
-                    LoaiDoUongFragment loaiDoUongFragment = new LoaiDoUongFragment();
+                    QLLoaiDoUongFragment loaiDoUongFragment = new QLLoaiDoUongFragment();
                     replaceFrg(loaiDoUongFragment);
                 } else if (id == R.id.nav_DoUong) {
                     toolbar.setTitle("Quản lý đồ uống");
-                    DoUong_Fragment doUongFragment = new DoUong_Fragment();
+                    QLDoUong_Fragment doUongFragment = new QLDoUong_Fragment();
                     replaceFrg(doUongFragment);
                 } else if (id == R.id.nav_HoaDon) {
                     toolbar.setTitle("Quản lý hóa đơn");
