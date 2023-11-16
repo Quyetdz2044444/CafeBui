@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (user.equalsIgnoreCase("admin")) {
             nv.getMenu().findItem(R.id.sub_DoanhThu).setVisible(true);
+            nv.getMenu().findItem(R.id.sub_Top).setVisible(true);
             nv.getMenu().findItem(R.id.nav_KhachHang).setVisible(true);
             nv.getMenu().findItem(R.id.nav_HoaDon).setVisible(true);
             nv.getMenu().findItem(R.id.nav_LoaiDoUong).setVisible(true);

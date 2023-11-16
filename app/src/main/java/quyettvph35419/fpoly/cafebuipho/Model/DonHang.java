@@ -5,7 +5,6 @@ import java.util.Date;
 public class DonHang {
     private int maDH;
     private int maKH;
-    private int maDoUong;
     private Date ngay;
     private int gia;
     private int trangThai;
@@ -13,10 +12,9 @@ public class DonHang {
     public DonHang() {
     }
 
-    public DonHang(int maDH, int maKH, int maDoUong, Date ngay, int gia, int trangThai) {
+    public DonHang(int maDH, int maKH,  Date ngay, int gia, int trangThai) {
         this.maDH = maDH;
         this.maKH = maKH;
-        this.maDoUong = maDoUong;
         this.ngay = ngay;
         this.gia = gia;
         this.trangThai = trangThai;
@@ -36,14 +34,6 @@ public class DonHang {
 
     public void setMaKH(int maKH) {
         this.maKH = maKH;
-    }
-
-    public int getMaDoUong() {
-        return maDoUong;
-    }
-
-    public void setMaDoUong(int maDoUong) {
-        this.maDoUong = maDoUong;
     }
 
     public Date getNgay() {

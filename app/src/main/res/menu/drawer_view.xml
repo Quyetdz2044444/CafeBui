@@ -34,7 +34,7 @@
                 <item
                     android:id="@+id/nav_DonHang"
                     android:icon="@drawable/khachhang"
-                    android:title="Quản lý đơn hàng"
+                    android:title="Lịch sử đơn hàng"
                     android:visible="false" />
                 <item
                     android:id="@+id/nav_GioHang"
@@ -51,7 +51,8 @@
                 <item
                     android:id="@+id/sub_Top"
                     android:icon="@drawable/ic_top"
-                    android:title="5 đồ uống hot trend" />
+                    android:title="5 đồ uống hot trend"
+                    android:visible="false" />
                 <item
                     android:id="@+id/sub_DoanhThu"
                     android:icon="@drawable/ic_money"

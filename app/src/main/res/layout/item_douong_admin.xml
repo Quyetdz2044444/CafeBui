@@ -40,15 +40,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvsize_doUong"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Size:"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <TextView
             android:id="@+id/tvgia_doUong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -40,6 +40,7 @@ public class ChiTietDoUong extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_do_uong);
+
         anhXa();
 
         Intent intent = getIntent();
@@ -55,6 +56,7 @@ public class ChiTietDoUong extends AppCompatActivity {
 
         tvten.setText("Tên : " + doUong.getTenDoUong());
         tvgia.setText("Giá : " + doUong.getGia());
+
 
         int vitri = doUong.getImageId();
         int resourceId;
@@ -79,6 +81,30 @@ public class ChiTietDoUong extends AppCompatActivity {
                 break;
             case 7:
                 resourceId = R.drawable.mochacafe;
+                break;
+            case 8:
+                resourceId = R.drawable.cafelungo;
+                break;
+            case 9:
+                resourceId = R.drawable.caferistresto;
+                break;
+            case 10:
+                resourceId = R.drawable.cafepicolo;
+                break;
+            case 11:
+                resourceId = R.drawable.caferedeye;
+                break;
+            case 12:
+                resourceId = R.drawable.cafemuoi;
+                break;
+            case 13:
+                resourceId = R.drawable.cafetrung;
+                break;
+            case 14:
+                resourceId = R.drawable.cafelongblack;
+                break;
+            case 15:
+                resourceId = R.drawable.cafecotdua;
                 break;
             default:
                 resourceId = R.drawable.cafemacdinh; // Set ảnh mặc định nếu không khớp với bất kỳ trường hợp nào

@@ -72,6 +72,32 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
             case 7:
                 resourceId = R.drawable.mochacafe;
                 break;
+
+            case 8:
+                resourceId = R.drawable.cafelungo;
+                break;
+            case 9:
+                resourceId = R.drawable.caferistresto;
+                break;
+            case 10:
+                resourceId = R.drawable.cafepicolo;
+                break;
+            case 11:
+                resourceId = R.drawable.caferedeye;
+                break;
+            case 12:
+                resourceId = R.drawable.cafemuoi;
+                break;
+            case 13:
+                resourceId = R.drawable.cafetrung;
+                break;
+            case 14:
+                resourceId = R.drawable.cafelongblack;
+                break;
+            case 15:
+                resourceId = R.drawable.cafecotdua;
+                break;
+
             default:
                 resourceId = R.drawable.cafemacdinh; // Set ảnh mặc định nếu không khớp với bất kỳ trường hợp nào
                 break;
@@ -81,11 +107,11 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int position=holder.getAdapterPosition();
-                if(position!=RecyclerView.NO_POSITION){
+                int position = holder.getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
 
-                    Intent intent=new Intent(context, ChiTietDoUong.class);
-                    intent.putExtra("madouong",doUong.getMaDoUong());
+                    Intent intent = new Intent(context, ChiTietDoUong.class);
+                    intent.putExtra("madouong", doUong.getMaDoUong());
 
                     context.startActivity(intent);
                 }

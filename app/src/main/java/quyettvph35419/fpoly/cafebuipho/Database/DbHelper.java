@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "CafeBui";
-    public static final int DB_VERSION = 9;
+    public static final int DB_VERSION = 12;
 
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -60,7 +60,6 @@ public class DbHelper extends SQLiteOpenHelper {
         String tb_DonHang = "create table DONHANG(" +
                 "MaDH integer primary key autoincrement," +
                 "MAKH Text references KHACHHANG(MAKH)," +
-                "MaDO integer references DOUONG(MaDO)," +
                 "Ngay date not null,"
                 + "Gia integer not null,"
                 + "TrangThai integer not null)";
@@ -86,17 +85,27 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.execSQL("INSERT INTO SIZE VALUES (1, 'M',0 ),(2,'L',10000),(3,'XL',15000)");
 
+
+//        String tb_DoUong = "create table DOUONG(" +
+//                "MaDO integer primary key autoincrement," +
+//                "TenDO text not null," +
+//                "GiaDO integer not null," +
+//                "Anh integer not null,"
+//                + "MaLoai integer references LOAIDOUONG(MaLoai))";
+//        db.execSQL(tb_DoUong);
         db.execSQL("INSERT INTO DOUONG VALUES (1, 'Latte', 30000,1,1)," +
                 "(2, 'Machiato', 35000,2,1),(3, 'Cafe sữa đá', 25000,3,2),(4, 'Cafe sữa nóng', 25000,4,2)," +
                 "(5, 'Mocha', 45000,5,3),(6, 'Affogato', 50000,6,3),(7, 'Irish cofee', 45000,7,4)," +
-                "(8, 'Flat white', 65000,8,4)");
+                "(8, 'Flat white', 65000,8,4),(9, 'Lungo coffee', 60000,9,1),(10, 'Ristresto', 55000,10,3)," +
+                "(11, 'Red eyes', 50000,11,4),(12, 'Picolo coffee', 65000,12,2),(13, 'Cafe muối', 60000,13,3)," +
+                "(14, 'Cafe trứng', 50000,14,2),(15, 'Long black ', 45000,15,1),(16, 'Cafe cốt dừa', 55000,16,4)");
 
         db.execSQL("INSERT INTO GIOHANG VALUES (1, 1, 1, 2, 20000),(2, 2, 2, 3, 30000)," +
                 "(3, 3, 3, 4, 40000)");
 
-        db.execSQL("INSERT INTO DONHANG VALUES (1, 'Customer1', 1, '2022-11-14', 20000, 1)," +
-                "(2, 'Customer2', 2, '2023-03-10', 30000, 2),(3, 'Customer3', 3, '2023-05-16', 25000, 2)," +
-                "(4, 'Customer3', 3, '2023-07-20', 40000, 3),(5, 'Customer4', 4, '2023-05-04', 35000, 4)");
+        db.execSQL("INSERT INTO DONHANG VALUES (1, 'Customer1', '2022-11-14', 20000, 1)," +
+                "(2, 'Customer2', '2023-03-10', 30000, 2),(3, 'Customer3',  '2023-05-16', 25000, 3)," +
+                "(4, 'Customer4',  '2023-07-20', 40000, 4),(5, 'Customer5', '2023-05-04', 35000, 2)");
 
 //        db.execSQL("INSERT INTO DONHANGCHITIET VALUES (1, 1, 1, 50000, 2, '2023-02-14', 1,1)," +
 //                "(2, 2, 2, 60000, 3, '2023-03-15', 2,2),(4, 4, 4, 50000, 4, '2023-05-12', 3,3)," +
