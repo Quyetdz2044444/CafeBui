@@ -48,6 +48,4 @@ public class DoUong_Fragment extends Fragment {
         adapter = new DoUongAdapter_Admin(getActivity(), this, list);
         listView.setAdapter(adapter);
     }
-
-
 }

@@ -13,8 +13,10 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDAO;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DoUong_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
+import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 public class DoUongAdapter_Admin extends ArrayAdapter<DoUong> {
@@ -41,15 +43,17 @@ public class DoUongAdapter_Admin extends ArrayAdapter<DoUong> {
         }
         final DoUong item = list.get(position);
         if (item != null) {
+            LoaiDoUongDAO loaiDoUongDAO = new LoaiDoUongDAO(context);
+            LoaiDoUong loaiDoUong = loaiDoUongDAO.getID(String.valueOf(item.getMaLoai()));
             tvid = v.findViewById(R.id.tvma_doUong);
             tvten = v.findViewById(R.id.tvten_doUong);
             tvloai = v.findViewById(R.id.tvloai_doUong);
             tvgia = v.findViewById(R.id.tvgia_doUong);
             imgDoUong = v.findViewById(R.id.btnxoa_doUong);
 
-            tvid.setText("Mã Đồ Uống: " + item.getMaLoai());
-            tvten.setText("Tên Đồ Uống: " + item.getTenDoUong());
-            tvloai.setText("Loại Đồ Uống: " + item.getMaLoai());
+            tvid.setText("Mã: " + item.getMaLoai());
+            tvten.setText("Tên: " + item.getTenDoUong());
+            tvloai.setText("Loại: " + loaiDoUong.getTenLoai());
             tvgia.setText("Giá: " + item.getGia());
 
         }
