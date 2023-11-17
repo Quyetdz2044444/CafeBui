@@ -22,6 +22,7 @@ import java.util.List;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDAO;
 import quyettvph35419.fpoly.cafebuipho.Dao.SizeDao;
+import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.Size;
@@ -44,6 +45,7 @@ public class ChiTietDoUong extends AppCompatActivity {
         setContentView(R.layout.activity_chi_tiet_do_uong);
 
         anhXa();
+
 
         Intent intent = getIntent();
         int maDoUong = intent.getIntExtra("madouong", -1);
@@ -125,10 +127,12 @@ public class ChiTietDoUong extends AppCompatActivity {
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 // Not needed in this case
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 updateTotalPrice();
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 // Not needed in this case
@@ -151,6 +155,7 @@ public class ChiTietDoUong extends AppCompatActivity {
         currentQuantity++;
         tvSelectedQuantity.setText(String.valueOf(currentQuantity));
     }
+
     private void updateTotalPrice() {
         int currentQuantity = Integer.parseInt(tvSelectedQuantity.getText().toString());
         tvtongtien.setText("Tổng tiền : " + doUong.getGia() * currentQuantity);
