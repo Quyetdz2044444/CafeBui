@@ -207,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     public void replaceFrg(Fragment frg) {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.flContent, frg).commit();

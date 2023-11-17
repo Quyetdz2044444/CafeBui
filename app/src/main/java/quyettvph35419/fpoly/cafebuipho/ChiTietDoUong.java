@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +28,7 @@ import quyettvph35419.fpoly.cafebuipho.Model.Size;
 
 public class ChiTietDoUong extends AppCompatActivity {
 
-    private TextView tvten, tvgia, tvtenloai, tvSelectedQuantity;
+    private TextView tvten, tvgia, tvtenloai, tvtongtien, tvSelectedQuantity;
     private ImageView image; // ảnh sp
     private DoUongDao doUongDao;
     private DoUong doUong;
@@ -56,6 +58,12 @@ public class ChiTietDoUong extends AppCompatActivity {
 
         tvten.setText("Tên : " + doUong.getTenDoUong());
         tvgia.setText("Giá : " + doUong.getGia());
+
+        int initialQuantity = 1;
+        tvSelectedQuantity.setText(String.valueOf(initialQuantity));
+
+        // Calculate and update the initial total price
+        updateTotalPrice();
 
 
         int vitri = doUong.getImageId();
@@ -112,6 +120,21 @@ public class ChiTietDoUong extends AppCompatActivity {
         }
         image.setImageResource(resourceId);
 
+        tvSelectedQuantity.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // Not needed in this case
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                updateTotalPrice();
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // Not needed in this case
+            }
+        });
+
     }
 
     public void decreaseQuantity(View view) {
@@ -128,11 +151,16 @@ public class ChiTietDoUong extends AppCompatActivity {
         currentQuantity++;
         tvSelectedQuantity.setText(String.valueOf(currentQuantity));
     }
+    private void updateTotalPrice() {
+        int currentQuantity = Integer.parseInt(tvSelectedQuantity.getText().toString());
+        tvtongtien.setText("Tổng tiền : " + doUong.getGia() * currentQuantity);
+    }
 
     private void anhXa() {
         tvgia = findViewById(R.id.tvgia_doUongchitiet);
         tvten = findViewById(R.id.tvten_doUongchitiet);
         tvtenloai = findViewById(R.id.tvtenloai_doUongchitiet);
+        tvtongtien = findViewById(R.id.tvtongtien);
         tvSelectedQuantity = findViewById(R.id.tvSelectedQuantity);
 
         image = findViewById(R.id.imgdouong_chitiet);

@@ -10,23 +10,23 @@
     tools:context=".ChiTietDoUong">
 
     <LinearLayout
-        android:background="@drawable/item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/item"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_weight="1"
             android:id="@+id/imgdouong_chitiet"
             android:layout_width="150dp"
-            android:layout_height="220dp" />
+            android:layout_height="220dp"
+            android:layout_weight="1" />
 
         <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:gravity="center_vertical"
             android:orientation="vertical">
 
@@ -153,6 +153,15 @@
             android:text="Tiền mặt" />
 
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvtongtien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#F44336"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="Tổng tiền" />
 
     <Button
         android:id="@+id/btn_addGioHang"
