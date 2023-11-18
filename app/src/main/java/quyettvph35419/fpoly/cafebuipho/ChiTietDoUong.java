@@ -6,26 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
-import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDAO;
-import quyettvph35419.fpoly.cafebuipho.Dao.SizeDao;
-import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
+import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
-import quyettvph35419.fpoly.cafebuipho.Model.Size;
 
 public class ChiTietDoUong extends AppCompatActivity {
 
@@ -33,7 +24,7 @@ public class ChiTietDoUong extends AppCompatActivity {
     private ImageView image; // ảnh sp
     private DoUongDao doUongDao;
     private DoUong doUong;
-    private LoaiDoUongDAO loaiDoUongDAO;
+    private LoaiDoUongDao loaiDoUongDAO;
     private LoaiDoUong loaiDoUong;
     private Button btnaddgio, btnmuahang;
     private RadioGroup rdoGrSize, rdoGrthanhtoan; // phương thức thanh toán
@@ -52,7 +43,7 @@ public class ChiTietDoUong extends AppCompatActivity {
         doUong = new DoUong();
         loaiDoUong = new LoaiDoUong();
         doUongDao = new DoUongDao(this);
-        loaiDoUongDAO = new LoaiDoUongDAO(this);
+        loaiDoUongDAO = new LoaiDoUongDao(this);
         doUong = doUongDao.getID(String.valueOf(maDoUong));
 
         loaiDoUong = loaiDoUongDAO.getID(String.valueOf(doUong.getMaLoai()));

@@ -12,10 +12,10 @@ import java.util.List;
 import quyettvph35419.fpoly.cafebuipho.Database.DbHelper;
 import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 
-public class LoaiDoUongDAO{
+public class LoaiDoUongDao {
     DbHelper dbHelper;
     private SQLiteDatabase db;
-    public LoaiDoUongDAO(Context context){
+    public LoaiDoUongDao(Context context){
         dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }

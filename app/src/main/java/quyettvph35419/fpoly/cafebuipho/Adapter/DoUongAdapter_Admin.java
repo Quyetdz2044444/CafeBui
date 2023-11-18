@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDAO;
+import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Fragment.QLDoUong_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
@@ -43,7 +43,7 @@ public class DoUongAdapter_Admin extends ArrayAdapter<DoUong> {
         }
         final DoUong item = list.get(position);
         if (item != null) {
-            LoaiDoUongDAO loaiDoUongDAO = new LoaiDoUongDAO(context);
+            LoaiDoUongDao loaiDoUongDAO = new LoaiDoUongDao(context);
             LoaiDoUong loaiDoUong = loaiDoUongDAO.getID(String.valueOf(item.getMaLoai()));
             tvid = v.findViewById(R.id.tvma_doUong);
             tvten = v.findViewById(R.id.tvten_doUong);

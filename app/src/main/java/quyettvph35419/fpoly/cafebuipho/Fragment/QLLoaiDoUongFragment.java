@@ -22,7 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 import quyettvph35419.fpoly.cafebuipho.Adapter.loaiDoUongAdapter;
-import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDAO;
+import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
@@ -30,7 +30,7 @@ import quyettvph35419.fpoly.cafebuipho.R;
 public class QLLoaiDoUongFragment extends Fragment {
     ListView listView;
     ArrayList<LoaiDoUong> list;
-    static LoaiDoUongDAO dao;
+    static LoaiDoUongDao dao;
     loaiDoUongAdapter adapter;
     LoaiDoUong item;
     FloatingActionButton fab;
@@ -48,7 +48,7 @@ public class QLLoaiDoUongFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_loai_do_uong, container, false);
         listView = v.findViewById(R.id.lvloaidouong);
         fab = v.findViewById(R.id.btn_loaiDoUong);
-        dao = new LoaiDoUongDAO(getActivity());
+        dao = new LoaiDoUongDao(getActivity());
         capNhatLv();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

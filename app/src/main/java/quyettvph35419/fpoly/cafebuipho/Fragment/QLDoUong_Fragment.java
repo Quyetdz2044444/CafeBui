@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import quyettvph35419.fpoly.cafebuipho.Adapter.DoUongAdapter_Admin;
 import quyettvph35419.fpoly.cafebuipho.Adapter.LoaiDoUongSpinnerAdapter;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
-import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDAO;
+import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
@@ -45,7 +45,7 @@ public class QLDoUong_Fragment extends Fragment {
 
     private LoaiDoUongSpinnerAdapter spinnerAdapter;
     private ArrayList<LoaiDoUong> listLoaiSach;
-    private LoaiDoUongDAO loaiDoUongDAO;
+    private LoaiDoUongDao loaiDoUongDAO;
     private int maLoaiDoUong, position;
 
 
@@ -127,7 +127,7 @@ public class QLDoUong_Fragment extends Fragment {
         btnSave = dialog.findViewById(R.id.btnSaveSach);
 
         listLoaiSach = new ArrayList<LoaiDoUong>();
-        loaiDoUongDAO = new LoaiDoUongDAO(context);
+        loaiDoUongDAO = new LoaiDoUongDao(context);
         listLoaiSach = (ArrayList<LoaiDoUong>) loaiDoUongDAO.getAll();
 
         spinnerAdapter = new LoaiDoUongSpinnerAdapter(context, listLoaiSach);
