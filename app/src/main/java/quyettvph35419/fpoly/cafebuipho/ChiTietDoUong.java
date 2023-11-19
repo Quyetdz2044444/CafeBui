@@ -225,6 +225,7 @@ public class ChiTietDoUong extends AppCompatActivity {
         }
         tvgia.setText("Giá : " + gia);
         tvtongtien.setText("" + gia * currentQuantity);
+
     }
 
 

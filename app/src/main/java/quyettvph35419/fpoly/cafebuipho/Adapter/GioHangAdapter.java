@@ -68,8 +68,17 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
         size = sizeDao.getID(String.valueOf(masize));
 
         holder.tvsizegh.setText("Size : " + size.getSize());
-        holder.tvgiagh.setText("Giá : " + doUong.getGia());
-        holder.tvtongtienitem.setText("Tổng : " + doUong.getGia() * gioHang.getSoLuong());
+
+        int gia = doUong.getGia(); // Giá mặc định
+
+        if (size.getSize().equalsIgnoreCase("L")) {
+            gia += 10000; // Nếu size là L, tăng giá thêm 10000
+        } else if (size.getSize().equalsIgnoreCase("XL")) {
+            gia += 15000; // Nếu size là XL, tăng giá thêm 15000
+        }
+
+        holder.tvgiagh.setText("Giá : " + gia);
+        holder.tvtongtienitem.setText("Tổng : " + gia * gioHang.getSoLuong());
         holder.tvsoluonggh.setText("" + gioHang.getSoLuong());
 
 
@@ -196,7 +205,11 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
     private void updateTotalPrice(GioHangViewHolder holder, int currentQuantity) {
         int gia = Integer.parseInt(holder.tvgiagh.getText().toString().replace("Giá : ", ""));
         holder.tvtongtienitem.setText("Tổng : " + gia * currentQuantity);
+
     }
+
+
+
     public void xoa(final String Id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Delete");
