@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class QLGioHang extends AppCompatActivity {
     private GioHangDao gioHangDao;
     private List<GioHang> gioHangList;
     private GioHangAdapter gioHangAdapter;
+    private int tongTien = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,18 @@ public class QLGioHang extends AppCompatActivity {
         gioHangList = gioHangDao.getAll();
         gioHangAdapter = new GioHangAdapter(gioHangList, this);
         rclgiohang.setAdapter(gioHangAdapter);
+
+
+        for (GioHang gioHang : gioHangList) {
+            int gia = gioHang.getTongTien(); // Lấy giá từ sản phẩm
+
+            tongTien += gia;// Tính tổng giá tiền
+        }
+
+        // Hiển thị tổng giá tiền trong TextView
+        TextView tvTongTien = findViewById(R.id.tvtongtienGH);
+        tvTongTien.setText(String.valueOf(tongTien) + " vnđ");
+
 
     }
 }
