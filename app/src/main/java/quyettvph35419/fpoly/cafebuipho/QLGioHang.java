@@ -43,8 +43,6 @@ public class QLGioHang extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rclgiohang.setLayoutManager(layoutManager);
 
-
-
         gioHangList = gioHangDao.getAll();
         gioHangAdapter = new GioHangAdapter(gioHangList, this);
         rclgiohang.setAdapter(gioHangAdapter);

@@ -17,15 +17,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.GioHangDao;
+import quyettvph35419.fpoly.cafebuipho.Dao.SizeDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
+import quyettvph35419.fpoly.cafebuipho.Model.Size;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangViewHolder> {
     private List<GioHang> gioHangList;
-    Context context;
-    GioHangDao gioHangDao;
+    private Context context;
+    private GioHangDao gioHangDao;
+    private DoUongDao doUongDao;
+    private DoUong doUong;
+    private SizeDao sizeDao;
+    private Size size;
 
     public GioHangAdapter(List<GioHang> gioHangList, Context context) {
         this.gioHangList = gioHangList;
@@ -43,14 +50,30 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
     @Override
     public void onBindViewHolder(@NonNull GioHangViewHolder holder, int position) {
         gioHangDao = new GioHangDao(context);
-        GioHang gioHang = gioHangList.get(position);
+        doUongDao = new DoUongDao(context);
 
-        holder.tvtengh.setText("Tên : " + gioHang.getMaDoUong());
-        holder.tvsizegh.setText("Size : " + gioHang.getMaSize());
-        holder.tvgiagh.setText("Giá : " + gioHang.getTongTien());
+        GioHang gioHang = gioHangList.get(position);
+        doUong = new DoUong();
+
+        doUong = doUongDao.getID(String.valueOf(gioHang.getMaDoUong()));
+
+
+        holder.tvtengh.setText("Tên : " + doUong.getTenDoUong());
+
+        int masize = gioHang.getMaSize();
+        sizeDao = new SizeDao(context);
+        size = new Size();
+
+
+        size = sizeDao.getID(String.valueOf(masize));
+
+        holder.tvsizegh.setText("Size : " + size.getSize());
+        holder.tvgiagh.setText("Giá : " + doUong.getGia());
+        holder.tvtongtienitem.setText("Tổng : " + doUong.getGia() * gioHang.getSoLuong());
         holder.tvsoluonggh.setText("" + gioHang.getSoLuong());
 
-        int vitri = 1;
+
+        int vitri = doUong.getImageId();
         int resourceId;
         switch (vitri) {
             case 1:
@@ -114,6 +137,29 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
         });
 
 
+        holder.btntang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int currentQuantity = Integer.parseInt(holder.tvsoluonggh.getText().toString());
+                currentQuantity++;
+                holder.tvsoluonggh.setText(String.valueOf(currentQuantity));
+                updateTotalPrice(holder, currentQuantity);
+            }
+        });
+
+        holder.btngiam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int currentQuantity = Integer.parseInt(holder.tvsoluonggh.getText().toString());
+                if (currentQuantity > 1) {
+                    currentQuantity--;
+                    holder.tvsoluonggh.setText(String.valueOf(currentQuantity));
+                    updateTotalPrice(holder, currentQuantity);
+                }
+            }
+        });
+
+
     }
 
     @Override
@@ -123,7 +169,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
 
     public class GioHangViewHolder extends RecyclerView.ViewHolder {
         private ImageView imgGiohang, btnxoagh;
-        private TextView tvtengh, tvgiagh, tvsizegh, tvsoluonggh;
+        private TextView tvtengh, tvgiagh, tvsizegh, tvtongtienitem, tvsoluonggh;
         private ImageButton btngiam, btntang;
 
         public GioHangViewHolder(@NonNull View itemView) {
@@ -133,6 +179,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
             tvgiagh = itemView.findViewById(R.id.tvgia_giohang);
             tvtengh = itemView.findViewById(R.id.tvten_giohang);
             tvsizegh = itemView.findViewById(R.id.tvsize_giohang);
+            tvtongtienitem = itemView.findViewById(R.id.tvtongtien_itemgiohang);
             tvsoluonggh = itemView.findViewById(R.id.tvSelectedQuantity);
 
             btntang = itemView.findViewById(R.id.btnIncrease);
@@ -140,9 +187,16 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
             btnxoagh = itemView.findViewById(R.id.btnxoa_gioHang);
 
 
+
+
         }
     }
 
+
+    private void updateTotalPrice(GioHangViewHolder holder, int currentQuantity) {
+        int gia = Integer.parseInt(holder.tvgiagh.getText().toString().replace("Giá : ", ""));
+        holder.tvtongtienitem.setText("Tổng : " + gia * currentQuantity);
+    }
     public void xoa(final String Id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Delete");

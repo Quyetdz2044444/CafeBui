@@ -144,53 +144,53 @@ public class ChiTietDoUong extends AppCompatActivity {
             }
         });
 
-
-        int luachonsize = rdoGrSize.getCheckedRadioButtonId();
-
-
         btnaddgio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isSizeSelected()) {
-                    int size = 1;
+                    int luachonsize = rdoGrSize.getCheckedRadioButtonId();
                     RadioButton selectedSizeRadioButton = findViewById(luachonsize);
-                    // Lấy giá trị của RadioButton được chọn
-                    String selectedSize = selectedSizeRadioButton.getText().toString();
 
-                    if (selectedSize == "M") {
-                        size = 1;
-                    } else if (selectedSize == "L") {
-                        size = 2;
+                    rdoGrSize.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup group, int checkedId) {
+                            updateTotalPrice(); // Cập nhật giá tiền ngay lúc chọn size
+                        }
+                    });
+
+                    if (selectedSizeRadioButton != null) {
+                        String selectedSize = selectedSizeRadioButton.getText().toString();
+
+                        int size;
+                        if (selectedSize.equals("M")) {
+                            size = 1;
+                        } else if (selectedSize.equals("L")) {
+                            size = 2;
+                        } else {
+                            size = 3;
+                        }
+
+                        gioHang = new GioHang();
+                        gioHangDao = new GioHangDao(getApplicationContext());
+
+                        gioHang.setMaDoUong(maDoUong);
+                        gioHang.setSoLuong(Integer.parseInt(tvSelectedQuantity.getText().toString()));
+                        gioHang.setMaSize(size);
+                        gioHang.setTongTien(Integer.parseInt(tvtongtien.getText().toString()));
+
+                        if (gioHangDao.insert(gioHang) > 0) {
+                            Toast.makeText(ChiTietDoUong.this, "Đã thêm vào giỏ", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(ChiTietDoUong.this, "Thêm vào giỏ không thành công", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
-                        size = 3;
+                        // Xử lý khi không có RadioButton được chọn
                     }
-                    gioHang = new GioHang();
-                    gioHangDao = new GioHangDao(getApplicationContext());
-//Cần set tên đồ uống, giá đồ uống , số lượng, tên size
-                    gioHang.setMaDoUong(maDoUong);
-
-                    gioHang.setSoLuong(Integer.parseInt(tvSelectedQuantity.getText().toString()));
-
-                    gioHang.setMaSize(size);
-
-                    gioHang.setTongTien(Integer.parseInt(tvtongtien.getText().toString()));
-
-
-                    gioHangDao.insert(gioHang);
-                    if (gioHangDao.insert(gioHang) > 0) {
-                        Toast.makeText(ChiTietDoUong.this, "Đã thêm vào giỏ", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(ChiTietDoUong.this, "Thêm vào giỏ không thành công", Toast.LENGTH_SHORT).show();
-                    }
-
-
                 } else {
                     Toast.makeText(ChiTietDoUong.this, "Vui lòng chọn size trước", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
     }
 
     public void decreaseQuantity(View view) {
@@ -199,7 +199,6 @@ public class ChiTietDoUong extends AppCompatActivity {
             currentQuantity--;
             tvSelectedQuantity.setText(String.valueOf(currentQuantity));
         }
-
     }
 
     public void increaseQuantity(View view) {
@@ -210,8 +209,24 @@ public class ChiTietDoUong extends AppCompatActivity {
 
     private void updateTotalPrice() {
         int currentQuantity = Integer.parseInt(tvSelectedQuantity.getText().toString());
-        tvtongtien.setText("" + doUong.getGia() * currentQuantity);
+        int gia = doUong.getGia();
+
+        // Lấy ID của RadioButton kích thước đang được chọn
+        int selectedSizeRadioButtonId = rdoGrSize.getCheckedRadioButtonId();
+
+        if (selectedSizeRadioButtonId == R.id.rdo_M) {
+            // Nếu size là M thì giá không thay đổi
+        } else if (selectedSizeRadioButtonId == R.id.rdo_L) {
+            // Nếu size là L thì giá tăng thêm 10000
+            gia += 10000;
+        } else if (selectedSizeRadioButtonId == R.id.rdo_XL) {
+            // Nếu size là XL thì giá tăng thêm 15000
+            gia += 15000;
+        }
+        tvgia.setText("Giá : " + gia);
+        tvtongtien.setText("" + gia * currentQuantity);
     }
+
 
     private boolean isSizeSelected() {
         return rdoBtnM.isChecked() || rdoBtnL.isChecked() || rdoBtnXL.isChecked();
@@ -220,7 +235,6 @@ public class ChiTietDoUong extends AppCompatActivity {
     private boolean isThanhToanSelected() {
         return rdoBtnCard.isChecked() || rdoBtnBanking.isChecked();
     }
-
 
     private void anhXa() {
         tvgia = findViewById(R.id.tvgia_doUongchitiet);
@@ -243,8 +257,5 @@ public class ChiTietDoUong extends AppCompatActivity {
         btnmuahang = findViewById(R.id.btn_muahang);
 
         tlToolbar = findViewById(R.id.toolbarchitiet);
-
     }
-
-
 }

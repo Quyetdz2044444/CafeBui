@@ -69,13 +69,20 @@
                 android:src="@drawable/tang" />
         </LinearLayout>
 
-
         <TextView
             android:id="@+id/tvsize_giohang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Size :"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvtongtien_itemgiohang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Tổng tiền :"
             android:textSize="15dp"
             android:textStyle="bold" />
 
