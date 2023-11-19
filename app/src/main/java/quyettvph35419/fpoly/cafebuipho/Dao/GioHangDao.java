@@ -55,7 +55,7 @@ public class GioHangDao {
         Cursor cursor = db.rawQuery(sql, selectionArgs);
         while (cursor.moveToNext()) {
             GioHang obj = new GioHang();
-            obj.setMaGH(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MAKH"))));
+            obj.setMaGH(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaGH"))));
             obj.setMaDoUong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaDO"))));
             obj.setMaSize(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaSize"))));
             obj.setSoLuong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("SoLuong"))));

@@ -4,188 +4,205 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
     android:orientation="vertical"
-    android:padding="10dp"
     tools:context=".ChiTietDoUong">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarchitiet"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#CA7409"
+        app:title="Chi Tiết Đồ Uống"
+        app:titleTextColor="@color/white" />
+
+
     <LinearLayout
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/item"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/imgdouong_chitiet"
-            android:layout_width="150dp"
-            android:layout_height="220dp"
-            android:layout_weight="1" />
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/item"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvten_doUongchitiet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Tên:"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/tvgia_doUongchitiet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Giá:"
-                android:textColor="#F44336"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/imgdouong_chitiet"
+                android:layout_width="150dp"
+                android:layout_height="220dp"
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/btnDecrease"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:onClick="decreaseQuantity"
-                    android:src="@drawable/giam" />
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvSelectedQuantity"
+                    android:id="@+id/tvten_doUongchitiet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Tên:"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tvgia_doUongchitiet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:text="1"
-                    android:textSize="20sp" />
+                    android:layout_marginTop="10dp"
+                    android:text="Giá:"
+                    android:textColor="#F44336"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-                <ImageButton
-                    android:id="@+id/btnIncrease"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:onClick="increaseQuantity"
-                    android:src="@drawable/tang" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btnDecrease"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:onClick="decreaseQuantity"
+                        android:src="@drawable/giam" />
+
+                    <TextView
+                        android:id="@+id/tvSelectedQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="1"
+                        android:textSize="20sp" />
+
+                    <ImageButton
+                        android:id="@+id/btnIncrease"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:onClick="increaseQuantity"
+                        android:src="@drawable/tang" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvtenloai_doUongchitiet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Loại:"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
             </LinearLayout>
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvtenloai_doUongchitiet"
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Size"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/radioGrSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rdo_M"
+                android:checked="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Loại:"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:text="M" />
+
+            <RadioButton
+                android:id="@+id/rdo_L"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="L" />
+
+            <RadioButton
+                android:id="@+id/rdo_XL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XL" />
+
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phương thức thanh toán"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/radioGrthanhtoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rdo_banking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Banking" />
+
+            <RadioButton
+                android:id="@+id/rdo_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiền mặt" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvtongtien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Tổng tiền"
+            android:textColor="#F44336"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Button
+                android:id="@+id/btn_addGioHang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Thêm vào giỏ hàng" />
+
+            <Button
+                android:id="@+id/btn_muahang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Đặt ngay" />
         </LinearLayout>
-    </LinearLayout>
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Size"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <RadioGroup
-        android:id="@+id/radioGrSize"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/rdo_M"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="M" />
-
-        <RadioButton
-            android:id="@+id/rdo_L"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="L" />
-
-        <RadioButton
-            android:id="@+id/rdo_XL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="XL" />
-
-
-    </RadioGroup>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Phương thức thanh toán"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <RadioGroup
-        android:id="@+id/radioGrthanhtoan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/rdo_banking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Banking" />
-
-        <RadioButton
-            android:id="@+id/rdo_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tiền mặt" />
-
-    </RadioGroup>
-
-    <TextView
-        android:layout_marginTop="15dp"
-        android:id="@+id/tvtongtien"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tổng tiền"
-        android:textColor="#F44336"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp">
-        <Button
-            android:id="@+id/btn_addGioHang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Thêm vào giỏ hàng" />
-
-        <Button
-            android:id="@+id/btn_muahang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="Đặt ngay" />
     </LinearLayout>
 
 

@@ -12,10 +12,15 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.widget.Toolbar;
 
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
+import quyettvph35419.fpoly.cafebuipho.Dao.GioHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
+import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
 import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 
 public class ChiTietDoUong extends AppCompatActivity {
@@ -24,11 +29,15 @@ public class ChiTietDoUong extends AppCompatActivity {
     private ImageView image; // ảnh sp
     private DoUongDao doUongDao;
     private DoUong doUong;
+    private Toolbar tlToolbar;
     private LoaiDoUongDao loaiDoUongDAO;
     private LoaiDoUong loaiDoUong;
     private Button btnaddgio, btnmuahang;
     private RadioGroup rdoGrSize, rdoGrthanhtoan; // phương thức thanh toán
     private RadioButton rdoBtnM, rdoBtnL, rdoBtnXL, rdoBtnCard, rdoBtnBanking;
+
+    private GioHang gioHang;
+    private GioHangDao gioHangDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +45,16 @@ public class ChiTietDoUong extends AppCompatActivity {
         setContentView(R.layout.activity_chi_tiet_do_uong);
 
         anhXa();
+        setSupportActionBar(tlToolbar);
 
+        // Hiển thị nút Back
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        tlToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         Intent intent = getIntent();
         int maDoUong = intent.getIntExtra("madouong", -1);
@@ -54,10 +72,7 @@ public class ChiTietDoUong extends AppCompatActivity {
 
         int initialQuantity = 1;
         tvSelectedQuantity.setText(String.valueOf(initialQuantity));
-
-        // Calculate and update the initial total price
         updateTotalPrice();
-
 
         int vitri = doUong.getImageId();
         int resourceId;
@@ -112,7 +127,6 @@ public class ChiTietDoUong extends AppCompatActivity {
                 break;
         }
         image.setImageResource(resourceId);
-
         tvSelectedQuantity.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -129,6 +143,53 @@ public class ChiTietDoUong extends AppCompatActivity {
                 // Not needed in this case
             }
         });
+
+
+        int luachonsize = rdoGrSize.getCheckedRadioButtonId();
+
+
+        btnaddgio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isSizeSelected()) {
+                    int size = 1;
+                    RadioButton selectedSizeRadioButton = findViewById(luachonsize);
+                    // Lấy giá trị của RadioButton được chọn
+                    String selectedSize = selectedSizeRadioButton.getText().toString();
+
+                    if (selectedSize == "M") {
+                        size = 1;
+                    } else if (selectedSize == "L") {
+                        size = 2;
+                    } else {
+                        size = 3;
+                    }
+                    gioHang = new GioHang();
+                    gioHangDao = new GioHangDao(getApplicationContext());
+//Cần set tên đồ uống, giá đồ uống , số lượng, tên size
+                    gioHang.setMaDoUong(maDoUong);
+
+                    gioHang.setSoLuong(Integer.parseInt(tvSelectedQuantity.getText().toString()));
+
+                    gioHang.setMaSize(size);
+
+                    gioHang.setTongTien(Integer.parseInt(tvtongtien.getText().toString()));
+
+
+                    gioHangDao.insert(gioHang);
+                    if (gioHangDao.insert(gioHang) > 0) {
+                        Toast.makeText(ChiTietDoUong.this, "Đã thêm vào giỏ", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(ChiTietDoUong.this, "Thêm vào giỏ không thành công", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                } else {
+                    Toast.makeText(ChiTietDoUong.this, "Vui lòng chọn size trước", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
     }
 
@@ -149,8 +210,17 @@ public class ChiTietDoUong extends AppCompatActivity {
 
     private void updateTotalPrice() {
         int currentQuantity = Integer.parseInt(tvSelectedQuantity.getText().toString());
-        tvtongtien.setText("Tổng tiền : " + doUong.getGia() * currentQuantity);
+        tvtongtien.setText("" + doUong.getGia() * currentQuantity);
     }
+
+    private boolean isSizeSelected() {
+        return rdoBtnM.isChecked() || rdoBtnL.isChecked() || rdoBtnXL.isChecked();
+    }
+
+    private boolean isThanhToanSelected() {
+        return rdoBtnCard.isChecked() || rdoBtnBanking.isChecked();
+    }
+
 
     private void anhXa() {
         tvgia = findViewById(R.id.tvgia_doUongchitiet);
@@ -171,6 +241,8 @@ public class ChiTietDoUong extends AppCompatActivity {
 
         btnaddgio = findViewById(R.id.btn_addGioHang);
         btnmuahang = findViewById(R.id.btn_muahang);
+
+        tlToolbar = findViewById(R.id.toolbarchitiet);
 
     }
 

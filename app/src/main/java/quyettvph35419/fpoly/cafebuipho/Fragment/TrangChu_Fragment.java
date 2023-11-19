@@ -40,6 +40,8 @@ public class TrangChu_Fragment extends Fragment {
         searchView = v.findViewById(R.id.SearchView);
 
         rclViewDoUong = v.findViewById(R.id.rclViewDoUong_kh);
+
+
         rclViewDoUong.setLayoutManager(new GridLayoutManager(getContext(), 2));
         doUongDao = new DoUongDao(getContext());
 

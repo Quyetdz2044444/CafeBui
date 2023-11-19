@@ -28,7 +28,6 @@ import quyettvph35419.fpoly.cafebuipho.Fragment.ChangePass_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.QLDoUong_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DoanhThu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Fragment;
-import quyettvph35419.fpoly.cafebuipho.Fragment.GioHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Admin_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.QLLoaiDoUongFragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ThongTinAcc_Fragment;
@@ -37,12 +36,12 @@ import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 
 public class MainActivity extends AppCompatActivity {
-    DrawerLayout drawer;
-    Toolbar toolbar;
-    View mHeaderView;
-    NavigationView nv;
+    private DrawerLayout drawer;
+    private Toolbar toolbar;
+    private View mHeaderView;
+    private NavigationView nv;
     private TextView tvUser;
-    BottomNavigationView bottomNav;
+    private BottomNavigationView bottomNav;
     private KhachHangDao khachHangDao;
 
 
@@ -138,9 +137,8 @@ public class MainActivity extends AppCompatActivity {
                     DonHang_Fragment donHangFragment = new DonHang_Fragment();
                     replaceFrg(donHangFragment);
                 } else if (id == R.id.nav_GioHang) {
-                    toolbar.setTitle("Quản lý giỏ hàng");
-                    GioHang_Fragment gioHangFragment = new GioHang_Fragment();
-                    replaceFrg(gioHangFragment);
+                    Intent intent = new Intent(MainActivity.this, QLGioHang.class);
+                    startActivity(intent);
                 } else if (id == R.id.sub_InfoAccount) {
                     toolbar.setTitle("Thông tin tài khoản");
                     Bundle bundle = new Bundle();
@@ -197,9 +195,8 @@ public class MainActivity extends AppCompatActivity {
                     TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
                     replaceFrg(trangChuFragment);
                 } else if (id == R.id.bottom_giohang) {
-                    toolbar.setTitle("Quản lý giỏ hàng");
-                    GioHang_Fragment gioHangFragment = new GioHang_Fragment();
-                    replaceFrg(gioHangFragment);
+                    Intent intent = new Intent(MainActivity.this, QLGioHang.class);
+                    startActivity(intent);
                 }
                 return false;
             }
