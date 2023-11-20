@@ -33,7 +33,7 @@ public class ChiTietDoUong extends AppCompatActivity {
     private LoaiDoUongDao loaiDoUongDAO;
     private LoaiDoUong loaiDoUong;
     private Button btnaddgio, btnmuahang;
-    private RadioGroup rdoGrSize, rdoGrthanhtoan; // phương thức thanh toán
+    private RadioGroup rdoGrSize, rdoGrthanhtoan;
     private RadioButton rdoBtnM, rdoBtnL, rdoBtnXL, rdoBtnCard, rdoBtnBanking;
 
     private GioHang gioHang;
@@ -191,6 +191,25 @@ public class ChiTietDoUong extends AppCompatActivity {
                 }
             }
         });
+
+        btnmuahang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isSizeSelected() && isThanhToanSelected()) {
+//                    Xử lí đặt hàng ở đây
+                    Toast.makeText(ChiTietDoUong.this, "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+
+                } else if (!isThanhToanSelected()) {
+                    Toast.makeText(ChiTietDoUong.this, "Hãy chọn phương thức thanh toán  ", Toast.LENGTH_SHORT).show();
+                } else if (!isSizeSelected()) {
+                    Toast.makeText(ChiTietDoUong.this, "Hãy chọn size", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ChiTietDoUong.this, "Bạn hãy chọn size và phương thức thanh toán", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
     }
 
     public void decreaseQuantity(View view) {

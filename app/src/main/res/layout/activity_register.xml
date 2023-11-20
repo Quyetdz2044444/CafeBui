@@ -7,7 +7,7 @@
     android:background="#E1A904"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".Login">
+    tools:context=".Account.Login">
 
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"

@@ -52,7 +52,6 @@ public class QLGioHang extends AppCompatActivity {
 
         for (GioHang gioHang : gioHangList) {
             int gia = gioHang.getTongTien(); // Lấy giá từ sản phẩm
-
             tongTien += gia;// Tính tổng giá tiền
         }
 

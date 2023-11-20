@@ -201,14 +201,11 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
         }
     }
 
-
     private void updateTotalPrice(GioHangViewHolder holder, int currentQuantity) {
         int gia = Integer.parseInt(holder.tvgiagh.getText().toString().replace("Giá : ", ""));
         holder.tvtongtienitem.setText("Tổng : " + gia * currentQuantity);
 
     }
-
-
 
     public void xoa(final String Id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);

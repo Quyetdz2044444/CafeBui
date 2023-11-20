@@ -1,4 +1,4 @@
-package quyettvph35419.fpoly.cafebuipho;
+package quyettvph35419.fpoly.cafebuipho.Account;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +22,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
+import quyettvph35419.fpoly.cafebuipho.MainActivity;
+import quyettvph35419.fpoly.cafebuipho.R;
 
 
 public class Login extends AppCompatActivity {
