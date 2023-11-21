@@ -5,8 +5,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -19,6 +21,7 @@ import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
 public class QLGioHang extends AppCompatActivity {
     private Toolbar tlbargiohang;
     private RecyclerView rclgiohang;
+    private Button btndathangGH;
     private GioHangDao gioHangDao;
     private List<GioHang> gioHangList;
     private GioHangAdapter gioHangAdapter;
@@ -59,6 +62,14 @@ public class QLGioHang extends AppCompatActivity {
         TextView tvTongTien = findViewById(R.id.tvtongtienGH);
         tvTongTien.setText(String.valueOf(tongTien) + " vnđ");
 
+        btndathangGH = findViewById(R.id.btndathangGH);
+        btndathangGH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QLGioHang.this, XacNhanDatHang.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

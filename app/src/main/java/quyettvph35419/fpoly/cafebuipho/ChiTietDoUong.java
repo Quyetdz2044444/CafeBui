@@ -33,8 +33,8 @@ public class ChiTietDoUong extends AppCompatActivity {
     private LoaiDoUongDao loaiDoUongDAO;
     private LoaiDoUong loaiDoUong;
     private Button btnaddgio, btnmuahang;
-    private RadioGroup rdoGrSize, rdoGrthanhtoan;
-    private RadioButton rdoBtnM, rdoBtnL, rdoBtnXL, rdoBtnCard, rdoBtnBanking;
+    private RadioGroup rdoGrSize;
+    private RadioButton rdoBtnM, rdoBtnL, rdoBtnXL;
 
     private GioHang gioHang;
     private GioHangDao gioHangDao;
@@ -149,7 +149,6 @@ public class ChiTietDoUong extends AppCompatActivity {
                 if (isSizeSelected()) {
                     int luachonsize = rdoGrSize.getCheckedRadioButtonId();
                     RadioButton selectedSizeRadioButton = findViewById(luachonsize);
-
                     rdoGrSize.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -194,35 +193,47 @@ public class ChiTietDoUong extends AppCompatActivity {
         btnmuahang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isSizeSelected() && isThanhToanSelected()) {
-//                    Xử lí đặt hàng ở đây
-                    Toast.makeText(ChiTietDoUong.this, "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(ChiTietDoUong.this, XacNhanDatHang.class);
 
-                } else if (!isThanhToanSelected()) {
-                    Toast.makeText(ChiTietDoUong.this, "Hãy chọn phương thức thanh toán  ", Toast.LENGTH_SHORT).show();
-                } else if (!isSizeSelected()) {
-                    Toast.makeText(ChiTietDoUong.this, "Hãy chọn size", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(ChiTietDoUong.this, "Bạn hãy chọn size và phương thức thanh toán", Toast.LENGTH_SHORT).show();
+                int luachonsize = rdoGrSize.getCheckedRadioButtonId();
+                RadioButton selectedSizeRadioButton = findViewById(luachonsize);
+                if (selectedSizeRadioButton != null) {
+                    String selectedSize = selectedSizeRadioButton.getText().toString();
+                    intent1.putExtra("size", selectedSize);
                 }
 
+                intent1.putExtra("tendouong", tvten.getText().toString());
+                intent1.putExtra("giadouong", tvgia.getText().toString());
+                intent1.putExtra("soluong", tvSelectedQuantity.getText().toString());
+                intent1.putExtra("tongtien", tvtongtien.getText().toString());
+                startActivity(intent1);
             }
         });
 
     }
 
     public void decreaseQuantity(View view) {
-        int currentQuantity = Integer.parseInt(tvSelectedQuantity.getText().toString());
-        if (currentQuantity > 1) {
-            currentQuantity--;
-            tvSelectedQuantity.setText(String.valueOf(currentQuantity));
+        if (isSizeSelected()) {
+            int currentQuantity = Integer.parseInt(tvSelectedQuantity.getText().toString());
+            if (currentQuantity > 1) {
+                currentQuantity--;
+                tvSelectedQuantity.setText(String.valueOf(currentQuantity));
+            }
+        } else {
+            Toast.makeText(this, "Chọn size trước khi chọn số lượng", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public void increaseQuantity(View view) {
-        int currentQuantity = Integer.parseInt(tvSelectedQuantity.getText().toString());
-        currentQuantity++;
-        tvSelectedQuantity.setText(String.valueOf(currentQuantity));
+        if (isSizeSelected()) {
+            int currentQuantity = Integer.parseInt(tvSelectedQuantity.getText().toString());
+            currentQuantity++;
+            tvSelectedQuantity.setText(String.valueOf(currentQuantity));
+        } else {
+            Toast.makeText(this, "Chọn size trước khi chọn số lượng", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void updateTotalPrice() {
@@ -251,9 +262,6 @@ public class ChiTietDoUong extends AppCompatActivity {
         return rdoBtnM.isChecked() || rdoBtnL.isChecked() || rdoBtnXL.isChecked();
     }
 
-    private boolean isThanhToanSelected() {
-        return rdoBtnCard.isChecked() || rdoBtnBanking.isChecked();
-    }
 
     private void anhXa() {
         tvgia = findViewById(R.id.tvgia_doUongchitiet);
@@ -263,9 +271,7 @@ public class ChiTietDoUong extends AppCompatActivity {
         tvSelectedQuantity = findViewById(R.id.tvSelectedQuantity);
 
         image = findViewById(R.id.imgdouong_chitiet);
-        rdoGrthanhtoan = findViewById(R.id.radioGrthanhtoan);
-        rdoBtnBanking = findViewById(R.id.rdo_banking);
-        rdoBtnCard = findViewById(R.id.rdo_card);
+
 
         rdoGrSize = findViewById(R.id.radioGrSize);
         rdoBtnM = findViewById(R.id.rdo_M);

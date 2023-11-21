@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CafeBuiPho"
         tools:targetApi="31">
         <activity
+            android:name=".XacNhanDatHang"
+            android:exported="false" />
+        <activity
             android:name=".QLGioHang"
             android:exported="false" />
         <activity
