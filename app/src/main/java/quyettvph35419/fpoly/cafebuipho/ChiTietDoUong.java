@@ -69,7 +69,7 @@ public class ChiTietDoUong extends AppCompatActivity {
 
         tvten.setText("Tên : " + doUong.getTenDoUong());
         tvgia.setText("Giá : " + doUong.getGia());
-
+        Toast.makeText(this, "Xin chào con chó", Toast.LENGTH_SHORT).show();
         int initialQuantity = 1;
         tvSelectedQuantity.setText(String.valueOf(initialQuantity));
         updateTotalPrice();
