@@ -198,11 +198,11 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnThanhToan_xndathang"
+            android:id="@+id/btndathang_xndathang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#C97409"
-            android:text="Thanh toán"
+            android:text="Đặt hàng"
             android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
