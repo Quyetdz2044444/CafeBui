@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -193,20 +194,25 @@ public class ChiTietDoUong extends AppCompatActivity {
         btnmuahang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(ChiTietDoUong.this, XacNhanDatHang.class);
+                if (isSizeSelected()) {
+                    Intent intent1 = new Intent(ChiTietDoUong.this, XacNhanDatHang.class);
 
-                int luachonsize = rdoGrSize.getCheckedRadioButtonId();
-                RadioButton selectedSizeRadioButton = findViewById(luachonsize);
-                if (selectedSizeRadioButton != null) {
-                    String selectedSize = selectedSizeRadioButton.getText().toString();
-                    intent1.putExtra("size", selectedSize);
+                    int luachonsize = rdoGrSize.getCheckedRadioButtonId();
+                    RadioButton selectedSizeRadioButton = findViewById(luachonsize);
+                    if (selectedSizeRadioButton != null) {
+                        String selectedSize = selectedSizeRadioButton.getText().toString();
+                        intent1.putExtra("size", selectedSize);
+                    }
+
+                    intent1.putExtra("tendouong", tvten.getText().toString());
+                    intent1.putExtra("giadouong", tvgia.getText().toString());
+                    intent1.putExtra("soluong", tvSelectedQuantity.getText().toString());
+                    intent1.putExtra("tongtien", tvtongtien.getText().toString());
+                    startActivity(intent1);
+                } else {
+                    Toast.makeText(ChiTietDoUong.this, "Vui lòng lựa chọn size", Toast.LENGTH_SHORT).show();
                 }
 
-                intent1.putExtra("tendouong", tvten.getText().toString());
-                intent1.putExtra("giadouong", tvgia.getText().toString());
-                intent1.putExtra("soluong", tvSelectedQuantity.getText().toString());
-                intent1.putExtra("tongtien", tvtongtien.getText().toString());
-                startActivity(intent1);
             }
         });
 

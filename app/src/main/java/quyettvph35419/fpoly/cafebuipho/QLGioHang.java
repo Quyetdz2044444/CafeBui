@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -57,6 +58,7 @@ public class QLGioHang extends AppCompatActivity {
             int gia = gioHang.getTongTien(); // Lấy giá từ sản phẩm
             tongTien += gia;// Tính tổng giá tiền
         }
+
 
         // Hiển thị tổng giá tiền trong TextView
         TextView tvTongTien = findViewById(R.id.tvtongtienGH);

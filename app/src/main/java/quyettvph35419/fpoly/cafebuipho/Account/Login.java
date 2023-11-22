@@ -123,6 +123,7 @@ public class Login extends AppCompatActivity {
             if (khachHangDao.checkLogin(strUser, strPass) > 0) {
                 Toast.makeText(getApplicationContext(), "Login thành công", Toast.LENGTH_SHORT).show();
                 rememberUser(strUser, strPass, chkRememberPass.isChecked());
+
                 Bundle bundle = new Bundle();
                 bundle.putString("user", strUser);
 

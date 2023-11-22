@@ -138,7 +138,10 @@ public class MainActivity extends AppCompatActivity {
                     DonHang_Fragment donHangFragment = new DonHang_Fragment();
                     replaceFrg(donHangFragment);
                 } else if (id == R.id.nav_GioHang) {
+
                     Intent intent = new Intent(MainActivity.this, QLGioHang.class);
+                    Toast.makeText(MainActivity.this, ""+user, Toast.LENGTH_SHORT).show();
+
                     startActivity(intent);
                 } else if (id == R.id.sub_InfoAccount) {
                     toolbar.setTitle("Thông tin tài khoản");
@@ -148,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                     ThongTinAcc_Fragment thongTinAccFragment = new ThongTinAcc_Fragment();
                     thongTinAccFragment.setArguments(bundle);
                     replaceFrg(thongTinAccFragment);
+
                 } else if (id == R.id.sub_DoanhThu) {
                     toolbar.setTitle("Doanh thu");
                     DoanhThu_Fragment doanhThuFragment = new DoanhThu_Fragment();
