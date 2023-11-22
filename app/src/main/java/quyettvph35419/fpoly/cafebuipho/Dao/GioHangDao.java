@@ -21,6 +21,18 @@ public class GioHangDao {
         dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
+    public int getCount() {
+        String sql = "SELECT COUNT(*) FROM GIOHANG";
+        Cursor cursor = db.rawQuery(sql, null);
+
+        int count = 0;
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(0);
+        }
+
+        cursor.close();
+        return count;
+    }
 
     public long insert(GioHang obj) {
         ContentValues values = new ContentValues();

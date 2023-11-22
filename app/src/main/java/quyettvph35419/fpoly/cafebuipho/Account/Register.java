@@ -38,8 +38,7 @@ public class Register extends AppCompatActivity {
         tvback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Register.this, Login.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
         btnCancel.setOnClickListener(new View.OnClickListener() {

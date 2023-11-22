@@ -26,8 +26,8 @@ import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 
 public class ChiTietDoUong extends AppCompatActivity {
 
-    private TextView tvten, tvgia, tvtenloai, tvtongtien, tvSelectedQuantity;
-    private ImageView image; // ảnh sp
+    private TextView tvten, tvgia, tvtenloai, tvtongtien, tvSelectedQuantity, tvsoluong_incart;
+    private ImageView image, imggiohang; // ảnh sp
     private DoUongDao doUongDao;
     private DoUong doUong;
     private Toolbar tlToolbar;
@@ -39,6 +39,7 @@ public class ChiTietDoUong extends AppCompatActivity {
 
     private GioHang gioHang;
     private GioHangDao gioHangDao;
+    int sluong_incart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,15 @@ public class ChiTietDoUong extends AppCompatActivity {
             }
         });
 
+
+        imggiohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChiTietDoUong.this, QLGioHang.class);
+                startActivity(intent);
+            }
+        });
+
         Intent intent = getIntent();
         int maDoUong = intent.getIntExtra("madouong", -1);
         doUong = new DoUong();
@@ -64,6 +74,12 @@ public class ChiTietDoUong extends AppCompatActivity {
         doUongDao = new DoUongDao(this);
         loaiDoUongDAO = new LoaiDoUongDao(this);
         doUong = doUongDao.getID(String.valueOf(maDoUong));
+
+        gioHang = new GioHang();
+        gioHangDao = new GioHangDao(getApplicationContext());
+
+         sluong_incart = gioHangDao.getCount();
+        tvsoluong_incart.setText(""+sluong_incart);
 
         loaiDoUong = loaiDoUongDAO.getID(String.valueOf(doUong.getMaLoai()));
         tvtenloai.setText("Loại : " + loaiDoUong.getTenLoai());
@@ -169,8 +185,6 @@ public class ChiTietDoUong extends AppCompatActivity {
                             size = 3;
                         }
 
-                        gioHang = new GioHang();
-                        gioHangDao = new GioHangDao(getApplicationContext());
 
                         gioHang.setMaDoUong(maDoUong);
                         gioHang.setSoLuong(Integer.parseInt(tvSelectedQuantity.getText().toString()));
@@ -179,6 +193,8 @@ public class ChiTietDoUong extends AppCompatActivity {
 
                         if (gioHangDao.insert(gioHang) > 0) {
                             Toast.makeText(ChiTietDoUong.this, "Đã thêm vào giỏ", Toast.LENGTH_SHORT).show();
+                            sluong_incart+=1;
+                            tvsoluong_incart.setText(""+sluong_incart);
                         } else {
                             Toast.makeText(ChiTietDoUong.this, "Thêm vào giỏ không thành công", Toast.LENGTH_SHORT).show();
                         }
@@ -275,8 +291,10 @@ public class ChiTietDoUong extends AppCompatActivity {
         tvtenloai = findViewById(R.id.tvtenloai_doUongchitiet);
         tvtongtien = findViewById(R.id.tvtongtien);
         tvSelectedQuantity = findViewById(R.id.tvSelectedQuantity);
+        tvsoluong_incart = findViewById(R.id.tvsluong_incart_chitiet);
 
         image = findViewById(R.id.imgdouong_chitiet);
+        imggiohang = findViewById(R.id.imggiohang_chitietdouong);
 
 
         rdoGrSize = findViewById(R.id.radioGrSize);

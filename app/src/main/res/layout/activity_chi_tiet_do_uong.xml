@@ -13,7 +13,25 @@
         android:layout_height="50dp"
         android:background="#CA7409"
         app:title="Chi Tiết Đồ Uống"
-        app:titleTextColor="@color/white" />
+        app:titleTextColor="@color/white">
+
+        <TextView
+            android:id="@+id/tvsluong_incart_chitiet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textColor="@color/white"
+            android:layout_marginEnd="25dp"
+            android:text="(6)" />
+
+        <ImageView
+            android:id="@+id/imggiohang_chitietdouong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/giohang" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -200,7 +218,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="#C97409"
+                android:backgroundTint="#DA4111"
                 android:text="Đặt ngay" />
         </LinearLayout>
     </LinearLayout>

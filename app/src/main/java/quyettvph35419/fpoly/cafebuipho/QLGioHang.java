@@ -68,8 +68,7 @@ public class QLGioHang extends AppCompatActivity {
         btndathangGH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(QLGioHang.this, XacNhanDatHang.class);
-                startActivity(intent);
+
             }
         });
 
