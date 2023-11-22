@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "CafeBui";
-    public static final int DB_VERSION = 12;
+    public static final int DB_VERSION = 16;
 
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -30,7 +30,8 @@ public class DbHelper extends SQLiteOpenHelper {
 //--------------------------------------------------------------------------
         String createTableLoaiDoUong = "create table LOAIDOUONG(" +
                 "MaLoai integer primary key autoincrement, " +
-                "TenLoai TEXT NOT NULL)";
+                "TenLoai TEXT NOT NULL, " +
+                "ImgLoai INTEGER NOT NULL)";
         db.execSQL(createTableLoaiDoUong);
 
         String tb_size = "create table SIZE(" +
@@ -80,8 +81,8 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO KHACHHANG VALUES('admin','Admin','admin','0983917432','Hà Nam','admin@gmail.com')," +
                 "('trinhpk','Phạm Trưởng','123','098458902','Ninh Bình','trinhpk3@gmail.com')");
 
-        db.execSQL("INSERT INTO LOAIDOUONG VALUES (1, 'Cafe truyền thống'),(2,'Cafe sữa'),(3,'Cafe pha máy')," +
-                "(4,'Cafe đặc biệt')");
+        db.execSQL("INSERT INTO LOAIDOUONG (MaLoai,TenLoai,ImgLoai) VALUES (1, 'Cafe truyền thống',2),(2,'Cafe sữa',3),(3,'Cafe pha máy',4)," +
+                "(4,'Cafe đặc biệt',5)");
 
         db.execSQL("INSERT INTO SIZE VALUES (1, 'M',0 ),(2,'L',10000),(3,'XL',15000)");
 

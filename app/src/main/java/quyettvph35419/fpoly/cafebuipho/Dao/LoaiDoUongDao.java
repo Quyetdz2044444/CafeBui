@@ -23,12 +23,14 @@ public class LoaiDoUongDao {
     public long insert (LoaiDoUong ldu){
         ContentValues values = new ContentValues();
         values.put("TenLoai", ldu.getTenLoai());
+        values.put("ImgLoai", ldu.getImgloai());
         return db.insert("LOAIDOUONG", null, values);
     }
 
     public long updata (LoaiDoUong ldu){
         ContentValues values = new ContentValues();
         values.put("TenLoai", ldu.getTenLoai());
+        values.put("ImgLoai", ldu.getImgloai());
         return db.update("LOAIDOUONG",values,"MaLoai = ?",
                 new String[]{String.valueOf(ldu.getMaLoai())});
     }
@@ -52,6 +54,7 @@ public class LoaiDoUongDao {
             LoaiDoUong ldu = new LoaiDoUong();
             ldu.setMaLoai(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaLoai"))));
             ldu.setTenLoai(cursor.getString(cursor.getColumnIndex("TenLoai")));
+            ldu.setImgloai(Integer.parseInt(cursor.getString(cursor.getColumnIndex("ImgLoai"))));
             list.add(ldu);
         }
         return list;

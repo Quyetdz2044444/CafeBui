@@ -21,6 +21,7 @@ import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.ChiTietDoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
+import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongViewHolder> implements Filterable {
@@ -171,5 +172,8 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
 
         }
     }
-
+    public void setDoUongList(List<DoUong> doUongList) {
+        this.doUongList = doUongList;
+        notifyDataSetChanged();
+    }
 }

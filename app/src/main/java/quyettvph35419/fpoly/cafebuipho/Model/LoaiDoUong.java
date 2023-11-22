@@ -3,13 +3,15 @@ package quyettvph35419.fpoly.cafebuipho.Model;
 public class LoaiDoUong {
     private int maLoai;
     private String tenLoai;
+    private int imgloai;
 
     public LoaiDoUong() {
     }
 
-    public LoaiDoUong(int maLoai, String tenLoai) {
+    public LoaiDoUong(int maLoai, String tenLoai, int imgloai) {
         this.maLoai = maLoai;
         this.tenLoai = tenLoai;
+        this.imgloai = imgloai;
     }
 
     public int getMaLoai() {
@@ -26,5 +28,13 @@ public class LoaiDoUong {
 
     public void setTenLoai(String tenLoai) {
         this.tenLoai = tenLoai;
+    }
+
+    public int getImgloai() {
+        return imgloai;
+    }
+
+    public void setImgloai(int imgloai) {
+        this.imgloai = imgloai;
     }
 }

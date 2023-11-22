@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -15,16 +16,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.Adapter.DoUongAdapter;
+import quyettvph35419.fpoly.cafebuipho.Adapter.DoUongAdapter_ngang;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
+import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
+import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 
 public class TrangChu_Fragment extends Fragment {
 
     private List<DoUong> list;
-    private RecyclerView rclViewDoUong;
+    private List<LoaiDoUong> listngang;
+    private RecyclerView rclViewDoUong, recyclerViewngang;
     private DoUongAdapter doUongAdapter;
+    private DoUongAdapter_ngang loaiDoUongAdapter;
+    private LoaiDoUongDao loaiDoUongDao;
     private SearchView searchView;
     private DoUongDao doUongDao;
 
@@ -40,10 +47,25 @@ public class TrangChu_Fragment extends Fragment {
         searchView = v.findViewById(R.id.SearchView);
 
         rclViewDoUong = v.findViewById(R.id.rclViewDoUong_kh);
+        recyclerViewngang = v.findViewById(R.id.rclViewLoaiDoUong_kh_ngang);
 
+        recyclerViewngang.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        LoaiDoUongDao loaiDoUongDao = new LoaiDoUongDao(getContext());
+        listngang = loaiDoUongDao.getAll();
+        loaiDoUongAdapter = new DoUongAdapter_ngang(listngang, getContext(), new DoUongAdapter_ngang.OnItemClickListener() {
+            @Override
+            public void onItemClick(LoaiDoUong loaiDoUong) {
+                // Gọi phương thức cập nhật danh sách sản phẩm khi có sự kiện click
+                updateDoUongList(String.valueOf(loaiDoUong.getMaLoai()));
+            }
+        });
+
+        recyclerViewngang.setAdapter(loaiDoUongAdapter);
 
         rclViewDoUong.setLayoutManager(new GridLayoutManager(getContext(), 2));
         doUongDao = new DoUongDao(getContext());
+
+
 
         list = doUongDao.getAll();
         // Tạo danh sách mới với các trường cần thiết
@@ -72,4 +94,10 @@ public class TrangChu_Fragment extends Fragment {
 
         return v;
     }
+    private void updateDoUongList(String maLoai) {
+        DoUongDao doUongDao = new DoUongDao(getContext());
+        List<DoUong> doUongTheoLoai = doUongDao.getDoUongByMaLoai((maLoai));
+        doUongAdapter.setDoUongList(doUongTheoLoai);
+    }
+
 }

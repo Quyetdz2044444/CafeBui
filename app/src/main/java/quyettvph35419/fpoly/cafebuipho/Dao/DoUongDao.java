@@ -14,9 +14,10 @@ import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 
 public class DoUongDao {
     private SQLiteDatabase db;
+    private DbHelper dbHelper;
 
     public DoUongDao(Context context) {
-        DbHelper dbHelper = new DbHelper(context);
+         dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
@@ -72,4 +73,33 @@ public class DoUongDao {
         return list;
 
     }
+
+        public List<DoUong> getDoUongByMaLoai(String maLoai) {
+            List<DoUong> doUongTheoLoai = new ArrayList<>();
+            SQLiteDatabase dbv = dbHelper.getReadableDatabase();
+            // Thực hiện truy vấn để lấy danh sách sản phẩm theo mã loại
+            String query = "SELECT * FROM DOUONG WHERE MaLoai = ?";
+            Cursor cursor = dbv.rawQuery(query, new String[]{String.valueOf(maLoai)});
+            if (cursor.moveToFirst()) {
+                do {
+                    // Lấy thông tin từ Cursor và tạo đối tượng DoUong
+                    @SuppressLint("Range") int maDoUong = cursor.getInt(cursor.getColumnIndex("MaDO"));
+                    @SuppressLint("Range") String tenDoUong = cursor.getString(cursor.getColumnIndex("TenDO"));
+                    @SuppressLint("Range") int giaDoUong = cursor.getInt(cursor.getColumnIndex("GiaDO"));
+                    @SuppressLint("Range") int anhDoUong = cursor.getInt(cursor.getColumnIndex("Anh"));
+                    @SuppressLint("Range") int maLoaiDoUong = cursor.getInt(cursor.getColumnIndex("MaLoai"));
+
+
+                    DoUong doUong = new DoUong(maDoUong, tenDoUong, giaDoUong, anhDoUong, maLoaiDoUong);
+                    doUongTheoLoai.add(doUong);
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+            dbv.close();
+
+            return doUongTheoLoai;
+        }
+
+
 }
