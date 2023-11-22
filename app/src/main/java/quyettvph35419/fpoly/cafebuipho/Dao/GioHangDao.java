@@ -41,6 +41,7 @@ public class GioHangDao {
         values.put("SoLuong", obj.getSoLuong());
         values.put("MaSize", obj.getMaSize());
         values.put("TongTien", obj.getTongTien());
+
         return db.insert("GIOHANG", null, values);
     }
 

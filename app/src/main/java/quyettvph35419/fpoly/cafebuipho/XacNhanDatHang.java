@@ -1,8 +1,10 @@
 package quyettvph35419.fpoly.cafebuipho;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +14,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.Calendar;
+
+import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
+import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 
 public class XacNhanDatHang extends AppCompatActivity {
@@ -23,6 +32,8 @@ public class XacNhanDatHang extends AppCompatActivity {
     private Toolbar tlbarxndathang;
     private KhachHang khachHang;
     private KhachHangDao khachHangDao;
+    private DonHang donHang;
+    private DonHangDao donHangDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +51,12 @@ public class XacNhanDatHang extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
+
+        String makh = intent.getStringExtra("makh");
+        khachHang = new KhachHang();
+        khachHangDao = new KhachHangDao(this);
+        khachHang = khachHangDao.getID(makh);
+
         String tendouong = intent.getStringExtra("tendouong");
         String size = intent.getStringExtra("size");
         String giadouong = intent.getStringExtra("giadouong");
@@ -49,11 +66,71 @@ public class XacNhanDatHang extends AppCompatActivity {
         tvTenDoUong.setText(tendouong);
         tvSizeDoUong.setText("Size : " + size);
         tvSoLuong.setText("Số lượng : " + soluong);
-        tvGiaDoUong.setText(giadouong);
+        tvGiaDoUong.setText("Giá : "+giadouong);
 
         tvTongTien.setText(tongtien);
 
+        tvHoten.setText("Họ tên : " + khachHang.getHoTen());
+        tvSdt.setText("Số điện thoại : " + khachHang.getSdt());
+        tvDiaChi.setText("Địa chỉ : " + khachHang.getDiaChi());
 
+
+        btnDatHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int selectedRadioButtonId = radioGrThanhToan.getCheckedRadioButtonId();
+
+                if (selectedRadioButtonId == -1) {
+                    // Không có radio button nào được chọn
+                    Toast.makeText(XacNhanDatHang.this, "Vui lòng chọn phương thức thanh toán", Toast.LENGTH_SHORT).show();
+                } else {
+                    RadioButton selectedRadioButton = findViewById(selectedRadioButtonId);
+
+//                   int maKH, String ngay, int gia, String thanhToan, int trangThai
+
+                    String phuongThucThanhToan = selectedRadioButton.getText().toString();
+                    String date = getCurrentDateTime();
+                    donHang = new DonHang();
+                    donHangDao = new DonHangDao(getApplicationContext());
+
+                    donHang.setMaKH(makh);
+                    donHang.setNgay(date);
+                    donHang.setGia(Integer.parseInt(giadouong));
+
+                    donHang.setThanhToan(phuongThucThanhToan);
+                    donHang.setTrangThai(1);
+
+                    if (donHangDao.insert(donHang) > 0) {
+                        showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
+                    }
+
+                }
+            }
+        });
+
+
+    }
+
+    private String getCurrentDateTime() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+        return dateFormat.format(calendar.getTime());
+    }
+
+    private void showAlertDialog(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(XacNhanDatHang.this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                onBackPressed();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     private void anhxa() {

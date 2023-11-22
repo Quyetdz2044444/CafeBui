@@ -103,7 +103,10 @@ public class MainActivity extends AppCompatActivity {
             nv.getMenu().findItem(R.id.nav_DonHang).setVisible(true);
             nv.getMenu().findItem(R.id.sub_InfoAccount).setVisible(true);
 
+            Bundle bundle = new Bundle();
+            bundle.putString("user", user);
             TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
+            trangChuFragment.setArguments(bundle);
             replaceFrg(trangChuFragment);
             toolbar.setTitle("Trang chủ");
         }
@@ -119,7 +122,10 @@ public class MainActivity extends AppCompatActivity {
                     replaceFrg(addUserFragment);
                 } else if (id == R.id.nav_trangchu) {
                     toolbar.setTitle("Trang chủ");
+                    Bundle bundle = new Bundle();
+                    bundle.putString("user", user);
                     TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
+                    trangChuFragment.setArguments(bundle);
                     replaceFrg(trangChuFragment);
                 } else if (id == R.id.nav_LoaiDoUong) {
                     toolbar.setTitle("Quản lý loại đồ uống");
@@ -130,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                     QLDoUong_Fragment doUongFragment = new QLDoUong_Fragment();
                     replaceFrg(doUongFragment);
                 } else if (id == R.id.nav_HoaDon) {
-                    toolbar.setTitle("Quản lý hóa đơn");
+                    toolbar.setTitle("Quản lý đơn hàng");
                     DonHang_Admin_Fragment hoaDonFragment = new DonHang_Admin_Fragment();
                     replaceFrg(hoaDonFragment);
                 } else if (id == R.id.nav_DonHang) {
@@ -138,10 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     DonHang_Fragment donHangFragment = new DonHang_Fragment();
                     replaceFrg(donHangFragment);
                 } else if (id == R.id.nav_GioHang) {
-
                     Intent intent = new Intent(MainActivity.this, QLGioHang.class);
-                    Toast.makeText(MainActivity.this, ""+user, Toast.LENGTH_SHORT).show();
-
                     startActivity(intent);
                 } else if (id == R.id.sub_InfoAccount) {
                     toolbar.setTitle("Thông tin tài khoản");
@@ -197,7 +200,10 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 if (id == R.id.bottom_trangchu) {
                     toolbar.setTitle("Trang chủ");
+                    Bundle bundle = new Bundle();
+                    bundle.putString("user", user);
                     TrangChu_Fragment trangChuFragment = new TrangChu_Fragment();
+                    trangChuFragment.setArguments(bundle);
                     replaceFrg(trangChuFragment);
                 } else if (id == R.id.bottom_giohang) {
                     Intent intent = new Intent(MainActivity.this, QLGioHang.class);

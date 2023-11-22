@@ -1,7 +1,9 @@
 package quyettvph35419.fpoly.cafebuipho;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -69,6 +71,8 @@ public class ChiTietDoUong extends AppCompatActivity {
 
         Intent intent = getIntent();
         int maDoUong = intent.getIntExtra("madouong", -1);
+        String makh = intent.getStringExtra("makh");
+
         doUong = new DoUong();
         loaiDoUong = new LoaiDoUong();
         doUongDao = new DoUongDao(this);
@@ -78,14 +82,14 @@ public class ChiTietDoUong extends AppCompatActivity {
         gioHang = new GioHang();
         gioHangDao = new GioHangDao(getApplicationContext());
 
-         sluong_incart = gioHangDao.getCount();
-        tvsoluong_incart.setText(""+sluong_incart);
+        sluong_incart = gioHangDao.getCount();
+        tvsoluong_incart.setText("" + sluong_incart);
 
         loaiDoUong = loaiDoUongDAO.getID(String.valueOf(doUong.getMaLoai()));
         tvtenloai.setText("Loại : " + loaiDoUong.getTenLoai());
 
         tvten.setText("Tên : " + doUong.getTenDoUong());
-        tvgia.setText("Giá : " + doUong.getGia());
+        tvgia.setText("" + doUong.getGia());
         int initialQuantity = 1;
         tvSelectedQuantity.setText(String.valueOf(initialQuantity));
         updateTotalPrice();
@@ -185,19 +189,19 @@ public class ChiTietDoUong extends AppCompatActivity {
                             size = 3;
                         }
 
-
                         gioHang.setMaDoUong(maDoUong);
                         gioHang.setSoLuong(Integer.parseInt(tvSelectedQuantity.getText().toString()));
                         gioHang.setMaSize(size);
                         gioHang.setTongTien(Integer.parseInt(tvtongtien.getText().toString()));
 
                         if (gioHangDao.insert(gioHang) > 0) {
-                            Toast.makeText(ChiTietDoUong.this, "Đã thêm vào giỏ", Toast.LENGTH_SHORT).show();
-                            sluong_incart+=1;
-                            tvsoluong_incart.setText(""+sluong_incart);
+                            showAlertDialog("Đã thêm vào giỏ hàng", "Đồ uống của bạn đã được thêm vào giỏ hàng");
+                            sluong_incart += 1;
+                            tvsoluong_incart.setText("" + sluong_incart);
                         } else {
                             Toast.makeText(ChiTietDoUong.this, "Thêm vào giỏ không thành công", Toast.LENGTH_SHORT).show();
                         }
+
                     } else {
                         // Xử lý khi không có RadioButton được chọn
                     }
@@ -224,6 +228,7 @@ public class ChiTietDoUong extends AppCompatActivity {
                     intent1.putExtra("giadouong", tvgia.getText().toString());
                     intent1.putExtra("soluong", tvSelectedQuantity.getText().toString());
                     intent1.putExtra("tongtien", tvtongtien.getText().toString());
+                    intent1.putExtra("makh", makh);
                     startActivity(intent1);
                 } else {
                     Toast.makeText(ChiTietDoUong.this, "Vui lòng lựa chọn size", Toast.LENGTH_SHORT).show();
@@ -274,7 +279,7 @@ public class ChiTietDoUong extends AppCompatActivity {
             // Nếu size là XL thì giá tăng thêm 15000
             gia += 15000;
         }
-        tvgia.setText("Giá : " + gia);
+        tvgia.setText("" + gia);
         tvtongtien.setText("" + gia * currentQuantity);
 
     }
@@ -284,6 +289,20 @@ public class ChiTietDoUong extends AppCompatActivity {
         return rdoBtnM.isChecked() || rdoBtnL.isChecked() || rdoBtnXL.isChecked();
     }
 
+    private void showAlertDialog(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ChiTietDoUong.this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 
     private void anhXa() {
         tvgia = findViewById(R.id.tvgia_doUongchitiet);
@@ -295,7 +314,6 @@ public class ChiTietDoUong extends AppCompatActivity {
 
         image = findViewById(R.id.imgdouong_chitiet);
         imggiohang = findViewById(R.id.imggiohang_chitietdouong);
-
 
         rdoGrSize = findViewById(R.id.radioGrSize);
         rdoBtnM = findViewById(R.id.rdo_M);

@@ -20,17 +20,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.ChiTietDoUong;
+import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
+import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongViewHolder> implements Filterable {
     private List<DoUong> doUongList, listOld;
     Context context;
+    private String makh;
 
-    public DoUongAdapter(List<DoUong> doUongList, Context context) {
+
+    public DoUongAdapter(List<DoUong> doUongList, Context context, String makh) {
         this.doUongList = doUongList;
         this.context = context;
+        this.makh = makh;
         this.listOld = new ArrayList<>(doUongList);
     }
 
@@ -113,6 +118,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
 
                     Intent intent = new Intent(context, ChiTietDoUong.class);
                     intent.putExtra("madouong", doUong.getMaDoUong());
+                    intent.putExtra("makh", makh);
 
                     context.startActivity(intent);
                 }
@@ -172,6 +178,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
 
         }
     }
+
     public void setDoUongList(List<DoUong> doUongList) {
         this.doUongList = doUongList;
         notifyDataSetChanged();

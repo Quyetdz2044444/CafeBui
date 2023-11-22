@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,6 @@ public class TrangChu_Fragment extends Fragment {
     private RecyclerView rclViewDoUong, recyclerViewngang;
     private DoUongAdapter doUongAdapter;
     private DoUongAdapter_ngang loaiDoUongAdapter;
-    private LoaiDoUongDao loaiDoUongDao;
     private SearchView searchView;
     private DoUongDao doUongDao;
 
@@ -45,6 +45,9 @@ public class TrangChu_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_trang_chu, container, false);
         searchView = v.findViewById(R.id.SearchView);
+
+
+
 
         rclViewDoUong = v.findViewById(R.id.rclViewDoUong_kh);
         recyclerViewngang = v.findViewById(R.id.rclViewLoaiDoUong_kh_ngang);
@@ -62,10 +65,9 @@ public class TrangChu_Fragment extends Fragment {
 
         recyclerViewngang.setAdapter(loaiDoUongAdapter);
 
+
         rclViewDoUong.setLayoutManager(new GridLayoutManager(getContext(), 2));
         doUongDao = new DoUongDao(getContext());
-
-
 
         list = doUongDao.getAll();
         // Tạo danh sách mới với các trường cần thiết
@@ -75,8 +77,15 @@ public class TrangChu_Fragment extends Fragment {
                     doUong.getGia(), doUong.getImageId(), doUong.getMaLoai()));
         }
 
-        doUongAdapter = new DoUongAdapter(list2, getContext());
-        rclViewDoUong.setAdapter(doUongAdapter);
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            String makh=bundle.getString("user");
+            doUongAdapter = new DoUongAdapter(list2, getContext(),makh);
+            rclViewDoUong.setAdapter(doUongAdapter);
+
+        }
+
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -92,8 +101,11 @@ public class TrangChu_Fragment extends Fragment {
         });
 
 
+
         return v;
+
     }
+
     private void updateDoUongList(String maLoai) {
         DoUongDao doUongDao = new DoUongDao(getContext());
         List<DoUong> doUongTheoLoai = doUongDao.getDoUongByMaLoai((maLoai));
