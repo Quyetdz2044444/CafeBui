@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.accounts.Account;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Calendar;
 
+import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
@@ -34,6 +36,7 @@ public class XacNhanDatHang extends AppCompatActivity {
     private KhachHangDao khachHangDao;
     private DonHang donHang;
     private DonHangDao donHangDao;
+    private Login login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,7 @@ public class XacNhanDatHang extends AppCompatActivity {
         tvTenDoUong.setText(tendouong);
         tvSizeDoUong.setText("Size : " + size);
         tvSoLuong.setText("Số lượng : " + soluong);
-        tvGiaDoUong.setText("Giá : "+giadouong);
+        tvGiaDoUong.setText("Giá : " + giadouong);
 
         tvTongTien.setText(tongtien);
 
@@ -101,6 +104,7 @@ public class XacNhanDatHang extends AppCompatActivity {
                     donHang.setTrangThai(1);
 
                     if (donHangDao.insert(donHang) > 0) {
+                        login.thongBao("Đơn hàng đã được đặt !",XacNhanDatHang.this);
                         showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
                     }
 
@@ -117,7 +121,7 @@ public class XacNhanDatHang extends AppCompatActivity {
         return dateFormat.format(calendar.getTime());
     }
 
-    private void showAlertDialog(String title, String message) {
+    public void showAlertDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(XacNhanDatHang.this);
         builder.setTitle(title);
         builder.setMessage(message);
@@ -132,6 +136,7 @@ public class XacNhanDatHang extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
 
     private void anhxa() {
         tlbarxndathang = findViewById(R.id.toolbarxndathang);
@@ -151,5 +156,7 @@ public class XacNhanDatHang extends AppCompatActivity {
         rdoCard = findViewById(R.id.rdo_card);
 
         btnDatHang = findViewById(R.id.btndathang_xndathang);
+
+        login = new Login();
     }
 }

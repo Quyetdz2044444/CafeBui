@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.GioHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDao;
@@ -38,7 +39,7 @@ public class ChiTietDoUong extends AppCompatActivity {
     private Button btnaddgio, btnmuahang;
     private RadioGroup rdoGrSize;
     private RadioButton rdoBtnM, rdoBtnL, rdoBtnXL;
-
+    private Login login;
     private GioHang gioHang;
     private GioHangDao gioHangDao;
     int sluong_incart;
@@ -196,6 +197,7 @@ public class ChiTietDoUong extends AppCompatActivity {
 
                         if (gioHangDao.insert(gioHang) > 0) {
                             showAlertDialog("Đã thêm vào giỏ hàng", "Đồ uống của bạn đã được thêm vào giỏ hàng");
+                            login.thongBao("Thêm vào giỏ hàng thành công", ChiTietDoUong.this);
                             sluong_incart += 1;
                             tvsoluong_incart.setText("" + sluong_incart);
                         } else {
@@ -324,5 +326,7 @@ public class ChiTietDoUong extends AppCompatActivity {
         btnmuahang = findViewById(R.id.btn_muahang);
 
         tlToolbar = findViewById(R.id.toolbarchitiet);
+
+        login = new Login();
     }
 }

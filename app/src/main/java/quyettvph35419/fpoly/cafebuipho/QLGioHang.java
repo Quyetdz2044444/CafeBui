@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Adapter.GioHangAdapter;
 import quyettvph35419.fpoly.cafebuipho.Dao.GioHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
@@ -22,6 +23,7 @@ import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
 public class QLGioHang extends AppCompatActivity {
     private Toolbar tlbargiohang;
     private RecyclerView rclgiohang;
+    private Login login;
     private Button btndathangGH;
     private GioHangDao gioHangDao;
     private List<GioHang> gioHangList;
@@ -32,7 +34,7 @@ public class QLGioHang extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qlgio_hang);
-
+        login = new Login();
         tlbargiohang = findViewById(R.id.toolbargiohang);
         setSupportActionBar(tlbargiohang);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

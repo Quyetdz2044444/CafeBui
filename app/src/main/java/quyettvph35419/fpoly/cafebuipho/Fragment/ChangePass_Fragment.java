@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 import quyettvph35419.fpoly.cafebuipho.R;
@@ -25,12 +26,14 @@ public class ChangePass_Fragment extends Fragment {
     private TextInputEditText edPassOld, edPassChange, edRePassChange;
     private Button btnSaveUserChange, btnCancleUserChange;
     private KhachHangDao qldao;
+    private Login login;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_change_pass, container, false);
+        login = new Login();
         qldao = new KhachHangDao(getActivity());
         edPassOld = v.findViewById(R.id.edPassOld);
         edPassChange = v.findViewById(R.id.edPassChange);
@@ -56,7 +59,7 @@ public class ChangePass_Fragment extends Fragment {
                     khachHang.setMatKhau(edPassChange.getText().toString());
 
                     if (qldao.updatePass(khachHang) > 0) {
-                        Toast.makeText(getActivity(), "Thay đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                        login.thongBao("Thay đổi mật khẩu thành công", getContext());
                         edPassOld.setText("");
                         edPassChange.setText("");
                         edRePassChange.setText("");

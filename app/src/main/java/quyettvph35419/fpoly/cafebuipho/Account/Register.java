@@ -14,17 +14,19 @@ import com.google.android.material.textfield.TextInputEditText;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 import quyettvph35419.fpoly.cafebuipho.R;
+import quyettvph35419.fpoly.cafebuipho.XacNhanDatHang;
 
 public class Register extends AppCompatActivity {
     private TextInputEditText edUserName, edPassword, edFullname, edSdt, edDiaChi, edEmail;
     private Button btnRegister, btnCancel;
     private KhachHangDao khachHangDao;
+    private Login login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        login = new Login();
         edUserName = findViewById(R.id.edUserName_dk);
         edPassword = findViewById(R.id.edPassword_dk);
         edFullname = findViewById(R.id.edFullName);
@@ -54,7 +56,9 @@ public class Register extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                login.thongBao("Đăng kí tài khoản thành công !", Register.this);
                 checkRegister();
+
             }
         });
 
@@ -77,7 +81,7 @@ public class Register extends AppCompatActivity {
             Toast.makeText(Register.this, "Bạn chưa điền mật khẩu", Toast.LENGTH_SHORT).show();
         } else if (sdt.isEmpty()) {
             Toast.makeText(Register.this, "Bạn chưa điền số điện thoại", Toast.LENGTH_SHORT).show();
-        }else if (diachi.isEmpty()) {
+        } else if (diachi.isEmpty()) {
             Toast.makeText(Register.this, "Bạn chưa điền địa chỉ", Toast.LENGTH_SHORT).show();
         } else if (email.isEmpty()) {
             Toast.makeText(Register.this, "Bạn chưa điền email", Toast.LENGTH_SHORT).show();

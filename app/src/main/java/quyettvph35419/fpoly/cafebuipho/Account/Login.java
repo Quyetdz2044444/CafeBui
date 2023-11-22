@@ -1,10 +1,16 @@
 package quyettvph35419.fpoly.cafebuipho.Account;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -21,6 +27,9 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 
+import java.util.Date;
+
+import quyettvph35419.fpoly.cafebuipho.SerVice.ConfigNotification;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.MainActivity;
 import quyettvph35419.fpoly.cafebuipho.R;
@@ -121,7 +130,7 @@ public class Login extends AppCompatActivity {
             Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không được bỏ trống", Toast.LENGTH_SHORT).show();
         } else {
             if (khachHangDao.checkLogin(strUser, strPass) > 0) {
-                Toast.makeText(getApplicationContext(), "Login thành công", Toast.LENGTH_SHORT).show();
+                thongBao("Đăng nhập thành công",getApplicationContext());
                 rememberUser(strUser, strPass, chkRememberPass.isChecked());
 
                 Bundle bundle = new Bundle();
@@ -134,6 +143,20 @@ public class Login extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    public static void thongBao(String title, Context context) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, ConfigNotification.CHANNEL_ID)
+                .setSmallIcon(R.drawable.tb)
+                .setContentTitle("Thông báo")
+                .setContentText(title);
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(context);
+
+        if (ActivityCompat.checkSelfPermission(context,
+                Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+            managerCompat.notify((int) new Date().getTime(), builder.build());
         }
     }
 
