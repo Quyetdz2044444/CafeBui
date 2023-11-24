@@ -1,10 +1,12 @@
 package quyettvph35419.fpoly.cafebuipho;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -34,7 +36,7 @@ public class QLGioHang extends AppCompatActivity {
     private DonHang donHang;
     private DonHangDao donHangDao;
     private DonHangChiTiet donHangChiTiet;
-
+    int sluong_incart;
     private int tongTien = 0;
 
     @Override
@@ -61,6 +63,7 @@ public class QLGioHang extends AppCompatActivity {
 
         rclgiohang = findViewById(R.id.rclViewGioHang);
         gioHangDao = new GioHangDao(this);
+        sluong_incart = gioHangDao.getCount();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rclgiohang.setLayoutManager(layoutManager);
@@ -84,11 +87,32 @@ public class QLGioHang extends AppCompatActivity {
         btndathangGH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(QLGioHang.this, XacNhanDatHang_GioHang.class);
-                intent.putExtra("makh", makh);
-                startActivity(intent);
+                if (sluong_incart == 0) {
+                    showAlertDialog("Thông báo !", "Giỏ hàng hiện không có đồ uống nào");
+                } else {
+                    Intent intent = new Intent(QLGioHang.this, XacNhanDatHang_GioHang.class);
+                    intent.putExtra("makh", makh);
+                    startActivity(intent);
+                }
+
             }
         });
 
+    }
+
+
+    private void showAlertDialog(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(QLGioHang.this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

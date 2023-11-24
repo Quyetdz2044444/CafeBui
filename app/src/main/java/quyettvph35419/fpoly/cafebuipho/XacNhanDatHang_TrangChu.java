@@ -135,15 +135,12 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
             }
         });
 
-
     }
-
     private String getCurrentDateTime() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
         return dateFormat.format(calendar.getTime());
     }
-
     public void showAlertDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(XacNhanDatHang_TrangChu.this);
         builder.setTitle(title);
@@ -159,7 +156,6 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
-
 
     private void anhxa() {
         tlbarxndathang = findViewById(R.id.toolbarxndathang);

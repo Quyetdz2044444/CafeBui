@@ -100,21 +100,20 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
                 int selectedRadioButtonId = radioGrThanhToan.getCheckedRadioButtonId();
 
                 if (selectedRadioButtonId == -1) {
-                    // No radio button is selected
+
                     Toast.makeText(XacNhanDatHang_GioHang.this, "Vui lòng chọn phương thức thanh toán", Toast.LENGTH_SHORT).show();
                 } else {
                     RadioButton selectedRadioButton = findViewById(selectedRadioButtonId);
 
                     for (GioHang gioHang : gioHangList) {
-                        // Create a new order for each item in the cart
+
                         DonHang donHang = new DonHang();
                         DonHangDao donHangDao = new DonHangDao(getApplicationContext());
                         donHang.setMaKH(makh);
-                        donHang.setGia(gioHang.getTongTien());  // Set the appropriate total amount
+                        donHang.setGia(gioHang.getTongTien());
                         donHang.setSoLuong(gioHang.getSoLuong());
                         donHang.setTrangThai(1);
 
-                        // Insert the order and get its ID
                         long donHangID = donHangDao.insert(donHang);
 
                         if (donHangID > 0) {
@@ -122,7 +121,7 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
                             DonHangChiTiet donHangChiTiet = new DonHangChiTiet();
                             DonHangChiTietDao donHangChiTietDao = new DonHangChiTietDao(getApplicationContext());
 
-                            int size = gioHang.getMaSize();  // Get the size from gioHang
+                            int size = gioHang.getMaSize();
 
                             donHangChiTiet.setMaDH((int) donHangID);
                             donHangChiTiet.setMaDoUong(gioHang.getMaDoUong());

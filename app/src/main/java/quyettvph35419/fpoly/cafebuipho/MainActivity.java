@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                     DonHang_Admin_Fragment hoaDonFragment = new DonHang_Admin_Fragment();
                     replaceFrg(hoaDonFragment);
                 } else if (id == R.id.nav_DonHang) {
-                    toolbar.setTitle("Quản lý đơn hàng");
+                    toolbar.setTitle("Lịch sử đơn hàng");
                     DonHang_Fragment donHangFragment = new DonHang_Fragment();
                     replaceFrg(donHangFragment);
                 } else if (id == R.id.nav_GioHang) {
