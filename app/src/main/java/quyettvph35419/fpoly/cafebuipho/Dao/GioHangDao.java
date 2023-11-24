@@ -49,7 +49,9 @@ public class GioHangDao {
     public long delete(String id) {
         return db.delete("GIOHANG", "MaGH = ?", new String[]{String.valueOf(id)});
     }
-
+    public void deleteAll() {
+        db.execSQL("DELETE FROM GIOHANG");
+    }
     public List<GioHang> getAll() {
         String sql = "SELECT * FROM GIOHANG";
         return getData(sql);
