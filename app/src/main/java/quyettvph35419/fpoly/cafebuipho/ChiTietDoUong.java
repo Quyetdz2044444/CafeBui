@@ -226,6 +226,7 @@ public class ChiTietDoUong extends AppCompatActivity {
                         intent1.putExtra("size", selectedSize);
                     }
 
+                    intent1.putExtra("madouong",maDoUong);
                     intent1.putExtra("tendouong", tvten.getText().toString());
                     intent1.putExtra("giadouong", tvgia.getText().toString());
                     intent1.putExtra("soluong", tvSelectedQuantity.getText().toString());

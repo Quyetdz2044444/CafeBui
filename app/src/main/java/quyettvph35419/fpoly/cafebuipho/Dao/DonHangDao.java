@@ -37,11 +37,9 @@ public class DonHangDao {
 
     public long insert(DonHang obj) {
         ContentValues values = new ContentValues();
-
         values.put("MAKH", obj.getMaKH());
-        values.put("Ngay", String.valueOf(obj.getNgay()));
         values.put("Gia", obj.getGia());
-        values.put("ThanhToan", obj.getThanhToan());
+        values.put("SoLuong", obj.getSoLuong());
         values.put("TrangThai", obj.getTrangThai());
 
         return db.insert("DONHANG", null, values);
@@ -69,9 +67,8 @@ public class DonHangDao {
 
             obj.setMaDH(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaDH"))));
             obj.setMaKH(cursor.getString(cursor.getColumnIndex("MAKH")));
-            obj.setNgay(cursor.getString(cursor.getColumnIndex("Ngay")));
             obj.setGia(Integer.parseInt(cursor.getString(cursor.getColumnIndex("Gia"))));
-            obj.setThanhToan(cursor.getString(cursor.getColumnIndex("ThanhToan")));
+            obj.setSoLuong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("SoLuong"))));
             obj.setTrangThai(Integer.parseInt(cursor.getString(cursor.getColumnIndex("TrangThai"))));
 
             list.add(obj);

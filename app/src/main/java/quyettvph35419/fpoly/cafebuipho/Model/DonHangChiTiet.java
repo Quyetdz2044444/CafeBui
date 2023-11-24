@@ -8,20 +8,23 @@ public class DonHangChiTiet {
     private int maDH;
     private int maSize;
     private int soLuong;
-    private Date ngay;
+    private String ngay;
+    private String thanhToan;
     private int trangThai;
     private int tongTien;
 
     public DonHangChiTiet() {
     }
 
-    public DonHangChiTiet(int maDHCT, int maDoUong, int maDH, int maSize, int soLuong, Date ngay, int trangThai, int tongTien) {
+    public DonHangChiTiet(int maDHCT, int maDoUong, int maDH, int maSize, int soLuong,
+                          String ngay, String thanhToan, int trangThai, int tongTien) {
         this.maDHCT = maDHCT;
         this.maDoUong = maDoUong;
         this.maDH = maDH;
         this.maSize = maSize;
         this.soLuong = soLuong;
         this.ngay = ngay;
+        this.thanhToan = thanhToan;
         this.trangThai = trangThai;
         this.tongTien = tongTien;
     }
@@ -66,12 +69,20 @@ public class DonHangChiTiet {
         this.soLuong = soLuong;
     }
 
-    public Date getNgay() {
+    public String getNgay() {
         return ngay;
     }
 
-    public void setNgay(Date ngay) {
+    public void setNgay(String ngay) {
         this.ngay = ngay;
+    }
+
+    public String getThanhToan() {
+        return thanhToan;
+    }
+
+    public void setThanhToan(String thanhToan) {
+        this.thanhToan = thanhToan;
     }
 
     public int getTrangThai() {

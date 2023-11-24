@@ -19,9 +19,11 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import quyettvph35419.fpoly.cafebuipho.Account.Login;
+import quyettvph35419.fpoly.cafebuipho.Dao.DonHangChiTietDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
+import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 
 public class XacNhanDatHang_TrangChu extends AppCompatActivity {
@@ -34,8 +36,8 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
     private KhachHangDao khachHangDao;
     private DonHang donHang;
     private DonHangDao donHangDao;
-
-
+    private DonHangChiTiet donHangChiTiet;
+    private DonHangChiTietDao donHangChiTietDao;
     private Login login;
 
     @Override
@@ -61,6 +63,7 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
         khachHang = khachHangDao.getID(makh);
 
         String tendouong = intent.getStringExtra("tendouong");
+        int madouong = intent.getIntExtra("madouong", -1);
         String size = intent.getStringExtra("size");
         String giadouong = intent.getStringExtra("giadouong");
         String soluong = intent.getStringExtra("soluong");
@@ -89,27 +92,44 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                 } else {
                     RadioButton selectedRadioButton = findViewById(selectedRadioButtonId);
 
-//                   int maKH, String ngay, int gia, String thanhToan, int trangThai
-
-                    String phuongThucThanhToan = selectedRadioButton.getText().toString();
                     String date = getCurrentDateTime();
                     donHang = new DonHang();
                     donHangDao = new DonHangDao(getApplicationContext());
-
                     donHang.setMaKH(makh);
-                    donHang.setNgay(date);
                     donHang.setGia(Integer.parseInt(giadouong));
-                    donHang.setThanhToan(phuongThucThanhToan);
+                    donHang.setSoLuong(Integer.parseInt(soluong));
                     donHang.setTrangThai(1);
+                    // Thêm đơn hàng vào cơ sở dữ liệu và lấy ID vừa thêm
+                    long donHangID = donHangDao.insert(donHang);
 
+                    if (donHangID > 0) {
+                        donHangChiTiet = new DonHangChiTiet();
+                        donHangChiTietDao = new DonHangChiTietDao(getApplicationContext());
 
+                        int masize;
+                        if (size.equals("M")) {
+                            masize = 1;
+                        } else if (size.equals("L")) {
+                            masize = 2;
+                        } else {
+                            masize = 3;
+                        }
 
+                        donHangChiTiet.setMaDH((int) donHangID);
+                        donHangChiTiet.setMaDoUong(madouong);
+                        donHangChiTiet.setMaSize(masize);
+                        donHangChiTiet.setSoLuong(Integer.parseInt(soluong));
+                        donHangChiTiet.setNgay(date);
+                        donHangChiTiet.setThanhToan(selectedRadioButton.getText().toString());
+                        donHangChiTiet.setTongTien(Integer.parseInt(tongtien));
+                        donHangChiTiet.setTrangThai(1);
 
-                    if (donHangDao.insert(donHang) > 0) {
-                        login.thongBao("Đơn hàng đã được đặt !", XacNhanDatHang_TrangChu.this);
-                        showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
+                        // Thêm đơn hàng chi tiết vào cơ sở dữ liệu
+                        if (donHangChiTietDao.insert(donHangChiTiet) > 0) {
+                            login.thongBao("Đơn hàng đã được đặt !", XacNhanDatHang_TrangChu.this);
+                            showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
+                        }
                     }
-
                 }
             }
         });
