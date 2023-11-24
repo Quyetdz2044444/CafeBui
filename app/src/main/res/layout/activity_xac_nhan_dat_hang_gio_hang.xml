@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".XacNhanDatHang">
+    tools:context=".XacNhanDatHang_TrangChu">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarxndathang"
@@ -14,6 +14,11 @@
         android:background="#CA7409"
         app:title="Xác nhận đặt hàng"
         app:titleTextColor="@color/white" />
+    <ScrollView
+        android:layout_below="@+id/toolbarxndathang"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +43,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvhoten_xndathang"
+                android:id="@+id/tvhoten_xndathang_gh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -46,14 +51,14 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/tvsdt_xndathang"
+                android:id="@+id/tvsdt_xndathang_gh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sdt "
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/tvdiachi_xndathang"
+                android:id="@+id/tvdiachi_xndathang_gh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Địa chỉ "
@@ -67,61 +72,11 @@
             android:layout_marginTop="10dp"
             android:background="#CCCCCC" />
 
-        <LinearLayout
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rclViewDoUong_Xndathang_giohang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:src="@drawable/cafebacxiu" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvtendouong_xndathang"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Tên:"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/tvsizedouong_xndathang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Size:"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/tvsoluong_xndathang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Số lượng:"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/tvgiadouong_xndathang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Giá:"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-        </LinearLayout>
+            android:layout_height="wrap_content" />
 
         <View
             android:layout_width="match_parent"
@@ -133,6 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="50dp"
             android:orientation="vertical">
 
             <TextView
@@ -144,27 +100,30 @@
                 android:textStyle="bold" />
 
             <RadioGroup
-                android:id="@+id/radioGrthanhtoan"
+                android:id="@+id/radioGrthanhtoan_gh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <RadioButton
-                    android:id="@+id/rdo_banking"
+                    android:id="@+id/rdo_banking_gh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Banking" />
 
                 <RadioButton
-                    android:id="@+id/rdo_card"
+                    android:id="@+id/rdo_card_gh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tiền mặt" />
             </RadioGroup>
+
         </LinearLayout>
 
     </LinearLayout>
 
+    </ScrollView>
+<!--    Đặt hàng-->
     <LinearLayout
         android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
@@ -189,7 +148,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvTongTien_xndathang"
+                android:id="@+id/tvTongTien_xndathang_gh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="50000"
@@ -199,13 +158,14 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btndathang_xndathang"
+            android:id="@+id/btndathang_xndathang_gh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#C97409"
             android:text="Đặt hàng"
             android:textSize="18sp"
             android:textStyle="bold" />
+
     </LinearLayout>
 
 </RelativeLayout>

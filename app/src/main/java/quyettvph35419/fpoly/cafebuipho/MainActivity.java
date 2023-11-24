@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFrg(donHangFragment);
                 } else if (id == R.id.nav_GioHang) {
                     Intent intent = new Intent(MainActivity.this, QLGioHang.class);
+                    intent.putExtra("makh", user);
                     startActivity(intent);
                 } else if (id == R.id.sub_InfoAccount) {
                     toolbar.setTitle("Thông tin tài khoản");
@@ -207,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFrg(trangChuFragment);
                 } else if (id == R.id.bottom_giohang) {
                     Intent intent = new Intent(MainActivity.this, QLGioHang.class);
+                    intent.putExtra("makh", user);
                     startActivity(intent);
                 }
                 return false;

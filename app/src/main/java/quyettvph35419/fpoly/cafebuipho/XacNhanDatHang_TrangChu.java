@@ -4,7 +4,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.accounts.Account;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.Calendar;
 
 import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
@@ -26,7 +24,7 @@ import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 
-public class XacNhanDatHang extends AppCompatActivity {
+public class XacNhanDatHang_TrangChu extends AppCompatActivity {
     private TextView tvHoten, tvSdt, tvDiaChi, tvTenDoUong, tvSizeDoUong, tvSoLuong, tvGiaDoUong, tvTongTien;
     private RadioGroup radioGrThanhToan;
     private RadioButton rdoBanking, rdoCard;
@@ -36,12 +34,14 @@ public class XacNhanDatHang extends AppCompatActivity {
     private KhachHangDao khachHangDao;
     private DonHang donHang;
     private DonHangDao donHangDao;
+
+
     private Login login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_xac_nhan_dat_hang);
+        setContentView(R.layout.activity_xac_nhan_dat_hang_trang_chu);
 
         anhxa();
         setSupportActionBar(tlbarxndathang);
@@ -85,7 +85,7 @@ public class XacNhanDatHang extends AppCompatActivity {
 
                 if (selectedRadioButtonId == -1) {
                     // Không có radio button nào được chọn
-                    Toast.makeText(XacNhanDatHang.this, "Vui lòng chọn phương thức thanh toán", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(XacNhanDatHang_TrangChu.this, "Vui lòng chọn phương thức thanh toán", Toast.LENGTH_SHORT).show();
                 } else {
                     RadioButton selectedRadioButton = findViewById(selectedRadioButtonId);
 
@@ -99,12 +99,14 @@ public class XacNhanDatHang extends AppCompatActivity {
                     donHang.setMaKH(makh);
                     donHang.setNgay(date);
                     donHang.setGia(Integer.parseInt(giadouong));
-
                     donHang.setThanhToan(phuongThucThanhToan);
                     donHang.setTrangThai(1);
 
+
+
+
                     if (donHangDao.insert(donHang) > 0) {
-                        login.thongBao("Đơn hàng đã được đặt !",XacNhanDatHang.this);
+                        login.thongBao("Đơn hàng đã được đặt !", XacNhanDatHang_TrangChu.this);
                         showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
                     }
 
@@ -122,7 +124,7 @@ public class XacNhanDatHang extends AppCompatActivity {
     }
 
     public void showAlertDialog(String title, String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(XacNhanDatHang.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(XacNhanDatHang_TrangChu.this);
         builder.setTitle(title);
         builder.setMessage(message);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

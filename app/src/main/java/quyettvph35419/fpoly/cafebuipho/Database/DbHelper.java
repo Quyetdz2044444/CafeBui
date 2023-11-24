@@ -98,16 +98,6 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO GIOHANG VALUES (1, 1, 1, 2, 20000),(2, 2, 2, 3, 30000)," +
                 "(3, 3, 3, 4, 40000)");
 
-
-//        db.execSQL("INSERT INTO DONHANG VALUES (1, 'Customer1', '2022-11-14', 20000, 1)," +
-//                "(2, 'Customer2', '2023-03-10', 30000, 2),(3, 'Customer3',  '2023-05-16', 25000, 3)," +
-//                "(4, 'Customer4',  '2023-07-20', 40000, 4),(5, 'Customer5', '2023-05-04', 35000, 2)");
-
-
-//        db.execSQL("INSERT INTO DONHANGCHITIET VALUES (1, 1, 1, 50000, 2, '2023-02-14', 1,1)," +
-//                "(2, 2, 2, 60000, 3, '2023-03-15', 2,2),(4, 4, 4, 50000, 4, '2023-05-12', 3,3)," +
-//                "(1, 1, 1, 50000, 2, '2023-02-14', 1,1)");
-
     }
 
     @Override

@@ -16,7 +16,10 @@ import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Adapter.GioHangAdapter;
+import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.GioHangDao;
+import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
+import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
 
 
@@ -28,13 +31,24 @@ public class QLGioHang extends AppCompatActivity {
     private GioHangDao gioHangDao;
     private List<GioHang> gioHangList;
     private GioHangAdapter gioHangAdapter;
+    private DonHang donHang;
+    private DonHangDao donHangDao;
+    private DonHangChiTiet donHangChiTiet;
+
     private int tongTien = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qlgio_hang);
+        Intent intent = getIntent();
+        String makh = intent.getStringExtra("makh");
+
         login = new Login();
+        donHang = new DonHang();
+        donHangDao = new DonHangDao(this);
+        donHangChiTiet = new DonHangChiTiet();
+
         tlbargiohang = findViewById(R.id.toolbargiohang);
         setSupportActionBar(tlbargiohang);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -70,7 +84,9 @@ public class QLGioHang extends AppCompatActivity {
         btndathangGH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(QLGioHang.this, XacNhanDatHang_GioHang.class);
+                intent.putExtra("makh", makh);
+                startActivity(intent);
             }
         });
 
