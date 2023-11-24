@@ -110,6 +110,7 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
                         DonHang donHang = new DonHang();
                         DonHangDao donHangDao = new DonHangDao(getApplicationContext());
                         donHang.setMaKH(makh);
+                        donHang.setMaDO(gioHang.getMaDoUong());
                         donHang.setGia(gioHang.getTongTien());
                         donHang.setSoLuong(gioHang.getSoLuong());
                         donHang.setTrangThai(1);
@@ -159,7 +160,8 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                onBackPressed();
+               Intent intent=new Intent(XacNhanDatHang_GioHang.this, QLGioHang.class);
+               startActivity(intent);
             }
         });
 

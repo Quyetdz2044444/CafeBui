@@ -3,8 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/item"
     android:orientation="vertical"
-    android:layout_marginTop="10dp">
+    android:layout_margin="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/orderItemImageView"
+            android:id="@+id/imgdonhang_user"
             android:layout_width="80dp"
             android:layout_height="80dp"
           />
@@ -26,7 +27,7 @@
             android:layout_marginLeft="10dp">
 
             <TextView
-                android:id="@+id/orderItemNameTextView"
+                android:id="@+id/tvten_donhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Product Name"
@@ -34,21 +35,21 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/orderItemQuantityTextView"
+                android:id="@+id/tvsoluong_donhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quantity: 1"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/orderItemPriceTextView"
+                android:id="@+id/tvgia_donhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Price: $10.00"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/orderItemStatusTextView"
+                android:id="@+id/tvtrangthai_donhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Status: Shipped"
@@ -56,10 +57,10 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/orderItemCancelButton"
+            android:id="@+id/btnHuy_donhang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"
+            android:text="Hủy đơn"
             android:textSize="14sp"
             android:backgroundTint="#FFC107"
             android:layout_gravity="center"

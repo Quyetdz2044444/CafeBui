@@ -96,6 +96,7 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                     donHang = new DonHang();
                     donHangDao = new DonHangDao(getApplicationContext());
                     donHang.setMaKH(makh);
+                    donHang.setMaDO(madouong);
                     donHang.setGia(Integer.parseInt(giadouong));
                     donHang.setSoLuong(Integer.parseInt(soluong));
                     donHang.setTrangThai(1);
