@@ -2,6 +2,7 @@ package quyettvph35419.fpoly.cafebuipho.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +66,13 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
         } else if (donHang.getTrangThai() == 4) {
             trangthai = "Đã hủy";
         }
-        holder.tvTrangThai.setText("Trạng thái: " + trangthai);
+        if (trangthai.equals("Chờ xác nhận")) {
+            holder.tvTrangThai.setTextColor(Color.BLUE);
+        } else if (trangthai.equals("Đã hủy")) {
+            holder.tvTrangThai.setTextColor(Color.RED);
+        }
+
+        holder.tvTrangThai.setText(trangthai);
         int vitri = doUong.getImageId();
         int resourceId;
         switch (vitri) {
@@ -121,6 +128,13 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
                 break;
         }
         holder.imgdonhang.setImageResource(resourceId);
+
+        holder.btnHuyDon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 

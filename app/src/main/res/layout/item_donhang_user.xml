@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     android:background="@drawable/item"
-    android:orientation="vertical"
-    android:layout_margin="5dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,15 +15,14 @@
         <ImageView
             android:id="@+id/imgdonhang_user"
             android:layout_width="80dp"
-            android:layout_height="80dp"
-          />
+            android:layout_height="80dp" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginLeft="10dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvten_donhang"
@@ -48,23 +46,51 @@
                 android:text="Price: $10.00"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/tvtrangthai_donhang"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status: Shipped"
-                android:textSize="16sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trạng thái : "
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvtrangthai_donhang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnHuy_donhang"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hủy đơn"
-            android:textSize="14sp"
-            android:backgroundTint="#FFC107"
-            android:layout_gravity="center"
-            android:onClick="onCancelButtonClick"/>
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvchitiet_donhang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:drawableStart="@drawable/infodonhang"
+                android:gravity="center"
+                android:text="Chi tiết" />
+
+            <Button
+                android:id="@+id/btnHuy_donhang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="#FFC107"
+                android:text="Hủy đơn"
+                android:textSize="14sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
