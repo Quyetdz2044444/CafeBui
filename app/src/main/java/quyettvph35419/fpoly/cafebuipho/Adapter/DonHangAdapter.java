@@ -47,7 +47,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
     @Override
     public void onBindViewHolder(@NonNull DonHangViewHolder holder, int position) {
         DonHang donHang = donHangList.get(position);
-        doUong = new DoUong();qlgio
+        doUong = new DoUong();
         doUongDao = new DoUongDao(context);
 
         doUong = doUongDao.getID(String.valueOf(donHang.getMaDO()));
