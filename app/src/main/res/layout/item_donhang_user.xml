@@ -12,11 +12,6 @@
         android:orientation="horizontal"
         android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/imgdonhang_user"
-            android:layout_width="80dp"
-            android:layout_height="80dp" />
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -25,15 +20,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvten_donhang"
+                android:id="@+id/tvmadh_donhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Product Name"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
+                android:text="Mã đơn: 1"
+                android:textSize="16sp" />
             <TextView
-                android:id="@+id/tvsoluong_donhang"
+                android:id="@+id/tvSoLuong_donhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quantity: 1"
@@ -63,12 +56,19 @@
                     android:layout_height="wrap_content"
                     android:textSize="16sp" />
             </LinearLayout>
+            <TextView
+                android:id="@+id/tvngay_donhang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày :"
+                android:textSize="16sp" />
+
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -85,10 +85,11 @@
                 android:id="@+id/btnHuy_donhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:backgroundTint="#FFC107"
+                android:gravity="center"
                 android:text="Hủy đơn"
                 android:textSize="14sp" />
+
         </LinearLayout>
 
     </LinearLayout>

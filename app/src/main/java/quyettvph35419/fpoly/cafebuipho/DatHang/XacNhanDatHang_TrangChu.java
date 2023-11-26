@@ -1,4 +1,4 @@
-package quyettvph35419.fpoly.cafebuipho;
+package quyettvph35419.fpoly.cafebuipho.DatHang;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +25,7 @@ import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
+import quyettvph35419.fpoly.cafebuipho.R;
 
 public class XacNhanDatHang_TrangChu extends AppCompatActivity {
     private TextView tvHoten, tvSdt, tvDiaChi, tvTenDoUong, tvSizeDoUong, tvSoLuong, tvGiaDoUong, tvTongTien;
@@ -96,10 +97,11 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                     donHang = new DonHang();
                     donHangDao = new DonHangDao(getApplicationContext());
                     donHang.setMaKH(makh);
-                    donHang.setMaDO(madouong);
-                    donHang.setGia(Integer.parseInt(giadouong));
-                    donHang.setSoLuong(Integer.parseInt(soluong));
+                    donHang.setGia(Integer.parseInt(tongtien));
+                    donHang.setSoLuong(1);
                     donHang.setTrangThai(1);
+                    donHang.setNgay(date);
+
                     // Thêm đơn hàng vào cơ sở dữ liệu và lấy ID vừa thêm
                     long donHangID = donHangDao.insert(donHang);
 
@@ -122,7 +124,7 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                         donHangChiTiet.setSoLuong(Integer.parseInt(soluong));
                         donHangChiTiet.setNgay(date);
                         donHangChiTiet.setThanhToan(selectedRadioButton.getText().toString());
-                        donHangChiTiet.setTongTien(Integer.parseInt(tongtien));
+                        donHangChiTiet.setTongTien(Integer.parseInt(giadouong));
                         donHangChiTiet.setTrangThai(1);
 
                         // Thêm đơn hàng chi tiết vào cơ sở dữ liệu
@@ -137,11 +139,13 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
         });
 
     }
+
     private String getCurrentDateTime() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
         return dateFormat.format(calendar.getTime());
     }
+
     public void showAlertDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(XacNhanDatHang_TrangChu.this);
         builder.setTitle(title);

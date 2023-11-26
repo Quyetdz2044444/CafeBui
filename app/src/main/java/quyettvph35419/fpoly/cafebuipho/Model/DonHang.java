@@ -4,24 +4,23 @@ import java.util.Date;
 
 public class DonHang {
     private int maDH;
-    private int maDO;
     private String maKH;
     private int gia;
     private int soLuong;
     private int trangThai;
-
+    private String ngay;
 
 
     public DonHang() {
     }
 
-    public DonHang(int maDH, int maDO, String maKH, int gia, int soLuong, int trangThai) {
+    public DonHang(int maDH, String maKH, int gia, int soLuong, int trangThai, String ngay) {
         this.maDH = maDH;
-        this.maDO = maDO;
         this.maKH = maKH;
         this.gia = gia;
         this.soLuong = soLuong;
         this.trangThai = trangThai;
+        this.ngay = ngay;
     }
 
     public int getMaDH() {
@@ -32,13 +31,6 @@ public class DonHang {
         this.maDH = maDH;
     }
 
-    public int getMaDO() {
-        return maDO;
-    }
-
-    public void setMaDO(int maDO) {
-        this.maDO = maDO;
-    }
 
     public String getMaKH() {
         return maKH;
@@ -70,5 +62,13 @@ public class DonHang {
 
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
+    }
+
+    public String getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
     }
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.Database.DbHelper;
+import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
 
 public class DonHangDao {
@@ -39,14 +40,19 @@ public class DonHangDao {
     public long insert(DonHang obj) {
         ContentValues values = new ContentValues();
         values.put("MAKH", obj.getMaKH());
-        values.put("MaDO", obj.getMaDO());
         values.put("Gia", obj.getGia());
         values.put("SoLuong", obj.getSoLuong());
         values.put("TrangThai", obj.getTrangThai());
+        values.put("Ngay", obj.getNgay());
 
         return db.insert("DONHANG", null, values);
     }
 
+    public long update(DonHang obj) {
+        ContentValues values = new ContentValues();
+        values.put("TrangThai", obj.getTrangThai());
+        return db.update("DONHANG", values, "MaDH = ?", new String[]{String.valueOf(obj.getMaDH())});
+    }
 
     public List<DonHang> getAll() {
         String sql = "SELECT * FROM DONHANG";
@@ -68,11 +74,11 @@ public class DonHangDao {
             DonHang obj = new DonHang();
 
             obj.setMaDH(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaDH"))));
-            obj.setMaDO(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaDO"))));
             obj.setMaKH(cursor.getString(cursor.getColumnIndex("MAKH")));
             obj.setGia(Integer.parseInt(cursor.getString(cursor.getColumnIndex("Gia"))));
             obj.setSoLuong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("SoLuong"))));
             obj.setTrangThai(Integer.parseInt(cursor.getString(cursor.getColumnIndex("TrangThai"))));
+            obj.setNgay(cursor.getString(cursor.getColumnIndex("Ngay")));
 
             list.add(obj);
         }

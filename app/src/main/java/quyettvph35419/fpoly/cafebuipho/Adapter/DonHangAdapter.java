@@ -2,6 +2,7 @@ package quyettvph35419.fpoly.cafebuipho.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import quyettvph35419.fpoly.cafebuipho.ChiTietDonHang;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 
+import quyettvph35419.fpoly.cafebuipho.Dao.DonHangChiTietDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
@@ -28,6 +31,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
     private List<DonHang> donHangList;
     Context context;
     private DonHangChiTiet donHangChiTiet;
+    private DonHangChiTietDao donHangChiTietDao;
     private DoUongDao doUongDao;
     private DonHangDao donHangDao;
     private DoUong doUong;
@@ -50,89 +54,52 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
         DonHang donHang = donHangList.get(position);
         doUong = new DoUong();
         doUongDao = new DoUongDao(context);
+        donHangDao = new DonHangDao(context);
 
-        doUong = doUongDao.getID(String.valueOf(donHang.getMaDO()));
+        holder.tvSoLuong.setText("Số lượng đơn hàng : " + donHang.getSoLuong());
+        holder.tvGia.setText("Tổng : " + donHang.getGia());
+        holder.tvmadh.setText("Mã hóa đơn : " + donHang.getMaDH());
+        holder.tvNgay.setText("Thời gian : " + donHang.getNgay());
 
-        holder.tvTenDoUong.setText("Mã : " + doUong.getTenDoUong());
-        holder.tvSoLuong.setText("Số lượng: " + donHang.getSoLuong());
-        holder.tvGia.setText("Tổng: " + donHang.getGia());
         String trangthai = "";
         if (donHang.getTrangThai() == 1) {
             trangthai = "Chờ xác nhận";
+            holder.tvTrangThai.setTextColor(Color.MAGENTA);
         } else if (donHang.getTrangThai() == 2) {
             trangthai = "Đang giao";
+            holder.tvTrangThai.setTextColor(Color.BLUE);
+            holder.btnHuyDon.setVisibility(View.GONE);
         } else if (donHang.getTrangThai() == 3) {
             trangthai = "Đã giao";
+            holder.btnHuyDon.setVisibility(View.GONE);
+            holder.tvTrangThai.setTextColor(Color.GREEN);
         } else if (donHang.getTrangThai() == 4) {
             trangthai = "Đã hủy";
-        }
-        if (trangthai.equals("Chờ xác nhận")) {
-            holder.tvTrangThai.setTextColor(Color.BLUE);
-        } else if (trangthai.equals("Đã hủy")) {
             holder.tvTrangThai.setTextColor(Color.RED);
+            holder.btnHuyDon.setVisibility(View.GONE);
         }
 
         holder.tvTrangThai.setText(trangthai);
-        int vitri = doUong.getImageId();
-        int resourceId;
-        switch (vitri) {
-            case 1:
-                resourceId = R.drawable.americano;
-                break;
-            case 2:
-                resourceId = R.drawable.cafebacxiu;
-                break;
-            case 3:
-                resourceId = R.drawable.capuchino;
-                break;
-            case 4:
-                resourceId = R.drawable.cafetruyenthong;
-                break;
-            case 5:
-                resourceId = R.drawable.macchiato;
-                break;
-            case 6:
-                resourceId = R.drawable.irishcafe;
-                break;
-            case 7:
-                resourceId = R.drawable.mochacafe;
-                break;
-
-            case 8:
-                resourceId = R.drawable.cafelungo;
-                break;
-            case 9:
-                resourceId = R.drawable.caferistresto;
-                break;
-            case 10:
-                resourceId = R.drawable.cafepicolo;
-                break;
-            case 11:
-                resourceId = R.drawable.caferedeye;
-                break;
-            case 12:
-                resourceId = R.drawable.cafemuoi;
-                break;
-            case 13:
-                resourceId = R.drawable.cafetrung;
-                break;
-            case 14:
-                resourceId = R.drawable.cafelongblack;
-                break;
-            case 15:
-                resourceId = R.drawable.cafecotdua;
-                break;
-
-            default:
-                resourceId = R.drawable.cafemacdinh; // Set ảnh mặc định nếu không khớp với bất kỳ trường hợp nào
-                break;
-        }
-        holder.imgdonhang.setImageResource(resourceId);
 
         holder.btnHuyDon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                donHang.setTrangThai(4);
+                donHangDao.update(donHang);
+                donHangChiTiet = new DonHangChiTiet();
+                donHangChiTietDao = new DonHangChiTietDao(context);
+                donHangChiTiet = donHangChiTietDao.getID(String.valueOf(donHang.getMaDH()));
+                donHangChiTiet.setTrangThai(4);
+
+                notifyDataSetChanged();
+            }
+        });
+        holder.tvchitiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ChiTietDonHang.class);
+                context.startActivity(intent);
             }
         });
 
@@ -144,18 +111,21 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
     }
 
     public class DonHangViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvTenDoUong, tvSoLuong, tvGia, tvTrangThai;
-        private ImageView imgdonhang;
+        private TextView tvmadh, tvSoLuong, tvGia, tvTrangThai, tvNgay, tvchitiet;
+
         private Button btnHuyDon;
+
 
         public DonHangViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTenDoUong = itemView.findViewById(R.id.tvten_donhang);
-            tvSoLuong = itemView.findViewById(R.id.tvsoluong_donhang);
+            tvSoLuong = itemView.findViewById(R.id.tvSoLuong_donhang);
+            tvmadh = itemView.findViewById(R.id.tvmadh_donhang);
             tvGia = itemView.findViewById(R.id.tvgia_donhang);
-            imgdonhang = itemView.findViewById(R.id.imgdonhang_user);
             tvTrangThai = itemView.findViewById(R.id.tvtrangthai_donhang);
+            tvNgay = itemView.findViewById(R.id.tvngay_donhang);
+            tvchitiet = itemView.findViewById(R.id.tvchitiet_donhang);
             btnHuyDon = itemView.findViewById(R.id.btnHuy_donhang);
         }
     }
+
 }

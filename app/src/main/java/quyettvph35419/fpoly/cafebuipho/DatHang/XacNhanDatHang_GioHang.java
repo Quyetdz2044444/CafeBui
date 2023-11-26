@@ -1,4 +1,4 @@
-package quyettvph35419.fpoly.cafebuipho;
+package quyettvph35419.fpoly.cafebuipho.DatHang;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +23,6 @@ import java.util.Locale;
 
 import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Adapter.DoUongAdapter_Xndathang_GioHang;
-import quyettvph35419.fpoly.cafebuipho.Adapter.GioHangAdapter;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangChiTietDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.GioHangDao;
@@ -32,6 +31,8 @@ import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
+import quyettvph35419.fpoly.cafebuipho.QLGioHang;
+import quyettvph35419.fpoly.cafebuipho.R;
 
 public class XacNhanDatHang_GioHang extends AppCompatActivity {
     private Toolbar tlbarxndathang;
@@ -100,30 +101,34 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
                 int selectedRadioButtonId = radioGrThanhToan.getCheckedRadioButtonId();
 
                 if (selectedRadioButtonId == -1) {
-
                     Toast.makeText(XacNhanDatHang_GioHang.this, "Vui lòng chọn phương thức thanh toán", Toast.LENGTH_SHORT).show();
                 } else {
                     RadioButton selectedRadioButton = findViewById(selectedRadioButtonId);
+                    String date = getCurrentDateTime();
 
-                    for (GioHang gioHang : gioHangList) {
+                    // Tạo đơn hàng
+                    DonHang donHang = new DonHang();
+                    DonHangDao donHangDao = new DonHangDao(getApplicationContext());
 
-                        DonHang donHang = new DonHang();
-                        DonHangDao donHangDao = new DonHangDao(getApplicationContext());
-                        donHang.setMaKH(makh);
-                        donHang.setMaDO(gioHang.getMaDoUong());
-                        donHang.setGia(gioHang.getTongTien());
-                        donHang.setSoLuong(gioHang.getSoLuong());
-                        donHang.setTrangThai(1);
+                    donHang.setMaKH(makh);
+                    donHang.setGia(tongTien);
+                    donHang.setSoLuong(gioHangDao.getCount());// số lượng sản phẩm có trong đơn
+                    donHang.setTrangThai(1);
+                    donHang.setNgay(date);
 
-                        long donHangID = donHangDao.insert(donHang);
+                    // Thêm đơn hàng vào cơ sở dữ liệu và lấy ID
+                    long donHangID = donHangDao.insert(donHang);
 
-                        if (donHangID > 0) {
-
+                    if (donHangID > 0) {
+                        // Duyệt qua từng sản phẩm trong giỏ hàng
+                        for (GioHang gioHang : gioHangList) {
+                            // Tạo đơn hàng chi tiết
                             DonHangChiTiet donHangChiTiet = new DonHangChiTiet();
                             DonHangChiTietDao donHangChiTietDao = new DonHangChiTietDao(getApplicationContext());
 
                             int size = gioHang.getMaSize();
 
+                            // Thiết lập thông tin cho đơn hàng chi tiết
                             donHangChiTiet.setMaDH((int) donHangID);
                             donHangChiTiet.setMaDoUong(gioHang.getMaDoUong());
                             donHangChiTiet.setMaSize(size);
@@ -133,13 +138,16 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
                             donHangChiTiet.setTongTien(gioHang.getTongTien());
                             donHangChiTiet.setTrangThai(1);
 
+                            // Thêm đơn hàng chi tiết vào cơ sở dữ liệu
                             if (donHangChiTietDao.insert(donHangChiTiet) <= 0) {
-                                showAlertDialog("Oh! Đã xảy ra lỗi", "Rất tiếc vì hình như đã xảy ra điều gì đó, bạn hãy dăng xuất và thử mua lại nhé !");
+                                showAlertDialog("Oh! Đã xảy ra lỗi", "Rất tiếc vì hình như đã xảy ra điều gì đó, bạn hãy đăng xuất và thử mua lại nhé !");
                             }
                         }
+
+                        // Xóa giỏ hàng sau khi đã đặt hàng
+                        gioHangDao.deleteAll();
+                        showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
                     }
-                    gioHangDao.deleteAll();
-                    showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
                 }
             }
         });
@@ -160,8 +168,8 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-               Intent intent=new Intent(XacNhanDatHang_GioHang.this, QLGioHang.class);
-               startActivity(intent);
+                Intent intent = new Intent(XacNhanDatHang_GioHang.this, QLGioHang.class);
+                startActivity(intent);
             }
         });
 

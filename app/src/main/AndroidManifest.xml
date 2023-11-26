@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:name=".SerVice.ConfigNotification"
         android:allowBackup="true"
@@ -15,10 +16,13 @@
         android:theme="@style/Theme.CafeBuiPho"
         tools:targetApi="31">
         <activity
-            android:name=".XacNhanDatHang_TrangChu"
+            android:name=".ChiTietDonHang"
             android:exported="false" />
         <activity
-            android:name=".XacNhanDatHang_GioHang"
+            android:name=".DatHang.XacNhanDatHang_TrangChu"
+            android:exported="false" />
+        <activity
+            android:name=".DatHang.XacNhanDatHang_GioHang"
             android:exported="false" />
         <activity
             android:name=".QLGioHang"

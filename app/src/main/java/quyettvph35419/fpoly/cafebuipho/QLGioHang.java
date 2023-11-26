@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -20,6 +19,7 @@ import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Adapter.GioHangAdapter;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.GioHangDao;
+import quyettvph35419.fpoly.cafebuipho.DatHang.XacNhanDatHang_GioHang;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
