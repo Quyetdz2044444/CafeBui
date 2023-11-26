@@ -14,7 +14,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 import quyettvph35419.fpoly.cafebuipho.R;
-import quyettvph35419.fpoly.cafebuipho.XacNhanDatHang;
 
 public class Register extends AppCompatActivity {
     private TextInputEditText edUserName, edPassword, edFullname, edSdt, edDiaChi, edEmail;

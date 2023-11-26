@@ -196,8 +196,6 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
             btnxoagh = itemView.findViewById(R.id.btnxoa_gioHang);
 
 
-
-
         }
     }
 
@@ -222,7 +220,6 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
                 gioHangList = gioHangDao.getAll();
                 notifyDataSetChanged();
 
-
                 dialog.cancel();
                 Toast.makeText(context, "Đã xóa", Toast.LENGTH_SHORT).show();
 
@@ -233,7 +230,6 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
                 Toast.makeText(context, "Không xóa", Toast.LENGTH_SHORT).show();
-
             }
         });
         AlertDialog alert = builder.create();

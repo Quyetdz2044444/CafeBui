@@ -22,6 +22,7 @@ public class DonHangDao {
         db = dbHelper.getWritableDatabase();
     }
 
+
     public int getCount() {
         String sql = "SELECT COUNT(*) FROM DONHANG";
         Cursor cursor = db.rawQuery(sql, null);
@@ -37,11 +38,10 @@ public class DonHangDao {
 
     public long insert(DonHang obj) {
         ContentValues values = new ContentValues();
-
         values.put("MAKH", obj.getMaKH());
-        values.put("Ngay", String.valueOf(obj.getNgay()));
+        values.put("MaDO", obj.getMaDO());
         values.put("Gia", obj.getGia());
-        values.put("ThanhToan", obj.getThanhToan());
+        values.put("SoLuong", obj.getSoLuong());
         values.put("TrangThai", obj.getTrangThai());
 
         return db.insert("DONHANG", null, values);
@@ -68,10 +68,10 @@ public class DonHangDao {
             DonHang obj = new DonHang();
 
             obj.setMaDH(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaDH"))));
+            obj.setMaDO(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaDO"))));
             obj.setMaKH(cursor.getString(cursor.getColumnIndex("MAKH")));
-            obj.setNgay(cursor.getString(cursor.getColumnIndex("Ngay")));
             obj.setGia(Integer.parseInt(cursor.getString(cursor.getColumnIndex("Gia"))));
-            obj.setThanhToan(cursor.getString(cursor.getColumnIndex("ThanhToan")));
+            obj.setSoLuong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("SoLuong"))));
             obj.setTrangThai(Integer.parseInt(cursor.getString(cursor.getColumnIndex("TrangThai"))));
 
             list.add(obj);

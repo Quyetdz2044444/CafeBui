@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -62,17 +61,10 @@ public class ChiTietDoUong extends AppCompatActivity {
         });
 
 
-        imggiohang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ChiTietDoUong.this, QLGioHang.class);
-                startActivity(intent);
-            }
-        });
-
         Intent intent = getIntent();
         int maDoUong = intent.getIntExtra("madouong", -1);
         String makh = intent.getStringExtra("makh");
+
 
         doUong = new DoUong();
         loaiDoUong = new LoaiDoUong();
@@ -164,6 +156,14 @@ public class ChiTietDoUong extends AppCompatActivity {
                 // Not needed in this case
             }
         });
+        imggiohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChiTietDoUong.this, QLGioHang.class);
+                intent.putExtra("makh", makh);
+                startActivity(intent);
+            }
+        });
 
         btnaddgio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,7 +217,7 @@ public class ChiTietDoUong extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (isSizeSelected()) {
-                    Intent intent1 = new Intent(ChiTietDoUong.this, XacNhanDatHang.class);
+                    Intent intent1 = new Intent(ChiTietDoUong.this, XacNhanDatHang_TrangChu.class);
 
                     int luachonsize = rdoGrSize.getCheckedRadioButtonId();
                     RadioButton selectedSizeRadioButton = findViewById(luachonsize);
@@ -226,6 +226,7 @@ public class ChiTietDoUong extends AppCompatActivity {
                         intent1.putExtra("size", selectedSize);
                     }
 
+                    intent1.putExtra("madouong",maDoUong);
                     intent1.putExtra("tendouong", tvten.getText().toString());
                     intent1.putExtra("giadouong", tvgia.getText().toString());
                     intent1.putExtra("soluong", tvSelectedQuantity.getText().toString());
