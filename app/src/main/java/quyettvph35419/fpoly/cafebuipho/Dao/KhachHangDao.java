@@ -16,6 +16,7 @@ public class KhachHangDao {
     DbHelper dbHelper;
     private SQLiteDatabase db;
 
+
     public KhachHangDao(Context context) {
         dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
@@ -40,6 +41,21 @@ public class KhachHangDao {
         values.put("DIACHI", obj.getDiaChi());
         values.put("EMAIL", obj.getEmail());
         return db.update("KHACHHANG", values, "MAKH = ?", new String[]{String.valueOf(obj.getmaKH())});
+    }
+
+    public boolean update(String maKH,String hoten, String sdt, String diachi, String email){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("HOTEN",hoten);
+        values.put("SDT",sdt);
+        values.put("DIACHI",diachi);
+        values.put("EMAIL",email);
+        long check = db.update("KHACHHANG",values,"MAKH = ?",new String[]{String.valueOf(maKH)});
+        if(check == -1){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public long delete(String id) {
@@ -85,7 +101,7 @@ public class KhachHangDao {
 
 
     @SuppressLint("Range")
-    private List<KhachHang> getData(String sql, String... selectionArgs) {
+    public List<KhachHang> getData(String sql, String... selectionArgs) {
         List<KhachHang> list = new ArrayList<>();
         Cursor cursor = db.rawQuery(sql, selectionArgs);
         while (cursor.moveToNext()) {
@@ -101,4 +117,16 @@ public class KhachHangDao {
         return list;
     }
 
+    public ArrayList<KhachHang> getKH(){
+        ArrayList<KhachHang> list = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from KHACHHANG",null);
+        if(cursor.getCount() != 0){
+            cursor.moveToFirst();
+            do {
+                list.add(new KhachHang(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4)));
+            }while (cursor.moveToNext());
+        }
+        return list;
+    }
 }
