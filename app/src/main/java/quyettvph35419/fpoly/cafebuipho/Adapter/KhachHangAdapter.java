@@ -36,7 +36,6 @@ public class KhachHangAdapter extends ArrayAdapter<KhachHang> {
     private KhachHang_Fragment fragment;
     private ArrayList<KhachHang> list;
     private TextView tvMaQL, tvTenQL, tvMatKhau, tvsdt, tvdiachi, tvemail;
-    private Button btnSuaUser;
     private ImageView imgDel;
     private KhachHangDao dao;
 
@@ -52,7 +51,6 @@ public class KhachHangAdapter extends ArrayAdapter<KhachHang> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View v = convertView;
         dao = new KhachHangDao(getContext());
-        btnSuaUser = v.findViewById(R.id.btnSuaUser);
         if (v == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.item_khachhang, null);
@@ -63,7 +61,6 @@ public class KhachHangAdapter extends ArrayAdapter<KhachHang> {
         if (item != null) {
             tvMaQL = v.findViewById(R.id.tvMaQL);
             tvMaQL.setText("Mã tài khoản: " + item.getmaKH());
-
 
             tvTenQL = v.findViewById(R.id.tvTenQL);
             tvTenQL.setText("Họ tên: " + item.getHoTen());
@@ -80,8 +77,6 @@ public class KhachHangAdapter extends ArrayAdapter<KhachHang> {
             tvMatKhau = v.findViewById(R.id.tvMatKhau);
             tvMatKhau.setText("Mật khẩu: " + item.getMatKhau());
 
-            btnSuaUser = v.findViewById(R.id.btnSuaUser);
-
             imgDel = v.findViewById(R.id.imgDeleteLS);
         }
 
@@ -92,7 +87,6 @@ public class KhachHangAdapter extends ArrayAdapter<KhachHang> {
                 fragment.xoa(item.getmaKH());
             }
         });
-
         return v;
     }
 
