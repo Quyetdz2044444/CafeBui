@@ -2,6 +2,7 @@ package quyettvph35419.fpoly.cafebuipho;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -29,6 +30,9 @@ public class ChiTietDonHang extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_don_hang);
 
+        Intent intent = getIntent();
+        int madh = intent.getIntExtra("madonhang", -1);
+
         rclCTDH = findViewById(R.id.rclChitietdonhang);
         tlToolbar = findViewById(R.id.toolbarchitiet_donhang);
         setSupportActionBar(tlToolbar);
@@ -43,7 +47,7 @@ public class ChiTietDonHang extends AppCompatActivity {
         donHangChiTietDao = new DonHangChiTietDao(this);
 
         // Lấy danh sách chi tiết đơn hàng từ DonHangChiTietDao
-        chiTietList = donHangChiTietDao.getAll();
+        chiTietList = donHangChiTietDao.getAllByMaDonHang(madh);
 
         // Thiết lập RecyclerView
         adapterCTDH = new ChiTietDonHangAdapter_User(chiTietList, this);

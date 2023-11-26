@@ -89,8 +89,10 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
                 donHangDao.update(donHang);
                 donHangChiTiet = new DonHangChiTiet();
                 donHangChiTietDao = new DonHangChiTietDao(context);
+
                 donHangChiTiet = donHangChiTietDao.getID(String.valueOf(donHang.getMaDH()));
                 donHangChiTiet.setTrangThai(4);
+                donHangChiTietDao.update(donHangChiTiet);
 
                 notifyDataSetChanged();
             }
@@ -99,6 +101,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChiTietDonHang.class);
+                intent.putExtra("madonhang", donHang.getMaDH());
                 context.startActivity(intent);
             }
         });

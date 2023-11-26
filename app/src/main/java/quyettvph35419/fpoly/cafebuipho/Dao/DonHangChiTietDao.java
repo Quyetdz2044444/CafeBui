@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.Database.DbHelper;
+import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 
 public class DonHangChiTietDao {
@@ -33,6 +34,40 @@ public class DonHangChiTietDao {
         cursor.close();
         return count;
     }
+
+    public long update(DonHangChiTiet obj) {
+        ContentValues values = new ContentValues();
+        values.put("TrangThai", obj.getTrangThai());
+        return db.update("DONHANGCHITIET", values, "MaDHCT = ?", new String[]{String.valueOf(obj.getMaDHCT())});
+    }
+
+    @SuppressLint("Range")
+    public List<DonHangChiTiet> getAllByMaDonHang(int maDonHang) {
+        List<DonHangChiTiet> list = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String selection = "MaDH = ?";
+        String[] selectionArgs = {String.valueOf(maDonHang)};
+
+        Cursor cursor = db.query("DONHANGCHITIET", null, selection, selectionArgs, null, null, null);
+        while (cursor.moveToNext()) {
+            DonHangChiTiet obj = new DonHangChiTiet();
+
+            obj.setMaDHCT(cursor.getInt(cursor.getColumnIndex("MaDHCT")));
+            obj.setMaDH(cursor.getInt(cursor.getColumnIndex("MaDH")));
+            obj.setNgay(cursor.getString(cursor.getColumnIndex("Ngay")));
+            obj.setThanhToan(cursor.getString(cursor.getColumnIndex("ThanhToan")));
+            obj.setSoLuong(cursor.getInt(cursor.getColumnIndex("SoLuong")));
+            obj.setTongTien(cursor.getInt(cursor.getColumnIndex("TongTien")));
+            obj.setMaSize(cursor.getInt(cursor.getColumnIndex("MaSize")));
+            obj.setTrangThai(cursor.getInt(cursor.getColumnIndex("TrangThai")));
+
+            list.add(obj);
+        }
+        cursor.close();
+        db.close();
+        return list;
+    }
+
 
     public long insert(DonHangChiTiet obj) {
 
