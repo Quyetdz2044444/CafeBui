@@ -41,6 +41,15 @@ public class DonHangChiTietDao {
         return db.update("DONHANGCHITIET", values, "MaDHCT = ?", new String[]{String.valueOf(obj.getMaDHCT())});
     }
 
+    public long updateTrangThai(int maDHCT, int trangThai) {
+        ContentValues values = new ContentValues();
+        values.put("TrangThai", trangThai);
+        String whereClause = "MaDHCT = ?";
+        String[] whereArgs = {String.valueOf(maDHCT)};
+        return db.update("DONHANGCHITIET", values, whereClause, whereArgs);
+    }
+
+
     @SuppressLint("Range")
     public List<DonHangChiTiet> getAllByMaDonHang(int maDonHang) {
         List<DonHangChiTiet> list = new ArrayList<>();
@@ -53,6 +62,7 @@ public class DonHangChiTietDao {
             DonHangChiTiet obj = new DonHangChiTiet();
 
             obj.setMaDHCT(cursor.getInt(cursor.getColumnIndex("MaDHCT")));
+            obj.setMaDoUong(cursor.getInt(cursor.getColumnIndex("MaDO")));
             obj.setMaDH(cursor.getInt(cursor.getColumnIndex("MaDH")));
             obj.setNgay(cursor.getString(cursor.getColumnIndex("Ngay")));
             obj.setThanhToan(cursor.getString(cursor.getColumnIndex("ThanhToan")));

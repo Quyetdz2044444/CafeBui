@@ -21,7 +21,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvmadh_donhang"
+                android:id="@+id/tvmadh_donhang_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mã đơn: 1"
@@ -29,7 +29,7 @@
 
 
             <TextView
-                android:id="@+id/tvtenkh_donhang"
+                android:id="@+id/tvtenkh_donhang_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="tên kh"
@@ -37,14 +37,14 @@
 
 
             <TextView
-                android:id="@+id/tvSoLuong_donhang"
+                android:id="@+id/tvSoLuong_donhang_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quantity: 1"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tvgia_donhang"
+                android:id="@+id/tvgia_donhang_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Price: $10.00"
@@ -52,7 +52,7 @@
 
 
             <TextView
-                android:id="@+id/tvngay_donhang"
+                android:id="@+id/tvngay_donhang_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ngày :"
@@ -67,7 +67,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvchitiet_donhang"
+                android:id="@+id/tvchitiet_donhang_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"

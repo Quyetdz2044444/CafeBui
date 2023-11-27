@@ -143,7 +143,6 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
                                 showAlertDialog("Oh! Đã xảy ra lỗi", "Rất tiếc vì hình như đã xảy ra điều gì đó, bạn hãy đăng xuất và thử mua lại nhé !");
                             }
                         }
-
                         // Xóa giỏ hàng sau khi đã đặt hàng
                         gioHangDao.deleteAll();
                         showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");

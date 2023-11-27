@@ -3,12 +3,9 @@ package quyettvph35419.fpoly.cafebuipho.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,9 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import quyettvph35419.fpoly.cafebuipho.ChiTietDonHang;
+import quyettvph35419.fpoly.cafebuipho.ChiTietDonHang_Admin;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
-
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangChiTietDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
@@ -28,7 +24,7 @@ import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 import quyettvph35419.fpoly.cafebuipho.R;
 
-public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangViewHolder> {
+public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Admin.DonHangViewHolder> {
 
     private List<DonHang> donHangList;
     Context context;
@@ -40,7 +36,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
     private KhachHang khachHang;
     private KhachHangDao khachHangDao;
 
-    public DonHangAdapter(List<DonHang> donHangList, Context context) {
+    public DonHangAdapter_Admin(List<DonHang> donHangList, Context context) {
         this.donHangList = donHangList;
         this.context = context;
     }
@@ -49,7 +45,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
     @Override
     public DonHangViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_donhang_user, parent, false);
+        View view = inflater.inflate(R.layout.item_donhang_admin, parent, false);
         return new DonHangViewHolder(view);
     }
 
@@ -72,7 +68,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
         holder.tvchitiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ChiTietDonHang.class);
+                Intent intent = new Intent(context, ChiTietDonHang_Admin.class);
                 intent.putExtra("madonhang", donHang.getMaDH());
                 intent.putExtra("makh", donHang.getMaKH());
                 context.startActivity(intent);
@@ -92,12 +88,12 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
 
         public DonHangViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvSoLuong = itemView.findViewById(R.id.tvSoLuong_donhang);
-            tvmadh = itemView.findViewById(R.id.tvmadh_donhang);
-            tvGia = itemView.findViewById(R.id.tvgia_donhang);
-            tvNgay = itemView.findViewById(R.id.tvngay_donhang);
-            tvchitiet = itemView.findViewById(R.id.tvchitiet_donhang);
-            tvtenkh = itemView.findViewById(R.id.tvtenkh_donhang);
+            tvSoLuong = itemView.findViewById(R.id.tvSoLuong_donhang_admin);
+            tvmadh = itemView.findViewById(R.id.tvmadh_donhang_admin);
+            tvGia = itemView.findViewById(R.id.tvgia_donhang_admin);
+            tvNgay = itemView.findViewById(R.id.tvngay_donhang_admin);
+            tvchitiet = itemView.findViewById(R.id.tvchitiet_donhang_admin);
+            tvtenkh = itemView.findViewById(R.id.tvtenkh_donhang_admin);
         }
     }
 

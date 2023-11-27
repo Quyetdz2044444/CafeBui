@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ChiTietDonHang">
+    tools:context=".ChiTietDonHang_Admin">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarchitiet_donhang"
+        android:id="@+id/toolbarchitiet_donhang_admin"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#CA7409"
@@ -32,7 +32,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvhoten_chitietdonhang"
+            android:id="@+id/tvhoten_chitietdonhang_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -40,14 +40,14 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/tvsdt_chitietdonhang"
+            android:id="@+id/tvsdt_chitietdonhang_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sdt "
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/tvdiachi_chitietdonhang"
+            android:id="@+id/tvdiachi_chitietdonhang_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Địa chỉ "
@@ -56,7 +56,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rclChitietdonhang"
+        android:id="@+id/rclChitietdonhang_admin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp" />

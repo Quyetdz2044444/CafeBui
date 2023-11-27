@@ -2,21 +2,24 @@ package quyettvph35419.fpoly.cafebuipho.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import quyettvph35419.fpoly.cafebuipho.ChiTietDonHang;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangChiTietDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.SizeDao;
@@ -25,7 +28,7 @@ import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.Size;
 import quyettvph35419.fpoly.cafebuipho.R;
 
-public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonHangAdapter_User.ChiTietDonHangViewHolder> {
+public class ChiTietDonHangAdapter_Admin extends RecyclerView.Adapter<ChiTietDonHangAdapter_Admin.ChiTietDonHangViewHolder> {
 
     private List<DonHangChiTiet> chitietlist;
     Context context;
@@ -36,7 +39,7 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
     private Size size;
     private SizeDao sizeDao;
 
-    public ChiTietDonHangAdapter_User(List<DonHangChiTiet> chitietlist, Context context) {
+    public ChiTietDonHangAdapter_Admin(List<DonHangChiTiet> chitietlist, Context context) {
         this.chitietlist = chitietlist;
         this.context = context;
     }
@@ -45,7 +48,7 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
     @Override
     public ChiTietDonHangViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_donhangchitiet_user, parent, false);
+        View view = inflater.inflate(R.layout.item_donhangchitiet_admin, parent, false);
         return new ChiTietDonHangViewHolder(view);
     }
 
@@ -61,15 +64,12 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
             holder.tvtrangthai.setTextColor(Color.MAGENTA);
         } else if (donHangChiTiet.getTrangThai() == 2) {
             trangthai = "Đang giao";
-            holder.btnhuydon.setVisibility(View.GONE);
             holder.tvtrangthai.setTextColor(Color.BLUE);
         } else if (donHangChiTiet.getTrangThai() == 3) {
             trangthai = "Đã giao";
             holder.tvtrangthai.setTextColor(Color.GREEN);
-            holder.btnhuydon.setVisibility(View.GONE);
         } else if (donHangChiTiet.getTrangThai() == 4) {
             trangthai = "Đã hủy";
-            holder.btnhuydon.setVisibility(View.GONE);
             holder.tvtrangthai.setTextColor(Color.RED);
 
         }
@@ -143,15 +143,11 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
         }
         holder.imgdouong.setImageResource(resourceId);
 
-        holder.btnhuydon.setOnClickListener(new View.OnClickListener() {
+        holder.btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                donHangChiTietDao = new DonHangChiTietDao(context);
-                donHangChiTiet.setTrangThai(4);
-                donHangChiTietDao.update(donHangChiTiet);
-
-                notifyDataSetChanged();
+                showUpdateDialog(context, donHangChiTiet);
             }
         });
     }
@@ -164,23 +160,70 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
     public class ChiTietDonHangViewHolder extends RecyclerView.ViewHolder {
         private TextView tvten, tvsoluong, tvsize, tvgia, tvngay, tvtrangthai, tvthanhtoan, tvtongtien;
         private ImageView imgdouong;
-        private Button btnhuydon;
+        private Button btnupdate;
 
         public ChiTietDonHangViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgdouong = itemView.findViewById(R.id.imgDoUong_chitietdonhang);
-            tvten = itemView.findViewById(R.id.tvTen_chitietdonhang);
-            tvgia = itemView.findViewById(R.id.tvGia_chitietdonhang);
-            tvsize = itemView.findViewById(R.id.tvSize_chitietdonhang);
-            tvsoluong = itemView.findViewById(R.id.tvSoLuong_chitietdonhang);
-            tvngay = itemView.findViewById(R.id.tvNgay_chitietdonhang);
-            tvtrangthai = itemView.findViewById(R.id.tvTrangThai_chitietdonhang);
-            tvthanhtoan = itemView.findViewById(R.id.tvThanhToan_chitietdonhang);
-            tvtongtien = itemView.findViewById(R.id.tvTongTien_chitietdonhang);
+            imgdouong = itemView.findViewById(R.id.imgDoUong_chitietdonhang_admin);
+            tvten = itemView.findViewById(R.id.tvTen_chitietdonhang_admin);
+            tvgia = itemView.findViewById(R.id.tvGia_chitietdonhang_admin);
+            tvsize = itemView.findViewById(R.id.tvSize_chitietdonhang_admin);
+            tvsoluong = itemView.findViewById(R.id.tvSoLuong_chitietdonhang_admin);
+            tvngay = itemView.findViewById(R.id.tvNgay_chitietdonhang_admin);
+            tvtrangthai = itemView.findViewById(R.id.tvTrangThai_chitietdonhang_admin);
+            tvthanhtoan = itemView.findViewById(R.id.tvThanhToan_chitietdonhang_admin);
+            tvtongtien = itemView.findViewById(R.id.tvTongTien_chitietdonhang_admin);
 
-            btnhuydon = itemView.findViewById(R.id.btnHuy_chitietdonhang);
+            btnupdate = itemView.findViewById(R.id.btnUpdate_chitietdonhang_admin);
 
         }
+    }
+
+    private void showUpdateDialog(Context context, DonHangChiTiet donHangChiTiet) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.dialog_capnhatdonhang, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(view);
+        builder.setTitle("Cập Nhật Trạng Thái Đơn Hàng");
+
+        Spinner spinnerTrangThai = view.findViewById(R.id.spinnerTrangThai_update);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
+                R.array.trangthai_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerTrangThai.setAdapter(adapter);
+        builder.setPositiveButton("Cập Nhật", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String newTrangThai = spinnerTrangThai.getSelectedItem().toString();
+                donHangChiTietDao = new DonHangChiTietDao(context);
+
+                int newTrangThai1;
+                if (newTrangThai.equals("Chờ xác nhận")) {
+                    newTrangThai1 = 1;
+                } else if (newTrangThai.equals("Đang giao")) {
+                    newTrangThai1 = 2;
+                } else if (newTrangThai.equals("Đã giao")) {
+                    newTrangThai1 = 3;
+                } else {
+                    newTrangThai1 = 4;
+                }
+                donHangChiTiet.setTrangThai(newTrangThai1);
+                donHangChiTietDao.updateTrangThai(donHangChiTiet.getMaDHCT(), newTrangThai1);
+                notifyDataSetChanged();
+            }
+        });
+
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        builder.create().show();
     }
 }

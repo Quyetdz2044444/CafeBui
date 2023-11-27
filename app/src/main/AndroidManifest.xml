@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CafeBuiPho"
         tools:targetApi="31">
         <activity
+            android:name=".ChiTietDonHang_Admin"
+            android:exported="false" />
+        <activity
             android:name=".ChiTietDonHang"
             android:exported="false" />
         <activity

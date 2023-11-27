@@ -8,7 +8,7 @@
 
     <!-- Ảnh sản phẩm -->
     <ImageView
-        android:id="@+id/imgDoUong_chitietdonhang"
+        android:id="@+id/imgDoUong_chitietdonhang_admin"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:scaleType="centerCrop" />
@@ -22,50 +22,50 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvTen_chitietdonhang"
+            android:id="@+id/tvTen_chitietdonhang_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tên : "
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvSoLuong_chitietdonhang"
+            android:id="@+id/tvSoLuong_chitietdonhang_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Số lượng: 1" />
 
         <TextView
-            android:id="@+id/tvSize_chitietdonhang"
+            android:id="@+id/tvSize_chitietdonhang_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Size: M" />
 
         <TextView
-            android:id="@+id/tvGia_chitietdonhang"
+            android:id="@+id/tvGia_chitietdonhang_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Giá: 100,000 vnđ" />
 
         <TextView
-            android:id="@+id/tvNgay_chitietdonhang"
+            android:id="@+id/tvNgay_chitietdonhang_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ngày: 01-01-2023" />
 
         <TextView
-            android:id="@+id/tvTrangThai_chitietdonhang"
+            android:id="@+id/tvTrangThai_chitietdonhang_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Trạng thái: Chờ xác nhận" />
 
         <TextView
-            android:id="@+id/tvThanhToan_chitietdonhang"
+            android:id="@+id/tvThanhToan_chitietdonhang_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Thanh Toán " />
 
         <TextView
-            android:id="@+id/tvTongTien_chitietdonhang"
+            android:id="@+id/tvTongTien_chitietdonhang_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tổng tiền: 100,000 vnđ" />
@@ -73,12 +73,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnHuy_chitietdonhang"
+        android:id="@+id/btnUpdate_chitietdonhang_admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:backgroundTint="#FFC107"
-        android:onClick="onClickHuyDon"
-        android:text="Hủy Đơn" />
+        android:text="Cập nhật" />
 
 </LinearLayout>
