@@ -115,4 +115,5 @@ public class QLGioHang extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
 }

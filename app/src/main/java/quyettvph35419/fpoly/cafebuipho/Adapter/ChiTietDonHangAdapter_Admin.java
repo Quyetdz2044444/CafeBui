@@ -26,6 +26,7 @@ import quyettvph35419.fpoly.cafebuipho.Dao.SizeDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.Size;
+import quyettvph35419.fpoly.cafebuipho.QLGioHang;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 public class ChiTietDonHangAdapter_Admin extends RecyclerView.Adapter<ChiTietDonHangAdapter_Admin.ChiTietDonHangViewHolder> {
@@ -214,6 +215,7 @@ public class ChiTietDonHangAdapter_Admin extends RecyclerView.Adapter<ChiTietDon
                 donHangChiTiet.setTrangThai(newTrangThai1);
                 donHangChiTietDao.updateTrangThai(donHangChiTiet.getMaDHCT(), newTrangThai1);
                 notifyDataSetChanged();
+                showAlertDialog("Cập nhật thành công !", "Bạn đã cập nhật trạng thái đơn hàng thành công");
             }
         });
 
@@ -225,5 +227,20 @@ public class ChiTietDonHangAdapter_Admin extends RecyclerView.Adapter<ChiTietDon
         });
 
         builder.create().show();
+    }
+
+    private void showAlertDialog(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }
