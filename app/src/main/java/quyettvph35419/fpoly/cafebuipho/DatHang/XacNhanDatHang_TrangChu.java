@@ -16,12 +16,16 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import quyettvph35419.fpoly.cafebuipho.Account.Login;
+import quyettvph35419.fpoly.cafebuipho.Adapter.DoUongAdapter;
+import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangChiTietDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
+import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
@@ -36,7 +40,10 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
     private KhachHang khachHang;
     private KhachHangDao khachHangDao;
     private DonHang donHang;
+    private DoUong doUong;
+
     private DonHangDao donHangDao;
+    private DoUongDao doUongDao;
     private DonHangChiTiet donHangChiTiet;
     private DonHangChiTietDao donHangChiTietDao;
     private Login login;
@@ -65,10 +72,13 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
 
         String tendouong = intent.getStringExtra("tendouong");
         int madouong = intent.getIntExtra("madouong", -1);
+        int tonkho = intent.getIntExtra("tonkho", -1);
         String size = intent.getStringExtra("size");
         String giadouong = intent.getStringExtra("giadouong");
         String soluong = intent.getStringExtra("soluong");
         String tongtien = intent.getStringExtra("tongtien");
+
+        doUong = doUongDao.getID(String.valueOf(madouong));
 
         tvTenDoUong.setText(tendouong);
         tvSizeDoUong.setText("Size : " + size);
@@ -126,14 +136,24 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                         donHangChiTiet.setThanhToan(selectedRadioButton.getText().toString());
                         donHangChiTiet.setTongTien(Integer.parseInt(giadouong));
 
-                        // Thêm đơn hàng chi tiết vào cơ sở dữ liệu
-                        if (donHangChiTietDao.insert(donHangChiTiet) > 0) {
-                            login.thongBao("Đơn hàng đã được đặt !", XacNhanDatHang_TrangChu.this);
-                            showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
+                        int soLuongDatHang = Integer.parseInt(soluong);
+                        int soLuongTonKho = tonkho;
+
+                        if (soLuongDatHang <= soLuongTonKho) {
+                            // Đặt hàng thành công
+                            doUong.setTonKho(soLuongTonKho - soLuongDatHang);
+                            doUongDao.updateTonKho(doUong);
+
+                            if (donHangChiTietDao.insert(donHangChiTiet) > 0) {
+                                login.thongBao("Đơn hàng đã được đặt !", XacNhanDatHang_TrangChu.this);
+                                showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
+                            }
+                        } else {
+                            // Hiển thị thông báo cho người dùng khi số lượng đặt hàng vượt quá tồn kho
+                            Toast.makeText(XacNhanDatHang_TrangChu.this, "Số lượng đặt hàng vượt quá tồn kho", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
-
             }
         });
 
@@ -179,7 +199,9 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
         rdoCard = findViewById(R.id.rdo_card);
 
         btnDatHang = findViewById(R.id.btndathang_xndathang);
-
+        doUongDao = new DoUongDao(this);
         login = new Login();
+
+
     }
 }

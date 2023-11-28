@@ -74,7 +74,7 @@ public class TrangChu_Fragment extends Fragment {
         List<DoUong> list2 = new ArrayList<>();
         for (DoUong doUong : list) {
             list2.add(new DoUong(doUong.getMaDoUong(), doUong.getTenDoUong(),
-                    doUong.getGia(), doUong.getImageId(), doUong.getMaLoai()));
+                    doUong.getGia(), doUong.getImageId(), doUong.getMaLoai(),doUong.getTonKho()));
         }
 
         Bundle bundle = getArguments();
@@ -84,7 +84,6 @@ public class TrangChu_Fragment extends Fragment {
             rclViewDoUong.setAdapter(doUongAdapter);
 
         }
-
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
