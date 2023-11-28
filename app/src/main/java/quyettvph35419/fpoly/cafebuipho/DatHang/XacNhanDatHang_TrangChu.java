@@ -72,7 +72,6 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
 
         String tendouong = intent.getStringExtra("tendouong");
         int madouong = intent.getIntExtra("madouong", -1);
-        int tonkho = intent.getIntExtra("tonkho", -1);
         String size = intent.getStringExtra("size");
         String giadouong = intent.getStringExtra("giadouong");
         String soluong = intent.getStringExtra("soluong");
@@ -136,22 +135,11 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                         donHangChiTiet.setThanhToan(selectedRadioButton.getText().toString());
                         donHangChiTiet.setTongTien(Integer.parseInt(giadouong));
 
-                        int soLuongDatHang = Integer.parseInt(soluong);
-                        int soLuongTonKho = tonkho;
-
-                        if (soLuongDatHang <= soLuongTonKho) {
-                            // Đặt hàng thành công
-                            doUong.setTonKho(soLuongTonKho - soLuongDatHang);
-                            doUongDao.updateTonKho(doUong);
-
-                            if (donHangChiTietDao.insert(donHangChiTiet) > 0) {
-                                login.thongBao("Đơn hàng đã được đặt !", XacNhanDatHang_TrangChu.this);
-                                showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
-                            }
-                        } else {
-                            // Hiển thị thông báo cho người dùng khi số lượng đặt hàng vượt quá tồn kho
-                            Toast.makeText(XacNhanDatHang_TrangChu.this, "Số lượng đặt hàng vượt quá tồn kho", Toast.LENGTH_SHORT).show();
+                        if (donHangChiTietDao.insert(donHangChiTiet) > 0) {
+                            login.thongBao("Đơn hàng đã được đặt !", XacNhanDatHang_TrangChu.this);
+                            showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
                         }
+
                     }
                 }
             }

@@ -6,18 +6,17 @@ public class DoUong {
     private int gia;
     private int imageId;
     private int maLoai;
-    private int tonKho;
+
 
 
     public DoUong() {
     }
 
-    public DoUong(int maDoUong, String tenDoUong, int gia, int imageId, int maLoai, int tonKho) {
+    public DoUong(int maDoUong, String tenDoUong, int gia, int imageId, int maLoai) {
         this.maDoUong = maDoUong;
         this.tenDoUong = tenDoUong;
         this.gia = gia;
         this.imageId = imageId;
-        this.tonKho = tonKho;
     }
 
 
@@ -61,11 +60,4 @@ public class DoUong {
         this.maLoai = maLoai;
     }
 
-    public int getTonKho() {
-        return tonKho;
-    }
-
-    public void setTonKho(int tonKho) {
-        this.tonKho = tonKho;
-    }
 }

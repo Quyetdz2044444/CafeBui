@@ -32,8 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Giá:"
-            android:textSize="15dp"
-             />
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/tvvnd_doUong"
@@ -42,20 +41,12 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:text="vnđ"
-            android:textStyle="bold"
             android:textColor="#6E0E0E"
             android:textSize="15dp"
-           />
+            android:textStyle="bold" />
 
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvtonKho"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Còn lại :"
-        android:textSize="15dp"
-        />
 
 </LinearLayout>

@@ -232,7 +232,6 @@ public class ChiTietDoUong extends AppCompatActivity {
                     intent1.putExtra("giadouong", tvgia.getText().toString());
                     intent1.putExtra("soluong", tvSelectedQuantity.getText().toString());
                     intent1.putExtra("tongtien", tvtongtien.getText().toString());
-                    intent1.putExtra("tonkho", doUong.getTonKho());
                     intent1.putExtra("makh", makh);
                     startActivity(intent1);
                 } else {

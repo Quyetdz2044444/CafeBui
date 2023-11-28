@@ -54,7 +54,6 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
         DoUong doUong = doUongList.get(position);
         holder.tendouong.setText("Tên: " + doUong.getTenDoUong());
         holder.giaDoUong.setText("Giá: " + doUong.getGia());
-        holder.tonkho.setText("Còn lại : " + doUong.getTonKho());
 
         int vitri = doUong.getImageId();
         int resourceId;
@@ -167,7 +166,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
 
     public class DoUongViewHolder extends RecyclerView.ViewHolder {
         private ImageView imgDoUong;
-        private TextView tendouong, tonkho;
+        private TextView tendouong;
         private TextView giaDoUong;
 
         public DoUongViewHolder(@NonNull View itemView) {
@@ -175,7 +174,6 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
 
             imgDoUong = itemView.findViewById(R.id.imgDoUong_use);
             tendouong = itemView.findViewById(R.id.tvten_doUong);
-            tonkho = itemView.findViewById(R.id.tvtonKho);
             giaDoUong = itemView.findViewById(R.id.tvgia_doUong);
 
 
