@@ -3,6 +3,7 @@ package quyettvph35419.fpoly.cafebuipho.DatHang;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -41,7 +43,8 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
     private KhachHangDao khachHangDao;
     private DonHang donHang;
     private DoUong doUong;
-
+    private DoUongAdapter doUongAdapter;
+    List<DoUong> doUongList;
     private DonHangDao donHangDao;
     private DoUongDao doUongDao;
     private DonHangChiTiet donHangChiTiet;
@@ -72,6 +75,7 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
 
         String tendouong = intent.getStringExtra("tendouong");
         int madouong = intent.getIntExtra("madouong", -1);
+        int tonkho = intent.getIntExtra("tonkho", -1);
         String size = intent.getStringExtra("size");
         String giadouong = intent.getStringExtra("giadouong");
         String soluong = intent.getStringExtra("soluong");
@@ -135,9 +139,20 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                         donHangChiTiet.setThanhToan(selectedRadioButton.getText().toString());
                         donHangChiTiet.setTongTien(Integer.parseInt(giadouong));
 
-                        if (donHangChiTietDao.insert(donHangChiTiet) > 0) {
-                            login.thongBao("Đơn hàng đã được đặt !", XacNhanDatHang_TrangChu.this);
-                            showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
+                        int soluongdat = Integer.parseInt(soluong);
+                        int sltonkho = tonkho;
+
+                        if (sltonkho >= soluongdat) {
+
+                            if (donHangChiTietDao.insert(donHangChiTiet) > 0) {
+                                doUong.setTonKho(sltonkho - soluongdat);
+                                doUongDao.updatetonkho(doUong);
+                                doUongList = new ArrayList<>();
+                                doUongAdapter = new DoUongAdapter(doUongList, getApplicationContext(), makh);
+                                doUongAdapter.setListTonKho(doUongList);
+                                login.thongBao("Đơn hàng đã được đặt !", XacNhanDatHang_TrangChu.this);
+                                showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
+                            }
                         }
 
                     }

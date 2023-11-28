@@ -64,6 +64,7 @@ public class ChiTietDoUong extends AppCompatActivity {
 
         Intent intent = getIntent();
         int maDoUong = intent.getIntExtra("madouong", -1);
+        int tonkho = intent.getIntExtra("tonkho", -1);
         String makh = intent.getStringExtra("makh");
 
 
@@ -228,6 +229,7 @@ public class ChiTietDoUong extends AppCompatActivity {
                     }
 
                     intent1.putExtra("madouong", maDoUong);
+                    intent1.putExtra("tonkho", tonkho);
                     intent1.putExtra("tendouong", tvten.getText().toString());
                     intent1.putExtra("giadouong", tvgia.getText().toString());
                     intent1.putExtra("soluong", tvSelectedQuantity.getText().toString());

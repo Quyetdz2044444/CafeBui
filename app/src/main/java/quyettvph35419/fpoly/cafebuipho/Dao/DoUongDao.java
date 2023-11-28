@@ -41,6 +41,11 @@ public class DoUongDao {
         values.put("MaLoai", obj.getMaLoai());
         return db.update("DOUONG", values, "MaDO = ?", new String[]{String.valueOf(obj.getMaDoUong())});
     }
+    public long updatetonkho(DoUong obj) {
+        ContentValues values = new ContentValues();
+        values.put("TonKho", obj.getTonKho());
+        return db.update("DOUONG", values, "MaDO = ?", new String[]{String.valueOf(obj.getMaDoUong())});
+    }
 
     public long delete(String id) {
         return db.delete("DOUONG", "MaDO = ?", new String[]{String.valueOf(id)});
@@ -69,6 +74,7 @@ public class DoUongDao {
             obj.setGia(Integer.parseInt(cursor.getString(cursor.getColumnIndex("GiaDO"))));
             obj.setImageId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("Anh"))));
             obj.setMaLoai(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaLoai"))));
+            obj.setTonKho(Integer.parseInt(cursor.getString(cursor.getColumnIndex("TonKho"))));
             list.add(obj);
         }
         return list;
@@ -89,9 +95,10 @@ public class DoUongDao {
                 @SuppressLint("Range") int giaDoUong = cursor.getInt(cursor.getColumnIndex("GiaDO"));
                 @SuppressLint("Range") int anhDoUong = cursor.getInt(cursor.getColumnIndex("Anh"));
                 @SuppressLint("Range") int maLoaiDoUong = cursor.getInt(cursor.getColumnIndex("MaLoai"));
+                @SuppressLint("Range") int tonKho = cursor.getInt(cursor.getColumnIndex("TonKho"));
 
 
-                DoUong doUong = new DoUong(maDoUong, tenDoUong, giaDoUong, anhDoUong, maLoaiDoUong);
+                DoUong doUong = new DoUong(maDoUong, tenDoUong, giaDoUong, anhDoUong, maLoaiDoUong, tonKho);
                 doUongTheoLoai.add(doUong);
             } while (cursor.moveToNext());
         }

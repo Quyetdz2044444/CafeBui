@@ -1,5 +1,6 @@
 package quyettvph35419.fpoly.cafebuipho.Fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.SearchView;
@@ -11,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,14 +40,12 @@ public class TrangChu_Fragment extends Fragment {
     }
 
 
+    @SuppressLint("FragmentLiveDataObserve")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_trang_chu, container, false);
         searchView = v.findViewById(R.id.SearchView);
-
-
-
 
         rclViewDoUong = v.findViewById(R.id.rclViewDoUong_kh);
         recyclerViewngang = v.findViewById(R.id.rclViewLoaiDoUong_kh_ngang);
@@ -74,18 +72,16 @@ public class TrangChu_Fragment extends Fragment {
         List<DoUong> list2 = new ArrayList<>();
         for (DoUong doUong : list) {
             list2.add(new DoUong(doUong.getMaDoUong(), doUong.getTenDoUong(),
-                    doUong.getGia(), doUong.getImageId(), doUong.getMaLoai()));
+                    doUong.getGia(), doUong.getImageId(), doUong.getMaLoai(), doUong.getTonKho()));
         }
 
         Bundle bundle = getArguments();
-        if (bundle!=null){
-            String makh=bundle.getString("user");
-            doUongAdapter = new DoUongAdapter(list2, getContext(),makh);
+        if (bundle != null) {
+            String makh = bundle.getString("user");
+            doUongAdapter = new DoUongAdapter(list2, getContext(), makh);
             rclViewDoUong.setAdapter(doUongAdapter);
 
         }
-
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -98,8 +94,6 @@ public class TrangChu_Fragment extends Fragment {
                 return false;
             }
         });
-
-
 
         return v;
 

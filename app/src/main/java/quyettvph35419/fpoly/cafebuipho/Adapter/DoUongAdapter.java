@@ -54,6 +54,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
         DoUong doUong = doUongList.get(position);
         holder.tendouong.setText("Tên: " + doUong.getTenDoUong());
         holder.giaDoUong.setText("Giá: " + doUong.getGia());
+        holder.tonkho.setText("" + doUong.getTonKho());
 
         int vitri = doUong.getImageId();
         int resourceId;
@@ -119,6 +120,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
 
                     Intent intent = new Intent(context, ChiTietDoUong.class);
                     intent.putExtra("madouong", doUong.getMaDoUong());
+                    intent.putExtra("tonkho", doUong.getTonKho());
                     intent.putExtra("makh", makh);
 
                     context.startActivity(intent);
@@ -166,8 +168,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
 
     public class DoUongViewHolder extends RecyclerView.ViewHolder {
         private ImageView imgDoUong;
-        private TextView tendouong;
-        private TextView giaDoUong;
+        private TextView tendouong, tonkho, giaDoUong;
 
         public DoUongViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -175,6 +176,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
             imgDoUong = itemView.findViewById(R.id.imgDoUong_use);
             tendouong = itemView.findViewById(R.id.tvten_doUong);
             giaDoUong = itemView.findViewById(R.id.tvgia_doUong);
+            tonkho = itemView.findViewById(R.id.tvtonkho);
 
 
         }
@@ -184,5 +186,12 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
         this.doUongList = doUongList;
         notifyDataSetChanged();
     }
+
+    public void setListTonKho(List<DoUong> doUongList) {
+        this.doUongList.clear();
+        this.doUongList.addAll(doUongList);
+        notifyDataSetChanged();
+    }
+
 
 }

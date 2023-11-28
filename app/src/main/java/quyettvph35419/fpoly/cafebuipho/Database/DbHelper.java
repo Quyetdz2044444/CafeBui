@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "CafeBui";
-    public static final int DB_VERSION = 32;
+    public static final int DB_VERSION = 33;
 
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -45,7 +45,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "TenDO text not null," +
                 "GiaDO integer not null," +
                 "Anh integer not null,"
-                + "MaLoai integer references LOAIDOUONG(MaLoai))";
+                + "MaLoai integer references LOAIDOUONG(MaLoai)," +
+                "TonKho integer not null)";
         db.execSQL(tb_DoUong);
 
 
@@ -87,16 +88,13 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.execSQL("INSERT INTO SIZE VALUES (1, 'M',0 ),(2,'L',10000),(3,'XL',15000)");
 
-        db.execSQL("INSERT INTO DOUONG VALUES (1, 'Latte', 30000,1,1)," +
-                "(2, 'Machiato', 35000,2,1),(3, 'Cafe sữa đá', 25000,3,2),(4, 'Cafe sữa nóng', 25000,4,2)," +
-                "(5, 'Mocha', 45000,5,3),(6, 'Affogato', 50000,6,3),(7, 'Irish cofee', 45000,7,4)," +
-                "(8, 'Flat white', 65000,8,4),(9, 'Lungo coffee', 60000,9,1),(10, 'Ristresto', 55000,10,3)," +
-                "(11, 'Red eyes', 50000,11,4),(12, 'Picolo coffee', 65000,12,2)," +
-                "(13, 'Cafe muối', 60000,13,3)," +
-                "(14, 'Cafe trứng', 50000,14,2),(15, 'Long black ', 45000,15,1),(16, 'Cafe cốt dừa', 55000,16,4)");
-
-
-//        db.execSQL("INSERT INTO DONHANG VALUES (1,'trinhpk',45000,1,1,'2023-06-12')");
+        db.execSQL("INSERT INTO DOUONG VALUES (1, 'Latte', 30000,1,1,66)," +
+                "(2, 'Machiato', 35000,2,1,77),(3, 'Cafe sữa đá', 25000,3,2,88),(4, 'Cafe sữa nóng', 25000,4,2,99)," +
+                "(5, 'Mocha', 45000,5,3,76),(6, 'Affogato', 50000,6,3,78),(7, 'Irish cofee', 45000,7,4,87)," +
+                "(8, 'Flat white', 65000,8,4,74),(9, 'Lungo coffee', 60000,9,1,63),(10, 'Ristresto', 55000,10,3,69)," +
+                "(11, 'Red eyes', 50000,11,4,82),(12, 'Picolo coffee', 65000,12,2,81)," +
+                "(13, 'Cafe muối', 60000,13,3,90)," +
+                "(14, 'Cafe trứng', 50000,14,2,60),(15, 'Long black ', 45000,15,1,65),(16, 'Cafe cốt dừa', 55000,16,4,73)");
 
     }
 
