@@ -56,7 +56,6 @@ public class DoUongAdapter_Admin extends ArrayAdapter<DoUong> {
             tvloai.setText("Loại: " + loaiDoUong.getTenLoai());
             tvgia.setText("Giá: " + item.getGia());
 
-
         }
 
         imgDoUong.setOnClickListener(new View.OnClickListener() {

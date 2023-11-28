@@ -57,6 +57,7 @@ public class ChiTietDonHangAdapter_Admin extends RecyclerView.Adapter<ChiTietDon
     public void onBindViewHolder(@NonNull ChiTietDonHangViewHolder holder, int position) {
         DonHangChiTiet donHangChiTiet = chitietlist.get(position);
 
+
         holder.tvgia.setText("Giá : " + donHangChiTiet.getTongTien());
 
         String trangthai = "";
@@ -74,7 +75,12 @@ public class ChiTietDonHangAdapter_Admin extends RecyclerView.Adapter<ChiTietDon
             holder.tvtrangthai.setTextColor(Color.RED);
 
         }
-
+        if (trangthai.equals("Chờ xác nhận")) {
+            holder.btnupdate.setVisibility(View.VISIBLE);
+        }
+        if (trangthai.equals("Đã giao") || trangthai.equals("Đã hủy")) {
+            holder.btnupdate.setVisibility(View.GONE);
+        }
         doUongDao = new DoUongDao(context);
         doUong = doUongDao.getID(String.valueOf(donHangChiTiet.getMaDoUong()));
         sizeDao = new SizeDao(context);
@@ -147,10 +153,21 @@ public class ChiTietDonHangAdapter_Admin extends RecyclerView.Adapter<ChiTietDon
         holder.btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 showUpdateDialog(context, donHangChiTiet);
             }
         });
+
+        holder.btnxacnhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                donHangChiTietDao = new DonHangChiTietDao(context);
+                donHangChiTiet.setTrangThai(2);
+                donHangChiTietDao.update(donHangChiTiet);
+                holder.btnxacnhan.setVisibility(View.GONE);
+                notifyDataSetChanged();
+            }
+        });
+
     }
 
     @Override
@@ -161,7 +178,7 @@ public class ChiTietDonHangAdapter_Admin extends RecyclerView.Adapter<ChiTietDon
     public class ChiTietDonHangViewHolder extends RecyclerView.ViewHolder {
         private TextView tvten, tvsoluong, tvsize, tvgia, tvngay, tvtrangthai, tvthanhtoan, tvtongtien;
         private ImageView imgdouong;
-        private Button btnupdate;
+        private Button btnupdate, btnxacnhan;
 
         public ChiTietDonHangViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -177,6 +194,7 @@ public class ChiTietDonHangAdapter_Admin extends RecyclerView.Adapter<ChiTietDon
             tvtongtien = itemView.findViewById(R.id.tvTongTien_chitietdonhang_admin);
 
             btnupdate = itemView.findViewById(R.id.btnUpdate_chitietdonhang_admin);
+            btnxacnhan = itemView.findViewById(R.id.btnxacnhan_chitietdonhang_admin);
 
         }
     }
