@@ -7,6 +7,14 @@
     android:orientation="vertical"
     tools:context=".Fragment.DonHang_Admin_Fragment">
 
+    <Spinner
+        android:id="@+id/spinnerTrangThai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rclDonHang_admin"
         android:layout_width="match_parent"
