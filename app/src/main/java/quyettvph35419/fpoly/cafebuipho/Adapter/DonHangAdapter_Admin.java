@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.ChiTietDonHang_Admin;
@@ -204,4 +205,23 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+    public void filterByStatus(int status) {
+        List<DonHang> filteredList = new ArrayList<>();
+        donHangList = donHangDao.getAll();
+        for (DonHang donHang : donHangList) {
+            if (donHang.getTrangThai() == status) {
+                filteredList.add(donHang);
+            }
+        }
+
+        // Cập nhật danh sách và thông báo sự thay đổi
+        donHangList = filteredList;
+        notifyDataSetChanged();
+    }
+    public void showAllItems() {
+        donHangList = donHangDao.getAll(); // Khôi phục danh sách gốc
+        notifyDataSetChanged();
+    }
+
 }

@@ -12,6 +12,13 @@
         <item>Đã giao</item>
         <item>Đã hủy</item>
     </string-array>
+    <string-array name="trangthai_array_locdonhang">
+        <item>Tất cả</item>
+        <item>Chờ xác nhận</item>
+        <item>Đang giao</item>
+        <item>Đã giao</item>
+        <item>Đã hủy</item>
+    </string-array>
 
 
 </resources>

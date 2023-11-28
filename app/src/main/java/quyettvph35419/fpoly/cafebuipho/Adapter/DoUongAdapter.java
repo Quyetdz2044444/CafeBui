@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.ChiTietDoUong;
+import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
@@ -28,6 +29,7 @@ import quyettvph35419.fpoly.cafebuipho.R;
 
 public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongViewHolder> implements Filterable {
     private List<DoUong> doUongList, listOld;
+    private DoUongDao doUongDao;
     Context context;
     private String makh;
 
@@ -38,7 +40,6 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
         this.makh = makh;
         this.listOld = new ArrayList<>(doUongList);
     }
-
 
     @NonNull
     @Override
@@ -53,6 +54,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
         DoUong doUong = doUongList.get(position);
         holder.tendouong.setText("Tên: " + doUong.getTenDoUong());
         holder.giaDoUong.setText("Giá: " + doUong.getGia());
+        holder.tonkho.setText("Còn lại : " + doUong.getTonKho());
 
         int vitri = doUong.getImageId();
         int resourceId;
@@ -165,7 +167,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
 
     public class DoUongViewHolder extends RecyclerView.ViewHolder {
         private ImageView imgDoUong;
-        private TextView tendouong;
+        private TextView tendouong, tonkho;
         private TextView giaDoUong;
 
         public DoUongViewHolder(@NonNull View itemView) {
@@ -173,6 +175,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
 
             imgDoUong = itemView.findViewById(R.id.imgDoUong_use);
             tendouong = itemView.findViewById(R.id.tvten_doUong);
+            tonkho = itemView.findViewById(R.id.tvtonKho);
             giaDoUong = itemView.findViewById(R.id.tvgia_doUong);
 
 
@@ -183,4 +186,5 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
         this.doUongList = doUongList;
         notifyDataSetChanged();
     }
+
 }
