@@ -86,7 +86,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
             holder.tvTrangThai.setTextColor(Color.RED);
 
         }
-        holder.tvTrangThai.setText("Trạng thái : " + trangthai);
+        holder.tvTrangThai.setText(trangthai);
 
         holder.tvchitiet.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -57,12 +57,26 @@
                 android:layout_height="wrap_content"
                 android:text="Ngày :"
                 android:textSize="16sp" />
-            <TextView
-                android:id="@+id/tvtrangthai_donhang_admin"
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Trạng thái :"
-                android:textSize="16sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trạng thái :"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvtrangthai_donhang_admin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -90,8 +104,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:padding="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <Button
             android:id="@+id/btnUpdate_donhang_admin"

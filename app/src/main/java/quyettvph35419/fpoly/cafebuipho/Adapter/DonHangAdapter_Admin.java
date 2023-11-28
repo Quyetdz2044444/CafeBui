@@ -86,9 +86,8 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
             trangthai = "Đã hủy";
             holder.btncapnhat.setVisibility(View.GONE);
             holder.tvTrangThai.setTextColor(Color.RED);
-
         }
-        holder.tvTrangThai.setText("Trạng thái : " + trangthai);
+        holder.tvTrangThai.setText(trangthai);
 
         holder.tvchitiet.setOnClickListener(new View.OnClickListener() {
             @Override
