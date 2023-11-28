@@ -74,7 +74,6 @@ public class DoUongDao {
             obj.setGia(Integer.parseInt(cursor.getString(cursor.getColumnIndex("GiaDO"))));
             obj.setImageId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("Anh"))));
             obj.setMaLoai(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaLoai"))));
-            obj.setTonKho(Integer.parseInt(cursor.getString(cursor.getColumnIndex("TonKho"))));
             list.add(obj);
         }
         return list;
