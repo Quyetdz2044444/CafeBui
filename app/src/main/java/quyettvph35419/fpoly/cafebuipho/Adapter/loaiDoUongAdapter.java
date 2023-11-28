@@ -25,7 +25,6 @@ public class loaiDoUongAdapter extends ArrayAdapter<LoaiDoUong> {
     ImageView imgxoa;
 
 
-
     public loaiDoUongAdapter(@NonNull Context context, QLLoaiDoUongFragment fragment, ArrayList<LoaiDoUong> list) {
         super(context, 0, list);
         this.context = context;
@@ -42,7 +41,7 @@ public class loaiDoUongAdapter extends ArrayAdapter<LoaiDoUong> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.item_loaidouong_admin, null);
         }
-        final LoaiDoUong  item = list.get(position);
+        final LoaiDoUong item = list.get(position);
         if (item != null) {
             tvmaLoai = v.findViewById(R.id.tvmaloai_loaiDoUong);
             tvmaLoai.setText("Mã Loại: " + item.getMaLoai());
@@ -54,10 +53,11 @@ public class loaiDoUongAdapter extends ArrayAdapter<LoaiDoUong> {
         imgxoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-           fragment.xoa(String.valueOf(item.getMaLoai()));
+//           fragment.xoa(String.valueOf(item.getMaLoai()));
+                list.remove(position);
+                notifyDataSetChanged();
             }
         });
-
 
 
         return v;

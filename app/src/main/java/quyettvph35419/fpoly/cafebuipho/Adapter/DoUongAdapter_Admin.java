@@ -61,10 +61,13 @@ public class DoUongAdapter_Admin extends ArrayAdapter<DoUong> {
         imgDoUong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragment.xoa(String.valueOf(item.getMaDoUong()));
+//                fragment.xoa(String.valueOf(item.getMaDoUong()));
+                list.remove(position);
+                notifyDataSetChanged();
             }
         });
         return v;
     }
+
 
 }
