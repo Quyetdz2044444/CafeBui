@@ -79,14 +79,17 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
         } else if (donHang.getTrangThai() == 2) {
             trangthai = "Đang giao";
             holder.tvTrangThai.setTextColor(Color.BLUE);
+            holder.btnxacnhan.setVisibility(View.GONE);
         } else if (donHang.getTrangThai() == 3) {
             trangthai = "Đã giao";
             holder.btncapnhat.setVisibility(View.GONE);
             holder.tvTrangThai.setTextColor(Color.GREEN);
+            holder.btnxacnhan.setVisibility(View.GONE);
         } else if (donHang.getTrangThai() == 4) {
             trangthai = "Đã hủy";
             holder.btncapnhat.setVisibility(View.GONE);
             holder.tvTrangThai.setTextColor(Color.RED);
+            holder.btnxacnhan.setVisibility(View.GONE);
         }
         holder.tvTrangThai.setText(trangthai);
 
@@ -114,6 +117,7 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
                 donHang.setTrangThai(2);
                 donHangDao.update(donHang);
                 holder.btnxacnhan.setVisibility(View.GONE);
+
                 notifyDataSetChanged();
             }
         });
@@ -176,6 +180,7 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
                 }
                 donHang.setTrangThai(newTrangThai1);
                 donHangDao.updateTrangThai(donHang.getMaDH(), newTrangThai1);
+
                 notifyDataSetChanged();
                 showAlertDialog("Cập nhật thành công !", "Bạn đã cập nhật trạng thái đơn hàng thành công");
             }

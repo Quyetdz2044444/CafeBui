@@ -94,7 +94,6 @@ public class TrangChu_Fragment extends Fragment {
                 return false;
             }
         });
-
         return v;
 
     }

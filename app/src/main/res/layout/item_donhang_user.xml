@@ -100,8 +100,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFC107"
-                android:onClick="onClickHuyDon"
-                android:text="Hủy Đơn" />
+                android:text="Hủy Đơn"
+                android:visibility="gone" />
 
         </LinearLayout>
 
