@@ -10,14 +10,14 @@ public class DonHangChiTiet {
     private int soLuong;
     private String ngay;
     private String thanhToan;
-    private int trangThai;
+
     private int tongTien;
 
     public DonHangChiTiet() {
     }
 
     public DonHangChiTiet(int maDHCT, int maDoUong, int maDH, int maSize, int soLuong,
-                          String ngay, String thanhToan, int trangThai, int tongTien) {
+                          String ngay, String thanhToan, int tongTien) {
         this.maDHCT = maDHCT;
         this.maDoUong = maDoUong;
         this.maDH = maDH;
@@ -25,7 +25,6 @@ public class DonHangChiTiet {
         this.soLuong = soLuong;
         this.ngay = ngay;
         this.thanhToan = thanhToan;
-        this.trangThai = trangThai;
         this.tongTien = tongTien;
     }
 
@@ -85,13 +84,7 @@ public class DonHangChiTiet {
         this.thanhToan = thanhToan;
     }
 
-    public int getTrangThai() {
-        return trangThai;
-    }
 
-    public void setTrangThai(int trangThai) {
-        this.trangThai = trangThai;
-    }
 
     public int getTongTien() {
         return tongTien;

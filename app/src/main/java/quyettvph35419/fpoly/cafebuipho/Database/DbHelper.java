@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "CafeBui";
-    public static final int DB_VERSION = 27;
+    public static final int DB_VERSION = 28;
 
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -75,7 +75,6 @@ public class DbHelper extends SQLiteOpenHelper {
                 + "SoLuong integer not null,"
                 + "Ngay text not null," +
                 "ThanhToan Text not null,"
-                + "TrangThai integer not null,"
                 + "MaSize integer references SIZE(MaSize))";
         db.execSQL(tb_DonHangChiTiet);
 

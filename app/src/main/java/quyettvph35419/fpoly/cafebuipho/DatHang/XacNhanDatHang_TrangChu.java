@@ -125,7 +125,6 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                         donHangChiTiet.setNgay(date);
                         donHangChiTiet.setThanhToan(selectedRadioButton.getText().toString());
                         donHangChiTiet.setTongTien(Integer.parseInt(giadouong));
-                        donHangChiTiet.setTrangThai(1);
 
                         // Thêm đơn hàng chi tiết vào cơ sở dữ liệu
                         if (donHangChiTietDao.insert(donHangChiTiet) > 0) {

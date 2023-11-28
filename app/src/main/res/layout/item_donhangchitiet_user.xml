@@ -52,11 +52,6 @@
             android:layout_height="wrap_content"
             android:text="Ngày: 01-01-2023" />
 
-        <TextView
-            android:id="@+id/tvTrangThai_chitietdonhang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trạng thái: Chờ xác nhận" />
 
         <TextView
             android:id="@+id/tvThanhToan_chitietdonhang"
@@ -72,13 +67,5 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnHuy_chitietdonhang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="#FFC107"
-        android:onClick="onClickHuyDon"
-        android:text="Hủy Đơn" />
 
 </LinearLayout>

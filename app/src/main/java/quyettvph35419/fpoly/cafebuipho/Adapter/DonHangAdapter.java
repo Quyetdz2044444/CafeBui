@@ -68,6 +68,25 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
         holder.tvmadh.setText("Mã hóa đơn : " + donHang.getMaDH());
         holder.tvNgay.setText("Thời gian : " + donHang.getNgay());
 
+        String trangthai = "";
+        if (donHang.getTrangThai() == 1) {
+            trangthai = "Chờ xác nhận";
+            holder.tvTrangThai.setTextColor(Color.MAGENTA);
+        } else if (donHang.getTrangThai() == 2) {
+            trangthai = "Đang giao";
+            holder.btnHuyDon.setVisibility(View.GONE);
+            holder.tvTrangThai.setTextColor(Color.BLUE);
+        } else if (donHang.getTrangThai() == 3) {
+            trangthai = "Đã giao";
+            holder.tvTrangThai.setTextColor(Color.GREEN);
+            holder.btnHuyDon.setVisibility(View.GONE);
+        } else if (donHang.getTrangThai() == 4) {
+            trangthai = "Đã hủy";
+            holder.btnHuyDon.setVisibility(View.GONE);
+            holder.tvTrangThai.setTextColor(Color.RED);
+
+        }
+        holder.tvTrangThai.setText("Trạng thái : " + trangthai);
 
         holder.tvchitiet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +97,17 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
                 context.startActivity(intent);
             }
         });
+        holder.btnHuyDon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                donHangDao = new DonHangDao(context);
+                donHang.setTrangThai(4);
+                donHangDao.update(donHang);
+
+                notifyDataSetChanged();
+            }
+        });
+
 
     }
 
@@ -87,8 +117,8 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
     }
 
     public class DonHangViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvmadh, tvtenkh, tvSoLuong, tvGia, tvNgay, tvchitiet;
-
+        private TextView tvmadh, tvtenkh, tvSoLuong, tvGia, tvNgay, tvTrangThai, tvchitiet;
+        private Button btnHuyDon;
 
         public DonHangViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -98,6 +128,9 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
             tvNgay = itemView.findViewById(R.id.tvngay_donhang);
             tvchitiet = itemView.findViewById(R.id.tvchitiet_donhang);
             tvtenkh = itemView.findViewById(R.id.tvtenkh_donhang);
+            tvTrangThai = itemView.findViewById(R.id.tvtrangthai_donhang);
+
+            btnHuyDon = itemView.findViewById(R.id.btnHuy_donhang);
         }
     }
 

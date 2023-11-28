@@ -12,6 +12,7 @@ import java.util.List;
 import quyettvph35419.fpoly.cafebuipho.Database.DbHelper;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
+import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 
 public class DonHangDao {
 
@@ -54,6 +55,13 @@ public class DonHangDao {
         return db.update("DONHANG", values, "MaDH = ?", new String[]{String.valueOf(obj.getMaDH())});
     }
 
+    public long updateTrangThai(int maDH, int trangThai) {
+        ContentValues values = new ContentValues();
+        values.put("TrangThai", trangThai);
+        String whereClause = "MaDH = ?";
+        String[] whereArgs = {String.valueOf(maDH)};
+        return db.update("DONHANG", values, whereClause, whereArgs);
+    }
     public List<DonHang> getAll() {
         String sql = "SELECT * FROM DONHANG";
         return getData(sql);

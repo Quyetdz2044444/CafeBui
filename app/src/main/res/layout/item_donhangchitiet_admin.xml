@@ -53,12 +53,6 @@
             android:text="Ngày: 01-01-2023" />
 
         <TextView
-            android:id="@+id/tvTrangThai_chitietdonhang_admin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trạng thái: Chờ xác nhận" />
-
-        <TextView
             android:id="@+id/tvThanhToan_chitietdonhang_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,31 +63,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tổng tiền: 100,000 vnđ" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btnUpdate_chitietdonhang_admin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#FFC107"
-            android:text="Cập nhật" />
-
-        <Button
-            android:id="@+id/btnxacnhan_chitietdonhang_admin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#3F51B5"
-            android:text="Xác nhận"
-            android:visibility="gone" />
 
     </LinearLayout>
 

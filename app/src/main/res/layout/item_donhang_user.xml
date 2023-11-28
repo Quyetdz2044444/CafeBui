@@ -57,6 +57,12 @@
                 android:layout_height="wrap_content"
                 android:text="Ngày :"
                 android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tvtrangthai_donhang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trạng thái :"
+                android:textSize="16sp" />
 
 
         </LinearLayout>
@@ -64,16 +70,25 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvchitiet_donhang"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:drawableStart="@drawable/infodonhang"
                 android:gravity="center"
                 android:text="Chi tiết" />
+
+            <Button
+                android:id="@+id/btnHuy_donhang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFC107"
+                android:onClick="onClickHuyDon"
+                android:text="Hủy Đơn" />
 
         </LinearLayout>
 
