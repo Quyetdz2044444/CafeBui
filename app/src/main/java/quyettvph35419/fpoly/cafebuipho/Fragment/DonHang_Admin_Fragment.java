@@ -63,7 +63,6 @@ public class DonHang_Admin_Fragment extends Fragment {
                 if (newTrangThai.equals("Tất cả")) {
                     donHangAdapter.showAllItems();
                 } else {
-                    // Nếu bạn muốn chuyển đổi chuỗi trạng thái thành số nguyên, bạn có thể thực hiện như sau:
                     int statusInt = getStatusInt(newTrangThai);
 
                     // Lọc danh sách theo trạng thái được chọn và cập nhật RecyclerView

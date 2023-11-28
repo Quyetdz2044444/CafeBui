@@ -148,7 +148,9 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
         donHangList = filteredList;
         notifyDataSetChanged();
     }
+
     public void showAllItems() {
+        donHangDao = new DonHangDao(context);
         donHangList = donHangDao.getAll(); // Khôi phục danh sách gốc
         notifyDataSetChanged();
     }
