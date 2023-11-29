@@ -62,6 +62,7 @@ public class DonHangDao {
         String[] whereArgs = {String.valueOf(maDH)};
         return db.update("DONHANG", values, whereClause, whereArgs);
     }
+
     public List<DonHang> getAll() {
         String sql = "SELECT * FROM DONHANG";
         return getData(sql);
@@ -91,37 +92,10 @@ public class DonHangDao {
             obj.setNgay(cursor.getString(cursor.getColumnIndex("Ngay")));
 
             list.add(obj);
+            
         }
         return list;
     }
-    public List<DonHang> getAllDaGiao() {
-        String sql = "SELECT * FROM DONHANG WHERE TrangThai = 3";
-        return getData(sql);
-    }
-    public int getDoanhThu(int status, String startDate, String endDate) {
-        String sql = "SELECT SUM(Gia) FROM DONHANG WHERE TrangThai = ?";
 
-        // Thêm điều kiện lọc theo thời gian nếu cần
-        if (startDate != null && endDate != null) {
-            sql += " AND Ngay BETWEEN ? AND ?";
-        }
-
-        String[] selectionArgs;
-        if (startDate != null && endDate != null) {
-            selectionArgs = new String[]{String.valueOf(status), startDate, endDate};
-        } else {
-            selectionArgs = new String[]{String.valueOf(status)};
-        }
-
-        Cursor cursor = db.rawQuery(sql, selectionArgs);
-
-        int revenue = 0;
-        if (cursor.moveToFirst()) {
-            revenue = cursor.getInt(0);
-        }
-
-        cursor.close();
-        return revenue;
-    }
 
 }

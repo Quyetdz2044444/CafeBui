@@ -23,10 +23,12 @@ import java.util.Locale;
 
 import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Adapter.DoUongAdapter_Xndathang_GioHang;
+import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangChiTietDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.GioHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
+import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
@@ -38,10 +40,14 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
     private Toolbar tlbarxndathang;
     private TextView tvHoten, tvSdt, tvDiaChi, tvTongTien;
     private Button btndathangGH;
+
     private RadioGroup radioGrThanhToan;
     private RadioButton rdoBanking, rdoCard;
     private RecyclerView rclDouongGH;
     private GioHangDao gioHangDao;
+    private DoUongDao doUongDao;
+    private List<DoUong> doUongList;
+
     private List<GioHang> gioHangList;
     private DoUongAdapter_Xndathang_GioHang gioHangAdapter;
     private KhachHang khachHang;
@@ -138,7 +144,16 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
                             donHangChiTiet.setTongTien(gioHang.getTongTien());
 
                             // Thêm đơn hàng chi tiết vào cơ sở dữ liệu
-                            if (donHangChiTietDao.insert(donHangChiTiet) <= 0) {
+                            if (donHangChiTietDao.insert(donHangChiTiet) > 0) {
+                                // Cập nhật số lượng tồn kho của đồ uống
+                                DoUong doUong = doUongDao.getID(String.valueOf(gioHang.getMaDoUong()));
+                                int sltonkho = doUong.getTonKho();
+                                int soluongdat = gioHang.getSoLuong();
+                                if (sltonkho >= soluongdat) {
+                                    doUong.setTonKho(sltonkho - soluongdat);
+                                    doUongDao.updatetonkho(doUong);
+                                }
+                            } else {
                                 showAlertDialog("Oh! Đã xảy ra lỗi", "Rất tiếc vì hình như đã xảy ra điều gì đó, bạn hãy đăng xuất và thử mua lại nhé !");
                             }
                         }
@@ -188,6 +203,7 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
         khachHang = new KhachHang();
         khachHangDao = new KhachHangDao(this);
 
+        doUongDao = new DoUongDao(this);
         btndathangGH = findViewById(R.id.btndathang_xndathang_gh);
         radioGrThanhToan = findViewById(R.id.radioGrthanhtoan_gh);
         rdoBanking = findViewById(R.id.rdo_banking_gh);
@@ -195,4 +211,30 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
 
         login = new Login();
     }
+
+    private boolean kiemTraTonKho() {
+        for (GioHang gioHang : gioHangList) {
+            DoUong doUong = doUongDao.getID(String.valueOf(gioHang.getMaDoUong()));
+            int sltonkho = doUong.getTonKho();
+            int soluongdat = gioHang.getSoLuong();
+            if (sltonkho < soluongdat) {
+                // Số lượng đặt hàng lớn hơn số lượng tồn kho
+                return false;
+            }
+        }
+        return true;
+    }
+    private void capNhatTonKho() {
+        for (GioHang gioHang : gioHangList) {
+            DoUong doUong = doUongDao.getID(String.valueOf(gioHang.getMaDoUong()));
+            int sltonkho = doUong.getTonKho();
+            int soluongdat = gioHang.getSoLuong();
+            if (sltonkho >= soluongdat) {
+                doUong.setTonKho(sltonkho - soluongdat);
+                doUongDao.updatetonkho(doUong);
+            }
+        }
+    }
+
+
 }
