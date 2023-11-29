@@ -94,10 +94,7 @@ public class DonHangDao {
         }
         return list;
     }
-    public List<DonHang> getAllDaGiao() {
-        String sql = "SELECT * FROM DONHANG WHERE TrangThai = 3";
-        return getData(sql);
-    }
+
     public int getDoanhThu(int status, String startDate, String endDate) {
         String sql = "SELECT SUM(Gia) FROM DONHANG WHERE TrangThai = ?";
 
