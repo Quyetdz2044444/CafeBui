@@ -32,7 +32,6 @@ import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.DonHang_Admin_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.QLLoaiDoUongFragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.ThongTinAcc_Fragment;
-import quyettvph35419.fpoly.cafebuipho.Fragment.Top5_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Fragment.TrangChu_Fragment;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 
@@ -85,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (user.equalsIgnoreCase("admin")) {
             nv.getMenu().findItem(R.id.sub_DoanhThu).setVisible(true);
-            nv.getMenu().findItem(R.id.sub_Top).setVisible(true);
             nv.getMenu().findItem(R.id.nav_KhachHang).setVisible(true);
             nv.getMenu().findItem(R.id.nav_HoaDon).setVisible(true);
             nv.getMenu().findItem(R.id.nav_LoaiDoUong).setVisible(true);
@@ -160,10 +158,6 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle("Doanh thu");
                     DoanhThu_Fragment doanhThuFragment = new DoanhThu_Fragment();
                     replaceFrg(doanhThuFragment);
-                } else if (id == R.id.sub_Top) {
-                    toolbar.setTitle("Top 5 đồ uống");
-                    Top5_Fragment top5Fragment = new Top5_Fragment();
-                    replaceFrg(top5Fragment);
                 } else if (id == R.id.sub_Pass) {
                     toolbar.setTitle("Đổi mật khẩu");
                     ChangePass_Fragment changePassFragment = new ChangePass_Fragment();

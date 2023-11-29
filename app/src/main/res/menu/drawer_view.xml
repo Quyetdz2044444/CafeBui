@@ -49,11 +49,6 @@
         <item android:title="Thống kê">
             <menu>
                 <item
-                    android:id="@+id/sub_Top"
-                    android:icon="@drawable/ic_top"
-                    android:title="5 đồ uống hot trend"
-                    android:visible="false" />
-                <item
                     android:id="@+id/sub_DoanhThu"
                     android:icon="@drawable/ic_money"
                     android:title="Doanh thu"
