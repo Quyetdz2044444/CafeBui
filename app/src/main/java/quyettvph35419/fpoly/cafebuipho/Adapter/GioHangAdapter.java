@@ -250,6 +250,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
 
                 dialog.cancel();
                 Toast.makeText(context, "Đã xóa", Toast.LENGTH_SHORT).show();
+
                 if (onDataChangeListener != null) {
                     onDataChangeListener.onDataChanged();
                 }

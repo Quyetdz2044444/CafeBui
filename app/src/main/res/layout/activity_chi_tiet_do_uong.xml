@@ -178,65 +178,72 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tổng : "
-                android:textSize="25sp" />
-
-            <TextView
-                android:id="@+id/tvtongtien"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="Tổng tiền"
-                android:textColor="#F44336"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="#EDECEA"
+        app:cardCornerRadius="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_addGioHang"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#C97409"
-                android:text="Thêm vào giỏ hàng" />
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-            <Button
-                android:id="@+id/btn_muahang"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tổng : "
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/tvtongtien"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="Tổng tiền"
+                    android:textColor="#F44336"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#DA4111"
-                android:text="Đặt ngay" />
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <Button
+                    android:id="@+id/btn_addGioHang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#C97409"
+                    android:text="Thêm vào giỏ hàng" />
+
+                <Button
+                    android:id="@+id/btn_muahang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#DA4111"
+                    android:text="Đặt ngay" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

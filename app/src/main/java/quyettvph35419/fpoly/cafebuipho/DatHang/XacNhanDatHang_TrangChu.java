@@ -155,6 +155,8 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                                 doUongAdapter.setListTonKho(doUongList);
                                 login.thongBao("Đơn hàng đã được đặt !", XacNhanDatHang_TrangChu.this);
                                 showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
+
+
                             }
                         }
 

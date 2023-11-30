@@ -176,47 +176,55 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/bottomLayout"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#CCCCCC"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="#EDECEA"
+        app:cardCornerRadius="20dp">
 
         <LinearLayout
+            android:id="@+id/bottomLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_alignParentBottom="true"
+            android:background="#CCCCCC"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tổng tiền : "
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTongTien_xndathang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50000"
+                    android:textColor="#F44336"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btndathang_xndathang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tổng tiền : "
+                android:backgroundTint="#C97409"
+                android:text="Đặt hàng"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvTongTien_xndathang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="50000"
-                android:textColor="#F44336"
-                android:textSize="18sp"
-                android:textStyle="italic" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btndathang_xndathang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#C97409"
-            android:text="Đặt hàng"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

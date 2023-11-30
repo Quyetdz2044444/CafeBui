@@ -26,8 +26,8 @@
             android:id="@+id/rclViewGioHang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="70dp"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="70dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,48 +42,56 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/item"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="#EDECEA"
+        app:cardCornerRadius="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/item"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Tổng Tiền : "
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tvtongtienGH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50000"
+                    android:textColor="#F44336"
+                    android:textSize="22sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btndathangGH"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Tổng Tiền : "
-                android:textSize="22sp" />
+                android:layout_gravity="center"
+                android:backgroundTint="#C97409"
+                android:drawableStart="@drawable/giohang"
+                android:text="Đặt hàng" />
 
-            <TextView
-                android:id="@+id/tvtongtienGH"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="50000"
-                android:textColor="#F44336"
-                android:textSize="22sp"
-                android:textStyle="italic" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btndathangGH"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#C97409"
-            android:drawableStart="@drawable/giohang"
-            android:text="Đặt hàng" />
-
-    </LinearLayout>
-
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
