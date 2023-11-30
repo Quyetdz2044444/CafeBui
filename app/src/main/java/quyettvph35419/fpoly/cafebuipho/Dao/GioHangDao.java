@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.Database.DbHelper;
+import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
 
 public class GioHangDao {
@@ -21,6 +22,7 @@ public class GioHangDao {
         dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
+
     public int getCount() {
         String sql = "SELECT COUNT(*) FROM GIOHANG";
         Cursor cursor = db.rawQuery(sql, null);
@@ -45,13 +47,21 @@ public class GioHangDao {
         return db.insert("GIOHANG", null, values);
     }
 
+    public long updateGH(GioHang obj) {
+        ContentValues values = new ContentValues();
+        values.put("SoLuong", obj.getSoLuong());
+        values.put("TongTien", obj.getTongTien());
+        return db.update("GIOHANG", values, "MaGH = ?", new String[]{String.valueOf(obj.getMaGH())});
+    }
 
     public long delete(String id) {
         return db.delete("GIOHANG", "MaGH = ?", new String[]{String.valueOf(id)});
     }
+
     public void deleteAll() {
         db.execSQL("DELETE FROM GIOHANG");
     }
+
     public List<GioHang> getAll() {
         String sql = "SELECT * FROM GIOHANG";
         return getData(sql);

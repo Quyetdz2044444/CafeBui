@@ -17,6 +17,7 @@ import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Adapter.GioHangAdapter;
+import quyettvph35419.fpoly.cafebuipho.Adapter.OnDataChangeListener;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.GioHangDao;
 import quyettvph35419.fpoly.cafebuipho.DatHang.XacNhanDatHang_GioHang;
@@ -25,7 +26,7 @@ import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
 
 
-public class QLGioHang extends AppCompatActivity {
+public class QLGioHang extends AppCompatActivity implements OnDataChangeListener {
     private Toolbar tlbargiohang;
     private RecyclerView rclgiohang;
     private Login login;
@@ -69,7 +70,10 @@ public class QLGioHang extends AppCompatActivity {
         rclgiohang.setLayoutManager(layoutManager);
 
         gioHangList = gioHangDao.getAll();
+
         gioHangAdapter = new GioHangAdapter(gioHangList, this);
+        gioHangAdapter.setOnDataChangeListener(this);
+
         rclgiohang.setAdapter(gioHangAdapter);
 
 
@@ -80,6 +84,7 @@ public class QLGioHang extends AppCompatActivity {
 
 
         // Hiển thị tổng giá tiền trong TextView
+
         TextView tvTongTien = findViewById(R.id.tvtongtienGH);
         tvTongTien.setText(String.valueOf(tongTien) + " vnđ");
 
@@ -116,4 +121,14 @@ public class QLGioHang extends AppCompatActivity {
         alertDialog.show();
     }
 
+    @Override
+    public void onDataChanged() {
+        int tongTien = 0;
+        for (GioHang gioHang : gioHangList) {
+            tongTien += gioHang.getTongTien();
+        }
+        TextView tvTongTien = findViewById(R.id.tvtongtienGH);
+        tvTongTien.setText(String.valueOf(tongTien) + " vnđ");
+
+    }
 }

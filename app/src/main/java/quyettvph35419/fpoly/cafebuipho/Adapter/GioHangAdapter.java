@@ -33,6 +33,11 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
     private DoUong doUong;
     private SizeDao sizeDao;
     private Size size;
+    private OnDataChangeListener onDataChangeListener;
+
+    public void setOnDataChangeListener(OnDataChangeListener listener) {
+        this.onDataChangeListener = listener;
+    }
 
     public GioHangAdapter(List<GioHang> gioHangList, Context context) {
         this.gioHangList = gioHangList;
@@ -141,7 +146,9 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
         holder.btnxoagh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 xoa(String.valueOf(gioHang.getMaGH()));
+
             }
         });
 
@@ -153,6 +160,17 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
                 currentQuantity++;
                 holder.tvsoluonggh.setText(String.valueOf(currentQuantity));
                 updateTotalPrice(holder, currentQuantity);
+                gioHang.setSoLuong(currentQuantity);
+                gioHangDao.updateGH(gioHang);
+
+                int giaAfter = Integer.parseInt(holder.tvgiagh.getText().toString().replace("Giá : ", ""));
+
+                gioHang.setSoLuong(currentQuantity);
+                gioHang.setTongTien(giaAfter * currentQuantity);
+                gioHangDao.updateGH(gioHang);
+                if (onDataChangeListener != null) {
+                    onDataChangeListener.onDataChanged();
+                }
             }
         });
 
@@ -164,6 +182,15 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
                     currentQuantity--;
                     holder.tvsoluonggh.setText(String.valueOf(currentQuantity));
                     updateTotalPrice(holder, currentQuantity);
+
+                    int giaAfter = Integer.parseInt(holder.tvgiagh.getText().toString().replace("Giá : ", ""));
+
+                    gioHang.setSoLuong(currentQuantity);
+                    gioHang.setTongTien(giaAfter * currentQuantity);
+                    gioHangDao.updateGH(gioHang);
+                    if (onDataChangeListener != null) {
+                        onDataChangeListener.onDataChanged();
+                    }
                 }
             }
         });
@@ -186,6 +213,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
             imgGiohang = itemView.findViewById(R.id.img_giohang);
 
             tvgiagh = itemView.findViewById(R.id.tvgia_giohang);
+
             tvtengh = itemView.findViewById(R.id.tvten_giohang);
             tvsizegh = itemView.findViewById(R.id.tvsize_giohang);
             tvtongtienitem = itemView.findViewById(R.id.tvtongtien_itemgiohang);
@@ -222,6 +250,9 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
 
                 dialog.cancel();
                 Toast.makeText(context, "Đã xóa", Toast.LENGTH_SHORT).show();
+                if (onDataChangeListener != null) {
+                    onDataChangeListener.onDataChanged();
+                }
 
             }
         });
@@ -234,6 +265,9 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
         });
         AlertDialog alert = builder.create();
         builder.show();
+
+
     }
+
 
 }
