@@ -10,10 +10,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -90,9 +93,9 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
 
         tvTongTien.setText(tongtien);
 
-        tvHoten.setText("Họ tên : " + khachHang.getHoTen());
-        tvSdt.setText("Số điện thoại : " + khachHang.getSdt());
-        tvDiaChi.setText("Địa chỉ : " + khachHang.getDiaChi());
+        tvHoten.setText(khachHang.getHoTen());
+        tvSdt.setText(khachHang.getSdt());
+        tvDiaChi.setText(khachHang.getDiaChi());
 
 
         btnDatHang.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +162,14 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                 }
             }
         });
+        Button btnSuaThongTin = findViewById(R.id.btnSuaThongTin);
+        btnSuaThongTin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEditDialog();
+            }
+        });
+
 
     }
 
@@ -207,4 +218,57 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
 
 
     }
+
+    private void showEditDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Sửa thông tin");
+
+        // Inflate layout của dialog
+        View view = getLayoutInflater().inflate(R.layout.dialog_thongtin_dathang, null);
+        builder.setView(view);
+
+        // Ánh xạ các view trong dialog
+        TextInputEditText edtHoTen = view.findViewById(R.id.edtHoTen);
+        TextInputEditText edtSoDienThoai = view.findViewById(R.id.edtSoDienThoai);
+        TextInputEditText edtDiaChi = view.findViewById(R.id.edtDiaChi);
+
+        // Thiết lập giá trị hiện tại cho các EditText
+        String hoTenHienTai = tvHoten.getText().toString();
+        String soDienThoaiHienTai = tvSdt.getText().toString();
+        String diaChiHienTai = tvDiaChi.getText().toString();
+
+        edtHoTen.setText(hoTenHienTai);
+        edtSoDienThoai.setText(soDienThoaiHienTai);
+        edtDiaChi.setText(diaChiHienTai);
+
+        builder.setPositiveButton("Lưu", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Lấy giá trị mới từ các EditText
+                String hoTenMoi = edtHoTen.getText().toString();
+                String soDienThoaiMoi = edtSoDienThoai.getText().toString();
+                String diaChiMoi = edtDiaChi.getText().toString();
+
+                // Cập nhật TextViews với giá trị mới
+                tvHoten.setText(hoTenMoi);
+                tvSdt.setText(soDienThoaiMoi);
+                tvDiaChi.setText(diaChiMoi);
+
+                khachHang.setHoTen(hoTenMoi);
+                khachHang.setDiaChi(diaChiMoi);
+                khachHang.setSdt(soDienThoaiMoi);
+                khachHangDao.updatePass(khachHang);
+            }
+        });
+
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
+    }
+
 }
