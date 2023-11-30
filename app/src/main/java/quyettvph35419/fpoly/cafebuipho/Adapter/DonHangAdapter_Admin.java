@@ -82,12 +82,10 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
             holder.btnxacnhan.setVisibility(View.GONE);
         } else if (donHang.getTrangThai() == 3) {
             trangthai = "Đã giao";
-            holder.btncapnhat.setVisibility(View.GONE);
             holder.tvTrangThai.setTextColor(Color.GREEN);
             holder.btnxacnhan.setVisibility(View.GONE);
         } else if (donHang.getTrangThai() == 4) {
             trangthai = "Đã hủy";
-            holder.btncapnhat.setVisibility(View.GONE);
             holder.tvTrangThai.setTextColor(Color.RED);
             holder.btnxacnhan.setVisibility(View.GONE);
         }
@@ -103,13 +101,13 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
             }
         });
 
-        holder.btncapnhat.setOnClickListener(new View.OnClickListener() {
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showUpdateDialog(context, donHang);
             }
         });
-
         holder.btnxacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,7 +128,7 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
 
     public class DonHangViewHolder extends RecyclerView.ViewHolder {
         private TextView tvmadh, tvtenkh, tvSoLuong, tvGia, tvTrangThai, tvNgay, tvchitiet;
-        private Button btnxacnhan, btncapnhat;
+        private Button btnxacnhan;
 
         public DonHangViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -142,7 +140,6 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
             tvtenkh = itemView.findViewById(R.id.tvtenkh_donhang_admin);
             tvTrangThai = itemView.findViewById(R.id.tvtrangthai_donhang_admin);
             btnxacnhan = itemView.findViewById(R.id.btnxacnhan_donhang_admin);
-            btncapnhat = itemView.findViewById(R.id.btnUpdate_donhang_admin);
 
         }
     }
