@@ -74,8 +74,6 @@ public class DonHangDao {
     }
 
 
-
-
     @SuppressLint("Range")
     private List<DonHang> getData(String sql, String... selectionArgs) {
         List<DonHang> list = new ArrayList<>();
