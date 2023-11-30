@@ -53,9 +53,6 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
     public void onBindViewHolder(@NonNull ChiTietDonHangViewHolder holder, int position) {
         DonHangChiTiet donHangChiTiet = chitietlist.get(position);
 
-        holder.tvgia.setText("Giá : " + donHangChiTiet.getTongTien());
-
-
 
         doUongDao = new DoUongDao(context);
         doUong = doUongDao.getID(String.valueOf(donHangChiTiet.getMaDoUong()));
@@ -63,11 +60,21 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
         size = sizeDao.getID(String.valueOf(donHangChiTiet.getMaSize()));
 
         holder.tvten.setText("Tên : " + doUong.getTenDoUong());
+        int giatheosize = 0;
+        if (size.getSize().equals("M")) {
+            giatheosize = doUong.getGia();
+        } else if (size.getSize().equals("L")) {
+            giatheosize = doUong.getGia() + 10000;
+        } else if (size.getSize().equals("XL")) {
+            giatheosize = doUong.getGia() + 15000;
+        }
+        holder.tvgia.setText("Giá : " + giatheosize);
+
         holder.tvthanhtoan.setText("Phương thức : " + donHangChiTiet.getThanhToan());
         holder.tvsoluong.setText("Số lượng : " + donHangChiTiet.getSoLuong());
         holder.tvsize.setText("Size : " + size.getSize());
         holder.tvngay.setText("Thời gian : " + donHangChiTiet.getNgay());
-        holder.tvtongtien.setText("Tổng tiền : " + donHangChiTiet.getTongTien() * donHangChiTiet.getSoLuong());
+        holder.tvtongtien.setText("Tổng tiền : " + donHangChiTiet.getTongTien());
 
         int vitri = doUong.getImageId();
         int resourceId;
