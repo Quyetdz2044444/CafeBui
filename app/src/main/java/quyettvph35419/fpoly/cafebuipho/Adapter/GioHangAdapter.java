@@ -205,6 +205,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
 
     public class GioHangViewHolder extends RecyclerView.ViewHolder {
         private ImageView imgGiohang, btnxoagh;
+
         private TextView tvtengh, tvgiagh, tvsizegh, tvtongtienitem, tvsoluonggh;
         private ImageButton btngiam, btntang;
 

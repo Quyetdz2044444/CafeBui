@@ -131,4 +131,5 @@ public class QLGioHang extends AppCompatActivity implements OnDataChangeListener
         tvTongTien.setText(String.valueOf(tongTien) + " vnđ");
 
     }
+
 }

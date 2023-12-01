@@ -3,6 +3,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:background="@drawable/item"
+    android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="10dp">
 
@@ -13,7 +14,6 @@
         android:layout_height="80dp"
         android:scaleType="centerCrop" />
 
-    <!-- Thông tin chi tiết -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -67,5 +67,10 @@
 
     </LinearLayout>
 
-
+    <Button
+        android:id="@+id/btnDanhGia_chitietdon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#CA7409"
+        android:text="Đánh giá" />
 </LinearLayout>

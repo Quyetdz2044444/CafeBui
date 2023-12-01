@@ -17,12 +17,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.Account.Login;
+import quyettvph35419.fpoly.cafebuipho.Adapter.DanhGiaAdapter;
+import quyettvph35419.fpoly.cafebuipho.Adapter.GioHangAdapter;
+import quyettvph35419.fpoly.cafebuipho.Dao.DanhGiaDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.GioHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDao;
 import quyettvph35419.fpoly.cafebuipho.DatHang.XacNhanDatHang_TrangChu;
+import quyettvph35419.fpoly.cafebuipho.Model.DanhGia;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.GioHang;
 import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
@@ -31,6 +39,10 @@ public class ChiTietDoUong extends AppCompatActivity {
 
     private TextView tvten, tvgia, tvtenloai, tvtongtien, tvSelectedQuantity, tvsoluong_incart;
     private ImageView image, imggiohang; // ảnh sp
+
+    private DanhGiaDao danhGiaDao;
+    private List<DanhGia> danhGiaList;
+    private DanhGiaAdapter danhGiaAdapter;
     private DoUongDao doUongDao;
     private DoUong doUong;
     private Toolbar tlToolbar;
@@ -41,6 +53,7 @@ public class ChiTietDoUong extends AppCompatActivity {
     private RadioButton rdoBtnM, rdoBtnL, rdoBtnXL;
     private Login login;
     private GioHang gioHang;
+    private RecyclerView rclDanhGia;
     private GioHangDao gioHangDao;
     int sluong_incart;
     int giaBanDau;
@@ -52,6 +65,21 @@ public class ChiTietDoUong extends AppCompatActivity {
         setContentView(R.layout.activity_chi_tiet_do_uong);
 
         anhXa();
+
+        Intent intent = getIntent();
+        int maDoUong = intent.getIntExtra("madouong", -1);
+        int tonkho = intent.getIntExtra("tonkho", -1);
+        String makh = intent.getStringExtra("makh");
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        rclDanhGia.setLayoutManager(layoutManager);
+
+        danhGiaList = danhGiaDao.getAll();
+
+        danhGiaAdapter = new DanhGiaAdapter(this, danhGiaList);
+
+        rclDanhGia.setAdapter(danhGiaAdapter);
+
         setSupportActionBar(tlToolbar);
 
         // Hiển thị nút Back
@@ -62,12 +90,6 @@ public class ChiTietDoUong extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
-
-        Intent intent = getIntent();
-        int maDoUong = intent.getIntExtra("madouong", -1);
-        int tonkho = intent.getIntExtra("tonkho", -1);
-        String makh = intent.getStringExtra("makh");
 
 
         doUong = new DoUong();
@@ -340,7 +362,8 @@ public class ChiTietDoUong extends AppCompatActivity {
         btnmuahang = findViewById(R.id.btn_muahang);
 
         tlToolbar = findViewById(R.id.toolbarchitiet);
-
+        rclDanhGia = findViewById(R.id.rclviewDanhGia);
+        danhGiaDao = new DanhGiaDao(this);
         login = new Login();
     }
 }

@@ -2,21 +2,20 @@ package quyettvph35419.fpoly.cafebuipho.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import quyettvph35419.fpoly.cafebuipho.ChiTietDonHang;
+import quyettvph35419.fpoly.cafebuipho.DanhGia_Activity;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangChiTietDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.SizeDao;
@@ -35,10 +34,13 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
     private DoUongDao doUongDao;
     private Size size;
     private SizeDao sizeDao;
+    private String makh;
 
-    public ChiTietDonHangAdapter_User(List<DonHangChiTiet> chitietlist, Context context) {
+
+    public ChiTietDonHangAdapter_User(List<DonHangChiTiet> chitietlist, Context context, String makh) {
         this.chitietlist = chitietlist;
         this.context = context;
+        this.makh = makh;
     }
 
     @NonNull
@@ -75,6 +77,19 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
         holder.tvsize.setText("Size : " + size.getSize());
         holder.tvngay.setText("Thời gian : " + donHangChiTiet.getNgay());
         holder.tvtongtien.setText("Tổng tiền : " + donHangChiTiet.getTongTien());
+
+        holder.btndanhgia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DanhGia_Activity.class);
+                intent.putExtra("maanh", doUong.getImageId());
+                intent.putExtra("tendouong", doUong.getTenDoUong());
+                intent.putExtra("madouong", doUong.getMaDoUong());
+                intent.putExtra("makh", makh);
+                context.startActivity(intent);
+                holder.btndanhgia.setVisibility(View.GONE);
+            }
+        });
 
         int vitri = doUong.getImageId();
         int resourceId;
@@ -143,6 +158,8 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
     public class ChiTietDonHangViewHolder extends RecyclerView.ViewHolder {
         private TextView tvten, tvsoluong, tvsize, tvgia, tvngay, tvthanhtoan, tvtongtien;
         private ImageView imgdouong;
+        private Button btndanhgia;
+
 
         public ChiTietDonHangViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -155,6 +172,8 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
             tvngay = itemView.findViewById(R.id.tvNgay_chitietdonhang);
             tvthanhtoan = itemView.findViewById(R.id.tvThanhToan_chitietdonhang);
             tvtongtien = itemView.findViewById(R.id.tvTongTien_chitietdonhang);
+
+            btndanhgia = itemView.findViewById(R.id.btnDanhGia_chitietdon);
 
 
         }

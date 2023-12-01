@@ -56,7 +56,7 @@ public class ThongTinAcc_Fragment extends Fragment {
         btnsua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              showUpdateDialog();
+                showUpdateDialog();
             }
         });
 
@@ -82,6 +82,7 @@ public class ThongTinAcc_Fragment extends Fragment {
 
         return v;
     }
+
     public void updateUserData() {
         // Lấy lại dữ liệu từ CSDL hoặc nơi khác
         khachHang = khachHangDao.getID(khachHang.getmaKH());
@@ -100,10 +101,10 @@ public class ThongTinAcc_Fragment extends Fragment {
         builder.setView(dialogView);
         final AlertDialog dialog = builder.create();
 
-        final EditText edtHoTen = dialogView.findViewById(R.id.edttendaydu_tt);
-        final EditText edtSdt = dialogView.findViewById(R.id.edtsdt_tt);
-        final EditText edtDiaChi = dialogView.findViewById(R.id.edtdiachi_tt);
-        final EditText edtEmail = dialogView.findViewById(R.id.edtemali_tt);
+        final TextInputEditText edtHoTen = dialogView.findViewById(R.id.edttendaydu_tt);
+        final TextInputEditText edtSdt = dialogView.findViewById(R.id.edtsdt_tt);
+        final TextInputEditText edtDiaChi = dialogView.findViewById(R.id.edtdiachi_tt);
+        final TextInputEditText edtEmail = dialogView.findViewById(R.id.edtemali_tt);
 
         // Hiển thị thông tin hiện tại trong Dialog
         edtHoTen.setText(khachHang.getHoTen());
@@ -130,7 +131,7 @@ public class ThongTinAcc_Fragment extends Fragment {
                     khachHang.setDiaChi(diaChiMoi);
                     khachHang.setEmail(emailMoi);
 
-                    long result = khachHangDao.updatett(khachHang);
+                    long result = khachHangDao.updatePass(khachHang);
                     if (result > 0) {
                         // Cập nhật thành công
                         // Có thể cập nhật lại thông tin trên TextView hoặc làm gì đó khác

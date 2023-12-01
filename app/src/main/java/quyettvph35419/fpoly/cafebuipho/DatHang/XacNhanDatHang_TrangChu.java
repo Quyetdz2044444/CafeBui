@@ -26,6 +26,7 @@ import java.util.Locale;
 
 import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Adapter.DoUongAdapter;
+import quyettvph35419.fpoly.cafebuipho.Adapter.OnDataChangeListener;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangChiTietDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
@@ -53,6 +54,11 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
     private DonHangChiTiet donHangChiTiet;
     private DonHangChiTietDao donHangChiTietDao;
     private Login login;
+    private OnDataChangeListener onDataChangeListener;
+
+    public void setOnDataChangeListener(OnDataChangeListener listener) {
+        this.onDataChangeListener = listener;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,6 +162,9 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                                 login.thongBao("Đơn hàng đã được đặt !", XacNhanDatHang_TrangChu.this);
                                 showAlertDialog("Đặt hàng thành công", "Cảm ơn bạn đã ủng hộ shop chúng tôi !");
 
+                                if (onDataChangeListener != null) {
+                                    onDataChangeListener.onDataChanged();
+                                }
 
                             }
                         }
@@ -260,6 +269,7 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                 khachHang.setDiaChi(diaChiMoi);
                 khachHang.setSdt(soDienThoaiMoi);
                 khachHangDao.updatePass(khachHang);
+
             }
         });
 

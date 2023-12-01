@@ -69,7 +69,7 @@ public class ChiTietDonHang extends AppCompatActivity {
         chiTietList = donHangChiTietDao.getAllByMaDonHang(madh);
 
         // Thiết lập RecyclerView
-        adapterCTDH = new ChiTietDonHangAdapter_User(chiTietList, this);
+        adapterCTDH = new ChiTietDonHangAdapter_User(chiTietList, this, makh);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rclCTDH.setLayoutManager(layoutManager);
         rclCTDH.setAdapter(adapterCTDH);

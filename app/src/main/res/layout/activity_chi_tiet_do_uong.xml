@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:scrollbars="vertical"
     tools:context=".ChiTietDoUong">
 
     <androidx.appcompat.widget.Toolbar
@@ -38,19 +39,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbarchitiet"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <ImageView
             android:id="@+id/imgdouong_chitiet"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="150dp"
             android:background="@drawable/item"
             android:padding="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
             android:orientation="vertical">
 
@@ -58,7 +60,7 @@
                 android:id="@+id/tvten_doUongchitiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:text="Tên:"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -66,7 +68,6 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -74,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:text="Giá:"
                     android:textColor="#F44336"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -83,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:textColor="#F44336"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -124,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Loại:"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -137,7 +138,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:text="Size"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -168,12 +169,25 @@
 
         </RadioGroup>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="#CCCCCC" />
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="ĐÁNH GIÁ"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rclviewDanhGia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="( *  Size L : +10000 vnđ    and     Size XL : +15000 vnđ )"
-            android:textColor="#F44336" />
+            android:layout_marginBottom="120dp" />
 
 
     </LinearLayout>
@@ -182,22 +196,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:cardBackgroundColor="#EDECEA"
         app:cardCornerRadius="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:padding="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -222,7 +235,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:padding="5dp">
 

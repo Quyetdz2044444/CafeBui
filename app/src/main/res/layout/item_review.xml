@@ -1,0 +1,44 @@
+<!-- res/layout/item_review.xml -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTenKhachHang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tên khách hàng"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTenSanPham"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tên sản phẩm"
+        android:textSize="16sp"
+        android:textStyle="italic" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:progressTint="#FFC107"
+    style="?android:attr/ratingBarStyleSmall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:numStars="5"
+    android:rating="0"
+    android:stepSize="1" />
+
+    <TextView
+        android:id="@+id/tvNoiDung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Nội dung đánh giá"
+        android:textSize="14sp" />
+
+</LinearLayout>

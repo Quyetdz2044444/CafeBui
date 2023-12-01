@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "CafeBui";
-    public static final int DB_VERSION = 34;
+    public static final int DB_VERSION = 39;
 
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -79,6 +79,15 @@ public class DbHelper extends SQLiteOpenHelper {
                 + "MaSize integer references SIZE(MaSize))";
         db.execSQL(tb_DonHangChiTiet);
 
+        String createTableDanhGia = "CREATE TABLE DANHGIA (" +
+                "MADANHGIA INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "TENKH TEXT NOT NULL ," +
+                "MADOUONG INTEGER REFERENCES DOUONG(MaDO)," +
+                "SOSAO REAL," +
+                "NOIDUNG TEXT)";
+        db.execSQL(createTableDanhGia);
+
+
 //        INSERT DỮ LIỆU
         db.execSQL("INSERT INTO KHACHHANG VALUES('admin','Admin','admin','0983917432','Hà Nam','admin@gmail.com')," +
                 "('trinhpk','Phạm Trưởng','123','098458902','Ninh Bình','trinhpk3@gmail.com')");
@@ -96,6 +105,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(13, 'Cafe muối', 60000,13,3,90)," +
                 "(14, 'Cafe trứng', 50000,14,2,60),(15, 'Long black ', 45000,15,1,65),(16, 'Cafe cốt dừa', 55000,16,4,73)");
 
+        db.execSQL("INSERT INTO DANHGIA VALUES(1,'Hải Huy',2, 4, 'Rất ngon!'),(2,'Mạnh Dũng',3, 3.0, 'Bình thường')," +
+                "(3,'Công Phượng',3, 5.0, 'Quá tuyệt vời.Very very ngon!!'),(4,'Quang Hải',3, 4.0, 'Khá là ngon theo cảm nhận của tôi') ");
+
+
     }
 
     @Override
@@ -108,6 +121,7 @@ public class DbHelper extends SQLiteOpenHelper {
             db.execSQL("drop table if exists GIOHANG");
             db.execSQL("drop table if exists DONHANG");
             db.execSQL("drop table if exists DONHANGCHITIET");
+            db.execSQL("drop table if exists DANHGIA");
             onCreate(db);
         }
     }

@@ -18,6 +18,7 @@ import java.util.List;
 
 import quyettvph35419.fpoly.cafebuipho.Adapter.DoUongAdapter;
 import quyettvph35419.fpoly.cafebuipho.Adapter.DoUongAdapter_ngang;
+import quyettvph35419.fpoly.cafebuipho.Adapter.OnDataChangeListener;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
@@ -25,7 +26,7 @@ import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 
-public class TrangChu_Fragment extends Fragment {
+public class TrangChu_Fragment extends Fragment implements OnDataChangeListener {
 
     private List<DoUong> list;
     private List<LoaiDoUong> listngang;
@@ -98,10 +99,16 @@ public class TrangChu_Fragment extends Fragment {
 
     }
 
+
     private void updateDoUongList(String maLoai) {
         DoUongDao doUongDao = new DoUongDao(getContext());
         List<DoUong> doUongTheoLoai = doUongDao.getDoUongByMaLoai((maLoai));
         doUongAdapter.setDoUongList(doUongTheoLoai);
     }
 
+
+    @Override
+    public void onDataChanged() {
+
+    }
 }
