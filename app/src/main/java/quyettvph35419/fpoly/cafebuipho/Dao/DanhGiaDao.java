@@ -46,6 +46,29 @@ public class DanhGiaDao {
         return list.get(0);
     }
 
+    public List<DanhGia> getByMaDoUong(int maDoUong) {
+        String sql = "SELECT * FROM DANHGIA WHERE MADOUONG=?";
+        return getData(sql, String.valueOf(maDoUong));
+    }
+    @SuppressLint("Range")
+    public float getAverageRatingByMaDoUong(int maDoUong) {
+        String sql = "SELECT AVG(SOSAO) AS AVG_RATING FROM DANHGIA WHERE MADOUONG=?";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(maDoUong)});
+
+        float averageRating = 0;
+
+        if (cursor.moveToFirst()) {
+            averageRating = Float.parseFloat(cursor.getString(cursor.getColumnIndex("AVG_RATING")));
+        }
+
+        cursor.close();
+        db.close();
+
+        return averageRating;
+    }
+
+
     @SuppressLint("Range")
     private List<DanhGia> getData(String sql, String... selectionArgs) {
         List<DanhGia> list = new ArrayList<>();

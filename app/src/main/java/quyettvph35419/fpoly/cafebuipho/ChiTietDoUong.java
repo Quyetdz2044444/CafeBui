@@ -37,7 +37,7 @@ import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 
 public class ChiTietDoUong extends AppCompatActivity {
 
-    private TextView tvten, tvgia, tvtenloai, tvtongtien, tvSelectedQuantity, tvsoluong_incart;
+    private TextView tvten, tvgia, tvtenloai, tvtongtien, tvSelectedQuantity, tvsoluong_incart, tvsaodanhgia;
     private ImageView image, imggiohang; // ảnh sp
 
     private DanhGiaDao danhGiaDao;
@@ -74,11 +74,14 @@ public class ChiTietDoUong extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rclDanhGia.setLayoutManager(layoutManager);
 
-        danhGiaList = danhGiaDao.getAll();
+        danhGiaList = danhGiaDao.getByMaDoUong(maDoUong);
 
         danhGiaAdapter = new DanhGiaAdapter(this, danhGiaList);
 
         rclDanhGia.setAdapter(danhGiaAdapter);
+        float sosao = danhGiaDao.getAverageRatingByMaDoUong(maDoUong);
+        String formattedRating = String.format("%.1f", sosao);
+        tvsaodanhgia.setText(formattedRating);
 
         setSupportActionBar(tlToolbar);
 
@@ -349,6 +352,7 @@ public class ChiTietDoUong extends AppCompatActivity {
         tvtongtien = findViewById(R.id.tvtongtien);
         tvSelectedQuantity = findViewById(R.id.tvSelectedQuantity);
         tvsoluong_incart = findViewById(R.id.tvsluong_incart_chitiet);
+        tvsaodanhgia = findViewById(R.id.tvSaoTrungBinh);
 
         image = findViewById(R.id.imgdouong_chitiet);
         imggiohang = findViewById(R.id.imggiohang_chitietdouong);
