@@ -3,6 +3,7 @@ package quyettvph35419.fpoly.cafebuipho;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -121,6 +122,7 @@ public class DanhGia_Activity extends AppCompatActivity {
                 danhGia.setSoSao(rating);
                 danhGia.setMaDoUong(madouong);
                 if (danhGiaDao.insert(danhGia) > 0) {
+                    saveRatingStatus();
                     Toast.makeText(DanhGia_Activity.this, "Đánh gía thành công", Toast.LENGTH_SHORT).show();
                     onBackPressed();
                 } else {
@@ -129,5 +131,12 @@ public class DanhGia_Activity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void saveRatingStatus() {
+        SharedPreferences sharedPreferences = getSharedPreferences("RatingStatus", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("hasRated", true);
+        editor.apply();
     }
 }

@@ -100,8 +100,7 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
                 context.startActivity(intent);
             }
         });
-
-
+        
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,6 +120,7 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
                 holder.btnxacnhan.setVisibility(View.GONE);
 
                 notifyDataSetChanged();
+
             }
         });
     }

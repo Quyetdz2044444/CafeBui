@@ -3,6 +3,7 @@ package quyettvph35419.fpoly.cafebuipho.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,14 +38,19 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
     private Size size;
     private SizeDao sizeDao;
     private String makh;
-
+    private boolean hasRated;
 
     public ChiTietDonHangAdapter_User(List<DonHangChiTiet> chitietlist, Context context, String makh) {
         this.chitietlist = chitietlist;
         this.context = context;
         this.makh = makh;
-    }
+        hasRated = checkRatingStatus();
 
+    }
+    private boolean checkRatingStatus() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("RatingStatus", Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("hasRated", false);
+    }
     @NonNull
     @Override
     public ChiTietDonHangViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -86,8 +92,12 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
 
         if (donHang.getTrangThai() != 3) {
             holder.btndanhgia.setVisibility(View.GONE);
+        }else
+        if (hasRated) {
+            holder.btndanhgia.setVisibility(View.GONE);
+        } else {
+            holder.btndanhgia.setVisibility(View.VISIBLE);
         }
-
         holder.btndanhgia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,6 +108,9 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
                 intent.putExtra("makh", makh);
                 context.startActivity(intent);
                 holder.btndanhgia.setVisibility(View.GONE);
+
+                hasRated = true;
+                saveRatingStatus();
             }
         });
 
@@ -184,8 +197,12 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
             tvtongtien = itemView.findViewById(R.id.tvTongTien_chitietdonhang);
 
             btndanhgia = itemView.findViewById(R.id.btnDanhGia_chitietdon);
-
-
         }
+    }
+    private void saveRatingStatus() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("RatingStatus", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("hasRated", true);
+        editor.apply();
     }
 }

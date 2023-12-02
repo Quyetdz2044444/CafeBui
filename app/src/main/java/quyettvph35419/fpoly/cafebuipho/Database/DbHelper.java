@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "CafeBui";
-    public static final int DB_VERSION = 39;
+    public static final int DB_VERSION = 41;
 
     public DbHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -105,8 +105,25 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(13, 'Cafe muối', 60000,13,3,90)," +
                 "(14, 'Cafe trứng', 50000,14,2,60),(15, 'Long black ', 45000,15,1,65),(16, 'Cafe cốt dừa', 55000,16,4,73)");
 
-        db.execSQL("INSERT INTO DANHGIA VALUES(1,'Hải Huy',2, 4, 'Rất ngon!'),(2,'Mạnh Dũng',3, 3.0, 'Bình thường')," +
-                "(3,'Công Phượng',3, 5.0, 'Quá tuyệt vời.Very very ngon!!'),(4,'Quang Hải',3, 4.0, 'Khá là ngon theo cảm nhận của tôi') ");
+        db.execSQL("INSERT INTO DANHGIA VALUES" +
+                "(1,'Hải Huy',1, 4.0, 'Rất ngon!'),(2,'Mạnh Dũng',1, 3.0, 'độc lạ như cái tên')," +
+                "(3,'Công Phượng',2, 5.0, 'Quá tuyệt vời.Very very ngon!!'),(4,'Quang Hải',2, 4.0, 'Khá là ngon theo cảm nhận của tôi')," +
+                "(5,'Ngọc Trinh',2, 5.0, 'Đỉnh cao của hương vị'), (6,'Văn Toàn',3, 4.0, 'Thơm ngon hấp dẫn')," +
+                "(7,'Văn Quyết',3, 3.0, 'Không có gì nổi bật'),(8,'Hồng Hào',4, 4.0, 'Đặc trưng và thơm phức')," +
+                "(9,'Hồng Xiêm',4, 4.0, 'Mùi vị đăc biệt ')," +
+                "(10,'Hồng Lác',5, 4.0, 'Đặc trưng , tuyệt'),(11,'Tiến Linh',5, 4.0, 'Đáng thử nghiệm')," +
+                "(12,'Hải Linh',6, 3.0, 'Khá là tốt'),(13,'Khánh ',6, 3.0, 'Khá, thức uống độc lạ')," +
+                "(14,'Hoàng',7, 3.0, 'Ngon vậy shaooo'),(15,'Bảo',7, 3.0, 'hahaha săn được voucher mlem wa')," +
+                "(16,'Duy Nhất',8, 3.0, 'Khá là tốt'),(17,'Giang',8, 3.0, 'Khá là tốt'),(18,'Mạnh Dũng',9, 3.0, 'Bình thường')," +
+                "(19,'Mạnh Dũng',9, 3.0, 'Bình thường như cân đường kim chỉ'),(20,'Mạnh Dũng',10, 3.0, 'Maxxxx ngonnn')," +
+                "(21,'Mạnh Dũng',10, 3.0, 'Món này hơi lạ'),(22,'Mạnh Dũng',11, 3.0, 'Bình thường nhưng k bth')," +
+                "(23,'Công Công',11, 5.0, 'Quá tuyệt vời.Very very ngon!!'),(24,'Quang Hải',11, 4.0, 'Khá là ngon theo cảm nhận của tôi')," +
+                "(25,'Ngọc Ngọc',12, 5.0, 'Đỉnh cao của hương vị'),(26,'Văn Toàn',12, 4.0, 'Thơm ngon hấp dẫn')," +
+                "(27,'Văn Nam',13, 3.0, 'Không có gì nổi bật'),(28,'Hồng Hài Nhi',13, 4.0, 'Vô địch thế gian')," +
+                "(29,'Dương',14, 4.0, 'Đặc trưng và thơm phức'),(30,'Quang',14, 4.0, 'Đỉnh của làng')," +
+                "(31,'Tuấn Anh',15, 4.0, 'Khá hài lòng với giá'),(32,'Tuấn',15, 4.0, 'Quá đỉnh')," +
+                "(33,'Tiến',16, 4.0, 'Ngon'),(34,'Thành',16, 4.0, 'Đúng tầm giá')");
+
 
 
     }

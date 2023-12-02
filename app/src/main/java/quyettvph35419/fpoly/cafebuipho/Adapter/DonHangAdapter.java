@@ -76,9 +76,11 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
             holder.tvTrangThai.setTextColor(Color.MAGENTA);
         } else if (donHang.getTrangThai() == 2) {
             trangthai = "Đang giao";
+            holder.btnHuyDon.setVisibility(View.GONE);
             holder.tvTrangThai.setTextColor(Color.BLUE);
         } else if (donHang.getTrangThai() == 3) {
             trangthai = "Đã giao";
+            holder.btnHuyDon.setVisibility(View.GONE);
             holder.tvTrangThai.setTextColor(Color.GREEN);
         } else if (donHang.getTrangThai() == 4) {
             trangthai = "Đã hủy";
