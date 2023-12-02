@@ -19,6 +19,8 @@
         android:layout_margin="16dp"
         android:src="@drawable/baseline_post_add_24"
         android:id="@+id/btn_loaiDoUong"
+        android:backgroundTint="#FFC107"
+
         />
 
 </FrameLayout>
