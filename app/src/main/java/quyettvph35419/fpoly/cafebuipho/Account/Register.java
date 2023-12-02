@@ -85,7 +85,6 @@ public class Register extends AppCompatActivity {
         } else if (email.isEmpty()) {
             Toast.makeText(Register.this, "Bạn chưa điền email", Toast.LENGTH_SHORT).show();
         } else {
-//            QuanLy nd = new QuanLy(maql, mkdki, null);
             KhachHang nd = new KhachHang(tendki, fullname, mkdki, sdt, diachi, email);
             if (khachHangDao.register(nd)) {
                 Toast.makeText(Register.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
