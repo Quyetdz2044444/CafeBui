@@ -18,8 +18,10 @@ import java.util.List;
 import quyettvph35419.fpoly.cafebuipho.DanhGia_Activity;
 import quyettvph35419.fpoly.cafebuipho.Dao.DoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.DonHangChiTietDao;
+import quyettvph35419.fpoly.cafebuipho.Dao.DonHangDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.SizeDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
+import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.Size;
 import quyettvph35419.fpoly.cafebuipho.R;
@@ -55,6 +57,10 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
     public void onBindViewHolder(@NonNull ChiTietDonHangViewHolder holder, int position) {
         DonHangChiTiet donHangChiTiet = chitietlist.get(position);
 
+        DonHang donHang = new DonHang();
+        DonHangDao donHangDao = new DonHangDao(context);
+        donHang = donHangDao.getID(String.valueOf(donHangChiTiet.getMaDH()));
+
 
         doUongDao = new DoUongDao(context);
         doUong = doUongDao.getID(String.valueOf(donHangChiTiet.getMaDoUong()));
@@ -77,6 +83,10 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
         holder.tvsize.setText("Size : " + size.getSize());
         holder.tvngay.setText("Thời gian : " + donHangChiTiet.getNgay());
         holder.tvtongtien.setText("Tổng tiền : " + donHangChiTiet.getTongTien());
+
+        if (donHang.getTrangThai() != 3) {
+            holder.btndanhgia.setVisibility(View.GONE);
+        }
 
         holder.btndanhgia.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -105,7 +105,7 @@ public class DonHangAdapter_Admin extends RecyclerView.Adapter<DonHangAdapter_Ad
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(donHang.getTrangThai()!=4){
+                if(donHang.getTrangThai()!=4 && donHang.getTrangThai()!=3){
                     showUpdateDialog(context, donHang);
                 }else {
 
