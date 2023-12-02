@@ -63,7 +63,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
         khachHangDao = new KhachHangDao(context);
         khachHang = khachHangDao.getID(donHang.getMaKH());
 
-        holder.tvSoLuong.setText("Số lượng đơn hàng : " + donHang.getSoLuong());
+        holder.tvSoLuong.setText("Số lượng sản phẩm : " + donHang.getSoLuong());
         holder.tvGia.setText("Tổng : " + donHang.getGia());
         holder.tvtenkh.setText("Tên khách hàng : " + khachHang.getHoTen());
         holder.tvmadh.setText("Mã hóa đơn : " + donHang.getMaDH());
