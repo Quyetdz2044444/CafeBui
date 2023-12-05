@@ -68,6 +68,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "Ngay text not null)";
         db.execSQL(tb_DonHang);
 
+
         String tb_DonHangChiTiet = "create table DONHANGCHITIET(" +
                 "MaDHCT integer primary key autoincrement," +
                 "MaDO integer references DOUONG(MaDO)," +

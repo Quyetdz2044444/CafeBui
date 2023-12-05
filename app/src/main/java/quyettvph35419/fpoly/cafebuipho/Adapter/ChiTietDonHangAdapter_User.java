@@ -47,10 +47,12 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
         hasRated = checkRatingStatus();
 
     }
+
     private boolean checkRatingStatus() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("RatingStatus", Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean("hasRated", false);
     }
+
     @NonNull
     @Override
     public ChiTietDonHangViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -90,10 +92,7 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
         holder.tvngay.setText("Thời gian : " + donHangChiTiet.getNgay());
         holder.tvtongtien.setText("Tổng tiền : " + donHangChiTiet.getTongTien());
 
-        if (donHang.getTrangThai() != 3) {
-            holder.btndanhgia.setVisibility(View.GONE);
-        }else
-        if (hasRated) {
+        if (donHang.getTrangThai() != 3 && hasRated) {
             holder.btndanhgia.setVisibility(View.GONE);
         } else {
             holder.btndanhgia.setVisibility(View.VISIBLE);
@@ -107,6 +106,7 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
                 intent.putExtra("madouong", doUong.getMaDoUong());
                 intent.putExtra("makh", makh);
                 context.startActivity(intent);
+
                 holder.btndanhgia.setVisibility(View.GONE);
 
                 hasRated = true;
@@ -199,6 +199,7 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
             btndanhgia = itemView.findViewById(R.id.btnDanhGia_chitietdon);
         }
     }
+
     private void saveRatingStatus() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("RatingStatus", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

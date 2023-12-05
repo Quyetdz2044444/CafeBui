@@ -51,6 +51,7 @@ public class DoUongAdapter extends RecyclerView.Adapter<DoUongAdapter.DoUongView
 
     @Override
     public void onBindViewHolder(@NonNull DoUongViewHolder holder, int position) {
+
         DoUong doUong = doUongList.get(position);
         holder.tendouong.setText("Tên: " + doUong.getTenDoUong());
         holder.giaDoUong.setText("Giá: " + doUong.getGia());

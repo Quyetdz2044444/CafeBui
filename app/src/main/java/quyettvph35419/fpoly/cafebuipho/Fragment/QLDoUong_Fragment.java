@@ -57,8 +57,10 @@ public class QLDoUong_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_do_uong, container, false);
         listView = v.findViewById(R.id.lvdouong_doUongAdmin);
+
         fab = v.findViewById(R.id.fab_doUongAdmin);
         dao = new DoUongDao(getActivity());
+
         capNhatLv();
 
         fab.setOnClickListener(new View.OnClickListener() {

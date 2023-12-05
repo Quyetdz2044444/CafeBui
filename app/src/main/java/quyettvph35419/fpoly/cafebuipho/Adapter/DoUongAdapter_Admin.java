@@ -22,6 +22,7 @@ import quyettvph35419.fpoly.cafebuipho.R;
 public class DoUongAdapter_Admin extends ArrayAdapter<DoUong> {
     private Context context;
     private ArrayList<DoUong> list;
+
     private QLDoUong_Fragment fragment;
     private TextView tvid, tvten, tvloai, tvgia;
     private ImageView imgDoUong;
@@ -50,6 +51,7 @@ public class DoUongAdapter_Admin extends ArrayAdapter<DoUong> {
             tvloai = v.findViewById(R.id.tvloai_doUong);
             tvgia = v.findViewById(R.id.tvgia_doUong);
             imgDoUong = v.findViewById(R.id.btnxoa_doUong);
+
 
             tvid.setText("Mã: " + item.getMaDoUong());
             tvten.setText("Tên: " + item.getTenDoUong());
