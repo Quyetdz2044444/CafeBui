@@ -36,7 +36,6 @@ public class DonHangChiTietDao {
     }
 
 
-
     @SuppressLint("Range")
     public List<DonHangChiTiet> getAllByMaDonHang(int maDonHang) {
         List<DonHangChiTiet> list = new ArrayList<>();
@@ -56,6 +55,7 @@ public class DonHangChiTietDao {
             obj.setSoLuong(cursor.getInt(cursor.getColumnIndex("SoLuong")));
             obj.setTongTien(cursor.getInt(cursor.getColumnIndex("TongTien")));
             obj.setMaSize(cursor.getInt(cursor.getColumnIndex("MaSize")));
+            obj.setTrangthaidanhgia(cursor.getInt(cursor.getColumnIndex("TrangThaiDanhGia")));
 
             list.add(obj);
         }
@@ -73,12 +73,18 @@ public class DonHangChiTietDao {
         values.put("TongTien", obj.getTongTien());
         values.put("SoLuong", obj.getSoLuong());
         values.put("ThanhToan", obj.getThanhToan());
+        values.put("TrangThaiDanhGia", obj.getTrangthaidanhgia());
         values.put("Ngay", String.valueOf(obj.getNgay()));
         values.put("MaSize", obj.getMaSize());
 
         return db.insert("DONHANGCHITIET", null, values);
     }
 
+    public long update(DonHangChiTiet obj) {
+        ContentValues values = new ContentValues();
+        values.put("TrangThaiDanhGia", obj.getTrangthaidanhgia());
+        return db.update("DONHANGCHITIET", values, "MaDHCT = ?", new String[]{String.valueOf(obj.getMaDHCT())});
+    }
 
     public List<DonHangChiTiet> getAll() {
         String sql = "SELECT * FROM DONHANGCHITIET";
@@ -103,6 +109,7 @@ public class DonHangChiTietDao {
             obj.setMaDH(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaDH"))));
             obj.setNgay(cursor.getString(cursor.getColumnIndex("Ngay")));
             obj.setThanhToan(cursor.getString(cursor.getColumnIndex("ThanhToan")));
+            obj.setTrangthaidanhgia(cursor.getInt(cursor.getColumnIndex("TrangThaiDanhGia")));
             obj.setSoLuong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("SoLuong"))));
             obj.setTongTien(Integer.parseInt(cursor.getString(cursor.getColumnIndex("TongTien"))));
             obj.setMaSize(Integer.parseInt(cursor.getString(cursor.getColumnIndex("MaSize"))));

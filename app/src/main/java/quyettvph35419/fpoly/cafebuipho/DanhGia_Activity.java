@@ -14,8 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import quyettvph35419.fpoly.cafebuipho.Dao.DanhGiaDao;
+import quyettvph35419.fpoly.cafebuipho.Dao.DonHangChiTietDao;
 import quyettvph35419.fpoly.cafebuipho.Dao.KhachHangDao;
 import quyettvph35419.fpoly.cafebuipho.Model.DanhGia;
+import quyettvph35419.fpoly.cafebuipho.Model.DonHangChiTiet;
 import quyettvph35419.fpoly.cafebuipho.Model.KhachHang;
 
 public class DanhGia_Activity extends AppCompatActivity {
@@ -34,6 +36,7 @@ public class DanhGia_Activity extends AppCompatActivity {
         String makh = intent.getStringExtra("makh");
         int maanh = intent.getIntExtra("maanh", -1);
         int madouong = intent.getIntExtra("madouong", -1);
+        int madhct = intent.getIntExtra("madhct", -1);
 
 
         ratingBar = findViewById(R.id.ratingBar);
@@ -122,9 +125,15 @@ public class DanhGia_Activity extends AppCompatActivity {
                 danhGia.setSoSao(rating);
                 danhGia.setMaDoUong(madouong);
                 if (danhGiaDao.insert(danhGia) > 0) {
-                    saveRatingStatus();
-                    Toast.makeText(DanhGia_Activity.this, "Đánh gía thành công", Toast.LENGTH_SHORT).show();
-                    onBackPressed();
+                    DonHangChiTietDao donHangChiTietDao = new DonHangChiTietDao(getApplicationContext());
+                    DonHangChiTiet donHangChiTiet = new DonHangChiTiet();
+                    donHangChiTiet = donHangChiTietDao.getID(String.valueOf(madhct));
+                    donHangChiTiet.setTrangthaidanhgia(1);
+                    donHangChiTietDao.update(donHangChiTiet);
+
+                    Toast.makeText(DanhGia_Activity.this, "Đánh g thành công", Toast.LENGTH_SHORT).show();
+                    Intent intent1 = new Intent(DanhGia_Activity.this, ChiTietDonHang.class);
+                    startActivity(intent1);
                 } else {
                     Toast.makeText(DanhGia_Activity.this, "Đánh gía chưa được", Toast.LENGTH_SHORT).show();
                 }
@@ -133,10 +142,5 @@ public class DanhGia_Activity extends AppCompatActivity {
         });
     }
 
-    private void saveRatingStatus() {
-        SharedPreferences sharedPreferences = getSharedPreferences("RatingStatus", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("hasRated", true);
-        editor.apply();
-    }
+
 }

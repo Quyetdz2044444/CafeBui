@@ -147,6 +147,7 @@ public class XacNhanDatHang_TrangChu extends AppCompatActivity {
                         donHangChiTiet.setNgay(date);
                         donHangChiTiet.setThanhToan(selectedRadioButton.getText().toString());
                         donHangChiTiet.setTongTien(Integer.parseInt(giadouong));
+                        donHangChiTiet.setTrangthaidanhgia(0);
 
                         int soluongdat = Integer.parseInt(soluong);
                         int sltonkho = tonkho;

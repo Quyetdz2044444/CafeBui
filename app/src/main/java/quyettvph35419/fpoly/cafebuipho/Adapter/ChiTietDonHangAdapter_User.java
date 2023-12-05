@@ -38,20 +38,14 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
     private Size size;
     private SizeDao sizeDao;
     private String makh;
-    private boolean hasRated;
 
     public ChiTietDonHangAdapter_User(List<DonHangChiTiet> chitietlist, Context context, String makh) {
         this.chitietlist = chitietlist;
         this.context = context;
         this.makh = makh;
-        hasRated = checkRatingStatus();
 
     }
 
-    private boolean checkRatingStatus() {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("RatingStatus", Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("hasRated", false);
-    }
 
     @NonNull
     @Override
@@ -92,10 +86,10 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
         holder.tvngay.setText("Thời gian : " + donHangChiTiet.getNgay());
         holder.tvtongtien.setText("Tổng tiền : " + donHangChiTiet.getTongTien());
 
-        if (donHang.getTrangThai() != 3 && hasRated) {
-            holder.btndanhgia.setVisibility(View.GONE);
-        } else {
+        if (donHangChiTiet.getTrangthaidanhgia() == 0 && donHang.getTrangThai() == 3) {
             holder.btndanhgia.setVisibility(View.VISIBLE);
+        } else {
+            holder.btndanhgia.setVisibility(View.GONE);
         }
         holder.btndanhgia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,14 +97,10 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
                 Intent intent = new Intent(context, DanhGia_Activity.class);
                 intent.putExtra("maanh", doUong.getImageId());
                 intent.putExtra("tendouong", doUong.getTenDoUong());
+                intent.putExtra("madhct", donHangChiTiet.getMaDHCT());
                 intent.putExtra("madouong", doUong.getMaDoUong());
                 intent.putExtra("makh", makh);
                 context.startActivity(intent);
-
-                holder.btndanhgia.setVisibility(View.GONE);
-
-                hasRated = true;
-                saveRatingStatus();
             }
         });
 
@@ -200,10 +190,4 @@ public class ChiTietDonHangAdapter_User extends RecyclerView.Adapter<ChiTietDonH
         }
     }
 
-    private void saveRatingStatus() {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("RatingStatus", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("hasRated", true);
-        editor.apply();
-    }
 }

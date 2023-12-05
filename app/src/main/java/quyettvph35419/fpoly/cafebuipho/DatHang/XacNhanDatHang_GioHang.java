@@ -144,6 +144,7 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
                             donHangChiTiet.setNgay(getCurrentDateTime());
                             donHangChiTiet.setThanhToan(selectedRadioButton.getText().toString());
                             donHangChiTiet.setTongTien(gioHang.getTongTien());
+                            donHangChiTiet.setTrangthaidanhgia(0);
 
                             // Thêm đơn hàng chi tiết vào cơ sở dữ liệu
                             if (donHangChiTietDao.insert(donHangChiTiet) > 0) {
