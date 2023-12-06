@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import quyettvph35419.fpoly.cafebuipho.Database.DbHelper;
 import quyettvph35419.fpoly.cafebuipho.Model.DonHang;
@@ -20,6 +21,40 @@ public class DonHangChiTietDao {
     public DonHangChiTietDao(Context context) {
         dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
+    }
+
+    public List<String> getTop5BestSellingDrinksWithStatus3() {
+        List<String> top5Drinks = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        // Truy vấn để lấy 5 đồ uống bán chạy nhất với trạng thái = 3
+        String query = "SELECT DOUONG.TenDO, SUM(DONHANGCHITIET.SoLuong) AS TotalQuantity " +
+                "FROM DOUONG " +
+                "INNER JOIN DONHANGCHITIET ON DOUONG.MaDO = DONHANGCHITIET.MaDO " +
+                "INNER JOIN DONHANG ON DONHANGCHITIET.MaDH = DONHANG.MaDH " +
+                "WHERE DONHANG.TrangThai = 3 " +
+                "GROUP BY DOUONG.MaDO " +
+                "ORDER BY TotalQuantity DESC " +
+                "LIMIT 5";
+
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                // Lấy tên đồ uống và tổng số lượng
+                @SuppressLint("Range") String drinkName = cursor.getString(cursor.getColumnIndex("TenDO"));
+                @SuppressLint("Range") int totalQuantity = cursor.getInt(cursor.getColumnIndex("TotalQuantity"));
+
+                // Tạo một chuỗi đại diện cho kết quả và thêm vào danh sách
+                String resultString = String.format(Locale.getDefault(), "%-30s %-30s %s", drinkName, "Đã bán", totalQuantity);
+                top5Drinks.add(resultString);
+            } while (cursor.moveToNext());
+        }
+
+        // Đóng con trỏ và cơ sở dữ liệu
+        cursor.close();
+        db.close();
+
+        return top5Drinks;
     }
 
     public int getCount() {
@@ -118,5 +153,6 @@ public class DonHangChiTietDao {
         }
         return list;
     }
+
 
 }
