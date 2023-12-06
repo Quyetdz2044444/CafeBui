@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -254,12 +255,17 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
         View view = getLayoutInflater().inflate(R.layout.dialog_thongtin_dathang, null);
         builder.setView(view);
 
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(false);
+        alertDialog.show();
+
         // Ánh xạ các view trong dialog
         TextInputEditText edtHoTen = view.findViewById(R.id.edtHoTen);
         TextInputEditText edtSoDienThoai = view.findViewById(R.id.edtSoDienThoai);
         TextInputEditText edtDiaChi = view.findViewById(R.id.edtDiaChi);
+        Button btnSua = view.findViewById(R.id.btnSua);
+        Button btnHuy = view.findViewById(R.id.btnHuy);
 
-        // Thiết lập giá trị hiện tại cho các EditText
         String hoTenHienTai = tvHoten.getText().toString();
         String soDienThoaiHienTai = tvSdt.getText().toString();
         String diaChiHienTai = tvDiaChi.getText().toString();
@@ -268,34 +274,43 @@ public class XacNhanDatHang_GioHang extends AppCompatActivity {
         edtSoDienThoai.setText(soDienThoaiHienTai);
         edtDiaChi.setText(diaChiHienTai);
 
-        builder.setPositiveButton("Lưu", new DialogInterface.OnClickListener() {
+
+        btnSua.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // Lấy giá trị mới từ các EditText
+            public void onClick(View view) {
+
                 String hoTenMoi = edtHoTen.getText().toString();
                 String soDienThoaiMoi = edtSoDienThoai.getText().toString();
                 String diaChiMoi = edtDiaChi.getText().toString();
 
-                // Cập nhật TextViews với giá trị mới
-                tvHoten.setText(hoTenMoi);
-                tvSdt.setText(soDienThoaiMoi);
-                tvDiaChi.setText(diaChiMoi);
+                if (TextUtils.isEmpty(hoTenMoi) || TextUtils.isEmpty(soDienThoaiMoi) || TextUtils.isEmpty(diaChiMoi)) {
+                    Toast.makeText(XacNhanDatHang_GioHang.this, "Sửa chưa thành công, hãy điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (!soDienThoaiMoi.matches("\\d+")) {
+                    Toast.makeText(XacNhanDatHang_GioHang.this, "Số điện thoại chỉ được chứa số", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    tvHoten.setText(hoTenMoi);
+                    tvSdt.setText(soDienThoaiMoi);
+                    tvDiaChi.setText(diaChiMoi);
 
-                khachHang.setHoTen(hoTenMoi);
-                khachHang.setDiaChi(diaChiMoi);
-                khachHang.setSdt(soDienThoaiMoi);
-                khachHangDao.updatePass(khachHang);
+                    khachHang.setHoTen(hoTenMoi);
+                    khachHang.setDiaChi(diaChiMoi);
+                    khachHang.setSdt(soDienThoaiMoi);
+                    khachHangDao.updatePass(khachHang);
+                    Toast.makeText(XacNhanDatHang_GioHang.this, "Cập nhật xong", Toast.LENGTH_SHORT).show();
+                    alertDialog.dismiss();
+                }
             }
         });
-
-        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+        btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+            public void onClick(View view) {
+                alertDialog.dismiss();
             }
         });
 
-        builder.create().show();
+
     }
 
 

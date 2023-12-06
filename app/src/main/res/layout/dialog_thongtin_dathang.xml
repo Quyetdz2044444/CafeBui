@@ -1,6 +1,5 @@
 <!-- edit_dialog_layout.xml -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -15,7 +14,7 @@
             android:id="@+id/edtHoTen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Họ tên"/>
+            android:hint="Họ tên" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Số điện thoại -->
@@ -28,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Số điện thoại"
-            android:inputType="phone"/>
+            android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Địa chỉ -->
@@ -40,7 +39,32 @@
             android:id="@+id/edtDiaChi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Địa chỉ"/>
+            android:hint="Địa chỉ" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Nút Sửa và Nút Hủy -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnSua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#3F51B5"
+            android:text="Sửa" />
+
+        <Button
+            android:backgroundTint="#F44336"
+
+            android:id="@+id/btnHuy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hủy" />
+    </LinearLayout>
 
 </LinearLayout>
