@@ -80,6 +80,9 @@ public class KhachHangAdapter extends ArrayAdapter<KhachHang> {
             imgDel = v.findViewById(R.id.imgDeleteLS);
         }
 
+        if (item.getmaKH().equals("admin")) {
+            imgDel.setVisibility(View.GONE);
+        }
         imgDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
