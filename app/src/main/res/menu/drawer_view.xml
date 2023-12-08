@@ -50,7 +50,7 @@
             <menu>
                 <item
                     android:id="@+id/sub_Top5"
-                    android:icon="@drawable/ic_money"
+                    android:icon="@drawable/ic_top"
                     android:title="Top 5 đồ uống"
                     android:visible="false" />
                 <item

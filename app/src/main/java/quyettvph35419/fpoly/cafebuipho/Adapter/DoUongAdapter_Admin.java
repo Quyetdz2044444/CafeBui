@@ -1,20 +1,26 @@
 package quyettvph35419.fpoly.cafebuipho.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+import quyettvph35419.fpoly.cafebuipho.Account.Login;
 import quyettvph35419.fpoly.cafebuipho.Dao.LoaiDoUongDao;
 import quyettvph35419.fpoly.cafebuipho.Fragment.QLDoUong_Fragment;
+import quyettvph35419.fpoly.cafebuipho.MainActivity;
 import quyettvph35419.fpoly.cafebuipho.Model.DoUong;
 import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
@@ -64,8 +70,28 @@ public class DoUongAdapter_Admin extends ArrayAdapter<DoUong> {
             @Override
             public void onClick(View view) {
 //                fragment.xoa(String.valueOf(item.getMaDoUong()));
-                list.remove(position);
-                notifyDataSetChanged();
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
+                builder.setTitle("Xóa đồ uống");
+                builder.setMessage("Bạn chắc muốn xóa chứ?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        list.remove(position);
+                        Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                        notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton("không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
             }
         });
         return v;

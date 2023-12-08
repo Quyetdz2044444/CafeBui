@@ -1,12 +1,15 @@
 package quyettvph35419.fpoly.cafebuipho.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,8 +57,27 @@ public class loaiDoUongAdapter extends ArrayAdapter<LoaiDoUong> {
             @Override
             public void onClick(View view) {
 //           fragment.xoa(String.valueOf(item.getMaLoai()));
-                list.remove(position);
-                notifyDataSetChanged();
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
+                builder.setTitle("Xóa loại đồ uống");
+                builder.setMessage("Bạn chắc muốn xóa chứ?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        list.remove(position);
+                        Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                        notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton("không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+
             }
         });
 

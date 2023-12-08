@@ -26,7 +26,7 @@ import quyettvph35419.fpoly.cafebuipho.Model.LoaiDoUong;
 import quyettvph35419.fpoly.cafebuipho.R;
 
 
-public class TrangChu_Fragment extends Fragment implements OnDataChangeListener {
+public class TrangChu_Fragment extends Fragment {
 
     private List<DoUong> list;
     private List<LoaiDoUong> listngang;
@@ -106,9 +106,4 @@ public class TrangChu_Fragment extends Fragment implements OnDataChangeListener 
         doUongAdapter.setDoUongList(doUongTheoLoai);
     }
 
-
-    @Override
-    public void onDataChanged() {
-
-    }
 }
