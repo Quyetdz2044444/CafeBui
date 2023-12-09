@@ -10,6 +10,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="80dp"
+        android:id="@+id/logoDoUong"
         android:layout_height="100dp"
         android:src="@drawable/cafebacxiu" />
 

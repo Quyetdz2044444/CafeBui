@@ -31,7 +31,7 @@ public class DoUongAdapter_Admin extends ArrayAdapter<DoUong> {
 
     private QLDoUong_Fragment fragment;
     private TextView tvid, tvten, tvloai, tvgia;
-    private ImageView imgDoUong;
+    private ImageView imgDoUong, logoDoUong;
 
     public DoUongAdapter_Admin(@NonNull Context context, QLDoUong_Fragment fragment, ArrayList<DoUong> list) {
         super(context, 0, list);
@@ -57,8 +57,63 @@ public class DoUongAdapter_Admin extends ArrayAdapter<DoUong> {
             tvloai = v.findViewById(R.id.tvloai_doUong);
             tvgia = v.findViewById(R.id.tvgia_doUong);
             imgDoUong = v.findViewById(R.id.btnxoa_doUong);
+            logoDoUong = v.findViewById(R.id.logoDoUong);
 
+            int vitri = item.getImageId();
+            int resourceId;
+            switch (vitri) {
+                case 1:
+                    resourceId = R.drawable.americano;
+                    break;
+                case 2:
+                    resourceId = R.drawable.cafebacxiu;
+                    break;
+                case 3:
+                    resourceId = R.drawable.capuchino;
+                    break;
+                case 4:
+                    resourceId = R.drawable.cafetruyenthong;
+                    break;
+                case 5:
+                    resourceId = R.drawable.macchiato;
+                    break;
+                case 6:
+                    resourceId = R.drawable.irishcafe;
+                    break;
+                case 7:
+                    resourceId = R.drawable.mochacafe;
+                    break;
 
+                case 8:
+                    resourceId = R.drawable.cafelungo;
+                    break;
+                case 9:
+                    resourceId = R.drawable.caferistresto;
+                    break;
+                case 10:
+                    resourceId = R.drawable.cafepicolo;
+                    break;
+                case 11:
+                    resourceId = R.drawable.caferedeye;
+                    break;
+                case 12:
+                    resourceId = R.drawable.cafemuoi;
+                    break;
+                case 13:
+                    resourceId = R.drawable.cafetrung;
+                    break;
+                case 14:
+                    resourceId = R.drawable.cafelongblack;
+                    break;
+                case 15:
+                    resourceId = R.drawable.cafecotdua;
+                    break;
+
+                default:
+                    resourceId = R.drawable.cafemacdinh; // Set ảnh mặc định nếu không khớp với bất kỳ trường hợp nào
+                    break;
+            }
+            logoDoUong.setImageResource(resourceId);
             tvid.setText("Mã: " + item.getMaDoUong());
             tvten.setText("Tên: " + item.getTenDoUong());
             tvloai.setText("Loại: " + loaiDoUong.getTenLoai());
