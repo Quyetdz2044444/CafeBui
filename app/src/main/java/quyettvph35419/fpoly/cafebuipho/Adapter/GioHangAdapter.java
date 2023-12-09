@@ -148,7 +148,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.GioHangV
             public void onClick(View view) {
 
                 xoa(String.valueOf(gioHang.getMaGH()));
-
+               
             }
         });
 

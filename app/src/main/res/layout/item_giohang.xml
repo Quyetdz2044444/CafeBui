@@ -8,7 +8,7 @@
     android:orientation="horizontal"
     android:padding="5dp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_giohang"
         android:layout_width="100dp"
         android:layout_height="100dp"
